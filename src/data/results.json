@@ -10,7 +10,7 @@
       "results": [
         {
           "id": "gemma3-27b-lora",
-          "model": "Gemma 3 27B + LoRA cls. head",
+          "model": "Gemma 3 27B fine-tuned",
           "provider": "internal",
           "sourceRunId": null,
           "metrics": {
@@ -216,7 +216,7 @@
       "results": [
         {
           "id": "gemma3-27b-lora",
-          "model": "Gemma 3 27B + LoRA cls. head",
+          "model": "Gemma 3 27B fine-tuned",
           "provider": "internal",
           "sourceRunId": null,
           "metrics": {
@@ -440,7 +440,7 @@
         },
         {
           "id": "gemma3-27b-lora",
-          "model": "Gemma 3 27B + LoRA cls. head",
+          "model": "Gemma 3 27B fine-tuned",
           "provider": "internal",
           "sourceRunId": null,
           "metrics": {
