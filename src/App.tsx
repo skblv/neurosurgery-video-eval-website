@@ -14,7 +14,7 @@ import {
 
 export default function App() {
   const [activeId, setActiveId] = useState<DatasetId>("cholect50");
-  const [metricId, setMetricId] = useState<MetricId>("exactMatch");
+  const [metricId, setMetricId] = useState<MetricId>("microF1");
   const active = useMemo(() => DATASETS.find((d) => d.id === activeId)!, [activeId]);
 
   const handleMetricChange = (event: ChangeEvent<HTMLSelectElement>) => {
@@ -50,9 +50,9 @@ export default function App() {
 
         <h1>Surgical intelligence leaderboard</h1>
         <p className="masthead__lede">
-          How close are we to Surgical AGI? Can today's vision–language models (VLMs) identify the
-          instruments in a surgical video frame? We benchmark frontier VLMs on 3 surgical
-          benchmarks:
+          How close are today's vision–language models (VLMs) to Surgical AGI? The prerequisite is
+          that they should be able to identify instruments in a surgical video frame. We benchmark
+          frontier VLMs on 3 surgical benchmarks:
         </p>
       </header>
 
@@ -62,22 +62,23 @@ export default function App() {
             Results
           </h2>
 
-          <div className="controls">
-            <div className="tabs" role="tablist" aria-label="Dataset">
-              {DATASETS.map((dataset) => (
-                <button
-                  key={dataset.id}
-                  role="tab"
-                  type="button"
-                  aria-selected={dataset.id === activeId}
-                  className={dataset.id === activeId ? "tab tab--active" : "tab"}
-                  onClick={() => setActiveId(dataset.id)}
-                >
-                  <span className="tab__name">{dataset.name}</span>
-                  <span className="tab__meta">{dataset.procedure}</span>
-                </button>
-              ))}
-            </div>
+          <div className="tabs" role="tablist" aria-label="Dataset">
+            {DATASETS.map((dataset) => (
+              <button
+                key={dataset.id}
+                role="tab"
+                type="button"
+                aria-selected={dataset.id === activeId}
+                className={dataset.id === activeId ? "tab tab--active" : "tab"}
+                onClick={() => setActiveId(dataset.id)}
+              >
+                {dataset.name}
+              </button>
+            ))}
+          </div>
+
+          <div className="figure-row">
+            <ResultsChart dataset={active} metricId={metricId} />
 
             <label className="metric">
               <span className="metric__label">Metric</span>
@@ -91,7 +92,6 @@ export default function App() {
             </label>
           </div>
 
-          <ResultsChart dataset={active} metricId={metricId} />
           <ResultsTable dataset={active} metricId={metricId} />
         </section>
       </main>

@@ -1,5 +1,5 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "generatedAt": "2026-08-07T00:00:00Z",
   "datasets": {
     "cholect50": {
@@ -12,7 +12,6 @@
           "id": "gemma3-27b-lora",
           "model": "Gemma 3 27B + LoRA cls. head",
           "provider": "internal",
-          "paramsB": 27,
           "sourceRunId": null,
           "metrics": {
             "exactMatch": {
@@ -31,7 +30,6 @@
           "id": "yolov12m",
           "model": "YOLOv12-m",
           "provider": "internal",
-          "paramsB": 0.026,
           "sourceRunId": null,
           "metrics": {
             "exactMatch": {
@@ -50,7 +48,6 @@
           "id": "gemini-3-flash",
           "model": "Gemini 3 Flash Preview",
           "provider": "gemini",
-          "paramsB": null,
           "sourceRunId": null,
           "metrics": {
             "exactMatch": {
@@ -69,7 +66,6 @@
           "id": "gemini-3_1-pro",
           "model": "Gemini 3.1 Pro Preview",
           "provider": "gemini",
-          "paramsB": null,
           "sourceRunId": null,
           "metrics": {
             "exactMatch": {
@@ -88,7 +84,6 @@
           "id": "kimi-k3",
           "model": "Kimi K3",
           "provider": "moonshot",
-          "paramsB": null,
           "sourceRunId": null,
           "metrics": {
             "exactMatch": {
@@ -107,7 +102,6 @@
           "id": "gpt-5_6-sol",
           "model": "GPT-5.6 Sol",
           "provider": "openai",
-          "paramsB": null,
           "sourceRunId": null,
           "metrics": {
             "exactMatch": {
@@ -126,7 +120,6 @@
           "id": "claude-fable-5",
           "model": "Claude Fable 5",
           "provider": "anthropic",
-          "paramsB": null,
           "sourceRunId": null,
           "metrics": {
             "exactMatch": {
@@ -145,7 +138,6 @@
           "id": "claude-opus-4_6",
           "model": "Claude Opus 4.6",
           "provider": "anthropic",
-          "paramsB": null,
           "sourceRunId": null,
           "metrics": {
             "exactMatch": {
@@ -164,7 +156,6 @@
           "id": "gpt-5_4",
           "model": "GPT-5.4",
           "provider": "openai",
-          "paramsB": null,
           "sourceRunId": null,
           "metrics": {
             "exactMatch": {
@@ -183,7 +174,6 @@
           "id": "claude-sonnet-4_6",
           "model": "Claude Sonnet 4.6",
           "provider": "anthropic",
-          "paramsB": null,
           "sourceRunId": null,
           "metrics": {
             "exactMatch": {
@@ -200,9 +190,8 @@
         },
         {
           "id": "gemma3-27b-it",
-          "model": "Gemma 3 27B-it (zero-shot)",
+          "model": "Gemma 3 27B-it",
           "provider": "google",
-          "paramsB": 27,
           "sourceRunId": null,
           "metrics": {
             "exactMatch": {
@@ -229,7 +218,6 @@
           "id": "gemma3-27b-lora",
           "model": "Gemma 3 27B + LoRA cls. head",
           "provider": "internal",
-          "paramsB": 27,
           "sourceRunId": null,
           "metrics": {
             "exactMatch": {
@@ -248,7 +236,6 @@
           "id": "yolov12m",
           "model": "YOLOv12-m",
           "provider": "internal",
-          "paramsB": 0.026,
           "sourceRunId": null,
           "metrics": {
             "exactMatch": {
@@ -267,7 +254,6 @@
           "id": "gemini-3_1-pro",
           "model": "Gemini 3.1 Pro Preview",
           "provider": "gemini",
-          "paramsB": null,
           "sourceRunId": null,
           "metrics": {
             "exactMatch": {
@@ -286,7 +272,6 @@
           "id": "claude-fable-5",
           "model": "Claude Fable 5",
           "provider": "anthropic",
-          "paramsB": null,
           "sourceRunId": null,
           "metrics": {
             "exactMatch": {
@@ -305,7 +290,6 @@
           "id": "gemini-3-flash",
           "model": "Gemini 3 Flash Preview",
           "provider": "gemini",
-          "paramsB": null,
           "sourceRunId": null,
           "metrics": {
             "exactMatch": {
@@ -324,7 +308,6 @@
           "id": "claude-opus-4_6",
           "model": "Claude Opus 4.6",
           "provider": "anthropic",
-          "paramsB": null,
           "sourceRunId": null,
           "metrics": {
             "exactMatch": {
@@ -343,7 +326,6 @@
           "id": "claude-sonnet-4_6",
           "model": "Claude Sonnet 4.6",
           "provider": "anthropic",
-          "paramsB": null,
           "sourceRunId": null,
           "metrics": {
             "exactMatch": {
@@ -362,7 +344,6 @@
           "id": "gpt-5_4",
           "model": "GPT-5.4",
           "provider": "openai",
-          "paramsB": null,
           "sourceRunId": null,
           "metrics": {
             "exactMatch": {
@@ -381,7 +362,6 @@
           "id": "kimi-k3",
           "model": "Kimi K3",
           "provider": "moonshot",
-          "paramsB": null,
           "sourceRunId": null,
           "metrics": {
             "exactMatch": {
@@ -400,7 +380,6 @@
           "id": "gpt-5_6-sol",
           "model": "GPT-5.6 Sol",
           "provider": "openai",
-          "paramsB": null,
           "sourceRunId": null,
           "metrics": {
             "exactMatch": {
@@ -417,9 +396,8 @@
         },
         {
           "id": "gemma3-27b-it",
-          "model": "Gemma 3 27B-it (zero-shot)",
+          "model": "Gemma 3 27B-it",
           "provider": "google",
-          "paramsB": 27,
           "sourceRunId": null,
           "metrics": {
             "exactMatch": {
@@ -446,7 +424,6 @@
           "id": "yolov12m",
           "model": "YOLOv12-m",
           "provider": "internal",
-          "paramsB": 0.026,
           "sourceRunId": null,
           "metrics": {
             "exactMatch": {
@@ -465,7 +442,6 @@
           "id": "gemma3-27b-lora",
           "model": "Gemma 3 27B + LoRA cls. head",
           "provider": "internal",
-          "paramsB": 27,
           "sourceRunId": null,
           "metrics": {
             "exactMatch": {
@@ -484,7 +460,6 @@
           "id": "claude-sonnet-4_6",
           "model": "Claude Sonnet 4.6",
           "provider": "anthropic",
-          "paramsB": null,
           "sourceRunId": null,
           "metrics": {
             "exactMatch": {
@@ -503,7 +478,6 @@
           "id": "gemini-3_1-pro",
           "model": "Gemini 3.1 Pro Preview",
           "provider": "gemini",
-          "paramsB": null,
           "sourceRunId": null,
           "metrics": {
             "exactMatch": {
@@ -522,7 +496,6 @@
           "id": "claude-fable-5",
           "model": "Claude Fable 5",
           "provider": "anthropic",
-          "paramsB": null,
           "sourceRunId": null,
           "metrics": {
             "exactMatch": {
@@ -541,7 +514,6 @@
           "id": "gpt-5_4",
           "model": "GPT-5.4",
           "provider": "openai",
-          "paramsB": null,
           "sourceRunId": null,
           "metrics": {
             "exactMatch": {
@@ -560,7 +532,6 @@
           "id": "gpt-5_6-sol",
           "model": "GPT-5.6 Sol",
           "provider": "openai",
-          "paramsB": null,
           "sourceRunId": null,
           "metrics": {
             "exactMatch": {
@@ -579,7 +550,6 @@
           "id": "claude-opus-4_6",
           "model": "Claude Opus 4.6",
           "provider": "anthropic",
-          "paramsB": null,
           "sourceRunId": null,
           "metrics": {
             "exactMatch": {
@@ -598,7 +568,6 @@
           "id": "kimi-k3",
           "model": "Kimi K3",
           "provider": "moonshot",
-          "paramsB": null,
           "sourceRunId": null,
           "metrics": {
             "exactMatch": {
@@ -617,7 +586,6 @@
           "id": "gemini-3-flash",
           "model": "Gemini 3 Flash Preview",
           "provider": "gemini",
-          "paramsB": null,
           "sourceRunId": null,
           "metrics": {
             "exactMatch": {
@@ -634,9 +602,8 @@
         },
         {
           "id": "gemma3-27b-it",
-          "model": "Gemma 3 27B-it (zero-shot)",
+          "model": "Gemma 3 27B-it",
           "provider": "google",
-          "paramsB": 27,
           "sourceRunId": null,
           "metrics": {
             "exactMatch": {

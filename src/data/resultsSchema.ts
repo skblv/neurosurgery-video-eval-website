@@ -29,7 +29,7 @@ export const PROVIDERS: Provider[] = [
   "moonshot",
 ];
 
-export const SCHEMA_VERSION = 1;
+export const SCHEMA_VERSION = 2;
 
 export interface MetricValue {
   value: number;
@@ -41,7 +41,6 @@ export interface ModelResult {
   id: string;
   model: string;
   provider: Provider;
-  paramsB: number | null;
   metrics: Record<MetricId, MetricValue | null>;
 }
 
@@ -56,7 +55,7 @@ export interface ResultsFile {
   datasets: Record<DatasetId, DatasetResults>;
 }
 
-const RESULT_KEYS = ["id", "model", "provider", "paramsB", "sourceRunId", "metrics"];
+const RESULT_KEYS = ["id", "model", "provider", "sourceRunId", "metrics"];
 const METRIC_VALUE_KEYS = ["value", "ciLow", "ciHigh"];
 const DATASET_RESULTS_KEYS = ["majorityBaseline", "results"];
 const ROOT_KEYS = ["schemaVersion", "generatedAt", "datasets"];
@@ -147,7 +146,6 @@ function parseModelResult(value: unknown, where: string): ModelResult {
     id: asNonEmptyString(record.id, `${where}.id`),
     model: asNonEmptyString(record.model, `${where}.model`),
     provider: parseProvider(record.provider, `${where}.provider`),
-    paramsB: asFiniteOrNull(record.paramsB, `${where}.paramsB`),
     metrics,
   };
 }

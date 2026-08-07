@@ -26,6 +26,9 @@ import { PROVIDER_ICONS } from "../data/providerIcons";
 const AXIS_WIDTH = 252;
 const ICON_SIZE = 14;
 const ROW_HEIGHT = 46;
+const INK = "#111111";
+/** The baseline annotation stays grey so it reads as an annotation, not as data. */
+const ANNOTATION_INK = "#6f6f6f";
 
 interface ChartRow {
   id: string;
@@ -95,8 +98,8 @@ function renderAxisTick(rows: ChartRow[]) {
     return (
       <g transform={`translate(${x},${y})`}>
         <title>{PROVIDER_LABELS[row.provider]}</title>
-        <AxisIcon provider={row.provider} x={-AXIS_WIDTH + 2} y={-ICON_SIZE / 2} />
-        <text x={-12} y={0} textAnchor="end" dominantBaseline="central" fill="#27272a" fontSize={13}>
+        <AxisIcon provider={row.provider} x={-AXIS_WIDTH} y={-ICON_SIZE / 2} />
+        <text x={-20} y={0} textAnchor="end" dominantBaseline="central" fill={INK} fontSize={13}>
           {row.model}
         </text>
       </g>
@@ -128,7 +131,7 @@ function renderValueLabel(rows: ChartRow[]) {
         x={x + width + Math.max(whiskerPx, 0) + 11}
         y={y + height / 2}
         dominantBaseline="central"
-        fill="#27272a"
+        fill={INK}
         fontSize={12}
         style={{ fontVariantNumeric: "tabular-nums" }}
       >
@@ -182,7 +185,7 @@ export function ResultsChart({ dataset, metricId }: { dataset: Dataset; metricId
         <BarChart
           layout="vertical"
           data={rows}
-          margin={{ top: 30, right: 60, bottom: 24, left: 8 }}
+          margin={{ top: 30, right: 60, bottom: 24, left: 0 }}
           barCategoryGap="24%"
         >
           <XAxis
@@ -190,13 +193,13 @@ export function ResultsChart({ dataset, metricId }: { dataset: Dataset; metricId
             domain={[0, 100]}
             ticks={[0, 20, 40, 60, 80, 100]}
             tickLine={false}
-            axisLine={{ stroke: "#d4d4d8" }}
-            tick={{ fill: "#71717a", fontSize: 12 }}
+            axisLine={{ stroke: "#a3a3a3" }}
+            tick={{ fill: INK, fontSize: 12 }}
             label={{
               value: metric.axisLabel,
               position: "insideBottom",
               offset: -14,
-              fill: "#52525b",
+              fill: INK,
               fontSize: 12,
             }}
           />
@@ -208,6 +211,8 @@ export function ResultsChart({ dataset, metricId }: { dataset: Dataset; metricId
             axisLine={false}
             tick={renderAxisTick(rows)}
             interval={0}
+            tickSize={0}
+            tickMargin={0}
           />
           <Tooltip
             cursor={{ fill: "rgba(15, 118, 110, 0.06)" }}
@@ -216,13 +221,13 @@ export function ResultsChart({ dataset, metricId }: { dataset: Dataset; metricId
           {baseline === null ? null : (
             <ReferenceLine
               x={baseline}
-              stroke="#a1a1aa"
+              stroke={ANNOTATION_INK}
               strokeDasharray="4 4"
               strokeWidth={1.5}
               label={{
                 value: `baseline ${baseline.toFixed(2)}%`,
                 position: "top",
-                fill: "#a1a1aa",
+                fill: ANNOTATION_INK,
                 fontSize: 11,
               }}
             />
@@ -238,7 +243,7 @@ export function ResultsChart({ dataset, metricId }: { dataset: Dataset; metricId
                 dataKey="errorOffsets"
                 width={5}
                 strokeWidth={1.4}
-                stroke="#3f3f46"
+                stroke={INK}
                 direction="x"
               />
             ) : null}

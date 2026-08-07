@@ -1,9 +1,10 @@
 :root {
-  --ink: #18181b;
-  --ink-soft: #52525b;
-  --ink-faint: #71717a;
-  --rule: #e4e4e7;
-  --rule-soft: #f1f1f3;
+  --ink: #111111;
+  --ink-soft: #1c1c1c;
+  --ink-faint: #333333;
+  --annotation: #6f6f6f;
+  --rule: #d6d6d6;
+  --rule-soft: #e8e8e8;
   --paper: #fdfdfc;
   --accent: #0f766e;
 
@@ -32,7 +33,7 @@ body {
 
 a {
   color: inherit;
-  text-decoration-color: var(--rule);
+  text-decoration-color: #9a9a9a;
   text-decoration-thickness: 1px;
   text-underline-offset: 3px;
   transition: text-decoration-color 120ms ease;
@@ -122,7 +123,7 @@ h3 {
   max-width: 62ch;
   margin: 1.5rem 0 0;
   font-size: 1.0625rem;
-  color: var(--ink-soft);
+  color: var(--ink);
 }
 
 /* ---------- sections ---------- */
@@ -143,35 +144,28 @@ h3 {
   font-size: 0.9375rem;
 }
 
-/* ---------- controls ---------- */
-
-.controls {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 1.1rem;
-  margin: 1.5rem 0 1.25rem;
-}
+/* ---------- tabs ---------- */
 
 .tabs {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
+  margin: 1.5rem 0 1.25rem;
 }
 
 .tab {
-  display: flex;
-  flex-direction: column;
-  gap: 0.15rem;
-  padding: 0.7rem 1.1rem;
+  padding: 0.55rem 1.1rem;
   background: transparent;
   border: 1px solid var(--rule);
   border-radius: 6px;
   cursor: pointer;
   font: inherit;
+  font-size: 0.9375rem;
+  font-weight: 540;
+  line-height: 1.4;
   text-align: left;
-  color: var(--ink-soft);
-  transition: border-color 120ms ease, color 120ms ease, background 120ms ease;
+  color: var(--ink);
+  transition: border-color 120ms ease, background 120ms ease;
 }
 
 .tab:hover {
@@ -185,22 +179,23 @@ h3 {
   background: #fff;
 }
 
-.tab__name {
-  font-size: 0.9375rem;
-  font-weight: 540;
-}
+/* ---------- figure row ---------- */
 
-.tab__meta {
-  font-size: 0.75rem;
-  color: var(--ink-faint);
+.figure-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.75rem;
 }
 
 /* ---------- metric picker ---------- */
 
 .metric {
+  flex: none;
   display: flex;
   flex-direction: column;
   gap: 0.3rem;
+  width: 13.75rem;
+  margin-top: 1.75rem;
 }
 
 .metric__label {
@@ -212,9 +207,10 @@ h3 {
 
 .metric__select {
   appearance: none;
+  width: 100%;
   padding: 0.55rem 2.1rem 0.55rem 0.85rem;
   background-color: #fff;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5 6 6.5 11 1.5' fill='none' stroke='%2371717a' stroke-width='1.4'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5 6 6.5 11 1.5' fill='none' stroke='%23333333' stroke-width='1.4'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 0.8rem center;
   background-size: 10px;
@@ -239,6 +235,8 @@ h3 {
 /* ---------- chart ---------- */
 
 .chart {
+  flex: 1;
+  min-width: 0;
   margin: 0;
 }
 
@@ -247,7 +245,7 @@ h3 {
   margin: 1.25rem 0 0;
   font-size: 0.8125rem;
   line-height: 1.6;
-  color: var(--ink-faint);
+  color: var(--ink);
 }
 
 /* ---------- chart tooltip ---------- */
@@ -279,7 +277,7 @@ h3 {
 }
 
 .tip__row {
-  color: var(--ink-soft);
+  color: var(--ink);
   font-variant-numeric: tabular-nums;
 }
 
@@ -324,6 +322,7 @@ h3 {
   margin-top: 2.5rem;
   border-collapse: collapse;
   font-size: 0.875rem;
+  table-layout: fixed;
 }
 
 .table th,
@@ -333,6 +332,17 @@ h3 {
   font-weight: 400;
   border-bottom: 1px solid var(--rule-soft);
   vertical-align: baseline;
+}
+
+/* One shared left edge with the prose, the chart and the caption. */
+.table th:first-child,
+.table td:first-child {
+  padding-left: 0;
+}
+
+.table th:last-child,
+.table td:last-child {
+  padding-right: 0;
 }
 
 .table thead th {
@@ -345,13 +355,21 @@ h3 {
 }
 
 .table tbody th {
-  font-weight: 480;
+  font-weight: 400;
   color: var(--ink);
   white-space: nowrap;
 }
 
 .table td {
-  color: var(--ink-soft);
+  color: var(--ink);
+}
+
+.table__col--metric {
+  width: 12rem;
+}
+
+.table__col--ci {
+  width: 10rem;
 }
 
 .table__num {
@@ -362,27 +380,11 @@ h3 {
 
 .table__num--strong {
   color: var(--ink);
-  font-weight: 520;
 }
 
 .table tbody th {
   display: flex;
   align-items: center;
-}
-
-.table__row--best th,
-.table__row--best .table__num--strong {
-  font-weight: 620;
-}
-
-.table__row--baseline {
-  color: var(--ink-faint);
-}
-
-.table__row--baseline th,
-.table__row--baseline td {
-  border-bottom: none;
-  font-style: italic;
 }
 
 /* ---------- footer ---------- */
@@ -395,7 +397,7 @@ h3 {
   gap: 2rem;
   padding-top: 2.5rem;
   font-size: 0.875rem;
-  color: var(--ink-faint);
+  color: var(--ink);
 }
 
 .citation {
@@ -437,6 +439,21 @@ h3 {
   .table {
     display: block;
     overflow-x: auto;
+  }
+}
+
+/* Stacking reverses so the metric control stays above the figure it controls. */
+@media (max-width: 900px) {
+  .figure-row {
+    flex-direction: column-reverse;
+    align-items: stretch;
+    gap: 1rem;
+  }
+
+  .metric {
+    width: 100%;
+    max-width: 16rem;
+    margin-top: 0;
   }
 }
 

@@ -53,7 +53,6 @@ export const METRICS: Record<MetricId, Metric> = {
 export interface Dataset {
   id: DatasetId;
   name: string;
-  procedure: string;
   toolClasses: number;
   majorityBaseline: Record<MetricId, number | null>;
   sourceUrl: string;
@@ -66,14 +65,12 @@ const DATASET_META: Record<DatasetId, DatasetMeta> = {
   cholect50: {
     id: "cholect50",
     name: "CholecT50",
-    procedure: "Laparoscopic cholecystectomy",
     toolClasses: 6,
     sourceUrl: "https://github.com/CAMMA-public/cholect50",
   },
   pitvis: {
     id: "pitvis",
     name: "PitVis-2023",
-    procedure: "Endoscopic transsphenoidal pituitary surgery",
     toolClasses: 18,
     sourceUrl:
       "https://rdr.ucl.ac.uk/articles/dataset/PitVis_Challenge_Endoscopic_Pituitary_Surgery_videos/26531686",
@@ -81,7 +78,6 @@ const DATASET_META: Record<DatasetId, DatasetMeta> = {
   surgvu: {
     id: "surgvu",
     name: "SurgVU",
-    procedure: "Robot-assisted surgical training",
     toolClasses: 17,
     sourceUrl: "https://arxiv.org/abs/2501.09209",
   },
