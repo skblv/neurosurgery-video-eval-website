@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-08-07T00:00:00Z",
+  "generatedAt": "2026-08-07T19:34:53Z",
   "datasets": {
     "cholect50": {
       "majorityBaseline": {
@@ -21,8 +21,8 @@
             },
             "microF1": {
               "value": 92.83,
-              "ciLow": null,
-              "ciHigh": null
+              "ciLow": 92.58,
+              "ciHigh": 93.07
             }
           }
         },
@@ -39,8 +39,8 @@
             },
             "microF1": {
               "value": 92.37,
-              "ciLow": null,
-              "ciHigh": null
+              "ciLow": 92.11,
+              "ciHigh": 92.6
             }
           }
         },
@@ -57,8 +57,8 @@
             },
             "microF1": {
               "value": 82.88,
-              "ciLow": null,
-              "ciHigh": null
+              "ciLow": 82.46,
+              "ciHigh": 83.25
             }
           }
         },
@@ -75,8 +75,8 @@
             },
             "microF1": {
               "value": 80.01,
-              "ciLow": null,
-              "ciHigh": null
+              "ciLow": 79.56,
+              "ciHigh": 80.47
             }
           }
         },
@@ -93,8 +93,8 @@
             },
             "microF1": {
               "value": 78.05,
-              "ciLow": null,
-              "ciHigh": null
+              "ciLow": 76.26,
+              "ciHigh": 79.97
             }
           }
         },
@@ -111,8 +111,8 @@
             },
             "microF1": {
               "value": 72.31,
-              "ciLow": null,
-              "ciHigh": null
+              "ciLow": 70.24,
+              "ciHigh": 74.4
             }
           }
         },
@@ -129,8 +129,8 @@
             },
             "microF1": {
               "value": 69.87,
-              "ciLow": null,
-              "ciHigh": null
+              "ciLow": 67.48,
+              "ciHigh": 72.2
             }
           }
         },
@@ -147,8 +147,8 @@
             },
             "microF1": {
               "value": 71.33,
-              "ciLow": null,
-              "ciHigh": null
+              "ciLow": 70.85,
+              "ciHigh": 71.82
             }
           }
         },
@@ -165,8 +165,8 @@
             },
             "microF1": {
               "value": 48.61,
-              "ciLow": null,
-              "ciHigh": null
+              "ciLow": 47.92,
+              "ciHigh": 49.22
             }
           }
         },
@@ -183,8 +183,8 @@
             },
             "microF1": {
               "value": 51.87,
-              "ciLow": null,
-              "ciHigh": null
+              "ciLow": 51.31,
+              "ciHigh": 52.39
             }
           }
         },
@@ -201,8 +201,8 @@
             },
             "microF1": {
               "value": 33.7,
-              "ciLow": null,
-              "ciHigh": null
+              "ciLow": 33.21,
+              "ciHigh": 34.19
             }
           }
         }
@@ -227,8 +227,8 @@
             },
             "microF1": {
               "value": 85.65,
-              "ciLow": null,
-              "ciHigh": null
+              "ciLow": 85.23,
+              "ciHigh": 86.05
             }
           }
         },
@@ -245,8 +245,8 @@
             },
             "microF1": {
               "value": 82.75,
-              "ciLow": null,
-              "ciHigh": null
+              "ciLow": 82.32,
+              "ciHigh": 83.2
             }
           }
         },
@@ -263,8 +263,8 @@
             },
             "microF1": {
               "value": 50.41,
-              "ciLow": null,
-              "ciHigh": null
+              "ciLow": 49.85,
+              "ciHigh": 51.01
             }
           }
         },
@@ -281,8 +281,8 @@
             },
             "microF1": {
               "value": 53.08,
-              "ciLow": null,
-              "ciHigh": null
+              "ciLow": 49.8,
+              "ciHigh": 56.55
             }
           }
         },
@@ -299,8 +299,8 @@
             },
             "microF1": {
               "value": 48.91,
-              "ciLow": null,
-              "ciHigh": null
+              "ciLow": 48.38,
+              "ciHigh": 49.47
             }
           }
         },
@@ -317,8 +317,8 @@
             },
             "microF1": {
               "value": 46.89,
-              "ciLow": null,
-              "ciHigh": null
+              "ciLow": 46.36,
+              "ciHigh": 47.43
             }
           }
         },
@@ -335,8 +335,8 @@
             },
             "microF1": {
               "value": 46.84,
-              "ciLow": null,
-              "ciHigh": null
+              "ciLow": 46.29,
+              "ciHigh": 47.37
             }
           }
         },
@@ -353,8 +353,8 @@
             },
             "microF1": {
               "value": 45.69,
-              "ciLow": null,
-              "ciHigh": null
+              "ciLow": 45.11,
+              "ciHigh": 46.3
             }
           }
         },
@@ -371,8 +371,8 @@
             },
             "microF1": {
               "value": 46.22,
-              "ciLow": null,
-              "ciHigh": null
+              "ciLow": 42.7,
+              "ciHigh": 49.3
             }
           }
         },
@@ -389,8 +389,8 @@
             },
             "microF1": {
               "value": 40.02,
-              "ciLow": null,
-              "ciHigh": null
+              "ciLow": 36.88,
+              "ciHigh": 43.08
             }
           }
         },
@@ -407,8 +407,8 @@
             },
             "microF1": {
               "value": 35.59,
-              "ciLow": null,
-              "ciHigh": null
+              "ciLow": 35.09,
+              "ciHigh": 36.08
             }
           }
         }
@@ -433,8 +433,8 @@
             },
             "microF1": {
               "value": 75.34,
-              "ciLow": null,
-              "ciHigh": null
+              "ciLow": 74.87,
+              "ciHigh": 75.82
             }
           }
         },
@@ -451,8 +451,8 @@
             },
             "microF1": {
               "value": 74.86,
-              "ciLow": null,
-              "ciHigh": null
+              "ciLow": 74.36,
+              "ciHigh": 75.32
             }
           }
         },
@@ -469,8 +469,8 @@
             },
             "microF1": {
               "value": 31.27,
-              "ciLow": null,
-              "ciHigh": null
+              "ciLow": 30.79,
+              "ciHigh": 31.81
             }
           }
         },
@@ -487,8 +487,8 @@
             },
             "microF1": {
               "value": 43.65,
-              "ciLow": null,
-              "ciHigh": null
+              "ciLow": 43.16,
+              "ciHigh": 44.14
             }
           }
         },
@@ -505,8 +505,8 @@
             },
             "microF1": {
               "value": 30.83,
-              "ciLow": null,
-              "ciHigh": null
+              "ciLow": 28.96,
+              "ciHigh": 32.89
             }
           }
         },
@@ -522,9 +522,9 @@
               "ciHigh": 18.24
             },
             "microF1": {
-              "value": 25.99,
-              "ciLow": null,
-              "ciHigh": null
+              "value": 25.98,
+              "ciLow": 25.56,
+              "ciHigh": 26.43
             }
           }
         },
@@ -541,8 +541,8 @@
             },
             "microF1": {
               "value": 29.18,
-              "ciLow": null,
-              "ciHigh": null
+              "ciLow": 27.32,
+              "ciHigh": 31.07
             }
           }
         },
@@ -559,8 +559,8 @@
             },
             "microF1": {
               "value": 27.38,
-              "ciLow": null,
-              "ciHigh": null
+              "ciLow": 26.96,
+              "ciHigh": 27.79
             }
           }
         },
@@ -577,8 +577,8 @@
             },
             "microF1": {
               "value": 16.02,
-              "ciLow": null,
-              "ciHigh": null
+              "ciLow": 13.79,
+              "ciHigh": 18.29
             }
           }
         },
@@ -595,8 +595,8 @@
             },
             "microF1": {
               "value": 36.89,
-              "ciLow": null,
-              "ciHigh": null
+              "ciLow": 36.45,
+              "ciHigh": 37.31
             }
           }
         },
@@ -613,8 +613,8 @@
             },
             "microF1": {
               "value": 20.69,
-              "ciLow": null,
-              "ciHigh": null
+              "ciLow": 20.32,
+              "ciHigh": 21.04
             }
           }
         }
