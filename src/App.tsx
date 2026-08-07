@@ -27,7 +27,12 @@ export default function App() {
     <div className="page">
       <header className="masthead">
         <div className="lockup">
-          <a href="https://www.surgicalvideo.io/about" target="_blank" rel="noreferrer">
+          <a
+            href="https://www.surgicalvideo.io"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Surgical Data Science Collective"
+          >
             <img
               className="lockup__sdsc"
               src={sdscLogo}
