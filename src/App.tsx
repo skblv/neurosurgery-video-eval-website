@@ -36,9 +36,10 @@ export default function App() {
           </a>
           <span className="lockup__rule" aria-hidden="true" />
           <a
-            href="https://www.chicagobooth.edu/research/center-for-applied-ai"
+            href="https://www.chicagobooth.edu"
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
+            aria-label="The University of Chicago Booth School of Business"
           >
             <img
               className="lockup__booth"

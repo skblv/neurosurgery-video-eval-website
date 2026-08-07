@@ -18,10 +18,12 @@ import {
   type Dataset,
   type Metric,
   type MetricId,
-  type ModelResult,
   type Provider,
 } from "../data/benchmark";
 import { PROVIDER_ICONS } from "../data/providerIcons";
+import { useMediaQuery } from "../hooks/useMediaQuery";
+import { StackedBars } from "./StackedBars";
+import { buildRows, type ChartRow } from "./chartRow";
 
 const AXIS_WIDTH = 252;
 const ICON_SIZE = 14;
@@ -29,40 +31,8 @@ const ROW_HEIGHT = 46;
 const INK = "#111111";
 /** The baseline annotation stays grey so it reads as an annotation, not as data. */
 const ANNOTATION_INK = "#6f6f6f";
-
-interface ChartRow {
-  id: string;
-  model: string;
-  provider: Provider;
-  value: number;
-  ciLow: number | null;
-  ciHigh: number | null;
-  errorOffsets: [number, number] | null;
-}
-
-function toRow(result: ModelResult, metricId: MetricId): ChartRow | null {
-  const metric = result.metrics[metricId];
-  if (metric === null) return null;
-
-  const { value, ciLow, ciHigh } = metric;
-  return {
-    id: result.id,
-    model: result.model,
-    provider: result.provider,
-    value,
-    ciLow,
-    ciHigh,
-    errorOffsets:
-      ciLow === null || ciHigh === null ? null : [value - ciLow, ciHigh - value],
-  };
-}
-
-function buildRows(dataset: Dataset, metricId: MetricId): ChartRow[] {
-  return dataset.results
-    .map((result) => toRow(result, metricId))
-    .filter((row): row is ChartRow => row !== null)
-    .sort((a, b) => b.value - a.value);
-}
+/** Below this the 252px label column leaves too little room to plot, so rows stack. */
+const NARROW_QUERY = "(max-width: 700px)";
 
 /** Provider mark drawn inside the SVG axis gutter, left-aligned in its own column. */
 function AxisIcon({ provider, x, y }: { provider: Provider; x: number; y: number }) {
@@ -178,6 +148,22 @@ export function ResultsChart({ dataset, metricId }: { dataset: Dataset; metricId
   const baseline = dataset.majorityBaseline[metricId];
   const hasIntervals = rows.some((row) => row.errorOffsets !== null);
   const missing = dataset.results.filter((r) => r.metrics[metricId] === null).map((r) => r.model);
+  const isNarrow = useMediaQuery(NARROW_QUERY);
+
+  if (isNarrow) {
+    return (
+      <figure className="chart">
+        <StackedBars rows={rows} baseline={baseline} metric={metric} />
+        <Caption
+          dataset={dataset}
+          metric={metric}
+          baseline={baseline}
+          hasIntervals={hasIntervals}
+          missing={missing}
+        />
+      </figure>
+    );
+  }
 
   return (
     <figure className="chart">
@@ -252,16 +238,39 @@ export function ResultsChart({ dataset, metricId }: { dataset: Dataset; metricId
         </BarChart>
       </ResponsiveContainer>
 
-      <figcaption className="chart__caption">
-        The plot reports {metric.captionName} on {dataset.toolClasses} instruments (
-        {metric.definition}) in the{" "}
-        <a href={dataset.sourceUrl} target="_blank" rel="noreferrer">
-          {dataset.name}
-        </a>{" "}
-        dataset{hasIntervals ? " with 95% bootstrap confidence intervals" : ""}.
-        {baseline === null ? "" : " The dashed line shows the majority-class baseline."}
-        {missing.length > 0 ? ` Not evaluated on this metric: ${missing.join(", ")}.` : ""}
-      </figcaption>
+      <Caption
+        dataset={dataset}
+        metric={metric}
+        baseline={baseline}
+        hasIntervals={hasIntervals}
+        missing={missing}
+      />
     </figure>
+  );
+}
+
+function Caption({
+  dataset,
+  metric,
+  baseline,
+  hasIntervals,
+  missing,
+}: {
+  dataset: Dataset;
+  metric: Metric;
+  baseline: number | null;
+  hasIntervals: boolean;
+  missing: string[];
+}) {
+  return (
+    <figcaption className="chart__caption">
+      The plot reports {metric.captionName} on {dataset.toolClasses} instruments in the{" "}
+      <a href={dataset.sourceUrl} target="_blank" rel="noreferrer">
+        {dataset.name}
+      </a>{" "}
+      dataset{hasIntervals ? " with 95% bootstrap confidence intervals" : ""}.
+      {baseline === null ? "" : " The dashed line shows the majority-class baseline."}
+      {missing.length > 0 ? ` Not evaluated on this metric: ${missing.join(", ")}.` : ""}
+    </figcaption>
   );
 }

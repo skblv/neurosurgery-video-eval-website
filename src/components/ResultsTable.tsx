@@ -1,4 +1,5 @@
 import { METRICS, type Dataset, type MetricId, type Provider } from "../data/benchmark";
+import { BASELINE_ICON_LABEL, DieIcon } from "./DieIcon";
 import { ModelIcon } from "./ModelIcon";
 
 /** The majority-class baseline ranks alongside the models, so rows are provider-optional. */
@@ -64,7 +65,9 @@ export function ResultsTable({ dataset, metricId }: { dataset: Dataset; metricId
           <tr key={row.key}>
             <th scope="row">
               {row.provider === null ? (
-                <span className="model-icon" aria-hidden="true" />
+                <span className="model-icon" title={BASELINE_ICON_LABEL}>
+                  <DieIcon />
+                </span>
               ) : (
                 <ModelIcon provider={row.provider} />
               )}

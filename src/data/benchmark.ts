@@ -29,8 +29,6 @@ export interface Metric {
   axisLabel: string;
   /** Sentence-cased noun phrase used inside the figure caption. */
   captionName: string;
-  /** One-line gloss shown parenthetically in the caption. */
-  definition: string;
 }
 
 export const METRICS: Record<MetricId, Metric> = {
@@ -39,14 +37,12 @@ export const METRICS: Record<MetricId, Metric> = {
     label: "Exact-match accuracy",
     axisLabel: "Exact-match accuracy (%)",
     captionName: "exact-match accuracy",
-    definition: "share of frames where the predicted instrument set exactly matches the ground truth",
   },
   microF1: {
     id: "microF1",
     label: "Micro-averaged F1",
     axisLabel: "Micro-averaged F1 (%)",
     captionName: "micro-averaged F1",
-    definition: "harmonic mean of precision and recall pooled over every instrument decision",
   },
 };
 

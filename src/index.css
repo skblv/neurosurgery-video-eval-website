@@ -248,6 +248,120 @@ h3 {
   color: var(--ink);
 }
 
+/* ---------- stacked bars (phone widths) ---------- */
+
+.stack {
+  margin-top: 1.25rem;
+}
+
+.stack__rows {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.stack__row + .stack__row {
+  margin-top: 0.85rem;
+}
+
+.stack__head {
+  display: flex;
+  align-items: baseline;
+  gap: 0.35rem;
+  margin-bottom: 0.3rem;
+  font-size: 0.8125rem;
+  line-height: 1.35;
+}
+
+.stack__head .model-icon {
+  width: 32px;
+  margin-right: 0;
+  flex: none;
+  align-self: center;
+}
+
+.stack__name {
+  flex: 1;
+  min-width: 0;
+  color: var(--ink);
+}
+
+.stack__value {
+  flex: none;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink);
+}
+
+.stack__track {
+  position: relative;
+  height: 14px;
+  border-bottom: 1px solid var(--rule);
+}
+
+.stack__bar {
+  height: 100%;
+}
+
+.stack__whisker {
+  position: absolute;
+  top: 50%;
+  height: 9px;
+  transform: translateY(-50%);
+  border-left: 1.4px solid var(--ink);
+  border-right: 1.4px solid var(--ink);
+}
+
+.stack__whisker::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1.4px;
+  background: var(--ink);
+}
+
+.stack__baseline {
+  position: absolute;
+  top: -2px;
+  bottom: -2px;
+  border-left: 1.5px dashed var(--annotation);
+}
+
+.stack__axis {
+  position: relative;
+  height: 1.1rem;
+  margin-top: 0.4rem;
+  font-size: 0.6875rem;
+  color: var(--ink);
+}
+
+.stack__tick {
+  position: absolute;
+  top: 0;
+  font-variant-numeric: tabular-nums;
+}
+
+.stack__axis-label {
+  margin: 0.15rem 0 0;
+  text-align: center;
+  font-size: 0.6875rem;
+  color: var(--ink);
+}
+
+.stack__legend {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin: 0.6rem 0 0;
+  font-size: 0.6875rem;
+  color: var(--annotation);
+}
+
+.stack__legend svg {
+  flex: none;
+}
+
 /* ---------- chart tooltip ---------- */
 
 .tip {
@@ -436,9 +550,69 @@ h3 {
     padding: 0 0 3rem;
   }
 
+  .page {
+    padding: 0 1.1rem 3.5rem;
+  }
+
+  .tab {
+    padding: 0.5rem 0.75rem;
+  }
+
+  /* Fixed columns are a desktop affordance; here the model name needs to wrap. */
   .table {
-    display: block;
-    overflow-x: auto;
+    table-layout: auto;
+    font-size: 0.8125rem;
+  }
+
+  .table th,
+  .table td {
+    padding: 0.55rem 0.4rem;
+  }
+
+  .table tbody th {
+    align-items: flex-start;
+    white-space: normal;
+  }
+
+  .table__col--metric,
+  .table__col--ci {
+    width: auto;
+  }
+
+  .table .model-icon {
+    width: 30px;
+    margin-right: 0.4rem;
+  }
+}
+
+/* The CI column cannot wrap, so the smallest phones need the type to give way. */
+@media (max-width: 360px) {
+  .tab {
+    font-size: 0.875rem;
+  }
+
+  /* The Booth wordmark is wide enough to push the page past the viewport here. */
+  .lockup {
+    gap: 0.85rem;
+  }
+
+  .lockup__sdsc,
+  .lockup__booth {
+    height: 24px;
+  }
+
+  .table {
+    font-size: 0.75rem;
+  }
+
+  .table th,
+  .table td {
+    padding: 0.5rem 0.3rem;
+  }
+
+  .table .model-icon {
+    width: 24px;
+    margin-right: 0.3rem;
   }
 }
 
