@@ -13,8 +13,11 @@ import {
 import { boothShield, sdscMark } from "../assets/logos";
 import {
   BAR_COLOR,
+  METRICS,
   PROVIDER_LABELS,
   type Dataset,
+  type Metric,
+  type MetricId,
   type ModelResult,
   type Provider,
 } from "../data/benchmark";
@@ -28,25 +31,34 @@ interface ChartRow {
   id: string;
   model: string;
   provider: Provider;
-  exactMatch: number;
+  value: number;
   ciLow: number | null;
   ciHigh: number | null;
   errorOffsets: [number, number] | null;
 }
 
-function buildRows(dataset: Dataset): ChartRow[] {
-  return dataset.results.map((result: ModelResult) => ({
+function toRow(result: ModelResult, metricId: MetricId): ChartRow | null {
+  const metric = result.metrics[metricId];
+  if (metric === null) return null;
+
+  const { value, ciLow, ciHigh } = metric;
+  return {
     id: result.id,
     model: result.model,
     provider: result.provider,
-    exactMatch: result.exactMatch,
-    ciLow: result.ciLow,
-    ciHigh: result.ciHigh,
+    value,
+    ciLow,
+    ciHigh,
     errorOffsets:
-      result.ciLow === null || result.ciHigh === null
-        ? null
-        : [result.exactMatch - result.ciLow, result.ciHigh - result.exactMatch],
-  }));
+      ciLow === null || ciHigh === null ? null : [value - ciLow, ciHigh - value],
+  };
+}
+
+function buildRows(dataset: Dataset, metricId: MetricId): ChartRow[] {
+  return dataset.results
+    .map((result) => toRow(result, metricId))
+    .filter((row): row is ChartRow => row !== null)
+    .sort((a, b) => b.value - a.value);
 }
 
 /** Provider mark drawn inside the SVG axis gutter, left-aligned in its own column. */
@@ -108,8 +120,8 @@ function renderValueLabel(rows: ChartRow[]) {
     const row = rows[index];
     if (!row) return null;
 
-    const pxPerUnit = row.exactMatch > 0 ? width / row.exactMatch : 0;
-    const whiskerPx = row.ciHigh === null ? 0 : (row.ciHigh - row.exactMatch) * pxPerUnit;
+    const pxPerUnit = row.value > 0 ? width / row.value : 0;
+    const whiskerPx = row.ciHigh === null ? 0 : (row.ciHigh - row.value) * pxPerUnit;
 
     return (
       <text
@@ -120,7 +132,7 @@ function renderValueLabel(rows: ChartRow[]) {
         fontSize={12}
         style={{ fontVariantNumeric: "tabular-nums" }}
       >
-        {row.exactMatch.toFixed(2)}
+        {row.value.toFixed(2)}
       </text>
     );
   };
@@ -130,10 +142,12 @@ function ChartTooltip({
   active,
   payload,
   dataset,
+  metric,
 }: {
   active?: boolean;
   payload?: { payload: ChartRow }[];
   dataset: Dataset;
+  metric: Metric;
 }) {
   if (!active || !payload?.length) return null;
   const row = payload[0].payload;
@@ -141,7 +155,9 @@ function ChartTooltip({
   return (
     <div className="tip">
       <p className="tip__model">{row.model}</p>
-      <p className="tip__value">{row.exactMatch.toFixed(2)}% exact match</p>
+      <p className="tip__value">
+        {row.value.toFixed(2)}% {metric.captionName}
+      </p>
       {row.ciLow !== null && row.ciHigh !== null ? (
         <p className="tip__row">
           95% CI {row.ciLow.toFixed(2)}–{row.ciHigh.toFixed(2)}
@@ -153,8 +169,12 @@ function ChartTooltip({
   );
 }
 
-export function ResultsChart({ dataset }: { dataset: Dataset }) {
-  const rows = buildRows(dataset);
+export function ResultsChart({ dataset, metricId }: { dataset: Dataset; metricId: MetricId }) {
+  const metric = METRICS[metricId];
+  const rows = buildRows(dataset, metricId);
+  const baseline = dataset.majorityBaseline[metricId];
+  const hasIntervals = rows.some((row) => row.errorOffsets !== null);
+  const missing = dataset.results.filter((r) => r.metrics[metricId] === null).map((r) => r.model);
 
   return (
     <figure className="chart">
@@ -173,7 +193,7 @@ export function ResultsChart({ dataset }: { dataset: Dataset }) {
             axisLine={{ stroke: "#d4d4d8" }}
             tick={{ fill: "#71717a", fontSize: 12 }}
             label={{
-              value: "Exact-match accuracy (%)",
+              value: metric.axisLabel,
               position: "insideBottom",
               offset: -14,
               fill: "#52525b",
@@ -191,46 +211,51 @@ export function ResultsChart({ dataset }: { dataset: Dataset }) {
           />
           <Tooltip
             cursor={{ fill: "rgba(15, 118, 110, 0.06)" }}
-            content={<ChartTooltip dataset={dataset} />}
+            content={<ChartTooltip dataset={dataset} metric={metric} />}
           />
-          <ReferenceLine
-            x={dataset.majorityBaseline}
-            stroke="#a1a1aa"
-            strokeDasharray="4 4"
-            strokeWidth={1.5}
-            label={{
-              value: `baseline ${dataset.majorityBaseline.toFixed(2)}%`,
-              position: "top",
-              fill: "#a1a1aa",
-              fontSize: 11,
-            }}
-          />
+          {baseline === null ? null : (
+            <ReferenceLine
+              x={baseline}
+              stroke="#a1a1aa"
+              strokeDasharray="4 4"
+              strokeWidth={1.5}
+              label={{
+                value: `baseline ${baseline.toFixed(2)}%`,
+                position: "top",
+                fill: "#a1a1aa",
+                fontSize: 11,
+              }}
+            />
+          )}
           <Bar
-            dataKey="exactMatch"
+            dataKey="value"
             fill={BAR_COLOR}
-            radius={[0, 3, 3, 0]}
             isAnimationActive={false}
             activeBar={{ fill: "#0B5D57" }}
           >
-            <ErrorBar
-              dataKey="errorOffsets"
-              width={5}
-              strokeWidth={1.4}
-              stroke="#3f3f46"
-              direction="x"
-            />
-            <LabelList dataKey="exactMatch" content={renderValueLabel(rows)} />
+            {hasIntervals ? (
+              <ErrorBar
+                dataKey="errorOffsets"
+                width={5}
+                strokeWidth={1.4}
+                stroke="#3f3f46"
+                direction="x"
+              />
+            ) : null}
+            <LabelList dataKey="value" content={renderValueLabel(rows)} />
           </Bar>
         </BarChart>
       </ResponsiveContainer>
 
       <figcaption className="chart__caption">
-        {dataset.valFrames.toLocaleString()} held-out frames · {dataset.toolClasses} instrument
-        classes · whiskers are 95% bootstrap confidence intervals · dashed line is the
-        majority-class baseline ·{" "}
+        The plot reports {metric.captionName} on {dataset.toolClasses} instruments (
+        {metric.definition}) in the{" "}
         <a href={dataset.sourceUrl} target="_blank" rel="noreferrer">
-          dataset source
-        </a>
+          {dataset.name}
+        </a>{" "}
+        dataset{hasIntervals ? " with 95% bootstrap confidence intervals" : ""}.
+        {baseline === null ? "" : " The dashed line shows the majority-class baseline."}
+        {missing.length > 0 ? ` Not evaluated on this metric: ${missing.join(", ")}.` : ""}
       </figcaption>
     </figure>
   );
