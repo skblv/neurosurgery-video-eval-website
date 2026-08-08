@@ -14,7 +14,7 @@ import { boothShield, sdscMark } from "../assets/logos";
 import {
   BAR_COLOR,
   METRICS,
-  PROVIDER_LABELS,
+  providerLabel,
   type Dataset,
   type Metric,
   type MetricId,
@@ -52,6 +52,18 @@ function AxisIcon({ provider, x, y }: { provider: Provider; x: number; y: number
   }
 
   const icon = PROVIDER_ICONS[provider];
+  if (!icon) {
+    return (
+      <image
+        href={`./provider-logos/${provider}.png`}
+        x={x}
+        y={y}
+        height={ICON_SIZE}
+        width={ICON_SIZE}
+      />
+    );
+  }
+
   return (
     <svg x={x} y={y} width={ICON_SIZE} height={ICON_SIZE} viewBox={icon.viewBox}>
       <path d={icon.path} fill={icon.hex} />
@@ -67,7 +79,7 @@ function renderAxisTick(rows: ChartRow[]) {
 
     return (
       <g transform={`translate(${x},${y})`}>
-        <title>{PROVIDER_LABELS[row.provider]}</title>
+        <title>{providerLabel(row.provider)}</title>
         <AxisIcon provider={row.provider} x={-AXIS_WIDTH} y={-ICON_SIZE / 2} />
         <text x={-20} y={0} textAnchor="end" dominantBaseline="central" fill={INK} fontSize={13}>
           {row.model}
@@ -136,7 +148,7 @@ function ChartTooltip({
           95% CI {row.ciLow.toFixed(2)}–{row.ciHigh.toFixed(2)}
         </p>
       ) : null}
-      <p className="tip__row">{PROVIDER_LABELS[row.provider]}</p>
+      <p className="tip__row">{providerLabel(row.provider)}</p>
       <p className="tip__row tip__row--faint">{dataset.name}</p>
     </div>
   );

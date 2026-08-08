@@ -13,7 +13,7 @@ import type { DatasetId, MetricId, MetricValue, ModelResult, Provider } from "./
 export { DATASET_ORDER, METRIC_ORDER };
 export type { DatasetId, MetricId, MetricValue, ModelResult, Provider };
 
-export const PROVIDER_LABELS: Record<Provider, string> = {
+const KNOWN_PROVIDER_LABELS: Record<string, string> = {
   internal: "Surgical Data Science Collective × Chicago Booth",
   openai: "OpenAI",
   anthropic: "Anthropic",
@@ -21,6 +21,19 @@ export const PROVIDER_LABELS: Record<Provider, string> = {
   google: "Google",
   moonshot: "Moonshot AI",
 };
+
+/** Display name for a provider id; unknown slugs are title-cased. */
+export function providerLabel(provider: Provider): string {
+  return (
+    KNOWN_PROVIDER_LABELS[provider] ??
+    provider.replace(/(^|-)([a-z])/g, (_, sep: string, ch: string) =>
+      `${sep === "-" ? " " : ""}${ch.toUpperCase()}`,
+    )
+  );
+}
+
+/** @deprecated Prefer {@link providerLabel}; kept for call sites that index by known ids. */
+export const PROVIDER_LABELS = KNOWN_PROVIDER_LABELS as Record<Provider, string>;
 
 export interface Metric {
   id: MetricId;

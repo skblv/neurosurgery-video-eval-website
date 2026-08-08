@@ -11,8 +11,14 @@ export type DatasetId = "cholect50" | "pitvis" | "surgvu";
 
 export type MetricId = "exactMatch" | "microF1";
 
-/** "internal" marks models we trained ourselves, shown with the joint SDSC/Booth mark. */
-export type Provider = "internal" | "openai" | "anthropic" | "gemini" | "google" | "moonshot";
+/**
+ * Provider id written into results.json.
+ *
+ * Built-in families use fixed ids with baked-in SVG marks. A newly submitted
+ * family uses a slug (e.g. `qwen`) and ships its logo under
+ * `public/provider-logos/<slug>.(png|svg|…)`.
+ */
+export type Provider = string;
 
 /** Tab order on the site. Also the exact set of keys `results.json` must carry. */
 export const DATASET_ORDER: DatasetId[] = ["cholect50", "pitvis", "surgvu"];
@@ -20,14 +26,14 @@ export const DATASET_ORDER: DatasetId[] = ["cholect50", "pitvis", "surgvu"];
 /** Metric dropdown order. Also the exact set of metric keys every result must carry. */
 export const METRIC_ORDER: MetricId[] = ["exactMatch", "microF1"];
 
-export const PROVIDERS: Provider[] = [
+export const KNOWN_PROVIDERS = [
   "internal",
   "openai",
   "anthropic",
   "gemini",
   "google",
   "moonshot",
-];
+] as const;
 
 export const SCHEMA_VERSION = 2;
 
@@ -99,11 +105,10 @@ function asNonEmptyString(value: unknown, where: string): string {
 
 function parseProvider(value: unknown, where: string): Provider {
   const candidate = asNonEmptyString(value, where);
-  const match = PROVIDERS.find((provider) => provider === candidate);
-  if (match === undefined) {
-    fail(where, `unknown provider "${candidate}"; expected one of [${PROVIDERS.join(", ")}]`);
+  if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(candidate)) {
+    fail(where, `provider must be a lowercase slug; got ${JSON.stringify(candidate)}`);
   }
-  return match;
+  return candidate;
 }
 
 function parseMetricValue(value: unknown, where: string): MetricValue | null {
