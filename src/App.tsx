@@ -42,34 +42,26 @@ export default function App() {
       </main>
 
       <footer className="footer">
-        <div className="footer__citations">
-          <p className="citation">
-            {PAPER.authorsShort} <cite>{PAPER.title}</cite>{" "}
+        <ol className="footnotes">
+          <li>
+            <sup className="footnote-ref">1</sup> {PAPER.authorsShort}{" "}
+            <cite>{PAPER.title}</cite>{" "}
             <a href={PAPER.url} target="_blank" rel="noreferrer">
               {PAPER.arxivId}
             </a>{" "}
             ({PAPER.year}).
-          </p>
-          <ul className="citation citation--datasets">
-            {DATASET_CITATIONS.map((ref) => (
-              <li key={ref.datasetName}>
-                {ref.authorsShort} <cite>{ref.title}</cite>. {ref.venue}{" "}
-                <a href={ref.url} target="_blank" rel="noreferrer">
-                  {ref.linkLabel}
-                </a>{" "}
-                ({ref.year}).
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div className="footer__logos">
-          <img src={sdscLogo} alt="Surgical Data Science Collective" />
-          <img
-            className="footer__booth"
-            src={boothLogo}
-            alt="The University of Chicago Booth School of Business"
-          />
-        </div>
+          </li>
+          {DATASET_CITATIONS.map((ref, index) => (
+            <li key={ref.datasetName}>
+              <sup className="footnote-ref">{index + 2}</sup> {ref.authorsShort}{" "}
+              <cite>{ref.title}</cite>. {ref.venue}{" "}
+              <a href={ref.url} target="_blank" rel="noreferrer">
+                {ref.linkLabel}
+              </a>{" "}
+              ({ref.year}).
+            </li>
+          ))}
+        </ol>
       </footer>
     </div>
   );

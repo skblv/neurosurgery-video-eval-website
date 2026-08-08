@@ -27,7 +27,7 @@ export function Leaderboard() {
       <p className="masthead__lede">
         How close are today's vision–language models (VLMs) to Surgical AGI? The prerequisite is
         that they should be able to identify instruments in a surgical video frame. We benchmark
-        frontier VLMs on 3 surgical benchmarks:
+        frontier VLMs on 3 surgical benchmarks<sup className="footnote-ref">1</sup>:
       </p>
 
       <section className="section" aria-labelledby="results-heading">
@@ -36,7 +36,7 @@ export function Leaderboard() {
         </h2>
 
         <div className="tabs" role="tablist" aria-label="Dataset">
-          {DATASETS.map((dataset) => (
+          {DATASETS.map((dataset, index) => (
             <button
               key={dataset.id}
               role="tab"
@@ -46,6 +46,7 @@ export function Leaderboard() {
               onClick={() => setActiveId(dataset.id)}
             >
               {dataset.name}
+              <sup className="footnote-ref">{index + 2}</sup>
             </button>
           ))}
         </div>
