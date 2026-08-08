@@ -112,3 +112,45 @@ export const PAPER = {
   url: "https://arxiv.org/abs/2603.27341",
   year: 2026,
 } as const;
+
+export interface DatasetCitation {
+  datasetName: string;
+  authorsShort: string;
+  title: string;
+  venue: string;
+  linkLabel: string;
+  url: string;
+  year: number;
+}
+
+export const DATASET_CITATIONS: DatasetCitation[] = [
+  {
+    datasetName: "CholecT50",
+    authorsShort: "Nwoye, C. I., Yu, T., Gonzalez, C., et al.",
+    title:
+      "Rendezvous: Attention Mechanisms for the Recognition of Surgical Action Triplets in Endoscopic Videos",
+    venue: "Medical Image Analysis, 78, 102433",
+    linkLabel: "arXiv:2109.03223",
+    url: "https://arxiv.org/abs/2109.03223",
+    year: 2022,
+  },
+  {
+    datasetName: "PitVis-2023",
+    authorsShort: "Das, A., Khan, D. Z., Psychogyios, D., et al.",
+    title:
+      "PitVis-2023 Challenge: Workflow Recognition in Videos of Endoscopic Pituitary Surgery",
+    venue: "Medical Image Analysis, 106, 103716",
+    linkLabel: "arXiv:2409.01184",
+    url: "https://arxiv.org/abs/2409.01184",
+    year: 2025,
+  },
+  {
+    datasetName: "SurgVU",
+    authorsShort: "Zia, A., Berniker, M., Nespolo, R., et al.",
+    title: "Surgical Visual Understanding (SurgVU) Dataset",
+    venue: "arXiv preprint",
+    linkLabel: "arXiv:2501.09209",
+    url: "https://arxiv.org/abs/2501.09209",
+    year: 2025,
+  },
+];

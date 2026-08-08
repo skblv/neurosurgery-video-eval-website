@@ -1,6 +1,6 @@
 import { Leaderboard } from "./components/Leaderboard";
 import { boothLogo, sdscLogo } from "./assets/logos";
-import { PAPER } from "./data/benchmark";
+import { DATASET_CITATIONS, PAPER } from "./data/benchmark";
 
 export default function App() {
   return (
@@ -42,13 +42,26 @@ export default function App() {
       </main>
 
       <footer className="footer">
-        <p className="citation">
-          {PAPER.authorsShort} <cite>{PAPER.title}</cite>{" "}
-          <a href={PAPER.url} target="_blank" rel="noreferrer">
-            {PAPER.arxivId}
-          </a>{" "}
-          ({PAPER.year}).
-        </p>
+        <div className="footer__citations">
+          <p className="citation">
+            {PAPER.authorsShort} <cite>{PAPER.title}</cite>{" "}
+            <a href={PAPER.url} target="_blank" rel="noreferrer">
+              {PAPER.arxivId}
+            </a>{" "}
+            ({PAPER.year}).
+          </p>
+          <ul className="citation citation--datasets">
+            {DATASET_CITATIONS.map((ref) => (
+              <li key={ref.datasetName}>
+                {ref.authorsShort} <cite>{ref.title}</cite>. {ref.venue}{" "}
+                <a href={ref.url} target="_blank" rel="noreferrer">
+                  {ref.linkLabel}
+                </a>{" "}
+                ({ref.year}).
+              </li>
+            ))}
+          </ul>
+        </div>
         <div className="footer__logos">
           <img src={sdscLogo} alt="Surgical Data Science Collective" />
           <img
