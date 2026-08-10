@@ -1,4 +1,10 @@
-import { METRICS, type Dataset, type MetricId, type Provider } from "../data/benchmark";
+import {
+  METRICS,
+  modelFootnote,
+  type Dataset,
+  type MetricId,
+  type Provider,
+} from "../data/benchmark";
 import { BASELINE_ICON_LABEL, DieIcon } from "./DieIcon";
 import { ModelIcon } from "./ModelIcon";
 
@@ -72,6 +78,9 @@ export function ResultsTable({ dataset, metricId }: { dataset: Dataset; metricId
                 <ModelIcon provider={row.provider} />
               )}
               {row.label}
+              {modelFootnote(row.key) === null ? null : (
+                <sup className="footnote-ref">{modelFootnote(row.key)}</sup>
+              )}
             </th>
             <td className="table__num table__num--strong">
               {row.value === null ? "not evaluated" : `${row.value.toFixed(2)}%`}

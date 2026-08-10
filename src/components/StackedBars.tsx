@@ -1,4 +1,4 @@
-import { BAR_COLOR, type Metric } from "../data/benchmark";
+import { BAR_COLOR, modelFootnote, type Metric } from "../data/benchmark";
 import { ModelIcon } from "./ModelIcon";
 import type { ChartRow } from "./chartRow";
 
@@ -32,7 +32,12 @@ export function StackedBars({
           <li key={row.id} className="stack__row">
             <div className="stack__head">
               <ModelIcon provider={row.provider} size={14} />
-              <span className="stack__name">{row.model}</span>
+              <span className="stack__name">
+                {row.model}
+                {modelFootnote(row.id) === null ? null : (
+                  <sup className="footnote-ref">{modelFootnote(row.id)}</sup>
+                )}
+              </span>
               <span className="stack__value">{row.value.toFixed(2)}</span>
             </div>
             <div className="stack__track">

@@ -1,6 +1,6 @@
 import { Leaderboard } from "./components/Leaderboard";
 import { boothLogo, sdscLogo } from "./assets/logos";
-import { DATASET_CITATIONS, PAPER } from "./data/benchmark";
+import { DATASET_CITATIONS, MODEL_CITATIONS, PAPER } from "./data/benchmark";
 
 export default function App() {
   return (
@@ -55,6 +55,16 @@ export default function App() {
             <li key={ref.datasetName}>
               <sup className="footnote-ref">{index + 2}</sup> {ref.authorsShort}{" "}
               <cite>{ref.title}</cite>. {ref.venue}{" "}
+              <a href={ref.url} target="_blank" rel="noreferrer">
+                {ref.linkLabel}
+              </a>{" "}
+              ({ref.year}).
+            </li>
+          ))}
+          {MODEL_CITATIONS.map((ref, index) => (
+            <li key={ref.modelId}>
+              <sup className="footnote-ref">{index + 2 + DATASET_CITATIONS.length}</sup>{" "}
+              {ref.authorsShort} <cite>{ref.title}</cite>. {ref.venue}{" "}
               <a href={ref.url} target="_blank" rel="noreferrer">
                 {ref.linkLabel}
               </a>{" "}
