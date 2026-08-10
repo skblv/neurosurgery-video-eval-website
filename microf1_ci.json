@@ -1,0 +1,239 @@
+{
+  "cholect50": {
+    "claude-fable-5": {
+      "ciHigh": 72.2,
+      "ciLow": 67.48,
+      "nFrames": 1000,
+      "nResamples": 1000,
+      "value": 69.87
+    },
+    "claude-opus-4_6": {
+      "ciHigh": 71.82,
+      "ciLow": 70.85,
+      "nFrames": 19923,
+      "nResamples": 1000,
+      "value": 71.33
+    },
+    "claude-sonnet-4_6": {
+      "ciHigh": 52.39,
+      "ciLow": 51.31,
+      "nFrames": 19923,
+      "nResamples": 1000,
+      "value": 51.87
+    },
+    "gemini-3-flash": {
+      "ciHigh": 83.25,
+      "ciLow": 82.46,
+      "nFrames": 19923,
+      "nResamples": 1000,
+      "value": 82.88
+    },
+    "gemini-3_1-pro": {
+      "ciHigh": 80.47,
+      "ciLow": 79.56,
+      "nFrames": 19923,
+      "nResamples": 1000,
+      "value": 80.01
+    },
+    "gemma3-27b-it": {
+      "ciHigh": 34.19,
+      "ciLow": 33.21,
+      "nFrames": 19923,
+      "nResamples": 1000,
+      "value": 33.7
+    },
+    "gemma3-27b-lora": {
+      "ciHigh": 93.07,
+      "ciLow": 92.58,
+      "nFrames": 19923,
+      "nResamples": 1000,
+      "value": 92.83
+    },
+    "gpt-5_4": {
+      "ciHigh": 49.22,
+      "ciLow": 47.92,
+      "nFrames": 19923,
+      "nResamples": 1000,
+      "value": 48.61
+    },
+    "gpt-5_6-sol": {
+      "ciHigh": 74.4,
+      "ciLow": 70.24,
+      "nFrames": 1000,
+      "nResamples": 1000,
+      "value": 72.31
+    },
+    "kimi-k3": {
+      "ciHigh": 79.97,
+      "ciLow": 76.26,
+      "nFrames": 1000,
+      "nResamples": 1000,
+      "value": 78.05
+    },
+    "yolov12m": {
+      "ciHigh": 92.6,
+      "ciLow": 92.11,
+      "nFrames": 19923,
+      "nResamples": 1000,
+      "value": 92.37
+    }
+  },
+  "pitvis": {
+    "claude-fable-5": {
+      "ciHigh": 56.55,
+      "ciLow": 49.8,
+      "nFrames": 1000,
+      "nResamples": 1000,
+      "value": 53.08
+    },
+    "claude-opus-4_6": {
+      "ciHigh": 47.43,
+      "ciLow": 46.36,
+      "nFrames": 30896,
+      "nResamples": 1000,
+      "value": 46.89
+    },
+    "claude-sonnet-4_6": {
+      "ciHigh": 47.37,
+      "ciLow": 46.29,
+      "nFrames": 30896,
+      "nResamples": 1000,
+      "value": 46.84
+    },
+    "gemini-3-flash": {
+      "ciHigh": 49.47,
+      "ciLow": 48.38,
+      "nFrames": 30896,
+      "nResamples": 1000,
+      "value": 48.91
+    },
+    "gemini-3_1-pro": {
+      "ciHigh": 51.01,
+      "ciLow": 49.85,
+      "nFrames": 30896,
+      "nResamples": 1000,
+      "value": 50.41
+    },
+    "gemma3-27b-it": {
+      "ciHigh": 36.08,
+      "ciLow": 35.09,
+      "nFrames": 30896,
+      "nResamples": 1000,
+      "value": 35.59
+    },
+    "gemma3-27b-lora": {
+      "ciHigh": 86.05,
+      "ciLow": 85.23,
+      "nFrames": 30896,
+      "nResamples": 1000,
+      "value": 85.65
+    },
+    "gpt-5_4": {
+      "ciHigh": 46.3,
+      "ciLow": 45.11,
+      "nFrames": 30896,
+      "nResamples": 1000,
+      "value": 45.69
+    },
+    "gpt-5_6-sol": {
+      "ciHigh": 43.08,
+      "ciLow": 36.88,
+      "nFrames": 1000,
+      "nResamples": 1000,
+      "value": 40.02
+    },
+    "kimi-k3": {
+      "ciHigh": 49.3,
+      "ciLow": 42.7,
+      "nFrames": 1000,
+      "nResamples": 1000,
+      "value": 46.22
+    },
+    "yolov12m": {
+      "ciHigh": 83.2,
+      "ciLow": 82.32,
+      "nFrames": 30896,
+      "nResamples": 1000,
+      "value": 82.75
+    }
+  },
+  "surgvu": {
+    "claude-fable-5": {
+      "ciHigh": 32.89,
+      "ciLow": 28.96,
+      "nFrames": 1155,
+      "nResamples": 1000,
+      "value": 30.83
+    },
+    "claude-opus-4_6": {
+      "ciHigh": 27.79,
+      "ciLow": 26.96,
+      "nFrames": 18919,
+      "nResamples": 1000,
+      "value": 27.38
+    },
+    "claude-sonnet-4_6": {
+      "ciHigh": 31.81,
+      "ciLow": 30.79,
+      "nFrames": 18919,
+      "nResamples": 1000,
+      "value": 31.27
+    },
+    "gemini-3-flash": {
+      "ciHigh": 37.31,
+      "ciLow": 36.45,
+      "nFrames": 18919,
+      "nResamples": 1000,
+      "value": 36.89
+    },
+    "gemini-3_1-pro": {
+      "ciHigh": 44.14,
+      "ciLow": 43.16,
+      "nFrames": 18919,
+      "nResamples": 1000,
+      "value": 43.65
+    },
+    "gemma3-27b-it": {
+      "ciHigh": 21.04,
+      "ciLow": 20.32,
+      "nFrames": 18919,
+      "nResamples": 1000,
+      "value": 20.69
+    },
+    "gemma3-27b-lora": {
+      "ciHigh": 75.32,
+      "ciLow": 74.36,
+      "nFrames": 16288,
+      "nResamples": 1000,
+      "value": 74.86
+    },
+    "gpt-5_4": {
+      "ciHigh": 26.43,
+      "ciLow": 25.56,
+      "nFrames": 18918,
+      "nResamples": 1000,
+      "value": 25.98
+    },
+    "gpt-5_6-sol": {
+      "ciHigh": 31.07,
+      "ciLow": 27.32,
+      "nFrames": 1000,
+      "nResamples": 1000,
+      "value": 29.18
+    },
+    "kimi-k3": {
+      "ciHigh": 18.29,
+      "ciLow": 13.79,
+      "nFrames": 665,
+      "nResamples": 1000,
+      "value": 16.02
+    },
+    "yolov12m": {
+      "ciHigh": 75.82,
+      "ciLow": 74.87,
+      "nFrames": 16287,
+      "nResamples": 1000,
+      "value": 75.34
+    }
+  }
+}
