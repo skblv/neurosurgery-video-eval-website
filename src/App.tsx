@@ -74,7 +74,7 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    document.title = "SDSC x UChicago Surgical AGI Benchmark";
+    document.title = "SDSC x UChicago Surgical Intelligence Leaderboard";
     window.scrollTo({ top: 0, behavior: "auto" });
   }, [route]);
 
@@ -104,7 +104,7 @@ export default function App() {
             />
           </a>
         </div>
-        <h1>Surgical intelligence leaderboard</h1>
+        <h1>Surgical Intelligence Leaderboard</h1>
       </header>
 
       <DomainNav active={route} />
