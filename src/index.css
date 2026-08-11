@@ -185,7 +185,7 @@ h3 {
 }
 
 .domain-hero {
-  padding: 3.25rem 0 2.75rem;
+  padding: 3.25rem 0 1.5rem;
 }
 
 .domain-hero h2 {
@@ -230,7 +230,7 @@ h3 {
 /* ---------- gesture protocol ---------- */
 
 .figure-row--gesture {
-  margin-top: 0.5rem;
+  margin-top: 0.75rem;
 }
 
 .result-notes {
@@ -290,7 +290,7 @@ h3 {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
-  margin: 1.5rem 0 1.25rem;
+  margin: 0.75rem 0 1.25rem;
 }
 
 .tab {
@@ -709,7 +709,7 @@ h3 {
   }
 
   .domain-hero {
-    padding: 2.5rem 0 2.25rem;
+    padding: 2.5rem 0 1.25rem;
   }
 
   /* Fixed columns are a desktop affordance; here the model name needs to wrap. */
