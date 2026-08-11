@@ -1,8 +1,16 @@
 # Surgical intelligence leaderboard
 
-Static leaderboard site for the SDSC × Chicago Booth surgical VLM benchmark,
-published at the paper "A Comparative Study in Surgical AI: Potential and
-Limitations of Data, Compute, and Scaling" (arXiv:2603.27341).
+Static SDSC × Chicago Booth benchmark site for the capabilities that make up
+surgical intelligence. The published instrument benchmark is joined by a
+single-procedure continuous gesture pilot, with domain pages reserved for the
+next benchmark families.
+
+## Site structure
+
+- `#/overview` — six-domain benchmark maturity map.
+- `#/instruments` — the published CholecT50, PitVis-2023, and SurgVU results.
+- `#/gestures` — the continuous-operation gesture comparison.
+- The remaining domain routes are roadmap pages until their protocols are ready.
 
 ## How deployment works
 
@@ -16,16 +24,30 @@ There is no other deploy step. If the build fails (including a malformed
 
 ## Where the numbers live
 
-All scores are in `src/data/results.json`. It is validated at build time by
-`src/data/resultsSchema.ts`: unknown keys, missing metrics, or a wrong
-`schemaVersion` fail the build with a precise error message rather than
-rendering a broken chart. That means you can edit `results.json` directly on
-GitHub and trust the Action to catch mistakes.
+Instrument scores remain in `src/data/results.json`. Gesture scores live in
+`src/data/gestureResults.json`. Both files have strict build-time validators:
+unknown keys, missing metrics, or a wrong `schemaVersion` fail the build rather
+than rendering a broken chart.
 
 Normally you should not edit it by hand: the eval backend runs a model against
 the benchmarks and pushes a commit that updates `results.json` (and, for a new
 model family, its logo). Hand-editing is for corrections, retractions, or
 importing results computed elsewhere.
+
+The gesture pilot is currently imported from the normalized evaluation
+artifacts rather than written by the still-frame instrument runner. This keeps
+the existing automated instrument publishing contract unchanged.
+
+## Updating the gesture pilot
+
+1. Recompute each model's normalized evaluation artifact against the shared
+   continuous-case timeline.
+2. Copy the rounded exact frame accuracy, macro F1, and weighted F1 values into
+   `src/data/gestureResults.json`, preserving the source run id.
+3. Update the benchmark metadata if the procedure set, timeline, class
+   vocabulary, or denominator changes.
+4. Run `npm run build`; the gesture validator rejects schema drift, duplicate
+   model ids, out-of-range values, and accidental inclusion of MViT.
 
 ## Adding a model result (via GitHub)
 

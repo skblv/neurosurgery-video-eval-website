@@ -1,10 +1,4 @@
-import {
-  METRICS,
-  modelFootnote,
-  type Dataset,
-  type MetricId,
-  type Provider,
-} from "../data/benchmark";
+import type { FootnoteLookup, LeaderboardBenchmark } from "../data/leaderboard";
 import { BASELINE_ICON_LABEL, DieIcon } from "./DieIcon";
 import { ModelIcon } from "./ModelIcon";
 
@@ -12,13 +6,16 @@ import { ModelIcon } from "./ModelIcon";
 interface TableRow {
   key: string;
   label: string;
-  provider: Provider | null;
+  provider: string | null;
   value: number | null;
   ciLow: number | null;
   ciHigh: number | null;
 }
 
-function buildRows(dataset: Dataset, metricId: MetricId): TableRow[] {
+function buildRows<MetricId extends string>(
+  dataset: LeaderboardBenchmark<MetricId>,
+  metricId: MetricId,
+): TableRow[] {
   const rows: TableRow[] = dataset.results.map((result) => {
     const score = result.metrics[metricId];
     return {
@@ -50,7 +47,19 @@ function buildRows(dataset: Dataset, metricId: MetricId): TableRow[] {
   });
 }
 
-export function ResultsTable({ dataset, metricId }: { dataset: Dataset; metricId: MetricId }) {
+export function ResultsTable<MetricId extends string>({
+  dataset,
+  metricId,
+  metricLabel,
+  footnoteFor,
+  showConfidenceInterval = true,
+}: {
+  dataset: LeaderboardBenchmark<MetricId>;
+  metricId: MetricId;
+  metricLabel: string;
+  footnoteFor: FootnoteLookup;
+  showConfidenceInterval?: boolean;
+}) {
   const rows = buildRows(dataset, metricId);
 
   return (
@@ -59,11 +68,11 @@ export function ResultsTable({ dataset, metricId }: { dataset: Dataset; metricId
         <tr>
           <th scope="col">Model</th>
           <th scope="col" className="table__num table__col--metric">
-            {METRICS[metricId].label}
+            {metricLabel}
           </th>
-          <th scope="col" className="table__num table__col--ci">
-            95% CI
-          </th>
+          {showConfidenceInterval ? (
+            <th scope="col" className="table__num table__col--ci">95% CI</th>
+          ) : null}
         </tr>
       </thead>
       <tbody>
@@ -78,18 +87,20 @@ export function ResultsTable({ dataset, metricId }: { dataset: Dataset; metricId
                 <ModelIcon provider={row.provider} />
               )}
               {row.label}
-              {modelFootnote(row.key) === null ? null : (
-                <sup className="footnote-ref">{modelFootnote(row.key)}</sup>
+              {footnoteFor(row.key) === null ? null : (
+                <sup className="footnote-ref">{footnoteFor(row.key)}</sup>
               )}
             </th>
             <td className="table__num table__num--strong">
               {row.value === null ? "not evaluated" : `${row.value.toFixed(2)}%`}
             </td>
-            <td className="table__num">
-              {row.ciLow === null || row.ciHigh === null
-                ? "—"
-                : `${row.ciLow.toFixed(2)}–${row.ciHigh.toFixed(2)}`}
-            </td>
+            {showConfidenceInterval ? (
+              <td className="table__num">
+                {row.ciLow === null || row.ciHigh === null
+                  ? "—"
+                  : `${row.ciLow.toFixed(2)}–${row.ciHigh.toFixed(2)}`}
+              </td>
+            ) : null}
           </tr>
         ))}
       </tbody>

@@ -9,34 +9,60 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
+import type { ReactNode } from "react";
 
 import { boothShield, sdscMark } from "../assets/logos";
-import {
-  BAR_COLOR,
-  METRICS,
-  modelFootnote,
-  providerLabel,
-  type Dataset,
-  type Metric,
-  type MetricId,
-  type Provider,
-} from "../data/benchmark";
+import { BAR_COLOR, providerLabel } from "../data/benchmark";
+import type {
+  FootnoteLookup,
+  LeaderboardBenchmark,
+  LeaderboardMetric,
+} from "../data/leaderboard";
 import { PROVIDER_ICONS } from "../data/providerIcons";
 import { useMediaQuery } from "../hooks/useMediaQuery";
 import { StackedBars } from "./StackedBars";
 import { buildRows, type ChartRow } from "./chartRow";
 
-const AXIS_WIDTH = 252;
 const ICON_SIZE = 14;
 const ROW_HEIGHT = 46;
 const INK = "#111111";
+/** Whitespace between the provider mark column and the longest model name. */
+const NAME_GAP = 64;
+const NAME_FONT =
+  '13px "Inter", ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif';
+const FOOTNOTE_FONT =
+  '9px "Inter", ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif';
 /** The baseline annotation stays grey so it reads as an annotation, not as data. */
 const ANNOTATION_INK = "#6f6f6f";
-/** Below this the 252px label column leaves too little room to plot, so rows stack. */
+/** Below this the label column leaves too little room to plot, so rows stack. */
 const NARROW_QUERY = "(max-width: 700px)";
 
+/**
+ * Width of the y-axis label column: the provider mark, a fixed gap, the longest
+ * model name, and the 20px inset between the names and the bars. Sizing the
+ * column to the content keeps the mark-to-name whitespace identical across
+ * benchmarks with long and short model names.
+ */
+function labelColumnWidth(rows: ChartRow[], footnoteFor: FootnoteLookup): number {
+  const context = document.createElement("canvas").getContext("2d");
+  if (!context) throw new Error("Canvas 2D context unavailable");
+
+  const widths = rows.map((row) => {
+    context.font = NAME_FONT;
+    let width = context.measureText(row.model).width;
+    const footnote = footnoteFor(row.id);
+    if (footnote !== null) {
+      context.font = FOOTNOTE_FONT;
+      width += context.measureText(String(footnote)).width;
+    }
+    return width;
+  });
+
+  return Math.ceil(ICON_SIZE + NAME_GAP + Math.max(...widths) + 20);
+}
+
 /** Provider mark drawn inside the SVG axis gutter, left-aligned in its own column. */
-function AxisIcon({ provider, x, y }: { provider: Provider; x: number; y: number }) {
+function AxisIcon({ provider, x, y }: { provider: string; x: number; y: number }) {
   if (provider === "internal") {
     return (
       <g>
@@ -72,7 +98,7 @@ function AxisIcon({ provider, x, y }: { provider: Provider; x: number; y: number
   );
 }
 
-function renderAxisTick(rows: ChartRow[]) {
+function renderAxisTick(rows: ChartRow[], axisWidth: number, footnoteFor: FootnoteLookup) {
   return function AxisTick(props: unknown) {
     const { x, y, index } = props as { x: number; y: number; index: number };
     const row = rows[index];
@@ -81,12 +107,12 @@ function renderAxisTick(rows: ChartRow[]) {
     return (
       <g transform={`translate(${x},${y})`}>
         <title>{providerLabel(row.provider)}</title>
-        <AxisIcon provider={row.provider} x={-AXIS_WIDTH} y={-ICON_SIZE / 2} />
+        <AxisIcon provider={row.provider} x={-axisWidth} y={-ICON_SIZE / 2} />
         <text x={-20} y={0} textAnchor="end" dominantBaseline="central" fill={INK} fontSize={13}>
           {row.model}
-          {modelFootnote(row.id) === null ? null : (
+          {footnoteFor(row.id) === null ? null : (
             <tspan baselineShift="super" fontSize={9}>
-              {modelFootnote(row.id)}
+              {footnoteFor(row.id)}
             </tspan>
           )}
         </text>
@@ -132,13 +158,13 @@ function renderValueLabel(rows: ChartRow[]) {
 function ChartTooltip({
   active,
   payload,
-  dataset,
+  benchmark,
   metric,
 }: {
   active?: boolean;
   payload?: { payload: ChartRow }[];
-  dataset: Dataset;
-  metric: Metric;
+  benchmark: LeaderboardBenchmark<string>;
+  metric: LeaderboardMetric;
 }) {
   if (!active || !payload?.length) return null;
   const row = payload[0].payload;
@@ -155,14 +181,26 @@ function ChartTooltip({
         </p>
       ) : null}
       <p className="tip__row">{providerLabel(row.provider)}</p>
-      <p className="tip__row tip__row--faint">{dataset.name}</p>
+      <p className="tip__row tip__row--faint">{benchmark.name}</p>
     </div>
   );
 }
 
-export function ResultsChart({ dataset, metricId }: { dataset: Dataset; metricId: MetricId }) {
-  const metric = METRICS[metricId];
+export function ResultsChart<MetricId extends string>({
+  dataset,
+  metricId,
+  metric,
+  footnoteFor,
+  caption,
+}: {
+  dataset: LeaderboardBenchmark<MetricId>;
+  metricId: MetricId;
+  metric: LeaderboardMetric<MetricId>;
+  footnoteFor: FootnoteLookup;
+  caption?: ReactNode;
+}) {
   const rows = buildRows(dataset, metricId);
+  const axisWidth = labelColumnWidth(rows, footnoteFor);
   const baseline = dataset.majorityBaseline[metricId];
   const hasIntervals = rows.some((row) => row.errorOffsets !== null);
   const missing = dataset.results.filter((r) => r.metrics[metricId] === null).map((r) => r.model);
@@ -171,10 +209,9 @@ export function ResultsChart({ dataset, metricId }: { dataset: Dataset; metricId
   if (isNarrow) {
     return (
       <figure className="chart">
-        <StackedBars rows={rows} baseline={baseline} metric={metric} />
+        <StackedBars rows={rows} baseline={baseline} metric={metric} footnoteFor={footnoteFor} />
         <Caption
-          dataset={dataset}
-          metric={metric}
+          caption={caption}
           baseline={baseline}
           hasIntervals={hasIntervals}
           missing={missing}
@@ -210,17 +247,22 @@ export function ResultsChart({ dataset, metricId }: { dataset: Dataset; metricId
           <YAxis
             type="category"
             dataKey="model"
-            width={AXIS_WIDTH}
+            width={axisWidth}
             tickLine={false}
             axisLine={false}
-            tick={renderAxisTick(rows)}
+            tick={renderAxisTick(rows, axisWidth, footnoteFor)}
             interval={0}
             tickSize={0}
             tickMargin={0}
           />
           <Tooltip
             cursor={{ fill: "rgba(15, 118, 110, 0.06)" }}
-            content={<ChartTooltip dataset={dataset} metric={metric} />}
+            content={
+              <ChartTooltip
+                benchmark={dataset as LeaderboardBenchmark<string>}
+                metric={metric}
+              />
+            }
           />
           {baseline === null ? null : (
             <ReferenceLine
@@ -257,8 +299,7 @@ export function ResultsChart({ dataset, metricId }: { dataset: Dataset; metricId
       </ResponsiveContainer>
 
       <Caption
-        dataset={dataset}
-        metric={metric}
+        caption={caption}
         baseline={baseline}
         hasIntervals={hasIntervals}
         missing={missing}
@@ -268,27 +309,28 @@ export function ResultsChart({ dataset, metricId }: { dataset: Dataset; metricId
 }
 
 function Caption({
-  dataset,
-  metric,
+  caption,
   baseline,
   hasIntervals,
   missing,
 }: {
-  dataset: Dataset;
-  metric: Metric;
+  caption?: ReactNode;
   baseline: number | null;
   hasIntervals: boolean;
   missing: string[];
 }) {
+  const notes = [
+    hasIntervals ? "Error bars show 95% bootstrap confidence intervals." : null,
+    baseline === null ? null : "The dashed line shows the majority-class baseline.",
+    missing.length > 0 ? `Not evaluated on this metric: ${missing.join(", ")}.` : null,
+  ].filter((note): note is string => note !== null);
+
+  if (caption === undefined && notes.length === 0) return null;
+
   return (
     <figcaption className="chart__caption">
-      The plot reports {metric.captionName} on {dataset.toolClasses} instruments in the{" "}
-      <a href={dataset.sourceUrl} target="_blank" rel="noreferrer">
-        {dataset.name}
-      </a>{" "}
-      dataset{hasIntervals ? " with 95% bootstrap confidence intervals" : ""}.
-      {baseline === null ? "" : " The dashed line shows the majority-class baseline."}
-      {missing.length > 0 ? ` Not evaluated on this metric: ${missing.join(", ")}.` : ""}
+      {caption}
+      {notes.map((note) => ` ${note}`).join("")}
     </figcaption>
   );
 }

@@ -1,4 +1,5 @@
-import { BAR_COLOR, modelFootnote, type Metric } from "../data/benchmark";
+import { BAR_COLOR } from "../data/benchmark";
+import type { FootnoteLookup, LeaderboardMetric } from "../data/leaderboard";
 import { ModelIcon } from "./ModelIcon";
 import type { ChartRow } from "./chartRow";
 
@@ -20,10 +21,12 @@ export function StackedBars({
   rows,
   baseline,
   metric,
+  footnoteFor,
 }: {
   rows: ChartRow[];
   baseline: number | null;
-  metric: Metric;
+  metric: LeaderboardMetric;
+  footnoteFor: FootnoteLookup;
 }) {
   return (
     <div className="stack">
@@ -34,8 +37,8 @@ export function StackedBars({
               <ModelIcon provider={row.provider} size={14} />
               <span className="stack__name">
                 {row.model}
-                {modelFootnote(row.id) === null ? null : (
-                  <sup className="footnote-ref">{modelFootnote(row.id)}</sup>
+                {footnoteFor(row.id) === null ? null : (
+                  <sup className="footnote-ref">{footnoteFor(row.id)}</sup>
                 )}
               </span>
               <span className="stack__value">{row.value.toFixed(2)}</span>

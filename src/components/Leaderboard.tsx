@@ -6,12 +6,13 @@ import {
   DATASETS,
   METRICS,
   METRIC_ORDER,
+  modelFootnote,
   type DatasetId,
   type MetricId,
 } from "../data/benchmark";
 
-/** The leaderboard itself: dataset tabs, the figure, and the full table. */
-export function Leaderboard() {
+/** Instrument domain: dataset tabs, the figure, and the full table. */
+export function InstrumentLeaderboard() {
   const [activeId, setActiveId] = useState<DatasetId>("cholect50");
   const [metricId, setMetricId] = useState<MetricId>("microF1");
   const active = useMemo(() => DATASETS.find((d) => d.id === activeId)!, [activeId]);
@@ -24,11 +25,14 @@ export function Leaderboard() {
 
   return (
     <>
-      <p className="masthead__lede">
-        How close are today's vision–language models (VLMs) to Surgical AGI? The prerequisite is
-        that they should be able to identify instruments in a surgical video frame. We benchmark
-        frontier VLMs on 3 surgical benchmarks<sup className="footnote-ref">1</sup>:
-      </p>
+      <header className="domain-hero">
+        <h2>Which instruments are visible?</h2>
+        <p>
+          Identifying surgical tools is a prerequisite for understanding what is happening in an
+          operation. We compare frontier and specialist models across three frame-level surgical
+          benchmarks<sup className="footnote-ref">1</sup>.
+        </p>
+      </header>
 
       <section className="section" aria-labelledby="results-heading">
         <h2 id="results-heading" className="visually-hidden">
@@ -52,7 +56,22 @@ export function Leaderboard() {
         </div>
 
         <div className="figure-row">
-          <ResultsChart dataset={active} metricId={metricId} />
+          <ResultsChart
+            dataset={active}
+            metricId={metricId}
+            metric={METRICS[metricId]}
+            footnoteFor={modelFootnote}
+            caption={
+              <>
+                The plot reports {METRICS[metricId].captionName} on {active.toolClasses}{" "}
+                instruments in the{" "}
+                <a href={active.sourceUrl} target="_blank" rel="noreferrer">
+                  {active.name}
+                </a>{" "}
+                dataset.
+              </>
+            }
+          />
 
           <label className="metric">
             <span className="metric__label">Metric</span>
@@ -66,7 +85,12 @@ export function Leaderboard() {
           </label>
         </div>
 
-        <ResultsTable dataset={active} metricId={metricId} />
+        <ResultsTable
+          dataset={active}
+          metricId={metricId}
+          metricLabel={METRICS[metricId].label}
+          footnoteFor={modelFootnote}
+        />
       </section>
     </>
   );
