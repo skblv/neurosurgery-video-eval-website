@@ -150,14 +150,79 @@ export const MODEL_CITATIONS: ModelCitation[] = [
 ];
 
 /**
- * Footnote number for a model result, or null when the model has no citation.
+ * Sources cited on the Action (gesture) page, numbered after the instrument
+ * footnotes so the numbering runs through the whole site. Model ids here refer
+ * to `gestureResults.json` and may repeat instrument ids, which is why each
+ * page resolves footnotes through its own lookup.
+ */
+export const GESTURE_MODEL_CITATIONS: ModelCitation[] = [
+  {
+    modelId: "surgmotion",
+    authorsShort: "Wu, J., Holm, F., Chen, C., et al.",
+    title:
+      "SurgMotion: A Video-Native Foundation Model for Universal Understanding of Surgical Videos",
+    venue: "arXiv preprint",
+    linkLabel: "arXiv:2602.05638",
+    url: "https://arxiv.org/abs/2602.05638",
+    year: 2026,
+  },
+  {
+    modelId: "lemon",
+    authorsShort: "Che, C., Wang, C., Vercauteren, T., et al.",
+    title:
+      "LEMON: A Large Endoscopic MONocular Dataset and Foundation Model for Perception in Surgical Settings",
+    venue: "Proceedings of CVPR 2026",
+    linkLabel: "CVPR 2026",
+    url: "https://openaccess.thecvf.com/content/CVPR2026/html/Che_LEMON_A_Large_Endoscopic_MONocular_Dataset_and_Foundation_Model_for_CVPR_2026_paper.html",
+    year: 2026,
+  },
+  {
+    modelId: "gpt-5-6-sol",
+    authorsShort: "OpenAI.",
+    title: "Previewing GPT-5.6 Sol",
+    venue: "OpenAI release notes",
+    linkLabel: "openai.com",
+    url: "https://openai.com/index/previewing-gpt-5-6-sol/",
+    year: 2026,
+  },
+  {
+    modelId: "kimi-k3",
+    authorsShort: "Moonshot AI.",
+    title: "Kimi K3",
+    venue: "GitHub repository",
+    linkLabel: "github.com/MoonshotAI/Kimi-K3",
+    url: "https://github.com/MoonshotAI/Kimi-K3",
+    year: 2026,
+  },
+  {
+    modelId: "claude-opus-5",
+    authorsShort: "Anthropic.",
+    title: "Claude Opus 5 System Card",
+    venue: "Anthropic",
+    linkLabel: "anthropic.com/system-cards",
+    url: "https://www.anthropic.com/system-cards",
+    year: 2026,
+  },
+];
+
+/**
+ * Footnote number for an instrument-page model result, or null when the model
+ * has no citation.
  *
- * Footnotes are numbered: 1 the paper, 2… the datasets, then model citations.
+ * Footnotes are numbered: 1 the paper, 2… the datasets, then instrument model
+ * citations, then Action-page model citations.
  */
 export function modelFootnote(modelId: string): number | null {
   const index = MODEL_CITATIONS.findIndex((ref) => ref.modelId === modelId);
   if (index === -1) return null;
   return index + 2 + DATASET_CITATIONS.length;
+}
+
+/** Footnote number for an Action-page model result; numbering continues after {@link modelFootnote}. */
+export function gestureModelFootnote(modelId: string): number | null {
+  const index = GESTURE_MODEL_CITATIONS.findIndex((ref) => ref.modelId === modelId);
+  if (index === -1) return null;
+  return index + 2 + DATASET_CITATIONS.length + MODEL_CITATIONS.length;
 }
 
 export const DATASET_CITATIONS: DatasetCitation[] = [

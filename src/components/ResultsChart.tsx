@@ -12,12 +12,12 @@ import {
 import type { ReactNode } from "react";
 
 import { boothShield, sdscMark } from "../assets/logos";
-import {
-  BAR_COLOR,
-  modelFootnote,
-  providerLabel,
-} from "../data/benchmark";
-import type { LeaderboardBenchmark, LeaderboardMetric } from "../data/leaderboard";
+import { BAR_COLOR, providerLabel } from "../data/benchmark";
+import type {
+  FootnoteLookup,
+  LeaderboardBenchmark,
+  LeaderboardMetric,
+} from "../data/leaderboard";
 import { PROVIDER_ICONS } from "../data/providerIcons";
 import { useMediaQuery } from "../hooks/useMediaQuery";
 import { StackedBars } from "./StackedBars";
@@ -43,14 +43,14 @@ const NARROW_QUERY = "(max-width: 700px)";
  * column to the content keeps the mark-to-name whitespace identical across
  * benchmarks with long and short model names.
  */
-function labelColumnWidth(rows: ChartRow[]): number {
+function labelColumnWidth(rows: ChartRow[], footnoteFor: FootnoteLookup): number {
   const context = document.createElement("canvas").getContext("2d");
   if (!context) throw new Error("Canvas 2D context unavailable");
 
   const widths = rows.map((row) => {
     context.font = NAME_FONT;
     let width = context.measureText(row.model).width;
-    const footnote = modelFootnote(row.id);
+    const footnote = footnoteFor(row.id);
     if (footnote !== null) {
       context.font = FOOTNOTE_FONT;
       width += context.measureText(String(footnote)).width;
@@ -98,7 +98,7 @@ function AxisIcon({ provider, x, y }: { provider: string; x: number; y: number }
   );
 }
 
-function renderAxisTick(rows: ChartRow[], axisWidth: number) {
+function renderAxisTick(rows: ChartRow[], axisWidth: number, footnoteFor: FootnoteLookup) {
   return function AxisTick(props: unknown) {
     const { x, y, index } = props as { x: number; y: number; index: number };
     const row = rows[index];
@@ -110,9 +110,9 @@ function renderAxisTick(rows: ChartRow[], axisWidth: number) {
         <AxisIcon provider={row.provider} x={-axisWidth} y={-ICON_SIZE / 2} />
         <text x={-20} y={0} textAnchor="end" dominantBaseline="central" fill={INK} fontSize={13}>
           {row.model}
-          {modelFootnote(row.id) === null ? null : (
+          {footnoteFor(row.id) === null ? null : (
             <tspan baselineShift="super" fontSize={9}>
-              {modelFootnote(row.id)}
+              {footnoteFor(row.id)}
             </tspan>
           )}
         </text>
@@ -190,15 +190,17 @@ export function ResultsChart<MetricId extends string>({
   dataset,
   metricId,
   metric,
+  footnoteFor,
   caption,
 }: {
   dataset: LeaderboardBenchmark<MetricId>;
   metricId: MetricId;
   metric: LeaderboardMetric<MetricId>;
+  footnoteFor: FootnoteLookup;
   caption?: ReactNode;
 }) {
   const rows = buildRows(dataset, metricId);
-  const axisWidth = labelColumnWidth(rows);
+  const axisWidth = labelColumnWidth(rows, footnoteFor);
   const baseline = dataset.majorityBaseline[metricId];
   const hasIntervals = rows.some((row) => row.errorOffsets !== null);
   const missing = dataset.results.filter((r) => r.metrics[metricId] === null).map((r) => r.model);
@@ -207,7 +209,7 @@ export function ResultsChart<MetricId extends string>({
   if (isNarrow) {
     return (
       <figure className="chart">
-        <StackedBars rows={rows} baseline={baseline} metric={metric} />
+        <StackedBars rows={rows} baseline={baseline} metric={metric} footnoteFor={footnoteFor} />
         <Caption
           caption={caption}
           baseline={baseline}
@@ -248,7 +250,7 @@ export function ResultsChart<MetricId extends string>({
             width={axisWidth}
             tickLine={false}
             axisLine={false}
-            tick={renderAxisTick(rows, axisWidth)}
+            tick={renderAxisTick(rows, axisWidth, footnoteFor)}
             interval={0}
             tickSize={0}
             tickMargin={0}

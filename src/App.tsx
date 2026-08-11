@@ -5,9 +5,14 @@ import { ComingSoon } from "./components/ComingSoon";
 import { DomainNav } from "./components/DomainNav";
 import { GestureLeaderboard } from "./components/GestureLeaderboard";
 import { InstrumentLeaderboard } from "./components/Leaderboard";
-import { DATASET_CITATIONS, MODEL_CITATIONS, PAPER } from "./data/benchmark";
+import {
+  DATASET_CITATIONS,
+  GESTURE_MODEL_CITATIONS,
+  MODEL_CITATIONS,
+  PAPER,
+  gestureModelFootnote,
+} from "./data/benchmark";
 import { ROUTES, type DomainRoute } from "./data/domains";
-import { GESTURE_SOURCES } from "./data/gestureBenchmark";
 
 function routeFromHash(): DomainRoute {
   const candidate = window.location.hash.replace(/^#\/?/, "") || "instruments";
@@ -51,16 +56,16 @@ function InstrumentSources() {
 
 function GestureSources() {
   return (
-    <div className="gesture-sources">
-      <p className="eyebrow">Model sources</p>
-      <ul>
-        {GESTURE_SOURCES.map((source) => (
-          <li key={source.label}>
-            <a href={source.url} target="_blank" rel="noreferrer">{source.label}</a>
-          </li>
-        ))}
-      </ul>
-    </div>
+    <ol className="footnotes">
+      {GESTURE_MODEL_CITATIONS.map((ref) => (
+        <li key={ref.modelId}>
+          <sup className="footnote-ref">{gestureModelFootnote(ref.modelId)}</sup>{" "}
+          {ref.authorsShort} <cite>{ref.title}</cite>. {ref.venue}{" "}
+          <a href={ref.url} target="_blank" rel="noreferrer">{ref.linkLabel}</a>{" "}
+          ({ref.year}).
+        </li>
+      ))}
+    </ol>
   );
 }
 

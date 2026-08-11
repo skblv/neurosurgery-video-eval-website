@@ -6,6 +6,7 @@ import {
   DATASETS,
   METRICS,
   METRIC_ORDER,
+  modelFootnote,
   type DatasetId,
   type MetricId,
 } from "../data/benchmark";
@@ -59,6 +60,7 @@ export function InstrumentLeaderboard() {
             dataset={active}
             metricId={metricId}
             metric={METRICS[metricId]}
+            footnoteFor={modelFootnote}
             caption={
               <>
                 The plot reports {METRICS[metricId].captionName} on {active.toolClasses}{" "}
@@ -87,6 +89,7 @@ export function InstrumentLeaderboard() {
           dataset={active}
           metricId={metricId}
           metricLabel={METRICS[metricId].label}
+          footnoteFor={modelFootnote}
         />
       </section>
     </>

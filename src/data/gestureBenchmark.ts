@@ -44,26 +44,3 @@ export const GESTURE_BENCHMARK: LeaderboardBenchmark<GestureMetricId> &
 };
 
 export const GESTURE_RESULTS_GENERATED_AT = parsed.generatedAt;
-
-export const GESTURE_SOURCES = [
-  {
-    label: "SurgMotion",
-    url: "https://arxiv.org/abs/2602.05638",
-  },
-  {
-    label: "LEMON",
-    url: "https://openaccess.thecvf.com/content/CVPR2026/html/Che_LEMON_A_Large_Endoscopic_MONocular_Dataset_and_Foundation_Model_for_CVPR_2026_paper.html",
-  },
-  {
-    label: "GPT-5.6 Sol",
-    url: "https://openai.com/index/previewing-gpt-5-6-sol/",
-  },
-  {
-    label: "Kimi K3",
-    url: "https://github.com/MoonshotAI/Kimi-K3",
-  },
-  {
-    label: "Claude Opus 5",
-    url: "https://www.anthropic.com/system-cards",
-  },
-] as const;

@@ -1,5 +1,6 @@
 import { useState, type ChangeEvent } from "react";
 
+import { gestureModelFootnote } from "../data/benchmark";
 import {
   GESTURE_BENCHMARK,
   GESTURE_METRICS,
@@ -43,7 +44,12 @@ export function GestureLeaderboard() {
         </h3>
 
         <div className="figure-row figure-row--gesture">
-          <ResultsChart dataset={GESTURE_BENCHMARK} metricId={metricId} metric={metric} />
+          <ResultsChart
+            dataset={GESTURE_BENCHMARK}
+            metricId={metricId}
+            metric={metric}
+            footnoteFor={gestureModelFootnote}
+          />
 
           <label className="metric">
             <span className="metric__label">Metric</span>
@@ -59,6 +65,7 @@ export function GestureLeaderboard() {
           dataset={GESTURE_BENCHMARK}
           metricId={metricId}
           metricLabel={metric.label}
+          footnoteFor={gestureModelFootnote}
           showConfidenceInterval={false}
         />
 

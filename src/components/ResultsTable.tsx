@@ -1,5 +1,4 @@
-import { modelFootnote } from "../data/benchmark";
-import type { LeaderboardBenchmark } from "../data/leaderboard";
+import type { FootnoteLookup, LeaderboardBenchmark } from "../data/leaderboard";
 import { BASELINE_ICON_LABEL, DieIcon } from "./DieIcon";
 import { ModelIcon } from "./ModelIcon";
 
@@ -52,11 +51,13 @@ export function ResultsTable<MetricId extends string>({
   dataset,
   metricId,
   metricLabel,
+  footnoteFor,
   showConfidenceInterval = true,
 }: {
   dataset: LeaderboardBenchmark<MetricId>;
   metricId: MetricId;
   metricLabel: string;
+  footnoteFor: FootnoteLookup;
   showConfidenceInterval?: boolean;
 }) {
   const rows = buildRows(dataset, metricId);
@@ -86,8 +87,8 @@ export function ResultsTable<MetricId extends string>({
                 <ModelIcon provider={row.provider} />
               )}
               {row.label}
-              {modelFootnote(row.key) === null ? null : (
-                <sup className="footnote-ref">{modelFootnote(row.key)}</sup>
+              {footnoteFor(row.key) === null ? null : (
+                <sup className="footnote-ref">{footnoteFor(row.key)}</sup>
               )}
             </th>
             <td className="table__num table__num--strong">

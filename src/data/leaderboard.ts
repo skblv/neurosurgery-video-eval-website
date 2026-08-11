@@ -26,3 +26,10 @@ export interface LeaderboardMetric<MetricId extends string = string> {
   axisLabel: string;
   captionName: string;
 }
+
+/**
+ * Resolves a result id to its footnote number, or null when the result has no
+ * citation. Each page supplies its own lookup because result ids can repeat
+ * across benchmarks while footnote numbering runs through the whole site.
+ */
+export type FootnoteLookup = (modelId: string) => number | null;
