@@ -1,5 +1,4 @@
 export type DomainRoute =
-  | "overview"
   | "instruments"
   | "gestures"
   | "anatomy"
@@ -25,8 +24,8 @@ export const DOMAINS: DomainDefinition[] = [
   },
   {
     id: "gestures",
-    label: "Action / gesture",
-    shortLabel: "Action / gesture",
+    label: "Action",
+    shortLabel: "Action",
     status: "pilot",
     description: "Follow what instruments are doing across time.",
   },
@@ -60,4 +59,4 @@ export const DOMAINS: DomainDefinition[] = [
   },
 ];
 
-export const ROUTES: DomainRoute[] = ["overview", ...DOMAINS.map((domain) => domain.id)];
+export const ROUTES: DomainRoute[] = DOMAINS.map((domain) => domain.id);

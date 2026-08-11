@@ -18,7 +18,7 @@ import {
   providerLabel,
 } from "../data/benchmark";
 import type { LeaderboardBenchmark, LeaderboardMetric } from "../data/leaderboard";
-import { PROVIDER_ICONS, PROVIDER_MONOGRAMS } from "../data/providerIcons";
+import { PROVIDER_ICONS } from "../data/providerIcons";
 import { useMediaQuery } from "../hooks/useMediaQuery";
 import { StackedBars } from "./StackedBars";
 import { buildRows, type ChartRow } from "./chartRow";
@@ -51,25 +51,6 @@ function AxisIcon({ provider, x, y }: { provider: string; x: number; y: number }
 
   const icon = PROVIDER_ICONS[provider];
   if (!icon) {
-    const monogram = PROVIDER_MONOGRAMS[provider];
-    if (monogram) {
-      return (
-        <g transform={`translate(${x},${y})`}>
-          <rect width={28} height={ICON_SIZE} rx={3} fill="#e8efee" />
-          <text
-            x={14}
-            y={ICON_SIZE / 2}
-            textAnchor="middle"
-            dominantBaseline="central"
-            fill="#315d59"
-            fontSize={7}
-            fontWeight={600}
-          >
-            {monogram}
-          </text>
-        </g>
-      );
-    }
     return (
       <image
         href={`./provider-logos/${provider}.png`}

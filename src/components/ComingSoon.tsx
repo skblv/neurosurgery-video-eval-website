@@ -6,7 +6,6 @@ export function ComingSoon({ route }: { route: DomainRoute }) {
 
   return (
     <section className="coming-soon">
-      <p className="eyebrow">Surgical AGI domain</p>
       <span className="status status--planned">Planned</span>
       <h2>{domain.label}</h2>
       <p>{domain.description}</p>
@@ -14,7 +13,6 @@ export function ComingSoon({ route }: { route: DomainRoute }) {
         The benchmark protocol and clinical ground truth are being defined. Results will appear
         here when they can be compared reproducibly.
       </p>
-      <a href="#/overview">Return to the benchmark map</a>
     </section>
   );
 }

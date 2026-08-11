@@ -5,12 +5,6 @@ export interface ProviderIcon {
   path: string;
 }
 
-/** Neutral monograms for research systems without a compact public brand mark. */
-export const PROVIDER_MONOGRAMS: Record<string, string> = {
-  surgmotion: "SM",
-  visurg: "LE",
-};
-
 export const PROVIDER_ICONS: Record<string, ProviderIcon> = {
   openai: {
     title: "OpenAI",

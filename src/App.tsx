@@ -5,18 +5,16 @@ import { ComingSoon } from "./components/ComingSoon";
 import { DomainNav } from "./components/DomainNav";
 import { GestureLeaderboard } from "./components/GestureLeaderboard";
 import { InstrumentLeaderboard } from "./components/Leaderboard";
-import { Overview } from "./components/Overview";
 import { DATASET_CITATIONS, MODEL_CITATIONS, PAPER } from "./data/benchmark";
 import { DOMAINS, ROUTES, type DomainRoute } from "./data/domains";
 import { GESTURE_SOURCES } from "./data/gestureBenchmark";
 
 function routeFromHash(): DomainRoute {
-  const candidate = window.location.hash.replace(/^#\/?/, "") || "overview";
-  return ROUTES.includes(candidate as DomainRoute) ? (candidate as DomainRoute) : "overview";
+  const candidate = window.location.hash.replace(/^#\/?/, "") || "instruments";
+  return ROUTES.includes(candidate as DomainRoute) ? (candidate as DomainRoute) : "instruments";
 }
 
 function PageContent({ route }: { route: DomainRoute }) {
-  if (route === "overview") return <Overview />;
   if (route === "instruments") return <InstrumentLeaderboard />;
   if (route === "gestures") return <GestureLeaderboard />;
   return <ComingSoon route={route} />;
@@ -76,10 +74,7 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    const label =
-      route === "overview"
-        ? "Overview"
-        : DOMAINS.find((domain) => domain.id === route)?.label ?? "Overview";
+    const label = DOMAINS.find((domain) => domain.id === route)?.label ?? "Instruments";
     document.title = `${label} — Surgical Intelligence Leaderboard`;
     window.scrollTo({ top: 0, behavior: "auto" });
   }, [route]);

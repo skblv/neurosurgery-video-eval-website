@@ -25,7 +25,6 @@ export function InstrumentLeaderboard() {
   return (
     <>
       <header className="domain-hero">
-        <p className="eyebrow">Perception · instruments</p>
         <h2>Which instruments are visible?</h2>
         <p>
           Identifying surgical tools is a prerequisite for understanding what is happening in an

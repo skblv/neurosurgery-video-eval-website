@@ -30,40 +30,17 @@ export function GestureLeaderboard() {
   return (
     <>
       <header className="domain-hero">
-        <p className="eyebrow">Temporal understanding · action / gesture</p>
         <h2>Can a model follow what is happening?</h2>
         <p>
-          Instruments are the nouns of surgical video; gestures are the verbs. Five systems follow
-          the same uninterrupted operation and are compared against the same expert-annotated
-          timeline.
+          Instruments are the nouns of surgical video; gestures are the verbs. We benchmark models
+          on whether they can recognise the actions a surgeon performs.
         </p>
       </header>
 
-      <section className="method-strip" aria-label="Gesture benchmark protocol">
-        <div><strong>{GESTURE_BENCHMARK.procedureCount}</strong><span>continuous procedure</span></div>
-        <div><strong>{formatDuration(GESTURE_BENCHMARK.durationSeconds)}</strong><span>video duration</span></div>
-        <div><strong>{GESTURE_BENCHMARK.gestureClasses.length}</strong><span>gesture classes</span></div>
-        <div><strong>{GESTURE_BENCHMARK.unambiguousFrameCount.toLocaleString()}</strong><span>scored frames</span></div>
-      </section>
-
-      <aside className="pilot-note">
-        <span className="status status--pilot">Single-procedure pilot</span>
-        <p>
-          This comparison describes performance on one laparoscopic case; it is not evidence of
-          universal model superiority. The next release will expand the same protocol across more
-          procedures and report procedure-level variation.
-        </p>
-      </aside>
-
       <section className="section" aria-labelledby="gesture-results-heading">
-        <div className="section__head">
-          <h3 id="gesture-results-heading">Continuous-operation results</h3>
-          <p>
-            Scores use unambiguous expert-annotated frames at {GESTURE_BENCHMARK.fps} FPS. Human
-            intervals cover {annotatedCoverage.toFixed(1)}% of the full video; overlapping labels
-            and unannotated frames are excluded from these three headline metrics.
-          </p>
-        </div>
+        <h3 id="gesture-results-heading" className="visually-hidden">
+          Continuous-operation results
+        </h3>
 
         <div className="figure-row figure-row--gesture">
           <ResultsChart
@@ -95,11 +72,20 @@ export function GestureLeaderboard() {
           showConfidenceInterval={false}
         />
 
-        <p className="correction-note">
-          <strong>Result note:</strong> Kimi K3 uses the documented normalization that maps its
-          clip label to the benchmark's cut label. No confidence intervals are reported for this
-          single-case comparison.
-        </p>
+        <div className="result-notes">
+          <p>
+            One laparoscopic procedure ({formatDuration(GESTURE_BENCHMARK.durationSeconds)} of
+            video, {GESTURE_BENCHMARK.gestureClasses.length} gesture classes), annotated by expert
+            surgeons at {GESTURE_BENCHMARK.fps} FPS. The annotations cover{" "}
+            {annotatedCoverage.toFixed(1)}% of the video; frames with overlapping or missing labels
+            are not scored, leaving {GESTURE_BENCHMARK.unambiguousFrameCount.toLocaleString()}{" "}
+            frames.
+          </p>
+          <p>
+            Kimi K3 uses the documented normalization that maps its clip label to the benchmark's
+            cut label. No confidence intervals are reported for this single-case comparison.
+          </p>
+        </div>
       </section>
     </>
   );

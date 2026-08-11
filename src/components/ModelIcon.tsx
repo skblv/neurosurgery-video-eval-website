@@ -1,6 +1,6 @@
 import { boothShield, sdscMark } from "../assets/logos";
 import { providerLabel, type Provider } from "../data/benchmark";
-import { PROVIDER_ICONS, PROVIDER_MONOGRAMS } from "../data/providerIcons";
+import { PROVIDER_ICONS } from "../data/providerIcons";
 
 /** Joint mark for models we trained: the SDSC swirl beside the Chicago Booth crest. */
 function JointMark({ size }: { size: number }) {
@@ -57,14 +57,6 @@ export function ModelIcon({ provider, size = 15 }: { provider: Provider; size?: 
 
   const icon = PROVIDER_ICONS[provider];
   if (!icon) {
-    const monogram = PROVIDER_MONOGRAMS[provider];
-    if (monogram) {
-      return (
-        <span className="model-icon" title={providerLabel(provider)}>
-          <span className="model-monogram" aria-hidden="true">{monogram}</span>
-        </span>
-      );
-    }
     return <UploadedMark provider={provider} size={size} />;
   }
 
