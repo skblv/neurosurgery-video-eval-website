@@ -6,7 +6,7 @@ import { DomainNav } from "./components/DomainNav";
 import { GestureLeaderboard } from "./components/GestureLeaderboard";
 import { InstrumentLeaderboard } from "./components/Leaderboard";
 import { DATASET_CITATIONS, MODEL_CITATIONS, PAPER } from "./data/benchmark";
-import { DOMAINS, ROUTES, type DomainRoute } from "./data/domains";
+import { ROUTES, type DomainRoute } from "./data/domains";
 import { GESTURE_SOURCES } from "./data/gestureBenchmark";
 
 function routeFromHash(): DomainRoute {
@@ -74,8 +74,7 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    const label = DOMAINS.find((domain) => domain.id === route)?.label ?? "Instruments";
-    document.title = `${label} — Surgical Intelligence Leaderboard`;
+    document.title = "SDSC x UChicago Surgical AGI Benchmark";
     window.scrollTo({ top: 0, behavior: "auto" });
   }, [route]);
 
