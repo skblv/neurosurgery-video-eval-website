@@ -1,4 +1,10 @@
-import type { LeaderboardBenchmark } from "../data/leaderboard";
+import {
+  METRICS,
+  modelFootnote,
+  type Dataset,
+  type MetricId,
+  type Provider,
+} from "../data/benchmark";
 import { BASELINE_ICON_LABEL, DieIcon } from "./DieIcon";
 import { ModelIcon } from "./ModelIcon";
 
@@ -85,6 +91,9 @@ export function ResultsTable<MetricId extends string>({
                 <ModelIcon provider={row.provider} />
               )}
               {row.label}
+              {modelFootnote(row.key) === null ? null : (
+                <sup className="footnote-ref">{modelFootnote(row.key)}</sup>
+              )}
             </th>
             <td className="table__num table__num--strong">
               {row.value === null ? "not evaluated" : `${row.value.toFixed(2)}%`}

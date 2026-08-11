@@ -14,6 +14,8 @@ import type { ReactNode } from "react";
 import { boothShield, sdscMark } from "../assets/logos";
 import {
   BAR_COLOR,
+  METRICS,
+  modelFootnote,
   providerLabel,
 } from "../data/benchmark";
 import type { LeaderboardBenchmark, LeaderboardMetric } from "../data/leaderboard";
@@ -99,6 +101,11 @@ function renderAxisTick(rows: ChartRow[]) {
         <AxisIcon provider={row.provider} x={-AXIS_WIDTH} y={-ICON_SIZE / 2} />
         <text x={-20} y={0} textAnchor="end" dominantBaseline="central" fill={INK} fontSize={13}>
           {row.model}
+          {modelFootnote(row.id) === null ? null : (
+            <tspan baselineShift="super" fontSize={9}>
+              {modelFootnote(row.id)}
+            </tspan>
+          )}
         </text>
       </g>
     );

@@ -20,7 +20,6 @@ const KNOWN_PROVIDER_LABELS: Record<string, string> = {
   gemini: "Google DeepMind",
   google: "Google",
   moonshot: "Moonshot AI",
-  surgmotion: "SurgMotion",
   visurg: "Visurg AI",
 };
 
@@ -123,6 +122,41 @@ export interface DatasetCitation {
   linkLabel: string;
   url: string;
   year: number;
+}
+
+export interface ModelCitation {
+  /** Result id in results.json this citation belongs to. */
+  modelId: string;
+  authorsShort: string;
+  title: string;
+  venue: string;
+  linkLabel: string;
+  url: string;
+  year: number;
+}
+
+export const MODEL_CITATIONS: ModelCitation[] = [
+  {
+    modelId: "lemonfm-linear-probe",
+    authorsShort: "Che, C., Wang, C., Vercauteren, T., et al.",
+    title:
+      "LEMON: A Large Endoscopic MONocular Dataset and Foundation Model for Perception in Surgical Settings",
+    venue: "arXiv preprint",
+    linkLabel: "arXiv:2503.19740",
+    url: "https://arxiv.org/abs/2503.19740",
+    year: 2025,
+  },
+];
+
+/**
+ * Footnote number for a model result, or null when the model has no citation.
+ *
+ * Footnotes are numbered: 1 the paper, 2… the datasets, then model citations.
+ */
+export function modelFootnote(modelId: string): number | null {
+  const index = MODEL_CITATIONS.findIndex((ref) => ref.modelId === modelId);
+  if (index === -1) return null;
+  return index + 2 + DATASET_CITATIONS.length;
 }
 
 export const DATASET_CITATIONS: DatasetCitation[] = [

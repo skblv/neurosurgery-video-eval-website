@@ -214,13 +214,31 @@
           "metrics": {
             "exactMatch": {
               "value": 70.9,
-              "ciLow": 68.0,
+              "ciLow": 68,
               "ciHigh": 73.6
             },
             "microF1": {
               "value": 84.99,
               "ciLow": 83.23,
               "ciHigh": 86.63
+            }
+          }
+        },
+        {
+          "id": "lemonfm-linear-probe",
+          "model": "LemonFM (linear probe)",
+          "provider": "visurg",
+          "sourceRunId": null,
+          "metrics": {
+            "exactMatch": {
+              "value": 67.7,
+              "ciLow": 64.7,
+              "ciHigh": 70.7
+            },
+            "microF1": {
+              "value": 85.62,
+              "ciLow": 84.16,
+              "ciHigh": 87.13
             }
           }
         }
@@ -447,6 +465,24 @@
               "ciHigh": 50.33
             }
           }
+        },
+        {
+          "id": "lemonfm-linear-probe",
+          "model": "LemonFM (linear probe)",
+          "provider": "visurg",
+          "sourceRunId": null,
+          "metrics": {
+            "exactMatch": {
+              "value": 63.6,
+              "ciLow": 60.3,
+              "ciHigh": 66.7
+            },
+            "microF1": {
+              "value": 68.75,
+              "ciLow": 65.65,
+              "ciHigh": 71.63
+            }
+          }
         }
       ]
     },
@@ -669,6 +705,24 @@
               "value": 20.57,
               "ciLow": 18.69,
               "ciHigh": 22.47
+            }
+          }
+        },
+        {
+          "id": "lemonfm-linear-probe",
+          "model": "LemonFM (linear probe)",
+          "provider": "visurg",
+          "sourceRunId": null,
+          "metrics": {
+            "exactMatch": {
+              "value": 40,
+              "ciLow": 37,
+              "ciHigh": 43.1
+            },
+            "microF1": {
+              "value": 68.8,
+              "ciLow": 66.79,
+              "ciHigh": 70.77
             }
           }
         }
