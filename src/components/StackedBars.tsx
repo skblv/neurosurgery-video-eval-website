@@ -1,4 +1,5 @@
-import { BAR_COLOR, type Metric } from "../data/benchmark";
+import { BAR_COLOR } from "../data/benchmark";
+import type { LeaderboardMetric } from "../data/leaderboard";
 import { ModelIcon } from "./ModelIcon";
 import type { ChartRow } from "./chartRow";
 
@@ -23,7 +24,7 @@ export function StackedBars({
 }: {
   rows: ChartRow[];
   baseline: number | null;
-  metric: Metric;
+  metric: LeaderboardMetric;
 }) {
   return (
     <div className="stack">

@@ -20,6 +20,8 @@ const KNOWN_PROVIDER_LABELS: Record<string, string> = {
   gemini: "Google DeepMind",
   google: "Google",
   moonshot: "Moonshot AI",
+  surgmotion: "SurgMotion",
+  visurg: "Visurg AI",
 };
 
 /** Display name for a provider id; unknown slugs are title-cased. */

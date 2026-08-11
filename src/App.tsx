@@ -1,8 +1,81 @@
-import { Leaderboard } from "./components/Leaderboard";
+import { useEffect, useState } from "react";
+
 import { boothLogo, sdscLogo } from "./assets/logos";
+import { ComingSoon } from "./components/ComingSoon";
+import { DomainNav } from "./components/DomainNav";
+import { GestureLeaderboard } from "./components/GestureLeaderboard";
+import { InstrumentLeaderboard } from "./components/Leaderboard";
+import { Overview } from "./components/Overview";
 import { DATASET_CITATIONS, PAPER } from "./data/benchmark";
+import { DOMAINS, ROUTES, type DomainRoute } from "./data/domains";
+import { GESTURE_SOURCES } from "./data/gestureBenchmark";
+
+function routeFromHash(): DomainRoute {
+  const candidate = window.location.hash.replace(/^#\/?/, "") || "overview";
+  return ROUTES.includes(candidate as DomainRoute) ? (candidate as DomainRoute) : "overview";
+}
+
+function PageContent({ route }: { route: DomainRoute }) {
+  if (route === "overview") return <Overview />;
+  if (route === "instruments") return <InstrumentLeaderboard />;
+  if (route === "gestures") return <GestureLeaderboard />;
+  return <ComingSoon route={route} />;
+}
+
+function InstrumentSources() {
+  return (
+    <ol className="footnotes">
+      <li>
+        <sup className="footnote-ref">1</sup> {PAPER.authorsShort}{" "}
+        <cite>{PAPER.title}</cite>{" "}
+        <a href={PAPER.url} target="_blank" rel="noreferrer">{PAPER.arxivId}</a>{" "}
+        ({PAPER.year}).
+      </li>
+      {DATASET_CITATIONS.map((ref, index) => (
+        <li key={ref.datasetName}>
+          <sup className="footnote-ref">{index + 2}</sup> {ref.authorsShort}{" "}
+          <cite>{ref.title}</cite>. {ref.venue}{" "}
+          <a href={ref.url} target="_blank" rel="noreferrer">{ref.linkLabel}</a>{" "}
+          ({ref.year}).
+        </li>
+      ))}
+    </ol>
+  );
+}
+
+function GestureSources() {
+  return (
+    <div className="gesture-sources">
+      <p className="eyebrow">Model sources</p>
+      <ul>
+        {GESTURE_SOURCES.map((source) => (
+          <li key={source.label}>
+            <a href={source.url} target="_blank" rel="noreferrer">{source.label}</a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
 
 export default function App() {
+  const [route, setRoute] = useState<DomainRoute>(routeFromHash);
+
+  useEffect(() => {
+    const handleHashChange = () => setRoute(routeFromHash());
+    window.addEventListener("hashchange", handleHashChange);
+    return () => window.removeEventListener("hashchange", handleHashChange);
+  }, []);
+
+  useEffect(() => {
+    const label =
+      route === "overview"
+        ? "Overview"
+        : DOMAINS.find((domain) => domain.id === route)?.label ?? "Overview";
+    document.title = `${label} — Surgical Intelligence Leaderboard`;
+    window.scrollTo({ top: 0, behavior: "auto" });
+  }, [route]);
+
   return (
     <div className="page">
       <header className="masthead">
@@ -13,11 +86,7 @@ export default function App() {
             rel="noopener noreferrer"
             aria-label="Surgical Data Science Collective"
           >
-            <img
-              className="lockup__sdsc"
-              src={sdscLogo}
-              alt="Surgical Data Science Collective"
-            />
+            <img className="lockup__sdsc" src={sdscLogo} alt="Surgical Data Science Collective" />
           </a>
           <span className="lockup__rule" aria-hidden="true" />
           <a
@@ -33,35 +102,19 @@ export default function App() {
             />
           </a>
         </div>
-
         <h1>Surgical intelligence leaderboard</h1>
       </header>
 
-      <main>
-        <Leaderboard />
+      <DomainNav active={route} />
+
+      <main id="main-content">
+        <PageContent route={route} />
       </main>
 
       <footer className="footer">
-        <ol className="footnotes">
-          <li>
-            <sup className="footnote-ref">1</sup> {PAPER.authorsShort}{" "}
-            <cite>{PAPER.title}</cite>{" "}
-            <a href={PAPER.url} target="_blank" rel="noreferrer">
-              {PAPER.arxivId}
-            </a>{" "}
-            ({PAPER.year}).
-          </li>
-          {DATASET_CITATIONS.map((ref, index) => (
-            <li key={ref.datasetName}>
-              <sup className="footnote-ref">{index + 2}</sup> {ref.authorsShort}{" "}
-              <cite>{ref.title}</cite>. {ref.venue}{" "}
-              <a href={ref.url} target="_blank" rel="noreferrer">
-                {ref.linkLabel}
-              </a>{" "}
-              ({ref.year}).
-            </li>
-          ))}
-        </ol>
+        {route === "instruments" ? <InstrumentSources /> : null}
+        {route === "gestures" ? <GestureSources /> : null}
+        <p className="footer__mark">Surgical Data Science Collective × Chicago Booth</p>
       </footer>
     </div>
   );

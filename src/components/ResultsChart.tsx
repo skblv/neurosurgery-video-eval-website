@@ -9,18 +9,15 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
+import type { ReactNode } from "react";
 
 import { boothShield, sdscMark } from "../assets/logos";
 import {
   BAR_COLOR,
-  METRICS,
   providerLabel,
-  type Dataset,
-  type Metric,
-  type MetricId,
-  type Provider,
 } from "../data/benchmark";
-import { PROVIDER_ICONS } from "../data/providerIcons";
+import type { LeaderboardBenchmark, LeaderboardMetric } from "../data/leaderboard";
+import { PROVIDER_ICONS, PROVIDER_MONOGRAMS } from "../data/providerIcons";
 import { useMediaQuery } from "../hooks/useMediaQuery";
 import { StackedBars } from "./StackedBars";
 import { buildRows, type ChartRow } from "./chartRow";
@@ -35,7 +32,7 @@ const ANNOTATION_INK = "#6f6f6f";
 const NARROW_QUERY = "(max-width: 700px)";
 
 /** Provider mark drawn inside the SVG axis gutter, left-aligned in its own column. */
-function AxisIcon({ provider, x, y }: { provider: Provider; x: number; y: number }) {
+function AxisIcon({ provider, x, y }: { provider: string; x: number; y: number }) {
   if (provider === "internal") {
     return (
       <g>
@@ -53,6 +50,25 @@ function AxisIcon({ provider, x, y }: { provider: Provider; x: number; y: number
 
   const icon = PROVIDER_ICONS[provider];
   if (!icon) {
+    const monogram = PROVIDER_MONOGRAMS[provider];
+    if (monogram) {
+      return (
+        <g transform={`translate(${x},${y})`}>
+          <rect width={28} height={ICON_SIZE} rx={3} fill="#e8efee" />
+          <text
+            x={14}
+            y={ICON_SIZE / 2}
+            textAnchor="middle"
+            dominantBaseline="central"
+            fill="#315d59"
+            fontSize={7}
+            fontWeight={600}
+          >
+            {monogram}
+          </text>
+        </g>
+      );
+    }
     return (
       <image
         href={`./provider-logos/${provider}.png`}
@@ -126,13 +142,13 @@ function renderValueLabel(rows: ChartRow[]) {
 function ChartTooltip({
   active,
   payload,
-  dataset,
+  benchmark,
   metric,
 }: {
   active?: boolean;
   payload?: { payload: ChartRow }[];
-  dataset: Dataset;
-  metric: Metric;
+  benchmark: LeaderboardBenchmark<string>;
+  metric: LeaderboardMetric;
 }) {
   if (!active || !payload?.length) return null;
   const row = payload[0].payload;
@@ -149,13 +165,22 @@ function ChartTooltip({
         </p>
       ) : null}
       <p className="tip__row">{providerLabel(row.provider)}</p>
-      <p className="tip__row tip__row--faint">{dataset.name}</p>
+      <p className="tip__row tip__row--faint">{benchmark.name}</p>
     </div>
   );
 }
 
-export function ResultsChart({ dataset, metricId }: { dataset: Dataset; metricId: MetricId }) {
-  const metric = METRICS[metricId];
+export function ResultsChart<MetricId extends string>({
+  dataset,
+  metricId,
+  metric,
+  caption,
+}: {
+  dataset: LeaderboardBenchmark<MetricId>;
+  metricId: MetricId;
+  metric: LeaderboardMetric<MetricId>;
+  caption: ReactNode;
+}) {
   const rows = buildRows(dataset, metricId);
   const baseline = dataset.majorityBaseline[metricId];
   const hasIntervals = rows.some((row) => row.errorOffsets !== null);
@@ -167,8 +192,7 @@ export function ResultsChart({ dataset, metricId }: { dataset: Dataset; metricId
       <figure className="chart">
         <StackedBars rows={rows} baseline={baseline} metric={metric} />
         <Caption
-          dataset={dataset}
-          metric={metric}
+          caption={caption}
           baseline={baseline}
           hasIntervals={hasIntervals}
           missing={missing}
@@ -214,7 +238,12 @@ export function ResultsChart({ dataset, metricId }: { dataset: Dataset; metricId
           />
           <Tooltip
             cursor={{ fill: "rgba(15, 118, 110, 0.06)" }}
-            content={<ChartTooltip dataset={dataset} metric={metric} />}
+            content={
+              <ChartTooltip
+                benchmark={dataset as LeaderboardBenchmark<string>}
+                metric={metric}
+              />
+            }
           />
           {baseline === null ? null : (
             <ReferenceLine
@@ -251,8 +280,7 @@ export function ResultsChart({ dataset, metricId }: { dataset: Dataset; metricId
       </ResponsiveContainer>
 
       <Caption
-        dataset={dataset}
-        metric={metric}
+        caption={caption}
         baseline={baseline}
         hasIntervals={hasIntervals}
         missing={missing}
@@ -262,25 +290,20 @@ export function ResultsChart({ dataset, metricId }: { dataset: Dataset; metricId
 }
 
 function Caption({
-  dataset,
-  metric,
+  caption,
   baseline,
   hasIntervals,
   missing,
 }: {
-  dataset: Dataset;
-  metric: Metric;
+  caption: ReactNode;
   baseline: number | null;
   hasIntervals: boolean;
   missing: string[];
 }) {
   return (
     <figcaption className="chart__caption">
-      The plot reports {metric.captionName} on {dataset.toolClasses} instruments in the{" "}
-      <a href={dataset.sourceUrl} target="_blank" rel="noreferrer">
-        {dataset.name}
-      </a>{" "}
-      dataset{hasIntervals ? " with 95% bootstrap confidence intervals" : ""}.
+      {caption}
+      {hasIntervals ? " Error bars show 95% bootstrap confidence intervals." : ""}
       {baseline === null ? "" : " The dashed line shows the majority-class baseline."}
       {missing.length > 0 ? ` Not evaluated on this metric: ${missing.join(", ")}.` : ""}
     </figcaption>
