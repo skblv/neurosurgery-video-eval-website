@@ -23,14 +23,43 @@ import { useMediaQuery } from "../hooks/useMediaQuery";
 import { StackedBars } from "./StackedBars";
 import { buildRows, type ChartRow } from "./chartRow";
 
-const AXIS_WIDTH = 252;
 const ICON_SIZE = 14;
 const ROW_HEIGHT = 46;
 const INK = "#111111";
+/** Whitespace between the provider mark column and the longest model name. */
+const NAME_GAP = 64;
+const NAME_FONT =
+  '13px "Inter", ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif';
+const FOOTNOTE_FONT =
+  '9px "Inter", ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif';
 /** The baseline annotation stays grey so it reads as an annotation, not as data. */
 const ANNOTATION_INK = "#6f6f6f";
-/** Below this the 252px label column leaves too little room to plot, so rows stack. */
+/** Below this the label column leaves too little room to plot, so rows stack. */
 const NARROW_QUERY = "(max-width: 700px)";
+
+/**
+ * Width of the y-axis label column: the provider mark, a fixed gap, the longest
+ * model name, and the 20px inset between the names and the bars. Sizing the
+ * column to the content keeps the mark-to-name whitespace identical across
+ * benchmarks with long and short model names.
+ */
+function labelColumnWidth(rows: ChartRow[]): number {
+  const context = document.createElement("canvas").getContext("2d");
+  if (!context) throw new Error("Canvas 2D context unavailable");
+
+  const widths = rows.map((row) => {
+    context.font = NAME_FONT;
+    let width = context.measureText(row.model).width;
+    const footnote = modelFootnote(row.id);
+    if (footnote !== null) {
+      context.font = FOOTNOTE_FONT;
+      width += context.measureText(String(footnote)).width;
+    }
+    return width;
+  });
+
+  return Math.ceil(ICON_SIZE + NAME_GAP + Math.max(...widths) + 20);
+}
 
 /** Provider mark drawn inside the SVG axis gutter, left-aligned in its own column. */
 function AxisIcon({ provider, x, y }: { provider: string; x: number; y: number }) {
@@ -69,7 +98,7 @@ function AxisIcon({ provider, x, y }: { provider: string; x: number; y: number }
   );
 }
 
-function renderAxisTick(rows: ChartRow[]) {
+function renderAxisTick(rows: ChartRow[], axisWidth: number) {
   return function AxisTick(props: unknown) {
     const { x, y, index } = props as { x: number; y: number; index: number };
     const row = rows[index];
@@ -78,7 +107,7 @@ function renderAxisTick(rows: ChartRow[]) {
     return (
       <g transform={`translate(${x},${y})`}>
         <title>{providerLabel(row.provider)}</title>
-        <AxisIcon provider={row.provider} x={-AXIS_WIDTH} y={-ICON_SIZE / 2} />
+        <AxisIcon provider={row.provider} x={-axisWidth} y={-ICON_SIZE / 2} />
         <text x={-20} y={0} textAnchor="end" dominantBaseline="central" fill={INK} fontSize={13}>
           {row.model}
           {modelFootnote(row.id) === null ? null : (
@@ -166,9 +195,10 @@ export function ResultsChart<MetricId extends string>({
   dataset: LeaderboardBenchmark<MetricId>;
   metricId: MetricId;
   metric: LeaderboardMetric<MetricId>;
-  caption: ReactNode;
+  caption?: ReactNode;
 }) {
   const rows = buildRows(dataset, metricId);
+  const axisWidth = labelColumnWidth(rows);
   const baseline = dataset.majorityBaseline[metricId];
   const hasIntervals = rows.some((row) => row.errorOffsets !== null);
   const missing = dataset.results.filter((r) => r.metrics[metricId] === null).map((r) => r.model);
@@ -215,10 +245,10 @@ export function ResultsChart<MetricId extends string>({
           <YAxis
             type="category"
             dataKey="model"
-            width={AXIS_WIDTH}
+            width={axisWidth}
             tickLine={false}
             axisLine={false}
-            tick={renderAxisTick(rows)}
+            tick={renderAxisTick(rows, axisWidth)}
             interval={0}
             tickSize={0}
             tickMargin={0}
@@ -282,17 +312,23 @@ function Caption({
   hasIntervals,
   missing,
 }: {
-  caption: ReactNode;
+  caption?: ReactNode;
   baseline: number | null;
   hasIntervals: boolean;
   missing: string[];
 }) {
+  const notes = [
+    hasIntervals ? "Error bars show 95% bootstrap confidence intervals." : null,
+    baseline === null ? null : "The dashed line shows the majority-class baseline.",
+    missing.length > 0 ? `Not evaluated on this metric: ${missing.join(", ")}.` : null,
+  ].filter((note): note is string => note !== null);
+
+  if (caption === undefined && notes.length === 0) return null;
+
   return (
     <figcaption className="chart__caption">
       {caption}
-      {hasIntervals ? " Error bars show 95% bootstrap confidence intervals." : ""}
-      {baseline === null ? "" : " The dashed line shows the majority-class baseline."}
-      {missing.length > 0 ? ` Not evaluated on this metric: ${missing.join(", ")}.` : ""}
+      {notes.map((note) => ` ${note}`).join("")}
     </figcaption>
   );
 }

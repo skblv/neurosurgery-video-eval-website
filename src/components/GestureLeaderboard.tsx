@@ -43,17 +43,7 @@ export function GestureLeaderboard() {
         </h3>
 
         <div className="figure-row figure-row--gesture">
-          <ResultsChart
-            dataset={GESTURE_BENCHMARK}
-            metricId={metricId}
-            metric={metric}
-            caption={
-              <>
-                The plot reports {metric.captionName} across {GESTURE_BENCHMARK.unambiguousFrameCount.toLocaleString()}{" "}
-                unambiguous annotated frames from one {formatDuration(GESTURE_BENCHMARK.durationSeconds)} continuous case.
-              </>
-            }
-          />
+          <ResultsChart dataset={GESTURE_BENCHMARK} metricId={metricId} metric={metric} />
 
           <label className="metric">
             <span className="metric__label">Metric</span>
