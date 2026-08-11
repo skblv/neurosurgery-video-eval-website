@@ -14,7 +14,6 @@ import type { ReactNode } from "react";
 import { boothShield, sdscMark } from "../assets/logos";
 import {
   BAR_COLOR,
-  METRICS,
   modelFootnote,
   providerLabel,
 } from "../data/benchmark";

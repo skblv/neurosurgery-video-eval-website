@@ -1,4 +1,5 @@
-import { BAR_COLOR, modelFootnote, type Metric } from "../data/benchmark";
+import { BAR_COLOR, modelFootnote } from "../data/benchmark";
+import type { LeaderboardMetric } from "../data/leaderboard";
 import { ModelIcon } from "./ModelIcon";
 import type { ChartRow } from "./chartRow";
 

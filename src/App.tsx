@@ -6,7 +6,7 @@ import { DomainNav } from "./components/DomainNav";
 import { GestureLeaderboard } from "./components/GestureLeaderboard";
 import { InstrumentLeaderboard } from "./components/Leaderboard";
 import { Overview } from "./components/Overview";
-import { DATASET_CITATIONS, PAPER } from "./data/benchmark";
+import { DATASET_CITATIONS, MODEL_CITATIONS, PAPER } from "./data/benchmark";
 import { DOMAINS, ROUTES, type DomainRoute } from "./data/domains";
 import { GESTURE_SOURCES } from "./data/gestureBenchmark";
 
@@ -35,6 +35,14 @@ function InstrumentSources() {
         <li key={ref.datasetName}>
           <sup className="footnote-ref">{index + 2}</sup> {ref.authorsShort}{" "}
           <cite>{ref.title}</cite>. {ref.venue}{" "}
+          <a href={ref.url} target="_blank" rel="noreferrer">{ref.linkLabel}</a>{" "}
+          ({ref.year}).
+        </li>
+      ))}
+      {MODEL_CITATIONS.map((ref, index) => (
+        <li key={ref.modelId}>
+          <sup className="footnote-ref">{index + 2 + DATASET_CITATIONS.length}</sup>{" "}
+          {ref.authorsShort} <cite>{ref.title}</cite>. {ref.venue}{" "}
           <a href={ref.url} target="_blank" rel="noreferrer">{ref.linkLabel}</a>{" "}
           ({ref.year}).
         </li>

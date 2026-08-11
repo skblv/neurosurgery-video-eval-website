@@ -1,10 +1,5 @@
-import {
-  METRICS,
-  modelFootnote,
-  type Dataset,
-  type MetricId,
-  type Provider,
-} from "../data/benchmark";
+import { modelFootnote } from "../data/benchmark";
+import type { LeaderboardBenchmark } from "../data/leaderboard";
 import { BASELINE_ICON_LABEL, DieIcon } from "./DieIcon";
 import { ModelIcon } from "./ModelIcon";
 
