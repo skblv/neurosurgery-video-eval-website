@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-08-11T12:30:00Z",
+  "benchmark": {
+    "id": "continuous-obgyn-case-001",
+    "name": "Continuous operation",
+    "procedureCount": 1,
+    "procedureId": "98f692ab-b778-4f5e-8dc0-91ed82dddc39",
+    "durationSeconds": 1302.334,
+    "fps": 15,
+    "evaluatedFrameCount": 19535,
+    "annotatedFrameCount": 13953,
+    "unambiguousFrameCount": 13001,
+    "gestureClasses": [
+      "aspirate",
+      "clip",
+      "coagulate",
+      "cut",
+      "dissect",
+      "grasp",
+      "irrigate",
+      "no action",
+      "remove specimen",
+      "suture"
+    ],
+    "results": [
+      {
+        "id": "surgmotion",
+        "model": "SurgMotion",
+        "provider": "surgmotion",
+        "sourceRunId": "98f692ab-b778-4f5e-8dc0-91ed82dddc39_surgmotion_evaluation",
+        "metrics": {
+          "exactAccuracy": { "value": 75.26, "ciLow": null, "ciHigh": null },
+          "macroF1": { "value": 66.73, "ciLow": null, "ciHigh": null },
+          "weightedF1": { "value": 75.27, "ciLow": null, "ciHigh": null }
+        }
+      },
+      {
+        "id": "lemon",
+        "model": "LEMON",
+        "provider": "visurg",
+        "sourceRunId": "98f692ab-b778-4f5e-8dc0-91ed82dddc39_lemon_evaluation",
+        "metrics": {
+          "exactAccuracy": { "value": 69.19, "ciLow": null, "ciHigh": null },
+          "macroF1": { "value": 54.03, "ciLow": null, "ciHigh": null },
+          "weightedF1": { "value": 66.75, "ciLow": null, "ciHigh": null }
+        }
+      },
+      {
+        "id": "gpt-5-6-sol",
+        "model": "GPT-5.6 Sol",
+        "provider": "openai",
+        "sourceRunId": "98f692ab-b778-4f5e-8dc0-91ed82dddc39_sol_3s_evaluation",
+        "metrics": {
+          "exactAccuracy": { "value": 57.99, "ciLow": null, "ciHigh": null },
+          "macroF1": { "value": 46.36, "ciLow": null, "ciHigh": null },
+          "weightedF1": { "value": 58.65, "ciLow": null, "ciHigh": null }
+        }
+      },
+      {
+        "id": "kimi-k3",
+        "model": "Kimi K3",
+        "provider": "moonshot",
+        "sourceRunId": "98f692ab-b778-4f5e-8dc0-91ed82dddc39_k3_cut_corrected_evaluation",
+        "metrics": {
+          "exactAccuracy": { "value": 56.60, "ciLow": null, "ciHigh": null },
+          "macroF1": { "value": 48.72, "ciLow": null, "ciHigh": null },
+          "weightedF1": { "value": 57.74, "ciLow": null, "ciHigh": null }
+        }
+      },
+      {
+        "id": "claude-opus-5",
+        "model": "Claude Opus 5",
+        "provider": "anthropic",
+        "sourceRunId": "98f692ab-b778-4f5e-8dc0-91ed82dddc39_opus5_3s_evaluation",
+        "metrics": {
+          "exactAccuracy": { "value": 45.76, "ciLow": null, "ciHigh": null },
+          "macroF1": { "value": 32.96, "ciLow": null, "ciHigh": null },
+          "weightedF1": { "value": 46.26, "ciLow": null, "ciHigh": null }
+        }
+      }
+    ]
+  }
+}
