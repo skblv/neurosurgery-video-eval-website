@@ -1,0 +1,619 @@
+{
+  "cells": {
+    "cholect50": {
+      "claude-fable-5": {
+        "exactMatchCiPublished": [
+          51.6,
+          57.7
+        ],
+        "exactMatchCiRecomputed": [
+          51.6,
+          57.7
+        ],
+        "exactMatchMirrorReproducedExactly": true,
+        "exactMatchMirrorWorstDeltaPp": 0.0,
+        "microF1Published": 69.87,
+        "microF1PublishedDeltaPp": 0.002,
+        "microF1Recomputed": 69.872,
+        "nFrames": 1000,
+        "sourceFile": "/project_gpfs/xyhan/SDSC/surgvu/outputs/s51_fable5_anthropic_eval/cholect50/results.csv",
+        "sourceKind": "results_csv"
+      },
+      "claude-opus-4_6": {
+        "exactMatchCiPublished": [
+          51.67,
+          53.03
+        ],
+        "exactMatchCiRecomputed": [
+          51.67,
+          53.03
+        ],
+        "exactMatchMirrorReproducedExactly": true,
+        "exactMatchMirrorWorstDeltaPp": 0.0011,
+        "microF1Published": 71.33,
+        "microF1PublishedDeltaPp": 0.0007,
+        "microF1Recomputed": 71.3307,
+        "nFrames": 19923,
+        "sourceFile": "/project/xyhan/SDSC/outputs/s33_cholect50_openrouter_eval/claude-opus-4_6/results.csv",
+        "sourceKind": "results_csv"
+      },
+      "claude-sonnet-4_6": {
+        "exactMatchCiPublished": [
+          30.07,
+          31.37
+        ],
+        "exactMatchCiRecomputed": [
+          30.07,
+          31.37
+        ],
+        "exactMatchMirrorReproducedExactly": true,
+        "exactMatchMirrorWorstDeltaPp": 0.0008,
+        "microF1Published": 51.87,
+        "microF1PublishedDeltaPp": -0.0048,
+        "microF1Recomputed": 51.8652,
+        "nFrames": 19923,
+        "sourceFile": "/project/xyhan/SDSC/outputs/s33_cholect50_openrouter_eval/claude-sonnet-4_6/results.csv",
+        "sourceKind": "results_csv"
+      },
+      "gemini-3-flash": {
+        "exactMatchCiPublished": [
+          68.49,
+          69.73
+        ],
+        "exactMatchCiRecomputed": [
+          68.49,
+          69.73
+        ],
+        "exactMatchMirrorReproducedExactly": true,
+        "exactMatchMirrorWorstDeltaPp": 0.0035,
+        "microF1Published": 82.88,
+        "microF1PublishedDeltaPp": 0.0044,
+        "microF1Recomputed": 82.8844,
+        "nFrames": 19923,
+        "sourceFile": "/project/xyhan/SDSC/outputs/s33_cholect50_openrouter_eval/gemini-3-flash/results.csv",
+        "sourceKind": "results_csv"
+      },
+      "gemini-3_1-pro": {
+        "exactMatchCiPublished": [
+          65.58,
+          66.88
+        ],
+        "exactMatchCiRecomputed": [
+          65.58,
+          66.88
+        ],
+        "exactMatchMirrorReproducedExactly": true,
+        "exactMatchMirrorWorstDeltaPp": 0.0025,
+        "microF1Published": 80.01,
+        "microF1PublishedDeltaPp": 0.0016,
+        "microF1Recomputed": 80.0116,
+        "nFrames": 19923,
+        "sourceFile": "/project/xyhan/SDSC/outputs/s33_cholect50_openrouter_eval/gemini-3_1-pro/results.csv",
+        "sourceKind": "results_csv"
+      },
+      "gemma3-27b-it": {
+        "exactMatchCiPublished": [
+          6.55,
+          7.22
+        ],
+        "exactMatchCiRecomputed": [
+          6.55,
+          7.21
+        ],
+        "exactMatchMirrorReproducedExactly": false,
+        "exactMatchMirrorWorstDeltaPp": 0.0072,
+        "microF1Published": 33.7,
+        "microF1PublishedDeltaPp": -0.0041,
+        "microF1Recomputed": 33.6959,
+        "nFrames": 19923,
+        "sourceFile": "/project/xyhan/SDSC/outputs/s27_cholect50_vlm_eval/gemma-3-27b-it_temp1_0/results.csv",
+        "sourceKind": "results_csv"
+      },
+      "gemma3-27b-lora": {
+        "exactMatchCiPublished": [
+          82.52,
+          83.56
+        ],
+        "exactMatchCiRecomputed": [
+          82.45,
+          83.53
+        ],
+        "exactMatchMirrorReproducedExactly": false,
+        "exactMatchMirrorWorstDeltaPp": 0.0676,
+        "microF1Published": 92.83,
+        "microF1PublishedDeltaPp": 0.0006,
+        "microF1Recomputed": 92.8306,
+        "nFrames": 19923,
+        "sourceFile": "/project/xyhan/SDSC/outputs/s28_cholect50_finetuning_58439/val_predictions_after_training.jsonl",
+        "sourceKind": "lora_jsonl"
+      },
+      "gpt-5_4": {
+        "exactMatchCiPublished": [
+          31.4,
+          32.72
+        ],
+        "exactMatchCiRecomputed": [
+          31.4,
+          32.72
+        ],
+        "exactMatchMirrorReproducedExactly": true,
+        "exactMatchMirrorWorstDeltaPp": 0.001,
+        "microF1Published": 48.61,
+        "microF1PublishedDeltaPp": 0.0,
+        "microF1Recomputed": 48.61,
+        "nFrames": 19923,
+        "sourceFile": "/project/xyhan/SDSC/outputs/s33_cholect50_openrouter_eval/gpt-5_4/results.csv",
+        "sourceKind": "results_csv"
+      },
+      "gpt-5_6-sol": {
+        "exactMatchCiPublished": [
+          52.9,
+          58.9
+        ],
+        "exactMatchCiRecomputed": [
+          52.9,
+          58.9
+        ],
+        "exactMatchMirrorReproducedExactly": true,
+        "exactMatchMirrorWorstDeltaPp": 0.0,
+        "microF1Published": 72.31,
+        "microF1PublishedDeltaPp": 0.0034,
+        "microF1Recomputed": 72.3134,
+        "nFrames": 1000,
+        "sourceFile": "/project_gpfs/xyhan/SDSC/surgvu/outputs/s54_gpt56sol_openai_eval/cholect50/results.csv",
+        "sourceKind": "results_csv"
+      },
+      "kimi-k3": {
+        "exactMatchCiPublished": [
+          58.9,
+          64.9
+        ],
+        "exactMatchCiRecomputed": [
+          58.9,
+          64.9
+        ],
+        "exactMatchMirrorReproducedExactly": true,
+        "exactMatchMirrorWorstDeltaPp": 0.0,
+        "microF1Published": 78.05,
+        "microF1PublishedDeltaPp": -0.0012,
+        "microF1Recomputed": 78.0488,
+        "nFrames": 1000,
+        "sourceFile": "/project_gpfs/xyhan/SDSC/surgvu/outputs/s55_kimik3_openrouter_eval/cholect50/results.csv",
+        "sourceKind": "results_csv"
+      },
+      "yolov12m": {
+        "exactMatchCiPublished": [
+          80.87,
+          81.92
+        ],
+        "exactMatchCiRecomputed": [
+          80.83,
+          81.89
+        ],
+        "exactMatchMirrorReproducedExactly": false,
+        "exactMatchMirrorWorstDeltaPp": 0.0438,
+        "microF1Published": 92.37,
+        "microF1PublishedDeltaPp": -0.0004,
+        "microF1Recomputed": 92.3696,
+        "nFrames": 19923,
+        "sourceFile": "/project/xyhan/SDSC/outputs/s30_cholect50_yolo_60464/predictions_detailed.json",
+        "sourceKind": "yolo_json"
+      }
+    },
+    "pitvis": {
+      "claude-fable-5": {
+        "exactMatchCiPublished": [
+          54.3,
+          60.5
+        ],
+        "exactMatchCiRecomputed": [
+          54.3,
+          60.5
+        ],
+        "exactMatchMirrorReproducedExactly": true,
+        "exactMatchMirrorWorstDeltaPp": 0.0,
+        "microF1Published": 53.08,
+        "microF1PublishedDeltaPp": 0.0024,
+        "microF1Recomputed": 53.0824,
+        "nFrames": 1000,
+        "sourceFile": "/project_gpfs/xyhan/SDSC/surgvu/outputs/s51_fable5_anthropic_eval/pitvis/results.csv",
+        "sourceKind": "results_csv"
+      },
+      "claude-opus-4_6": {
+        "exactMatchCiPublished": [
+          50.18,
+          51.31
+        ],
+        "exactMatchCiRecomputed": [
+          50.18,
+          51.31
+        ],
+        "exactMatchMirrorReproducedExactly": true,
+        "exactMatchMirrorWorstDeltaPp": 0.0013,
+        "microF1Published": 46.89,
+        "microF1PublishedDeltaPp": 0.0041,
+        "microF1Recomputed": 46.8941,
+        "nFrames": 30896,
+        "sourceFile": "/project_gpfs/xyhan/SDSC/surgvu/outputs/s41_pitvis_openrouter_eval/claude-opus-4_6/results.csv",
+        "sourceKind": "results_csv"
+      },
+      "claude-sonnet-4_6": {
+        "exactMatchCiPublished": [
+          49.49,
+          50.55
+        ],
+        "exactMatchCiRecomputed": [
+          49.49,
+          50.55
+        ],
+        "exactMatchMirrorReproducedExactly": true,
+        "exactMatchMirrorWorstDeltaPp": 0.0035,
+        "microF1Published": 46.84,
+        "microF1PublishedDeltaPp": 0.0048,
+        "microF1Recomputed": 46.8448,
+        "nFrames": 30896,
+        "sourceFile": "/project_gpfs/xyhan/SDSC/surgvu/outputs/s41_pitvis_openrouter_eval/claude-sonnet-4_6/results.csv",
+        "sourceKind": "results_csv"
+      },
+      "gemini-3-flash": {
+        "exactMatchCiPublished": [
+          52.08,
+          53.18
+        ],
+        "exactMatchCiRecomputed": [
+          52.08,
+          53.18
+        ],
+        "exactMatchMirrorReproducedExactly": true,
+        "exactMatchMirrorWorstDeltaPp": 0.0048,
+        "microF1Published": 48.91,
+        "microF1PublishedDeltaPp": 0.0042,
+        "microF1Recomputed": 48.9142,
+        "nFrames": 30896,
+        "sourceFile": "/project_gpfs/xyhan/SDSC/surgvu/outputs/s41_pitvis_openrouter_eval/gemini-3-flash/results.csv",
+        "sourceKind": "results_csv"
+      },
+      "gemini-3_1-pro": {
+        "exactMatchCiPublished": [
+          57.11,
+          58.2
+        ],
+        "exactMatchCiRecomputed": [
+          57.11,
+          58.2
+        ],
+        "exactMatchMirrorReproducedExactly": true,
+        "exactMatchMirrorWorstDeltaPp": 0.0048,
+        "microF1Published": 50.41,
+        "microF1PublishedDeltaPp": -0.0036,
+        "microF1Recomputed": 50.4064,
+        "nFrames": 30896,
+        "sourceFile": "/project_gpfs/xyhan/SDSC/surgvu/outputs/s41_pitvis_openrouter_eval/gemini-3_1-pro/results.csv",
+        "sourceKind": "results_csv"
+      },
+      "gemma3-27b-it": {
+        "exactMatchCiPublished": [
+          27.97,
+          28.94
+        ],
+        "exactMatchCiRecomputed": [
+          27.97,
+          28.94
+        ],
+        "exactMatchMirrorReproducedExactly": true,
+        "exactMatchMirrorWorstDeltaPp": 0.0045,
+        "microF1Published": 35.59,
+        "microF1PublishedDeltaPp": 0.0029,
+        "microF1Recomputed": 35.5929,
+        "nFrames": 30896,
+        "sourceFile": "/project/xyhan/SDSC/outputs/s37_pitvis_vlm_eval/gemma-3-27b-it_temp1_0/results.csv",
+        "sourceKind": "results_csv"
+      },
+      "gemma3-27b-lora": {
+        "exactMatchCiPublished": [
+          84.36,
+          85.16
+        ],
+        "exactMatchCiRecomputed": [
+          84.37,
+          85.15
+        ],
+        "exactMatchMirrorReproducedExactly": false,
+        "exactMatchMirrorWorstDeltaPp": 0.0101,
+        "microF1Published": 85.65,
+        "microF1PublishedDeltaPp": 0.0004,
+        "microF1Recomputed": 85.6504,
+        "nFrames": 30896,
+        "sourceFile": "/project/xyhan/SDSC/outputs/s38_pitvis_finetuning_93851/val_predictions_after_training.jsonl",
+        "sourceKind": "lora_jsonl"
+      },
+      "gpt-5_4": {
+        "exactMatchCiPublished": [
+          48.81,
+          49.92
+        ],
+        "exactMatchCiRecomputed": [
+          48.81,
+          49.92
+        ],
+        "exactMatchMirrorReproducedExactly": true,
+        "exactMatchMirrorWorstDeltaPp": 0.0011,
+        "microF1Published": 45.69,
+        "microF1PublishedDeltaPp": -0.0023,
+        "microF1Recomputed": 45.6877,
+        "nFrames": 30896,
+        "sourceFile": "/project_gpfs/xyhan/SDSC/surgvu/outputs/s41_pitvis_openrouter_eval/gpt-5_4/results.csv",
+        "sourceKind": "results_csv"
+      },
+      "gpt-5_6-sol": {
+        "exactMatchCiPublished": [
+          36.3,
+          42.6
+        ],
+        "exactMatchCiRecomputed": [
+          36.3,
+          42.6
+        ],
+        "exactMatchMirrorReproducedExactly": true,
+        "exactMatchMirrorWorstDeltaPp": 0.0,
+        "microF1Published": 40.02,
+        "microF1PublishedDeltaPp": 0.0027,
+        "microF1Recomputed": 40.0227,
+        "nFrames": 1000,
+        "sourceFile": "/project_gpfs/xyhan/SDSC/surgvu/outputs/s54_gpt56sol_openai_eval/pitvis/results.csv",
+        "sourceKind": "results_csv"
+      },
+      "kimi-k3": {
+        "exactMatchCiPublished": [
+          45.6,
+          51.9
+        ],
+        "exactMatchCiRecomputed": [
+          45.6,
+          51.9
+        ],
+        "exactMatchMirrorReproducedExactly": true,
+        "exactMatchMirrorWorstDeltaPp": 0.0,
+        "microF1Published": 46.22,
+        "microF1PublishedDeltaPp": 0.004,
+        "microF1Recomputed": 46.224,
+        "nFrames": 1000,
+        "sourceFile": "/project_gpfs/xyhan/SDSC/surgvu/outputs/s55_kimik3_openrouter_eval/pitvis/results.csv",
+        "sourceKind": "results_csv"
+      },
+      "yolov12m": {
+        "exactMatchCiPublished": [
+          82.36,
+          83.2
+        ],
+        "exactMatchCiRecomputed": [
+          82.36,
+          83.23
+        ],
+        "exactMatchMirrorReproducedExactly": false,
+        "exactMatchMirrorWorstDeltaPp": 0.0341,
+        "microF1Published": 82.75,
+        "microF1PublishedDeltaPp": 0.0015,
+        "microF1Recomputed": 82.7515,
+        "nFrames": 30896,
+        "sourceFile": "/project/xyhan/SDSC/outputs/s40_pitvis_yolo_92920/predictions_detailed.json",
+        "sourceKind": "yolo_json"
+      }
+    },
+    "surgvu": {
+      "claude-fable-5": {
+        "exactMatchCiPublished": [
+          17.75,
+          22.34
+        ],
+        "exactMatchCiRecomputed": [
+          17.75,
+          22.34
+        ],
+        "exactMatchMirrorReproducedExactly": true,
+        "exactMatchMirrorWorstDeltaPp": 0.0023,
+        "microF1Published": 30.83,
+        "microF1PublishedDeltaPp": -0.0007,
+        "microF1Recomputed": 30.8293,
+        "nFrames": 1155,
+        "sourceFile": "/project_gpfs/xyhan/SDSC/surgvu/outputs/s51_fable5_anthropic_eval/surgvu/results.csv",
+        "sourceKind": "results_csv"
+      },
+      "claude-opus-4_6": {
+        "exactMatchCiPublished": [
+          16.73,
+          17.77
+        ],
+        "exactMatchCiRecomputed": [
+          16.73,
+          17.77
+        ],
+        "exactMatchMirrorReproducedExactly": true,
+        "exactMatchMirrorWorstDeltaPp": 0.0008,
+        "microF1Published": 27.38,
+        "microF1PublishedDeltaPp": -0.0025,
+        "microF1Recomputed": 27.3775,
+        "nFrames": 18919,
+        "sourceFile": "/project_gpfs/xyhan/SDSC/surgvu/outputs/s46_surgvu_openrouter_eval/claude-opus-4_6/results.csv",
+        "sourceKind": "results_csv"
+      },
+      "claude-sonnet-4_6": {
+        "exactMatchCiPublished": [
+          22.46,
+          23.65
+        ],
+        "exactMatchCiRecomputed": [
+          22.46,
+          23.65
+        ],
+        "exactMatchMirrorReproducedExactly": true,
+        "exactMatchMirrorWorstDeltaPp": 0.0042,
+        "microF1Published": 31.27,
+        "microF1PublishedDeltaPp": 0.0011,
+        "microF1Recomputed": 31.2711,
+        "nFrames": 18919,
+        "sourceFile": "/project_gpfs/xyhan/SDSC/surgvu/outputs/s46_surgvu_openrouter_eval/claude-sonnet-4_6/results.csv",
+        "sourceKind": "results_csv"
+      },
+      "gemini-3-flash": {
+        "exactMatchCiPublished": [
+          11.23,
+          12.16
+        ],
+        "exactMatchCiRecomputed": [
+          11.23,
+          12.16
+        ],
+        "exactMatchMirrorReproducedExactly": true,
+        "exactMatchMirrorWorstDeltaPp": 0.0032,
+        "microF1Published": 36.89,
+        "microF1PublishedDeltaPp": -0.002,
+        "microF1Recomputed": 36.888,
+        "nFrames": 18919,
+        "sourceFile": "/project_gpfs/xyhan/SDSC/surgvu/outputs/s46_surgvu_openrouter_eval/gemini-3-flash/results.csv",
+        "sourceKind": "results_csv"
+      },
+      "gemini-3_1-pro": {
+        "exactMatchCiPublished": [
+          21.86,
+          23.02
+        ],
+        "exactMatchCiRecomputed": [
+          21.86,
+          23.02
+        ],
+        "exactMatchMirrorReproducedExactly": true,
+        "exactMatchMirrorWorstDeltaPp": 0.0016,
+        "microF1Published": 43.65,
+        "microF1PublishedDeltaPp": 0.0013,
+        "microF1Recomputed": 43.6513,
+        "nFrames": 18919,
+        "sourceFile": "/project_gpfs/xyhan/SDSC/surgvu/outputs/s46_surgvu_openrouter_eval/gemini-3_1-pro/results.csv",
+        "sourceKind": "results_csv"
+      },
+      "gemma3-27b-it": {
+        "exactMatchCiPublished": [
+          2.66,
+          3.16
+        ],
+        "exactMatchCiRecomputed": [
+          2.67,
+          3.13
+        ],
+        "exactMatchMirrorReproducedExactly": false,
+        "exactMatchMirrorWorstDeltaPp": 0.0309,
+        "microF1Published": 20.69,
+        "microF1PublishedDeltaPp": 0.0007,
+        "microF1Recomputed": 20.6907,
+        "nFrames": 18919,
+        "sourceFile": "/project/xyhan/SDSC/outputs/s41_surgvu_vlm_eval/gemma-3-27b-it_temp1_0/results.csv",
+        "sourceKind": "results_csv"
+      },
+      "gemma3-27b-lora": {
+        "exactMatchCiPublished": [
+          49.84,
+          51.39
+        ],
+        "exactMatchCiRecomputed": [
+          49.81,
+          51.31
+        ],
+        "exactMatchMirrorReproducedExactly": false,
+        "exactMatchMirrorWorstDeltaPp": 0.0761,
+        "microF1Published": 74.86,
+        "microF1PublishedDeltaPp": 0.0,
+        "microF1Recomputed": 74.86,
+        "nFrames": 16288,
+        "sourceFile": "/project_gpfs/xyhan/SDSC/surgvu/outputs/s42_surgvu_finetuning_101999/val_predictions_after_training.jsonl",
+        "sourceKind": "lora_jsonl"
+      },
+      "gpt-5_4": {
+        "exactMatchCiPublished": [
+          17.1,
+          18.24
+        ],
+        "exactMatchCiRecomputed": [
+          17.1,
+          18.24
+        ],
+        "exactMatchMirrorReproducedExactly": true,
+        "exactMatchMirrorWorstDeltaPp": 0.0034,
+        "microF1Published": 25.99,
+        "microF1PublishedDeltaPp": -0.0063,
+        "microF1Recomputed": 25.9837,
+        "nFrames": 18918,
+        "sourceFile": "/project_gpfs/xyhan/SDSC/surgvu/outputs/s46_surgvu_openrouter_eval/gpt-5_4/results.csv",
+        "sourceKind": "results_csv"
+      },
+      "gpt-5_6-sol": {
+        "exactMatchCiPublished": [
+          15.2,
+          19.9
+        ],
+        "exactMatchCiRecomputed": [
+          15.2,
+          19.9
+        ],
+        "exactMatchMirrorReproducedExactly": true,
+        "exactMatchMirrorWorstDeltaPp": 0.0,
+        "microF1Published": 29.18,
+        "microF1PublishedDeltaPp": -0.003,
+        "microF1Recomputed": 29.177,
+        "nFrames": 1000,
+        "sourceFile": "/project_gpfs/xyhan/SDSC/surgvu/outputs/s54_gpt56sol_openai_eval/surgvu/results.csv",
+        "sourceKind": "results_csv"
+      },
+      "kimi-k3": {
+        "exactMatchCiPublished": [
+          13.68,
+          19.25
+        ],
+        "exactMatchCiRecomputed": [
+          13.68,
+          19.25
+        ],
+        "exactMatchMirrorReproducedExactly": true,
+        "exactMatchMirrorWorstDeltaPp": 0.0042,
+        "microF1Published": 16.02,
+        "microF1PublishedDeltaPp": 0.0004,
+        "microF1Recomputed": 16.0204,
+        "nFrames": 665,
+        "sourceFile": "/project_gpfs/xyhan/SDSC/surgvu/outputs/s55_kimik3_openrouter_eval/surgvu/results.csv",
+        "sourceKind": "results_csv"
+      },
+      "yolov12m": {
+        "exactMatchCiPublished": [
+          50.97,
+          52.51
+        ],
+        "exactMatchCiRecomputed": [
+          50.95,
+          52.53
+        ],
+        "exactMatchMirrorReproducedExactly": false,
+        "exactMatchMirrorWorstDeltaPp": 0.0227,
+        "microF1Published": 75.34,
+        "microF1PublishedDeltaPp": 0.0048,
+        "microF1Recomputed": 75.3448,
+        "nFrames": 16287,
+        "sourceFile": "/project_gpfs/xyhan/SDSC/surgvu/outputs/s44_surgvu_yolo_102001/predictions_detailed.json",
+        "sourceKind": "yolo_json"
+      }
+    }
+  },
+  "methodology": {
+    "clustered": false,
+    "intervalType": "percentile",
+    "mirrors": "bootstrap_ci() as used for the published exact-match intervals",
+    "nResamples": 1000,
+    "percentileIndices": [
+      25,
+      975
+    ],
+    "resamplingUnit": "frame, i.i.d. with replacement, n draws from n scored frames",
+    "rng": "python random.Random(42), one choice() call per frame per replicate",
+    "seed": 42,
+    "statistic": "micro-F1 recomputed from TP/FP/FN pooled over the resampled frames",
+    "stratified": false
+  }
+}
