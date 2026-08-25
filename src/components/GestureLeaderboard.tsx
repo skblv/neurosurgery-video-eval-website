@@ -43,7 +43,7 @@ export function GestureLeaderboard() {
           Continuous-operation results
         </h3>
 
-        <div className="figure-row figure-row--gesture">
+        <div className="figure-row">
           <ResultsChart
             dataset={GESTURE_BENCHMARK}
             metricId={metricId}
@@ -53,9 +53,15 @@ export function GestureLeaderboard() {
 
           <label className="metric">
             <span className="metric__label">Metric</span>
-            <select className="metric__select" value={metricId} onChange={handleMetricChange}>
+            <select
+              className="metric__select"
+              value={metricId}
+              onChange={handleMetricChange}
+            >
               {GESTURE_METRIC_ORDER.map((id) => (
-                <option key={id} value={id}>{GESTURE_METRICS[id].label}</option>
+                <option key={id} value={id}>
+                  {GESTURE_METRICS[id].label}
+                </option>
               ))}
             </select>
           </label>

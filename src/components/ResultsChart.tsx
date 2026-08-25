@@ -226,7 +226,7 @@ export function ResultsChart<MetricId extends string>({
         <BarChart
           layout="vertical"
           data={rows}
-          margin={{ top: 30, right: 60, bottom: 24, left: 0 }}
+          margin={{ top: 30, right: 48, bottom: 24, left: 0 }}
           barCategoryGap="24%"
         >
           <XAxis

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 
 import { boothLogo, sdscLogo } from "./assets/logos";
+import { AboutUs } from "./components/AboutUs";
 import { ComingSoon } from "./components/ComingSoon";
 import { DomainNav } from "./components/DomainNav";
 import { GestureLeaderboard } from "./components/GestureLeaderboard";
@@ -16,13 +17,27 @@ import { ROUTES, type DomainRoute } from "./data/domains";
 
 function routeFromHash(): DomainRoute {
   const candidate = window.location.hash.replace(/^#\/?/, "") || "instruments";
-  return ROUTES.includes(candidate as DomainRoute) ? (candidate as DomainRoute) : "instruments";
+  return ROUTES.includes(candidate as DomainRoute)
+    ? (candidate as DomainRoute)
+    : "instruments";
 }
 
 function PageContent({ route }: { route: DomainRoute }) {
-  if (route === "instruments") return <InstrumentLeaderboard />;
-  if (route === "gestures") return <GestureLeaderboard />;
-  return <ComingSoon route={route} />;
+  switch (route) {
+    case "instruments":
+      return <InstrumentLeaderboard />;
+    case "gestures":
+      return <GestureLeaderboard />;
+    case "anatomy":
+    case "clinical-context":
+    case "recommendations":
+    case "skill-assessment":
+      return <ComingSoon route={route} />;
+    default: {
+      const exhaustive: never = route;
+      throw new Error(`Unhandled domain route: ${exhaustive}`);
+    }
+  }
 }
 
 function InstrumentSources() {
@@ -31,22 +46,30 @@ function InstrumentSources() {
       <li>
         <sup className="footnote-ref">1</sup> {PAPER.authorsShort}{" "}
         <cite>{PAPER.title}</cite>{" "}
-        <a href={PAPER.url} target="_blank" rel="noreferrer">{PAPER.arxivId}</a>{" "}
+        <a href={PAPER.url} target="_blank" rel="noreferrer">
+          {PAPER.arxivId}
+        </a>{" "}
         ({PAPER.year}).
       </li>
       {DATASET_CITATIONS.map((ref, index) => (
         <li key={ref.datasetName}>
           <sup className="footnote-ref">{index + 2}</sup> {ref.authorsShort}{" "}
           <cite>{ref.title}</cite>. {ref.venue}{" "}
-          <a href={ref.url} target="_blank" rel="noreferrer">{ref.linkLabel}</a>{" "}
+          <a href={ref.url} target="_blank" rel="noreferrer">
+            {ref.linkLabel}
+          </a>{" "}
           ({ref.year}).
         </li>
       ))}
       {MODEL_CITATIONS.map((ref, index) => (
         <li key={ref.modelId}>
-          <sup className="footnote-ref">{index + 2 + DATASET_CITATIONS.length}</sup>{" "}
+          <sup className="footnote-ref">
+            {index + 2 + DATASET_CITATIONS.length}
+          </sup>{" "}
           {ref.authorsShort} <cite>{ref.title}</cite>. {ref.venue}{" "}
-          <a href={ref.url} target="_blank" rel="noreferrer">{ref.linkLabel}</a>{" "}
+          <a href={ref.url} target="_blank" rel="noreferrer">
+            {ref.linkLabel}
+          </a>{" "}
           ({ref.year}).
         </li>
       ))}
@@ -59,9 +82,13 @@ function GestureSources() {
     <ol className="footnotes">
       {GESTURE_MODEL_CITATIONS.map((ref) => (
         <li key={ref.modelId}>
-          <sup className="footnote-ref">{gestureModelFootnote(ref.modelId)}</sup>{" "}
+          <sup className="footnote-ref">
+            {gestureModelFootnote(ref.modelId)}
+          </sup>{" "}
           {ref.authorsShort} <cite>{ref.title}</cite>. {ref.venue}{" "}
-          <a href={ref.url} target="_blank" rel="noreferrer">{ref.linkLabel}</a>{" "}
+          <a href={ref.url} target="_blank" rel="noreferrer">
+            {ref.linkLabel}
+          </a>{" "}
           ({ref.year}).
         </li>
       ))}
@@ -93,7 +120,11 @@ export default function App() {
             rel="noopener noreferrer"
             aria-label="Surgical Data Science Collective"
           >
-            <img className="lockup__sdsc" src={sdscLogo} alt="Surgical Data Science Collective" />
+            <img
+              className="lockup__sdsc"
+              src={sdscLogo}
+              alt="Surgical Data Science Collective"
+            />
           </a>
           <span className="lockup__rule" aria-hidden="true" />
           <a
@@ -121,8 +152,9 @@ export default function App() {
       <footer className="footer">
         {route === "instruments" ? <InstrumentSources /> : null}
         {route === "gestures" ? <GestureSources /> : null}
-        <p className="footer__mark">Surgical Data Science Collective × Chicago Booth</p>
       </footer>
+
+      <AboutUs />
     </div>
   );
 }

@@ -20,8 +20,8 @@ const KNOWN_PROVIDER_LABELS: Record<string, string> = {
   gemini: "Google DeepMind",
   google: "Google",
   moonshot: "Moonshot AI",
-  surgmotion: "SurgMotion",
   visurg: "Visurg AI",
+  surgmotion: "SurgMotion",
 };
 
 /** Display name for a provider id; unknown slugs are title-cased. */
@@ -113,6 +113,15 @@ export const PAPER = {
   arxivId: "arXiv:2603.27341",
   url: "https://arxiv.org/abs/2603.27341",
   year: 2026,
+  bibtex: `@misc{skobelev2026comparativestudysurgicalai,
+      title={A Comparative Study in Surgical AI: Potential and Limitations of Data, Compute, and Scaling},
+      author={Kirill Skobelev and Eric Fithian and Yegor Baranovski and Jack Cook and Sandeep Angara and Shauna Otto and Zhuang-Fang Yi and John Zhu and Neeraj Mainkar and Margaux Masson-Forsythe and Daniel A. Donoho and X. Y. Han},
+      year={2026},
+      eprint={2603.27341},
+      archivePrefix={arXiv},
+      primaryClass={cs.AI},
+      url={https://arxiv.org/abs/2603.27341},
+}`,
 } as const;
 
 export interface DatasetCitation {
@@ -150,10 +159,8 @@ export const MODEL_CITATIONS: ModelCitation[] = [
 ];
 
 /**
- * Sources cited on the Action (gesture) page, numbered after the instrument
- * footnotes so the numbering runs through the whole site. Model ids here refer
- * to `gestureResults.json` and may repeat instrument ids, which is why each
- * page resolves footnotes through its own lookup.
+ * Sources cited on the Action page. Numbered after the instrument footnotes
+ * so the numbering runs through the whole site.
  */
 export const GESTURE_MODEL_CITATIONS: ModelCitation[] = [
   {
@@ -218,7 +225,7 @@ export function modelFootnote(modelId: string): number | null {
   return index + 2 + DATASET_CITATIONS.length;
 }
 
-/** Footnote number for an Action-page model result; numbering continues after {@link modelFootnote}. */
+/** Footnote number for an Action-page model result. */
 export function gestureModelFootnote(modelId: string): number | null {
   const index = GESTURE_MODEL_CITATIONS.findIndex((ref) => ref.modelId === modelId);
   if (index === -1) return null;
