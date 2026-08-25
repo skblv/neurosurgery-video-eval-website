@@ -28,9 +28,10 @@ export function InstrumentLeaderboard() {
       <header className="domain-hero">
         <h2>Which instruments are visible?</h2>
         <p>
-          Identifying surgical tools is a prerequisite for understanding what is happening in an
-          operation. We compare frontier and specialist models across three frame-level surgical
-          benchmarks<sup className="footnote-ref">1</sup>.
+          Identifying surgical tools is a prerequisite for understanding what is
+          happening in an operation. We compare frontier and specialist models
+          across three frame-level surgical benchmarks
+          <sup className="footnote-ref">1</sup>.
         </p>
       </header>
 
@@ -63,8 +64,8 @@ export function InstrumentLeaderboard() {
             footnoteFor={modelFootnote}
             caption={
               <>
-                The plot reports {METRICS[metricId].captionName} on {active.toolClasses}{" "}
-                instruments in the{" "}
+                The plot reports {METRICS[metricId].captionName} on{" "}
+                {active.toolClasses} instruments in the{" "}
                 <a href={active.sourceUrl} target="_blank" rel="noreferrer">
                   {active.name}
                 </a>{" "}
@@ -75,7 +76,11 @@ export function InstrumentLeaderboard() {
 
           <label className="metric">
             <span className="metric__label">Metric</span>
-            <select className="metric__select" value={metricId} onChange={handleMetricChange}>
+            <select
+              className="metric__select"
+              value={metricId}
+              onChange={handleMetricChange}
+            >
               {METRIC_ORDER.map((id) => (
                 <option key={id} value={id}>
                   {METRICS[id].label}
