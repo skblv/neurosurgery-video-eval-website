@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 import { boothLogo, sdscLogo } from "./assets/logos";
 import { AboutUs } from "./components/AboutUs";
-import { ComingSoon } from "./components/ComingSoon";
+import { DomainLeaderboard } from "./components/DomainLeaderboard";
 import { DomainNav } from "./components/DomainNav";
 import { GestureLeaderboard } from "./components/GestureLeaderboard";
 import { InstrumentLeaderboard } from "./components/Leaderboard";
@@ -13,6 +13,12 @@ import {
   PAPER,
   gestureModelFootnote,
 } from "./data/benchmark";
+import {
+  DOMAIN_DATASET_CITATIONS,
+  DOMAIN_PAGES,
+  domainDatasetFootnote,
+  domainModelFootnote,
+} from "./data/domainBenchmark";
 import { ROUTES, type DomainRoute } from "./data/domains";
 
 function routeFromHash(): DomainRoute {
@@ -32,7 +38,8 @@ function PageContent({ route }: { route: DomainRoute }) {
     case "clinical-context":
     case "recommendations":
     case "skill-assessment":
-      return <ComingSoon route={route} />;
+      // Keyed so metric state resets between domain pages with different metric sets.
+      return <DomainLeaderboard key={route} page={DOMAIN_PAGES[route]} />;
     default: {
       const exhaustive: never = route;
       throw new Error(`Unhandled domain route: ${exhaustive}`);
@@ -86,6 +93,52 @@ function GestureSources() {
             {gestureModelFootnote(ref.modelId)}
           </sup>{" "}
           {ref.authorsShort} <cite>{ref.title}</cite>. {ref.venue}{" "}
+          <a href={ref.url} target="_blank" rel="noreferrer">
+            {ref.linkLabel}
+          </a>{" "}
+          ({ref.year}).
+        </li>
+      ))}
+    </ol>
+  );
+}
+
+function DomainSources({
+  route,
+}: {
+  route: keyof typeof DOMAIN_PAGES;
+}) {
+  const page = DOMAIN_PAGES[route];
+  const datasetRef = DOMAIN_DATASET_CITATIONS[page.datasetId];
+
+  // Site-wide footnote numbers, listed in ascending order: model citations
+  // reused from the Instruments page come before the domain dataset numbers.
+  const entries = [
+    ...MODEL_CITATIONS.map((ref) => ({
+      key: ref.modelId,
+      number: domainModelFootnote(ref.modelId),
+      ref,
+    })),
+    {
+      key: `dataset-${page.datasetId}`,
+      number: domainDatasetFootnote(page.datasetId),
+      ref: {
+        authorsShort: datasetRef.authorsShort,
+        title: datasetRef.title,
+        venue: datasetRef.venue,
+        linkLabel: datasetRef.linkLabel,
+        url: datasetRef.url,
+        year: datasetRef.year,
+      },
+    },
+  ].sort((a, b) => (a.number ?? 0) - (b.number ?? 0));
+
+  return (
+    <ol className="footnotes">
+      {entries.map(({ key, number, ref }) => (
+        <li key={key}>
+          <sup className="footnote-ref">{number}</sup> {ref.authorsShort}{" "}
+          <cite>{ref.title}</cite>. {ref.venue}{" "}
           <a href={ref.url} target="_blank" rel="noreferrer">
             {ref.linkLabel}
           </a>{" "}
@@ -152,6 +205,12 @@ export default function App() {
       <footer className="footer">
         {route === "instruments" ? <InstrumentSources /> : null}
         {route === "gestures" ? <GestureSources /> : null}
+        {route === "anatomy" ||
+        route === "clinical-context" ||
+        route === "recommendations" ||
+        route === "skill-assessment" ? (
+          <DomainSources route={route} />
+        ) : null}
       </footer>
 
       <AboutUs />

@@ -1,15 +1,18 @@
 import { useMemo, useState, type ChangeEvent } from "react";
 
-import { ResultsChart } from "./ResultsChart";
-import { ResultsTable } from "./ResultsTable";
+import { INSTRUMENT_EXAMPLES } from "../data/benchExample";
 import {
   DATASETS,
   METRICS,
   METRIC_ORDER,
+  instrumentWeightsUrl,
   modelFootnote,
   type DatasetId,
   type MetricId,
 } from "../data/benchmark";
+import { BenchExample } from "./BenchExample";
+import { ResultsChart } from "./ResultsChart";
+import { ResultsTable } from "./ResultsTable";
 
 /** Instrument domain: dataset tabs, the figure, and the full table. */
 export function InstrumentLeaderboard() {
@@ -56,8 +59,11 @@ export function InstrumentLeaderboard() {
           ))}
         </div>
 
+        <BenchExample key={activeId} example={INSTRUMENT_EXAMPLES[activeId]} />
+
         <div className="figure-row">
           <ResultsChart
+            key={`${active.id}-${metricId}`}
             dataset={active}
             metricId={metricId}
             metric={METRICS[metricId]}
@@ -95,6 +101,7 @@ export function InstrumentLeaderboard() {
           metricId={metricId}
           metricLabel={METRICS[metricId].label}
           footnoteFor={modelFootnote}
+          weightsFor={(modelId) => instrumentWeightsUrl(activeId, modelId)}
         />
       </section>
     </>

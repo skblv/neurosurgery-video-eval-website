@@ -52,12 +52,15 @@ export function ResultsTable<MetricId extends string>({
   metricId,
   metricLabel,
   footnoteFor,
+  weightsFor,
   showConfidenceInterval = true,
 }: {
   dataset: LeaderboardBenchmark<MetricId>;
   metricId: MetricId;
   metricLabel: string;
   footnoteFor: FootnoteLookup;
+  /** Optional lookup for a model's released-weights URL (e.g. Hugging Face). */
+  weightsFor?: (modelId: string) => string | null;
   showConfidenceInterval?: boolean;
 }) {
   const rows = buildRows(dataset, metricId);
@@ -90,6 +93,17 @@ export function ResultsTable<MetricId extends string>({
               {footnoteFor(row.key) === null ? null : (
                 <sup className="footnote-ref">{footnoteFor(row.key)}</sup>
               )}
+              {weightsFor && weightsFor(row.key) !== null ? (
+                <a
+                  className="hf-link"
+                  href={weightsFor(row.key) ?? undefined}
+                  target="_blank"
+                  rel="noreferrer"
+                  title="Released weights on Hugging Face"
+                >
+                  [huggingface]
+                </a>
+              ) : null}
             </th>
             <td className="table__num table__num--strong">
               {row.value === null ? "not evaluated" : `${row.value.toFixed(2)}%`}

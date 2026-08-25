@@ -201,6 +201,11 @@ h3 {
   color: #62625f;
 }
 
+.status--pilot {
+  background: #e7f0ee;
+  color: #0f766e;
+}
+
 .result-notes {
   margin: 1.5rem 0 0;
   color: var(--ink-faint);
@@ -630,6 +635,129 @@ h3 {
   line-height: 0;
 }
 
+.hf-link {
+  margin-left: 0.4rem;
+  color: var(--accent);
+  font-size: 0.8125rem;
+  font-weight: 450;
+  white-space: nowrap;
+}
+
+.bench-example {
+  margin: 0 0 1.75rem;
+}
+
+.bench-example__summary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  cursor: pointer;
+  list-style: none;
+  color: var(--ink);
+  font-weight: 700;
+  line-height: 1.4;
+  user-select: none;
+}
+
+.bench-example__summary:hover {
+  color: var(--accent);
+}
+
+.bench-example__summary::-webkit-details-marker {
+  display: none;
+}
+
+.bench-example__summary::marker {
+  content: "";
+}
+
+.bench-example__arrow {
+  display: inline-block;
+  width: 0.42rem;
+  height: 0.42rem;
+  border-right: 1.6px solid currentColor;
+  border-bottom: 1.6px solid currentColor;
+  transform: rotate(-45deg);
+  transition: transform 120ms ease;
+}
+
+.bench-example[open] .bench-example__arrow {
+  transform: rotate(45deg);
+}
+
+.bench-example__panel {
+  display: grid;
+  grid-template-columns: 13.5rem minmax(0, 1fr);
+  gap: 1.5rem 1.75rem;
+  align-items: start;
+  margin-top: 0.85rem;
+}
+
+.bench-example__frame {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 4 / 3;
+  width: 100%;
+  border: 1px dashed #b8b8b4;
+  background: repeating-linear-gradient(
+    -45deg,
+    #f4f4f2,
+    #f4f4f2 8px,
+    #ecece8 8px,
+    #ecece8 16px
+  );
+  color: var(--annotation);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.bench-example__question {
+  margin: 0;
+  color: var(--ink);
+  font-size: 1.0625rem;
+  font-weight: 520;
+  line-height: 1.4;
+}
+
+.bench-example__hint {
+  margin: 0.35rem 0 0.7rem;
+  color: var(--ink-faint);
+  font-size: 0.8125rem;
+}
+
+.bench-example__group {
+  margin-top: 0.65rem;
+}
+
+.bench-example__group-label {
+  margin: 0 0 0.35rem;
+  color: var(--ink-soft);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+
+.bench-example__options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.bench-example__options li {
+  padding: 0.22rem 0.55rem;
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  background: #fff;
+  color: var(--ink-soft);
+  font-size: 0.8125rem;
+  line-height: 1.35;
+}
+
 /* ---------- about us ---------- */
 
 .about {
@@ -831,6 +959,15 @@ h3 {
 }
 
 @media (max-width: 900px) {
+  .bench-example__panel {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .bench-example__frame {
+    max-width: 16rem;
+  }
+
   .figure-row {
     flex-direction: column-reverse;
     align-items: stretch;

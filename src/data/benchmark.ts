@@ -22,6 +22,7 @@ const KNOWN_PROVIDER_LABELS: Record<string, string> = {
   moonshot: "Moonshot AI",
   visurg: "Visurg AI",
   surgmotion: "SurgMotion",
+  qwen: "Qwen",
 };
 
 /** Display name for a provider id; unknown slugs are title-cased. */
@@ -95,6 +96,38 @@ const DATASET_META: Record<DatasetId, DatasetMeta> = {
 };
 
 export const BAR_COLOR = "#0F766E";
+
+const HF_NAMESPACE = "https://huggingface.co/skblv";
+
+/**
+ * Hugging Face repos for models we trained on the Instruments tab.
+ * Gemma entries are LoRA adapters plus the linear classification head.
+ */
+const INSTRUMENT_WEIGHTS_URLS: Record<DatasetId, Record<string, string>> = {
+  cholect50: {
+    "gemma3-27b-lora": `${HF_NAMESPACE}/gemma-3-27b-it-lora-cholect50-instruments`,
+    yolov12m: `${HF_NAMESPACE}/yolov12m-cholect50-instruments`,
+    "lemonfm-linear-probe": `${HF_NAMESPACE}/lemonfm-linear-probes-surgical-video`,
+  },
+  pitvis: {
+    "gemma3-27b-lora": `${HF_NAMESPACE}/gemma-3-27b-it-lora-pitvis-instruments`,
+    yolov12m: `${HF_NAMESPACE}/yolov12m-pitvis-instruments`,
+    "lemonfm-linear-probe": `${HF_NAMESPACE}/lemonfm-linear-probes-surgical-video`,
+  },
+  surgvu: {
+    "gemma3-27b-lora": `${HF_NAMESPACE}/gemma-3-27b-it-lora-surgvu-instruments`,
+    yolov12m: `${HF_NAMESPACE}/yolov12m-surgvu-instruments`,
+    "lemonfm-linear-probe": `${HF_NAMESPACE}/lemonfm-linear-probes-surgical-video`,
+  },
+};
+
+/** Weight-repo URL for an Instruments-tab model we released, if any. */
+export function instrumentWeightsUrl(
+  datasetId: DatasetId,
+  modelId: string,
+): string | null {
+  return INSTRUMENT_WEIGHTS_URLS[datasetId][modelId] ?? null;
+}
 
 const RESULTS = parseResultsFile(rawResults);
 
