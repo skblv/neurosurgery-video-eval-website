@@ -25,7 +25,7 @@ const MAINTAINERS = [
   {
     id: "zhuang-fang-yi",
     name: "Zhuang-Fang (NaNa) Yi, PhD",
-    role: "Lead ML Engineer",
+    role: "Lead ML Engineer at SDSC",
     photo: nanaPhoto,
     links: [
       {
