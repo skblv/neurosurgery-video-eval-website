@@ -9,12 +9,12 @@ import type { MetricId } from "./resultsSchema";
 
 export const DOMAIN_METRIC_ORDER: MetricId[] = ["exactMatch", "microF1"];
 
-export type DomainDatasetId = "dsad" | "pitvqa" | "sapbench" | "sarrarp50";
+export type DomainDatasetId = "dsad" | "pitvqa" | "cholect50verbs" | "sarrarp50";
 
 export const DOMAIN_DATASET_ORDER: DomainDatasetId[] = [
   "dsad",
   "pitvqa",
-  "sapbench",
+  "cholect50verbs",
   "sarrarp50",
 ];
 

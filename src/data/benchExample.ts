@@ -92,7 +92,7 @@ export const GESTURE_EXAMPLE: BenchExampleSpec = {
 };
 
 export const DOMAIN_EXAMPLES: Record<
-  "dsad" | "pitvqa" | "sapbench" | "sarrarp50",
+  "dsad" | "pitvqa" | "cholect50verbs" | "sarrarp50",
   BenchExampleSpec
 > = {
   dsad: {
@@ -145,16 +145,21 @@ export const DOMAIN_EXAMPLES: Record<
       },
     ],
   },
-  sapbench: {
+  cholect50verbs: {
     question:
-      "Based on this cholecystectomy frame, what should the surgeon do next?",
-    selection: "one",
+      "Which surgical actions are being performed in this cholecystectomy frame?",
+    selection: "any",
     options: [
-      "Dissection",
-      "Vessel Clipping",
-      "Tissue Retraction",
-      "Coagulation",
-      "Aspiration",
+      "grasp",
+      "retract",
+      "dissect",
+      "coagulate",
+      "clip",
+      "cut",
+      "aspirate",
+      "irrigate",
+      "pack",
+      "idle",
     ],
   },
   sarrarp50: {

@@ -76,16 +76,16 @@ export const DOMAIN_PAGES: Record<
   },
   recommendations: {
     route: "recommendations",
-    datasetId: "sapbench",
-    title: "What should the surgeon do next?",
-    lead: "Recommendation quality is scored as next-action prediction on SAP-Bench cholecystectomy frames: given the current scene, name the action the surgeon should perform next.",
-    classCount: 5,
-    classNoun: "next actions",
-    sourceUrl: "https://arxiv.org/abs/2506.07196",
-    metricIds: ["exactMatch"],
+    datasetId: "cholect50verbs",
+    title: "Which actions are being performed?",
+    lead: "Recommendation-style scene understanding is scored as multi-label action recognition on CholecT50 cholecystectomy frames: name every current verb visible in the field.",
+    classCount: 10,
+    classNoun: "surgical actions",
+    sourceUrl: "https://arxiv.org/abs/2109.03223",
+    metricIds: ["exactMatch", "microF1"],
     notes: [
-      "All models are scored on the full 353-frame validation split.",
-      "Next-action prediction is single-label (one ground-truth action, one predicted action per frame), so micro-averaged F1 reduces to the same number as exact-match accuracy; a single accuracy metric is reported.",
+      "Action labels are multi-label, so the two metrics differ: exact match requires the predicted action set to equal the ground-truth set, while micro-averaged F1 credits partial overlap. Frames with no active instrument verb are labeled idle.",
+      "Local models are scored on the full 19,923-frame validation split, inherited from the CholecT50 instrument split. API models use a seed-42 sample of 1,000 validation frames. Gemma classification-head and generative fine-tunes on this task are still training and are omitted.",
     ],
   },
   "skill-assessment": {
@@ -115,7 +115,7 @@ export interface DomainDataset extends LeaderboardBenchmark<MetricId> {
 const DATASET_NAMES: Record<DomainDatasetId, string> = {
   dsad: "DSAD",
   pitvqa: "PitVQA",
-  sapbench: "SAP-Bench",
+  cholect50verbs: "CholecT50 verbs",
   sarrarp50: "SAR-RARP50",
 };
 
@@ -159,15 +159,15 @@ export const DOMAIN_DATASET_CITATIONS: Record<DomainDatasetId, DatasetCitation> 
     url: "https://arxiv.org/abs/2405.13949",
     year: 2024,
   },
-  sapbench: {
-    datasetName: "SAP-Bench",
-    authorsShort: "Xu, M., Huang, Z., Imans, D., et al.",
+  cholect50verbs: {
+    datasetName: "CholecT50",
+    authorsShort: "Nwoye, C. I., Yu, T., Gonzalez, C., et al.",
     title:
-      "SAP-Bench: Benchmarking Multimodal Large Language Models in Surgical Action Planning",
-    venue: "arXiv preprint",
-    linkLabel: "arXiv:2506.07196",
-    url: "https://arxiv.org/abs/2506.07196",
-    year: 2025,
+      "Rendezvous: Attention Mechanisms for the Recognition of Surgical Action Triplets in Endoscopic Videos",
+    venue: "Medical Image Analysis, 78, 102433",
+    linkLabel: "arXiv:2109.03223",
+    url: "https://arxiv.org/abs/2109.03223",
+    year: 2022,
   },
   sarrarp50: {
     datasetName: "SAR-RARP50",
@@ -189,18 +189,22 @@ const HF_NAMESPACE = "https://huggingface.co/skblv";
  */
 const DOMAIN_WEIGHTS_URLS: Record<DomainDatasetId, Record<string, string>> = {
   dsad: {
+    "gemma3-27b-lora": `${HF_NAMESPACE}/gemma-3-27b-it-lora-dsad-anatomy`,
     resnet50: `${HF_NAMESPACE}/resnet50-dsad-anatomy`,
     "lemonfm-linear-probe": `${HF_NAMESPACE}/lemonfm-linear-probes-surgical-video`,
   },
   pitvqa: {
+    "gemma3-27b-lora": `${HF_NAMESPACE}/gemma-3-27b-it-lora-pitvqa-phase-step`,
     resnet50: `${HF_NAMESPACE}/resnet50-pitvqa-phase-step`,
     "lemonfm-linear-probe": `${HF_NAMESPACE}/lemonfm-linear-probes-surgical-video`,
   },
-  sapbench: {
-    "yolo11m-cls": `${HF_NAMESPACE}/yolo11m-cls-sapbench-action`,
+  cholect50verbs: {
+    resnet50: `${HF_NAMESPACE}/resnet50-cholect50-verbs`,
     "lemonfm-linear-probe": `${HF_NAMESPACE}/lemonfm-linear-probes-surgical-video`,
   },
   sarrarp50: {
+    "gemma3-27b-lora": `${HF_NAMESPACE}/gemma-3-27b-it-lora-sarrarp50-gesture`,
+    resnet50: `${HF_NAMESPACE}/resnet50-sarrarp50-gesture`,
     "yolo11m-cls": `${HF_NAMESPACE}/yolo11m-cls-sarrarp50-gesture`,
     "lemonfm-linear-probe": `${HF_NAMESPACE}/lemonfm-linear-probes-surgical-video`,
   },
@@ -226,10 +230,15 @@ const FIRST_DOMAIN_DATASET_FOOTNOTE =
 const FOOTNOTE_DATASET_ORDER: DomainDatasetId[] = DOMAINS.filter(
   (domain): domain is (typeof DOMAINS)[number] & { id: keyof typeof DOMAIN_PAGES } =>
     domain.id in DOMAIN_PAGES,
-).map((domain) => DOMAIN_PAGES[domain.id].datasetId);
+)
+  .map((domain) => DOMAIN_PAGES[domain.id].datasetId)
+  .filter((datasetId) => datasetId !== "cholect50verbs");
 
 /** Site-wide footnote number for a new-domain dataset citation. */
 export function domainDatasetFootnote(datasetId: DomainDatasetId): number {
+  if (datasetId === "cholect50verbs") {
+    return 2;
+  }
   const index = FOOTNOTE_DATASET_ORDER.indexOf(datasetId);
   if (index === -1) throw new Error(`No footnote order for dataset ${datasetId}`);
   return FIRST_DOMAIN_DATASET_FOOTNOTE + index;
