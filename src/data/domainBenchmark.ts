@@ -205,7 +205,6 @@ const DOMAIN_WEIGHTS_URLS: Record<DomainDatasetId, Record<string, string>> = {
   sarrarp50: {
     "gemma3-27b-lora": `${HF_NAMESPACE}/gemma-3-27b-it-lora-sarrarp50-gesture`,
     resnet50: `${HF_NAMESPACE}/resnet50-sarrarp50-gesture`,
-    "yolo11m-cls": `${HF_NAMESPACE}/yolo11m-cls-sarrarp50-gesture`,
     "lemonfm-linear-probe": `${HF_NAMESPACE}/lemonfm-linear-probes-surgical-video`,
   },
 };
