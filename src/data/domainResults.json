@@ -717,24 +717,6 @@
       },
       "results": [
         {
-          "id": "yolo11m-cls",
-          "model": "YOLO11m-cls",
-          "provider": "internal",
-          "sourceRunId": null,
-          "metrics": {
-            "exactMatch": {
-              "value": 53.1,
-              "ciLow": 49.4,
-              "ciHigh": 57.2
-            },
-            "microF1": {
-              "value": 53.1,
-              "ciLow": 49.4,
-              "ciHigh": 57.2
-            }
-          }
-        },
-        {
           "id": "resnet50",
           "model": "ResNet-50",
           "provider": "internal",
