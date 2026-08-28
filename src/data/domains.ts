@@ -55,7 +55,7 @@ export const DOMAINS: DomainDefinition[] = [
     label: "Recommendations",
     shortLabel: "Recommendations",
     status: "pilot",
-    description: "Evaluate safe, evidence-grounded decision support.",
+    description: "Recognize the current surgical action in the operative scene.",
   },
 ];
 
