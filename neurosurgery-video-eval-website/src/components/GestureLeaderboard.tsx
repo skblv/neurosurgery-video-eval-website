@@ -1,5 +1,6 @@
 import { useState, type ChangeEvent } from "react";
 
+import { GESTURE_EXAMPLE } from "../data/benchExample";
 import { gestureModelFootnote } from "../data/benchmark";
 import {
   GESTURE_BENCHMARK,
@@ -7,6 +8,7 @@ import {
   GESTURE_METRIC_ORDER,
   type GestureMetricId,
 } from "../data/gestureBenchmark";
+import { BenchExample } from "./BenchExample";
 import { ResultsChart } from "./ResultsChart";
 import { ResultsTable } from "./ResultsTable";
 
@@ -38,13 +40,16 @@ export function GestureLeaderboard() {
         </p>
       </header>
 
+      <BenchExample example={GESTURE_EXAMPLE} />
+
       <section className="section" aria-labelledby="gesture-results-heading">
         <h3 id="gesture-results-heading" className="visually-hidden">
           Continuous-operation results
         </h3>
 
-        <div className="figure-row figure-row--gesture">
+        <div className="figure-row">
           <ResultsChart
+            key={metricId}
             dataset={GESTURE_BENCHMARK}
             metricId={metricId}
             metric={metric}
@@ -53,9 +58,15 @@ export function GestureLeaderboard() {
 
           <label className="metric">
             <span className="metric__label">Metric</span>
-            <select className="metric__select" value={metricId} onChange={handleMetricChange}>
+            <select
+              className="metric__select"
+              value={metricId}
+              onChange={handleMetricChange}
+            >
               {GESTURE_METRIC_ORDER.map((id) => (
-                <option key={id} value={id}>{GESTURE_METRICS[id].label}</option>
+                <option key={id} value={id}>
+                  {GESTURE_METRICS[id].label}
+                </option>
               ))}
             </select>
           </label>
