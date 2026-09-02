@@ -13,6 +13,7 @@ import type { ReactNode } from "react";
 
 import { boothShield, sdscMark } from "../assets/logos";
 import { BAR_COLOR, providerLabel } from "../data/benchmark";
+import { isNewModel } from "../data/leaderboard";
 import type {
   FootnoteLookup,
   LeaderboardBenchmark,
@@ -34,20 +35,41 @@ const FOOTNOTE_FONT =
   '9px "Inter", ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif';
 /** The baseline annotation stays grey so it reads as an annotation, not as data. */
 const ANNOTATION_INK = "#6f6f6f";
+/*
+ * "New" badge geometry. The width is fixed rather than measured because the
+ * label is always the same three characters, and the axis column has to be
+ * sized before any tick renders. Colours match the CSS badge in index.css --
+ * ink on SDSC green, which clears the 4.5:1 contrast minimum where white
+ * would not.
+ */
+const NEW_BADGE_LABEL = "NEW";
+const NEW_BADGE_WIDTH = 30;
+const NEW_BADGE_HEIGHT = 13;
+const NEW_BADGE_GAP = 6;
+const NEW_BADGE_FILL = "#2ebdb5";
 /** Below this the label column leaves too little room to plot, so rows stack. */
 const NARROW_QUERY = "(max-width: 700px)";
 
 /**
- * Width of the y-axis label column: the provider mark, a fixed gap, the longest
- * model name, and the 20px inset between the names and the bars. Sizing the
- * column to the content keeps the mark-to-name whitespace identical across
- * benchmarks with long and short model names.
+ * Label geometry for the y-axis column.
+ *
+ * `axisWidth` is the provider mark, a fixed gap, the widest label and the 20px
+ * inset before the bars; sizing to content keeps the mark-to-name whitespace
+ * identical across benchmarks with long and short model names. `labelWidths`
+ * is each row's own label width, which the tick needs because the name is
+ * right-anchored: the "New" badge hangs off the left end of the text, so its
+ * position depends on how wide that row's text is.
  */
-function labelColumnWidth(rows: ChartRow[], footnoteFor: FootnoteLookup): number {
+interface LabelLayout {
+  axisWidth: number;
+  labelWidths: number[];
+}
+
+function measureLabels(rows: ChartRow[], footnoteFor: FootnoteLookup): LabelLayout {
   const context = document.createElement("canvas").getContext("2d");
   if (!context) throw new Error("Canvas 2D context unavailable");
 
-  const widths = rows.map((row) => {
+  const labelWidths = rows.map((row) => {
     context.font = NAME_FONT;
     let width = context.measureText(row.model).width;
     const footnote = footnoteFor(row.id);
@@ -55,10 +77,16 @@ function labelColumnWidth(rows: ChartRow[], footnoteFor: FootnoteLookup): number
       context.font = FOOTNOTE_FONT;
       width += context.measureText(String(footnote)).width;
     }
+    if (isNewModel(row.id)) {
+      width += NEW_BADGE_GAP + NEW_BADGE_WIDTH;
+    }
     return width;
   });
 
-  return Math.ceil(ICON_SIZE + NAME_GAP + Math.max(...widths) + 20);
+  return {
+    axisWidth: Math.ceil(ICON_SIZE + NAME_GAP + Math.max(...labelWidths) + 20),
+    labelWidths,
+  };
 }
 
 /** Provider mark drawn inside the SVG axis gutter, left-aligned in its own column. */
@@ -98,16 +126,44 @@ function AxisIcon({ provider, x, y }: { provider: string; x: number; y: number }
   );
 }
 
-function renderAxisTick(rows: ChartRow[], axisWidth: number, footnoteFor: FootnoteLookup) {
+function renderAxisTick(rows: ChartRow[], layout: LabelLayout, footnoteFor: FootnoteLookup) {
   return function AxisTick(props: unknown) {
     const { x, y, index } = props as { x: number; y: number; index: number };
     const row = rows[index];
     if (!row) return <g />;
 
+    // The name is right-anchored 20px before the bars, so the badge sits at the
+    // left end of this row's own text run.
+    const badgeRight = -20 - (layout.labelWidths[index] ?? 0) + NEW_BADGE_WIDTH;
+
     return (
       <g transform={`translate(${x},${y})`}>
         <title>{providerLabel(row.provider)}</title>
-        <AxisIcon provider={row.provider} x={-axisWidth} y={-ICON_SIZE / 2} />
+        <AxisIcon provider={row.provider} x={-layout.axisWidth} y={-ICON_SIZE / 2} />
+        {isNewModel(row.id) ? (
+          <g>
+            <rect
+              x={badgeRight - NEW_BADGE_WIDTH}
+              y={-NEW_BADGE_HEIGHT / 2}
+              width={NEW_BADGE_WIDTH}
+              height={NEW_BADGE_HEIGHT}
+              rx={2}
+              fill={NEW_BADGE_FILL}
+            />
+            <text
+              x={badgeRight - NEW_BADGE_WIDTH / 2}
+              y={0}
+              textAnchor="middle"
+              dominantBaseline="central"
+              fill={INK}
+              fontSize={9}
+              fontWeight={700}
+              letterSpacing="0.04em"
+            >
+              {NEW_BADGE_LABEL}
+            </text>
+          </g>
+        ) : null}
         <text x={-20} y={0} textAnchor="end" dominantBaseline="central" fill={INK} fontSize={13}>
           {row.model}
           {footnoteFor(row.id) === null ? null : (
@@ -200,7 +256,7 @@ export function ResultsChart<MetricId extends string>({
   caption?: ReactNode;
 }) {
   const rows = buildRows(dataset, metricId);
-  const axisWidth = labelColumnWidth(rows, footnoteFor);
+  const labelLayout = measureLabels(rows, footnoteFor);
   const baseline = dataset.majorityBaseline[metricId];
   const hasIntervals = rows.some((row) => row.errorOffsets !== null);
   const missing = dataset.results.filter((r) => r.metrics[metricId] === null).map((r) => r.model);
@@ -247,10 +303,10 @@ export function ResultsChart<MetricId extends string>({
           <YAxis
             type="category"
             dataKey="model"
-            width={axisWidth}
+            width={labelLayout.axisWidth}
             tickLine={false}
             axisLine={false}
-            tick={renderAxisTick(rows, axisWidth, footnoteFor)}
+            tick={renderAxisTick(rows, labelLayout, footnoteFor)}
             interval={0}
             tickSize={0}
             tickMargin={0}
