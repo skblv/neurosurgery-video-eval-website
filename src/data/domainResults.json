@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-08-28T20:00:00Z",
+  "generatedAt": "2026-09-02T04:30:00Z",
   "datasets": {
     "dsad": {
       "majorityBaseline": {
@@ -492,6 +492,42 @@
         "microF1": 39.8
       },
       "results": [
+        {
+          "id": "gemma3-27b-lora",
+          "model": "Gemma 3 27B fine-tuned",
+          "provider": "internal",
+          "sourceRunId": null,
+          "metrics": {
+            "exactMatch": {
+              "value": 60.6,
+              "ciLow": 60.0,
+              "ciHigh": 61.3
+            },
+            "microF1": {
+              "value": 78.8,
+              "ciLow": 78.4,
+              "ciHigh": 79.2
+            }
+          }
+        },
+        {
+          "id": "gemma3-27b-lora-json",
+          "model": "Gemma 3 27B + LoRA (JSON)",
+          "provider": "internal",
+          "sourceRunId": null,
+          "metrics": {
+            "exactMatch": {
+              "value": 60.0,
+              "ciLow": 59.3,
+              "ciHigh": 60.7
+            },
+            "microF1": {
+              "value": 76.6,
+              "ciLow": 76.1,
+              "ciHigh": 77.0
+            }
+          }
+        },
         {
           "id": "resnet50",
           "model": "ResNet-50",

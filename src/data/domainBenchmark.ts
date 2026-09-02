@@ -85,7 +85,7 @@ export const DOMAIN_PAGES: Record<
     metricIds: ["exactMatch", "microF1"],
     notes: [
       "Action labels are multi-label, so the two metrics differ: exact match requires the predicted action set to equal the ground-truth set, while micro-averaged F1 credits partial overlap. Frames with no active instrument verb are labeled idle.",
-      "Local models are scored on the full 19,923-frame validation split, inherited from the CholecT50 instrument split. API models use a seed-42 sample of 1,000 validation frames. Gemma classification-head and generative fine-tunes on this task are still training and are omitted.",
+      "Local models are scored on the full 19,923-frame validation split, inherited from the CholecT50 instrument split. API models use a seed-42 sample of 1,000 validation frames.",
     ],
   },
   "skill-assessment": {
@@ -199,6 +199,8 @@ const DOMAIN_WEIGHTS_URLS: Record<DomainDatasetId, Record<string, string>> = {
     "lemonfm-linear-probe": `${HF_NAMESPACE}/lemonfm-linear-probes-surgical-video`,
   },
   cholect50verbs: {
+    "gemma3-27b-lora": `${HF_NAMESPACE}/gemma-3-27b-it-lora-cholect50-verbs`,
+    "gemma3-27b-lora-json": `${HF_NAMESPACE}/gemma-3-27b-it-lora-json-cholect50-verbs`,
     resnet50: `${HF_NAMESPACE}/resnet50-cholect50-verbs`,
     "lemonfm-linear-probe": `${HF_NAMESPACE}/lemonfm-linear-probes-surgical-video`,
   },
