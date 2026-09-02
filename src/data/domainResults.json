@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-09-02T05:46:14Z",
+  "generatedAt": "2026-09-02T18:50:23Z",
   "datasets": {
     "dsad": {
       "majorityBaseline": {
@@ -239,6 +239,42 @@
               "value": 31.0,
               "ciLow": 29.7,
               "ciHigh": 32.3
+            }
+          }
+        },
+        {
+          "id": "claude-fable-5_1",
+          "model": "Claude Fable 5.1",
+          "provider": "anthropic",
+          "sourceRunId": null,
+          "metrics": {
+            "exactMatch": {
+              "value": 11.0,
+              "ciLow": 9.0,
+              "ciHigh": 13.1
+            },
+            "microF1": {
+              "value": 52.3,
+              "ciLow": 50.3,
+              "ciHigh": 54.3
+            }
+          }
+        },
+        {
+          "id": "gemini-3_8-flash",
+          "model": "Gemini 3.8 Flash",
+          "provider": "gemini",
+          "sourceRunId": null,
+          "metrics": {
+            "exactMatch": {
+              "value": 14.1,
+              "ciLow": 12.0,
+              "ciHigh": 16.2
+            },
+            "microF1": {
+              "value": 54.4,
+              "ciLow": 52.4,
+              "ciHigh": 56.5
             }
           }
         }
@@ -679,6 +715,42 @@
               "ciHigh": 33.8
             }
           }
+        },
+        {
+          "id": "claude-fable-5_1",
+          "model": "Claude Fable 5.1",
+          "provider": "anthropic",
+          "sourceRunId": null,
+          "metrics": {
+            "exactMatch": {
+              "value": 14.6,
+              "ciLow": 12.5,
+              "ciHigh": 17.0
+            },
+            "microF1": {
+              "value": 37.9,
+              "ciLow": 35.8,
+              "ciHigh": 40.1
+            }
+          }
+        },
+        {
+          "id": "gemini-3_8-flash",
+          "model": "Gemini 3.8 Flash",
+          "provider": "gemini",
+          "sourceRunId": null,
+          "metrics": {
+            "exactMatch": {
+              "value": 24.6,
+              "ciLow": 22.0,
+              "ciHigh": 27.4
+            },
+            "microF1": {
+              "value": 39.9,
+              "ciLow": 37.3,
+              "ciHigh": 42.3
+            }
+          }
         }
       ]
     },
@@ -937,6 +1009,42 @@
               "value": 24.9,
               "ciLow": 24.5,
               "ciHigh": 25.3
+            }
+          }
+        },
+        {
+          "id": "claude-fable-5_1",
+          "model": "Claude Fable 5.1",
+          "provider": "anthropic",
+          "sourceRunId": null,
+          "metrics": {
+            "exactMatch": {
+              "value": 31.3,
+              "ciLow": 28.5,
+              "ciHigh": 34.2
+            },
+            "microF1": {
+              "value": 58.3,
+              "ciLow": 56.1,
+              "ciHigh": 60.6
+            }
+          }
+        },
+        {
+          "id": "gemini-3_8-flash",
+          "model": "Gemini 3.8 Flash",
+          "provider": "gemini",
+          "sourceRunId": null,
+          "metrics": {
+            "exactMatch": {
+              "value": 39.8,
+              "ciLow": 36.8,
+              "ciHigh": 42.7
+            },
+            "microF1": {
+              "value": 70.1,
+              "ciLow": 68.3,
+              "ciHigh": 72.0
             }
           }
         }
@@ -1277,6 +1385,42 @@
               "value": 18.6,
               "ciLow": 15.3,
               "ciHigh": 21.9
+            }
+          }
+        },
+        {
+          "id": "claude-fable-5_1",
+          "model": "Claude Fable 5.1",
+          "provider": "anthropic",
+          "sourceRunId": null,
+          "metrics": {
+            "exactMatch": {
+              "value": 30.0,
+              "ciLow": 26.7,
+              "ciHigh": 33.5
+            },
+            "microF1": {
+              "value": 30.0,
+              "ciLow": 26.7,
+              "ciHigh": 33.5
+            }
+          }
+        },
+        {
+          "id": "gemini-3_8-flash",
+          "model": "Gemini 3.8 Flash",
+          "provider": "gemini",
+          "sourceRunId": null,
+          "metrics": {
+            "exactMatch": {
+              "value": 21.5,
+              "ciLow": 18.4,
+              "ciHigh": 24.7
+            },
+            "microF1": {
+              "value": 21.5,
+              "ciLow": 18.4,
+              "ciHigh": 24.7
             }
           }
         }
