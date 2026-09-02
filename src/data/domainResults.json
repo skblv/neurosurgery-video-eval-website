@@ -1,6 +1,6 @@
 {
-  "schemaVersion": 1,
-  "generatedAt": "2026-09-02T04:30:00Z",
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-02T05:46:14Z",
   "datasets": {
     "dsad": {
       "majorityBaseline": {
@@ -239,6 +239,202 @@
               "value": 31.0,
               "ciLow": 29.7,
               "ciHigh": 32.3
+            }
+          }
+        }
+      ]
+    },
+    "cadis": {
+      "majorityBaseline": {
+        "exactMatch": null,
+        "microF1": null
+      },
+      "results": [
+        {
+          "id": "gemma3-27b-lora",
+          "model": "Gemma 3 27B fine-tuned",
+          "provider": "internal",
+          "sourceRunId": "206668",
+          "metrics": {
+            "exactMatch": {
+              "value": 41.01123595505618,
+              "ciLow": 36.70411985018727,
+              "ciHigh": 45.50561797752809
+            },
+            "microF1": {
+              "value": 94.16226466206149,
+              "ciLow": 93.66308039792833,
+              "ciHigh": 94.65858918189792
+            }
+          }
+        },
+        {
+          "id": "gemma3-27b-it",
+          "model": "Gemma 3 27B-it",
+          "provider": "google",
+          "sourceRunId": "206634",
+          "metrics": {
+            "exactMatch": {
+              "value": 0.18726591760299627,
+              "ciLow": 0.0,
+              "ciHigh": 0.5617977528089888
+            },
+            "microF1": {
+              "value": 66.96964778445058,
+              "ciLow": 66.05863192182411,
+              "ciHigh": 68.00258564964448
+            }
+          }
+        },
+        {
+          "id": "qwen3-8-27b",
+          "model": "Qwen3.8 27B",
+          "provider": "qwen",
+          "sourceRunId": "206641",
+          "metrics": {
+            "exactMatch": {
+              "value": 0.18726591760299627,
+              "ciLow": 0.0,
+              "ciHigh": 0.5617977528089888
+            },
+            "microF1": {
+              "value": 63.11420982735724,
+              "ciLow": 61.82614555256065,
+              "ciHigh": 64.50230718523401
+            }
+          }
+        },
+        {
+          "id": "resnet50",
+          "model": "ResNet-50",
+          "provider": "internal",
+          "sourceRunId": "206696",
+          "metrics": {
+            "exactMatch": {
+              "value": 41.57303370786517,
+              "ciLow": 37.265917602996254,
+              "ciHigh": 45.69288389513109
+            },
+            "microF1": {
+              "value": 93.67839331446287,
+              "ciLow": 93.10670443814921,
+              "ciHigh": 94.19648840637984
+            }
+          }
+        },
+        {
+          "id": "lemonfm-linear-probe",
+          "model": "LemonFM (linear probe)",
+          "provider": "visurg",
+          "sourceRunId": "206697",
+          "metrics": {
+            "exactMatch": {
+              "value": 3.932584269662921,
+              "ciLow": 2.4344569288389515,
+              "ciHigh": 5.617977528089887
+            },
+            "microF1": {
+              "value": 88.68033496967946,
+              "ciLow": 88.20143884892087,
+              "ciHigh": 89.15175995383727
+            }
+          }
+        }
+      ]
+    },
+    "endoscapes": {
+      "majorityBaseline": {
+        "exactMatch": null,
+        "microF1": null
+      },
+      "results": [
+        {
+          "id": "gemma3-27b-lora",
+          "model": "Gemma 3 27B fine-tuned",
+          "provider": "internal",
+          "sourceRunId": "206691",
+          "metrics": {
+            "exactMatch": {
+              "value": 24.69437652811736,
+              "ciLow": 20.537897310513447,
+              "ciHigh": 29.095354523227385
+            },
+            "microF1": {
+              "value": 82.16106014271152,
+              "ciLow": 80.77115388808364,
+              "ciHigh": 83.51060006460991
+            }
+          }
+        },
+        {
+          "id": "gemma3-27b-it",
+          "model": "Gemma 3 27B-it",
+          "provider": "google",
+          "sourceRunId": "206653",
+          "metrics": {
+            "exactMatch": {
+              "value": 17.114914425427874,
+              "ciLow": 13.202933985330073,
+              "ciHigh": 20.782396088019558
+            },
+            "microF1": {
+              "value": 76.15357520253611,
+              "ciLow": 74.61024498886414,
+              "ciHigh": 77.71147771147772
+            }
+          }
+        },
+        {
+          "id": "qwen3-8-27b",
+          "model": "Qwen3.8 27B",
+          "provider": "qwen",
+          "sourceRunId": "206667",
+          "metrics": {
+            "exactMatch": {
+              "value": 13.93643031784841,
+              "ciLow": 10.757946210268948,
+              "ciHigh": 17.359413202933985
+            },
+            "microF1": {
+              "value": 63.59967715899919,
+              "ciLow": 61.48055207026348,
+              "ciHigh": 65.7589106928314
+            }
+          }
+        },
+        {
+          "id": "resnet50",
+          "model": "ResNet-50",
+          "provider": "internal",
+          "sourceRunId": "206698",
+          "metrics": {
+            "exactMatch": {
+              "value": 25.4278728606357,
+              "ciLow": 21.271393643031786,
+              "ciHigh": 29.584352078239608
+            },
+            "microF1": {
+              "value": 82.55968169761273,
+              "ciLow": 81.31260794473229,
+              "ciHigh": 83.83316097897277
+            }
+          }
+        },
+        {
+          "id": "lemonfm-linear-probe",
+          "model": "LemonFM (linear probe)",
+          "provider": "visurg",
+          "sourceRunId": "206699",
+          "metrics": {
+            "exactMatch": {
+              "value": 25.67237163814181,
+              "ciLow": 21.515892420537895,
+              "ciHigh": 30.073349633251834
+            },
+            "microF1": {
+              "value": 83.02799861735222,
+              "ciLow": 81.7107093184979,
+              "ciHigh": 84.23594342876855
             }
           }
         }
@@ -741,6 +937,104 @@
               "value": 24.9,
               "ciLow": 24.5,
               "ciHigh": 25.3
+            }
+          }
+        }
+      ]
+    },
+    "pitvissteps": {
+      "majorityBaseline": {
+        "exactMatch": null,
+        "microF1": null
+      },
+      "results": [
+        {
+          "id": "gemma3-27b-lora",
+          "model": "Gemma 3 27B fine-tuned",
+          "provider": "internal",
+          "sourceRunId": "206778",
+          "metrics": {
+            "exactMatch": {
+              "value": 62.74306177260519,
+              "ciLow": 62.16293643688451,
+              "ciHigh": 63.29113697403761
+            },
+            "microF1": {
+              "value": 62.74306177260519,
+              "ciLow": 62.16293643688451,
+              "ciHigh": 63.29113697403761
+            }
+          }
+        },
+        {
+          "id": "gemma3-27b-it",
+          "model": "Gemma 3 27B-it",
+          "provider": "google",
+          "sourceRunId": "206779",
+          "metrics": {
+            "exactMatch": {
+              "value": 23.516562220232767,
+              "ciLow": 23.06177260519248,
+              "ciHigh": 24.00358102059087
+            },
+            "microF1": {
+              "value": 23.526250738889784,
+              "ciLow": 23.070584020064494,
+              "ciHigh": 24.010029551356676
+            }
+          }
+        },
+        {
+          "id": "qwen3-8-27b",
+          "model": "Qwen3.8 27B",
+          "provider": "qwen",
+          "sourceRunId": "206780",
+          "metrics": {
+            "exactMatch": {
+              "value": 20.905998209489704,
+              "ciLow": 20.440465532676813,
+              "ciHigh": 21.378692927484333
+            },
+            "microF1": {
+              "value": 21.04049159353432,
+              "ciLow": 20.569038260430564,
+              "ciHigh": 21.518394407811767
+            }
+          }
+        },
+        {
+          "id": "resnet50",
+          "model": "ResNet-50",
+          "provider": "internal",
+          "sourceRunId": "206781",
+          "metrics": {
+            "exactMatch": {
+              "value": 56.01432408236347,
+              "ciLow": 55.40555058191584,
+              "ciHigh": 56.6123545210385
+            },
+            "microF1": {
+              "value": 56.01432408236347,
+              "ciLow": 55.40555058191584,
+              "ciHigh": 56.6123545210385
+            }
+          }
+        },
+        {
+          "id": "lemonfm-linear-probe",
+          "model": "LemonFM (linear probe)",
+          "provider": "visurg",
+          "sourceRunId": "206782",
+          "metrics": {
+            "exactMatch": {
+              "value": 63.97135183527305,
+              "ciLow": 63.36615935541629,
+              "ciHigh": 64.48343777976724
+            },
+            "microF1": {
+              "value": 63.97135183527305,
+              "ciLow": 63.36615935541629,
+              "ciHigh": 64.48343777976724
             }
           }
         }

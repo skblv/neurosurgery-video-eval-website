@@ -16,7 +16,7 @@ import {
   modelFootnote,
   type DatasetCitation,
 } from "./benchmark";
-import { DOMAINS, type DomainRoute } from "./domains";
+import type { DomainRoute } from "./domains";
 import type { LeaderboardBenchmark } from "./leaderboard";
 import type { MetricId } from "./resultsSchema";
 
@@ -28,9 +28,14 @@ export const DOMAIN_RESULTS_GENERATED_AT = RESULTS.generatedAt;
 
 export interface DomainPage {
   route: DomainRoute;
-  datasetId: DomainDatasetId;
+  datasetIds: readonly [DomainDatasetId, ...DomainDatasetId[]];
   title: string;
   lead: string;
+}
+
+export interface DomainDataset extends LeaderboardBenchmark<MetricId> {
+  id: DomainDatasetId;
+  name: string;
   classCount: number;
   classNoun: string;
   sourceUrl: string;
@@ -43,100 +48,162 @@ export interface DomainPage {
   notes: string[];
 }
 
+type DomainDatasetMeta = Omit<DomainDataset, "majorityBaseline" | "results">;
+
 export const DOMAIN_PAGES: Record<
   "anatomy" | "clinical-context" | "recommendations" | "skill-assessment",
   DomainPage
 > = {
   anatomy: {
     route: "anatomy",
-    datasetId: "dsad",
-    title: "Which anatomical structures are visible?",
-    lead: "Recognizing organs and vessels in the laparoscopic field is a prerequisite for scene understanding and downstream decision support. We score models on multi-label structure presence in Dresden Surgical Anatomy Dataset frames.",
+    datasetIds: ["dsad", "cadis", "endoscapes"],
+    title: "Which anatomical structures and operative entities are visible?",
+    lead:
+      "Recognizing anatomy and other annotated entities in the operative field is a " +
+      "prerequisite for scene understanding and downstream decision support.",
+  },
+  "clinical-context": {
+    route: "clinical-context",
+    datasetIds: ["pitvqa"],
+    title: "What is happening in this operation?",
+    lead:
+      "Clinical context is scored as joint surgical-phase and surgical-step recognition " +
+      "on endoscopic pituitary frames from PitVQA.",
+  },
+  recommendations: {
+    route: "recommendations",
+    datasetIds: ["cholect50verbs", "pitvissteps"],
+    title: "Which actions are being performed?",
+    lead:
+      "We compare frame-level recognition of surgical actions and procedural workflow " +
+      "across cholecystectomy and pituitary surgery.",
+  },
+  "skill-assessment": {
+    route: "skill-assessment",
+    datasetIds: ["sarrarp50"],
+    title: "What suturing action is being performed?",
+    lead:
+      "This page is a skill proxy: models must recognize the current suturing gesture " +
+      "during robot-assisted radical prostatectomy on SAR-RARP50. It is not an OSATS " +
+      "or global rating-scale score.",
+  },
+};
+
+const DOMAIN_DATASET_META: Record<DomainDatasetId, DomainDatasetMeta> = {
+  dsad: {
+    id: "dsad",
+    name: "DSAD",
     classCount: 12,
     classNoun: "anatomical structures",
     sourceUrl: "https://www.nature.com/articles/s41597-022-01719-2",
     metricIds: ["exactMatch", "microF1"],
     notes: [
-      "Structure presence is multi-label, so the two metrics differ: exact match requires the predicted structure set to equal the ground-truth set, while micro-averaged F1 credits partial overlap.",
-      "Local models are scored on the full 1,978-frame validation split. API models use a seed-42 sample of 1,000 validation frames.",
+      "Structure presence is multi-label, so exact match requires the predicted structure " +
+        "set to equal the ground-truth set, while micro-averaged F1 credits partial overlap.",
+      "Local models are scored on all 1,978 validation frames. API models use a seed-42 " +
+        "sample of 1,000 validation frames.",
     ],
   },
-  "clinical-context": {
-    route: "clinical-context",
-    datasetId: "pitvqa",
-    title: "What is happening in this operation?",
-    lead: "Clinical context is scored as joint surgical-phase and surgical-step recognition on endoscopic pituitary frames from PitVQA.",
+  cadis: {
+    id: "cadis",
+    name: "CaDIS",
+    classCount: 17,
+    classNoun: "Task II semantic classes",
+    sourceUrl: "https://doi.org/10.1016/j.media.2021.102053",
+    metricIds: ["exactMatch", "microF1"],
+    notes: [
+      "Presence labels are derived from Task II segmentation masks. All models are scored " +
+        "on all 534 validation frames.",
+    ],
+  },
+  endoscapes: {
+    id: "endoscapes",
+    name: "Endoscapes",
+    classCount: 6,
+    classNoun: "annotated structures and tools",
+    sourceUrl: "https://github.com/CAMMA-public/Endoscapes",
+    metricIds: ["exactMatch", "microF1"],
+    notes: [
+      "Presence labels are derived from BBox annotations. All models are scored on all 409 validation frames.",
+    ],
+  },
+  pitvqa: {
+    id: "pitvqa",
+    name: "PitVQA",
     classCount: 17,
     classNoun: "phase and step labels",
     sourceUrl: "https://arxiv.org/abs/2405.13949",
     metricIds: ["exactMatch", "microF1"],
     notes: [
-      "Exact match requires both the phase and the step to be correct; micro-averaged F1 credits getting one of the two right. Local models are scored on all 24,767 validation frames. API models use a seed-42 sample of 1,000 frames.",
+      "Exact match requires both the phase and step to be correct; micro-averaged F1 " +
+        "credits getting one of the two right. Local models are scored on all 24,767 " +
+        "validation frames. API models use a seed-42 sample of 1,000 frames.",
     ],
   },
-  recommendations: {
-    route: "recommendations",
-    datasetId: "cholect50verbs",
-    title: "Which actions are being performed?",
-    lead: "Recommendation-style scene understanding is scored as multi-label action recognition on CholecT50 cholecystectomy frames: name every current verb visible in the field.",
+  cholect50verbs: {
+    id: "cholect50verbs",
+    name: "CholecT50 verbs",
     classCount: 10,
     classNoun: "surgical actions",
     sourceUrl: "https://arxiv.org/abs/2109.03223",
     metricIds: ["exactMatch", "microF1"],
     notes: [
-      "Action labels are multi-label, so the two metrics differ: exact match requires the predicted action set to equal the ground-truth set, while micro-averaged F1 credits partial overlap. Frames with no active instrument verb are labeled idle.",
-      "Local models are scored on the full 19,923-frame validation split, inherited from the CholecT50 instrument split. API models use a seed-42 sample of 1,000 validation frames.",
+      "Action labels are multi-label, so exact match requires the predicted action set to " +
+        "equal the ground-truth set, while micro-averaged F1 credits partial overlap. " +
+        "Frames with no active instrument verb are labeled idle.",
+      "Local models are scored on all 19,923 validation frames, inherited from the " +
+        "CholecT50 instrument split. API models use a seed-42 sample of 1,000 validation frames.",
     ],
   },
-  "skill-assessment": {
-    route: "skill-assessment",
-    datasetId: "sarrarp50",
-    title: "What suturing action is being performed?",
-    lead: "This page is a skill proxy: models must recognize the current suturing gesture during robot-assisted radical prostatectomy on SAR-RARP50. It is not an OSATS or global rating-scale score.",
+  pitvissteps: {
+    id: "pitvissteps",
+    name: "PitVis-2023 steps",
+    classCount: 12,
+    classNoun: "surgical steps",
+    sourceUrl:
+      "https://rdr.ucl.ac.uk/articles/dataset/PitVis_Challenge_Endoscopic_Pituitary_Surgery_videos/26531686",
+    metricIds: ["exactMatch", "microF1"],
+    notes: [
+      "All models are scored on 27,925 validation frames from five videos. Frame metrics " +
+        "are not the official challenge score. Strict valid task scores: LEMON 24.95%, " +
+        "Gemma 3 27B fine-tuned 23.21%, ResNet-50 20.39%; zero-shot outputs are invalid " +
+        "under the strict scorer.",
+    ],
+  },
+  sarrarp50: {
+    id: "sarrarp50",
+    name: "SAR-RARP50",
     classCount: 8,
     classNoun: "suturing actions",
     sourceUrl: "https://arxiv.org/abs/2401.00496",
     metricIds: ["exactMatch"],
     notes: [
-      "All models are scored on the full 636-frame validation split, sampled at 1 Hz from held-out operations.",
-      "Gesture recognition is single-label (one ground-truth action, one predicted action per frame), so micro-averaged F1 reduces to the same number as exact-match accuracy; a single accuracy metric is reported.",
+      "All models are scored on all 636 validation frames, sampled at 1 Hz from held-out operations.",
+      "Gesture recognition is single-label, so micro-averaged F1 reduces to exact-match " +
+        "accuracy; a single accuracy metric is reported.",
     ],
   },
 };
 
-export interface DomainDataset extends LeaderboardBenchmark<MetricId> {
-  id: DomainDatasetId;
-  name: string;
-  sourceUrl: string;
-  classCount: number;
-  classNoun: string;
+function buildDomainDatasets(): Record<DomainDatasetId, DomainDataset> {
+  const datasets = {} as Record<DomainDatasetId, DomainDataset>;
+  for (const datasetId of DOMAIN_DATASET_ORDER) {
+    datasets[datasetId] = {
+      ...DOMAIN_DATASET_META[datasetId],
+      majorityBaseline: RESULTS.datasets[datasetId].majorityBaseline,
+      results: RESULTS.datasets[datasetId].results,
+    };
+  }
+  return datasets;
 }
 
-const DATASET_NAMES: Record<DomainDatasetId, string> = {
-  dsad: "DSAD",
-  pitvqa: "PitVQA",
-  cholect50verbs: "CholecT50 verbs",
-  sarrarp50: "SAR-RARP50",
-};
+export const DOMAIN_DATASETS = buildDomainDatasets();
 
-export const DOMAIN_DATASETS: Record<DomainDatasetId, DomainDataset> = Object.fromEntries(
-  DOMAIN_DATASET_ORDER.map((datasetId) => {
-    const page = Object.values(DOMAIN_PAGES).find((item) => item.datasetId === datasetId);
-    if (!page) throw new Error(`No domain page for dataset ${datasetId}`);
-    return [
-      datasetId,
-      {
-        id: datasetId,
-        name: DATASET_NAMES[datasetId],
-        sourceUrl: page.sourceUrl,
-        classCount: page.classCount,
-        classNoun: page.classNoun,
-        majorityBaseline: RESULTS.datasets[datasetId].majorityBaseline,
-        results: RESULTS.datasets[datasetId].results,
-      },
-    ];
-  }),
-) as Record<DomainDatasetId, DomainDataset>;
+function instrumentDatasetCitation(datasetName: string): DatasetCitation {
+  const citation = DATASET_CITATIONS.find((item) => item.datasetName === datasetName);
+  if (!citation) throw new Error(`No instrument citation for dataset ${datasetName}`);
+  return citation;
+}
 
 export const DOMAIN_DATASET_CITATIONS: Record<DomainDatasetId, DatasetCitation> = {
   dsad: {
@@ -149,6 +216,26 @@ export const DOMAIN_DATASET_CITATIONS: Record<DomainDatasetId, DatasetCitation> 
     url: "https://www.nature.com/articles/s41597-022-01719-2",
     year: 2023,
   },
+  cadis: {
+    datasetName: "CaDIS",
+    authorsShort: "Grammatikopoulou, M., et al.",
+    title: "CaDIS: Cataract dataset for surgical RGB-image segmentation",
+    venue: "Medical Image Analysis, 71, 102053",
+    linkLabel: "doi:10.1016/j.media.2021.102053",
+    url: "https://doi.org/10.1016/j.media.2021.102053",
+    year: 2021,
+  },
+  endoscapes: {
+    datasetName: "Endoscapes",
+    authorsShort: "Murali, A., Alapatt, D., Mascagni, P., et al.",
+    title:
+      "The Endoscapes Dataset for Surgical Scene Segmentation, Object Detection, and " +
+      "Critical View of Safety Assessment: Official Splits and Benchmark",
+    venue: "arXiv preprint",
+    linkLabel: "arXiv:2312.12429",
+    url: "https://arxiv.org/abs/2312.12429",
+    year: 2023,
+  },
   pitvqa: {
     datasetName: "PitVQA",
     authorsShort: "He, R., Xu, M., Das, A., et al.",
@@ -159,21 +246,14 @@ export const DOMAIN_DATASET_CITATIONS: Record<DomainDatasetId, DatasetCitation> 
     url: "https://arxiv.org/abs/2405.13949",
     year: 2024,
   },
-  cholect50verbs: {
-    datasetName: "CholecT50",
-    authorsShort: "Nwoye, C. I., Yu, T., Gonzalez, C., et al.",
-    title:
-      "Rendezvous: Attention Mechanisms for the Recognition of Surgical Action Triplets in Endoscopic Videos",
-    venue: "Medical Image Analysis, 78, 102433",
-    linkLabel: "arXiv:2109.03223",
-    url: "https://arxiv.org/abs/2109.03223",
-    year: 2022,
-  },
+  cholect50verbs: instrumentDatasetCitation("CholecT50"),
+  pitvissteps: instrumentDatasetCitation("PitVis-2023"),
   sarrarp50: {
     datasetName: "SAR-RARP50",
     authorsShort: "Psychogyios, D., Colleoni, E., Van Amsterdam, B., et al.",
     title:
-      "SAR-RARP50: Segmentation of surgical instrumentation and Action Recognition on Robot-Assisted Radical Prostatectomy Challenge",
+      "SAR-RARP50: Segmentation of surgical instrumentation and Action Recognition on " +
+      "Robot-Assisted Radical Prostatectomy Challenge",
     venue: "arXiv preprint",
     linkLabel: "arXiv:2401.00496",
     url: "https://arxiv.org/abs/2401.00496",
@@ -193,6 +273,16 @@ const DOMAIN_WEIGHTS_URLS: Record<DomainDatasetId, Record<string, string>> = {
     resnet50: `${HF_NAMESPACE}/resnet50-dsad-anatomy`,
     "lemonfm-linear-probe": `${HF_NAMESPACE}/lemonfm-linear-probes-surgical-video`,
   },
+  cadis: {
+    "gemma3-27b-lora": `${HF_NAMESPACE}/gemma-3-27b-it-lora-cadis-task2`,
+    resnet50: `${HF_NAMESPACE}/resnet50-cadis-task2`,
+    "lemonfm-linear-probe": `${HF_NAMESPACE}/lemonfm-linear-probes-surgical-video`,
+  },
+  endoscapes: {
+    "gemma3-27b-lora": `${HF_NAMESPACE}/gemma-3-27b-it-lora-endoscapes-bbox201`,
+    resnet50: `${HF_NAMESPACE}/resnet50-endoscapes-bbox201`,
+    "lemonfm-linear-probe": `${HF_NAMESPACE}/lemonfm-linear-probes-surgical-video`,
+  },
   pitvqa: {
     "gemma3-27b-lora": `${HF_NAMESPACE}/gemma-3-27b-it-lora-pitvqa-phase-step`,
     resnet50: `${HF_NAMESPACE}/resnet50-pitvqa-phase-step`,
@@ -202,6 +292,11 @@ const DOMAIN_WEIGHTS_URLS: Record<DomainDatasetId, Record<string, string>> = {
     "gemma3-27b-lora": `${HF_NAMESPACE}/gemma-3-27b-it-lora-cholect50-verbs`,
     "gemma3-27b-lora-json": `${HF_NAMESPACE}/gemma-3-27b-it-lora-json-cholect50-verbs`,
     resnet50: `${HF_NAMESPACE}/resnet50-cholect50-verbs`,
+    "lemonfm-linear-probe": `${HF_NAMESPACE}/lemonfm-linear-probes-surgical-video`,
+  },
+  pitvissteps: {
+    "gemma3-27b-lora": `${HF_NAMESPACE}/gemma-3-27b-it-lora-pitvis-steps`,
+    resnet50: `${HF_NAMESPACE}/resnet50-pitvis-steps`,
     "lemonfm-linear-probe": `${HF_NAMESPACE}/lemonfm-linear-probes-surgical-video`,
   },
   sarrarp50: {
@@ -222,24 +317,30 @@ export function domainWeightsUrl(
 /**
  * New-domain dataset citations continue the site-wide footnote sequence:
  * 1 is the paper, 2… the instrument datasets, then instrument model
- * citations, then Action-page model citations. Domain datasets are numbered
- * after all of those, in the order their pages appear in the navigation.
+ * citations, then Action-page model citations. Existing domain citations keep
+ * their numbers, and new unique citations are appended after them.
  */
 const FIRST_DOMAIN_DATASET_FOOTNOTE =
   2 + DATASET_CITATIONS.length + MODEL_CITATIONS.length + GESTURE_MODEL_CITATIONS.length;
 
-const FOOTNOTE_DATASET_ORDER: DomainDatasetId[] = DOMAINS.filter(
-  (domain): domain is (typeof DOMAINS)[number] & { id: keyof typeof DOMAIN_PAGES } =>
-    domain.id in DOMAIN_PAGES,
-)
-  .map((domain) => DOMAIN_PAGES[domain.id].datasetId)
-  .filter((datasetId) => datasetId !== "cholect50verbs");
+const REUSED_DATASET_FOOTNOTES: Partial<Record<DomainDatasetId, number>> = {
+  cholect50verbs: 2,
+  pitvissteps: 3,
+};
+
+const FOOTNOTE_DATASET_ORDER: DomainDatasetId[] = [
+  "dsad",
+  "sarrarp50",
+  "pitvqa",
+  "cadis",
+  "endoscapes",
+];
 
 /** Site-wide footnote number for a new-domain dataset citation. */
 export function domainDatasetFootnote(datasetId: DomainDatasetId): number {
-  if (datasetId === "cholect50verbs") {
-    return 2;
-  }
+  const reusedFootnote = REUSED_DATASET_FOOTNOTES[datasetId];
+  if (reusedFootnote !== undefined) return reusedFootnote;
+
   const index = FOOTNOTE_DATASET_ORDER.indexOf(datasetId);
   if (index === -1) throw new Error(`No footnote order for dataset ${datasetId}`);
   return FIRST_DOMAIN_DATASET_FOOTNOTE + index;

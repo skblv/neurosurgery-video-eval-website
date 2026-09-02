@@ -92,7 +92,13 @@ export const GESTURE_EXAMPLE: BenchExampleSpec = {
 };
 
 export const DOMAIN_EXAMPLES: Record<
-  "dsad" | "pitvqa" | "cholect50verbs" | "sarrarp50",
+  | "dsad"
+  | "cadis"
+  | "endoscapes"
+  | "pitvqa"
+  | "cholect50verbs"
+  | "pitvissteps"
+  | "sarrarp50",
   BenchExampleSpec
 > = {
   dsad: {
@@ -112,6 +118,43 @@ export const DOMAIN_EXAMPLES: Record<
       "ureter",
       "uterus",
       "vesicular glands",
+    ],
+  },
+  cadis: {
+    question:
+      "Which anatomical structures, instruments, and other entities are visible in this cataract-surgery frame?",
+    selection: "any",
+    options: [
+      "Pupil",
+      "Surgical Tape",
+      "Hand",
+      "Eye Retractors",
+      "Iris",
+      "Skin",
+      "Cornea",
+      "Cannula",
+      "Cap. Cystotome",
+      "Tissue Forceps",
+      "Primary Knife",
+      "Ph. Handpiece",
+      "Lens Injector",
+      "I/A Handpiece",
+      "Secondary Knife",
+      "Micromanipulator",
+      "Cap. Forceps",
+    ],
+  },
+  endoscapes: {
+    question:
+      "Which anatomical structures and tools are visible in this laparoscopic cholecystectomy frame?",
+    selection: "any",
+    options: [
+      "cystic plate",
+      "hepatocystic triangle dissection",
+      "cystic artery",
+      "cystic duct",
+      "gallbladder",
+      "tool",
     ],
   },
   pitvqa: {
@@ -160,6 +203,25 @@ export const DOMAIN_EXAMPLES: Record<
       "irrigate",
       "pack",
       "idle",
+    ],
+  },
+  pitvissteps: {
+    question:
+      "Which surgical step is visible in this endoscopic pituitary-surgery frame?",
+    selection: "one",
+    options: [
+      "nasal corridor creation",
+      "anterior sphenoidotomy",
+      "septum displacement",
+      "sphenoid sinus clearance",
+      "sellotomy",
+      "durotomy",
+      "tumour excision",
+      "haemostasis",
+      "synthetic graft placement",
+      "fat graft placement",
+      "dural sealant",
+      "debris clearance",
     ],
   },
   sarrarp50: {

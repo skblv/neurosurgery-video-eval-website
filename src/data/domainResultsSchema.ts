@@ -9,20 +9,34 @@ import type { MetricId } from "./resultsSchema";
 
 export const DOMAIN_METRIC_ORDER: MetricId[] = ["exactMatch", "microF1"];
 
-export type DomainDatasetId = "dsad" | "pitvqa" | "cholect50verbs" | "sarrarp50";
+export type DomainDatasetId =
+  | "dsad"
+  | "cadis"
+  | "endoscapes"
+  | "pitvqa"
+  | "cholect50verbs"
+  | "pitvissteps"
+  | "sarrarp50";
 
 export const DOMAIN_DATASET_ORDER: DomainDatasetId[] = [
   "dsad",
+  "cadis",
+  "endoscapes",
   "pitvqa",
   "cholect50verbs",
+  "pitvissteps",
   "sarrarp50",
 ];
 
-export const DOMAIN_SCHEMA_VERSION = 1;
+export const DOMAIN_SCHEMA_VERSION = 2;
 
 export interface DomainDatasetResults {
   majorityBaseline: Record<MetricId, number | null>;
-  results: LeaderboardResult<MetricId>[];
+  results: DomainModelResult[];
+}
+
+export interface DomainModelResult extends LeaderboardResult<MetricId> {
+  sourceRunId: string | null;
 }
 
 export interface DomainResultsFile {
@@ -70,6 +84,14 @@ function asFiniteOrNull(value: unknown, where: string): number | null {
   return value === null ? null : asFinite(value, where);
 }
 
+function asPercentageOrNull(value: unknown, where: string): number | null {
+  const parsed = asFiniteOrNull(value, where);
+  if (parsed !== null && (parsed < 0 || parsed > 100)) {
+    fail(where, `expected a percentage in [0, 100], got ${parsed}`);
+  }
+  return parsed;
+}
+
 function asNonEmptyString(value: unknown, where: string): string {
   if (typeof value !== "string" || value.length === 0) {
     fail(where, `expected a non-empty string, got ${JSON.stringify(value)}`);
@@ -100,16 +122,30 @@ function parseMetricValue(value: unknown, where: string): MetricValue | null {
   if ((parsed.ciLow === null) !== (parsed.ciHigh === null)) {
     fail(where, "ciLow and ciHigh must both be numbers or both be null");
   }
+  if (parsed.value < 0 || parsed.value > 100) {
+    fail(where, `value must be in [0, 100], got ${parsed.value}`);
+  }
+  if (
+    parsed.ciLow !== null &&
+    parsed.ciHigh !== null &&
+    (parsed.ciLow < 0 ||
+      parsed.ciHigh > 100 ||
+      parsed.ciLow > parsed.value ||
+      parsed.value > parsed.ciHigh)
+  ) {
+    fail(where, "confidence interval must satisfy 0 <= ciLow <= value <= ciHigh <= 100");
+  }
   return parsed;
 }
 
-function parseModelResult(value: unknown, where: string): LeaderboardResult<MetricId> {
+function parseModelResult(value: unknown, where: string): DomainModelResult {
   const record = asRecord(value, where);
   requireExactKeys(record, RESULT_KEYS, where);
 
-  if (record.sourceRunId !== null) {
-    asNonEmptyString(record.sourceRunId, `${where}.sourceRunId`);
-  }
+  const sourceRunId =
+    record.sourceRunId === null
+      ? null
+      : asNonEmptyString(record.sourceRunId, `${where}.sourceRunId`);
 
   const metricsRecord = asRecord(record.metrics, `${where}.metrics`);
   requireExactKeys(metricsRecord, DOMAIN_METRIC_ORDER, `${where}.metrics`);
@@ -126,6 +162,7 @@ function parseModelResult(value: unknown, where: string): LeaderboardResult<Metr
     id: asNonEmptyString(record.id, `${where}.id`),
     model: asNonEmptyString(record.model, `${where}.model`),
     provider: parseProvider(record.provider, `${where}.provider`),
+    sourceRunId,
     metrics,
   };
 }
@@ -139,7 +176,7 @@ function parseDatasetResults(value: unknown, where: string): DomainDatasetResult
 
   const majorityBaseline = {} as Record<MetricId, number | null>;
   for (const metricId of DOMAIN_METRIC_ORDER) {
-    majorityBaseline[metricId] = asFiniteOrNull(
+    majorityBaseline[metricId] = asPercentageOrNull(
       baselineRecord[metricId],
       `${where}.majorityBaseline.${metricId}`,
     );
