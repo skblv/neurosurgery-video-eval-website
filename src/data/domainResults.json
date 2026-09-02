@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-09-02T18:50:23Z",
+  "generatedAt": "2026-09-02T19:53:05Z",
   "datasets": {
     "dsad": {
       "majorityBaseline": {
@@ -375,6 +375,78 @@
               "ciHigh": 89.15175995383727
             }
           }
+        },
+        {
+          "id": "claude-fable-5_1",
+          "model": "Claude Fable 5.1",
+          "provider": "anthropic",
+          "sourceRunId": null,
+          "metrics": {
+            "exactMatch": {
+              "value": 15.54,
+              "ciLow": 12.55,
+              "ciHigh": 18.91
+            },
+            "microF1": {
+              "value": 85.15,
+              "ciLow": 84.3,
+              "ciHigh": 86.04
+            }
+          }
+        },
+        {
+          "id": "gemini-3_1-pro",
+          "model": "Gemini 3.1 Pro Preview",
+          "provider": "gemini",
+          "sourceRunId": null,
+          "metrics": {
+            "exactMatch": {
+              "value": 30.52,
+              "ciLow": 26.78,
+              "ciHigh": 33.9
+            },
+            "microF1": {
+              "value": 89.81,
+              "ciLow": 89.06,
+              "ciHigh": 90.49
+            }
+          }
+        },
+        {
+          "id": "gemini-3_8-flash",
+          "model": "Gemini 3.8 Flash",
+          "provider": "gemini",
+          "sourceRunId": null,
+          "metrics": {
+            "exactMatch": {
+              "value": 20.22,
+              "ciLow": 16.67,
+              "ciHigh": 23.97
+            },
+            "microF1": {
+              "value": 86.46,
+              "ciLow": 85.53,
+              "ciHigh": 87.37
+            }
+          }
+        },
+        {
+          "id": "gpt-5_6-sol",
+          "model": "GPT-5.6 Sol",
+          "provider": "openai",
+          "sourceRunId": null,
+          "metrics": {
+            "exactMatch": {
+              "value": 17.04,
+              "ciLow": 14.04,
+              "ciHigh": 20.41
+            },
+            "microF1": {
+              "value": 85.76,
+              "ciLow": 84.94,
+              "ciHigh": 86.66
+            }
+          }
         }
       ]
     },
@@ -471,6 +543,78 @@
               "value": 83.02799861735222,
               "ciLow": 81.7107093184979,
               "ciHigh": 84.23594342876855
+            }
+          }
+        },
+        {
+          "id": "claude-fable-5_1",
+          "model": "Claude Fable 5.1",
+          "provider": "anthropic",
+          "sourceRunId": null,
+          "metrics": {
+            "exactMatch": {
+              "value": 19.56,
+              "ciLow": 15.65,
+              "ciHigh": 23.47
+            },
+            "microF1": {
+              "value": 76.25,
+              "ciLow": 74.81,
+              "ciHigh": 77.77
+            }
+          }
+        },
+        {
+          "id": "gemini-3_1-pro",
+          "model": "Gemini 3.1 Pro Preview",
+          "provider": "gemini",
+          "sourceRunId": null,
+          "metrics": {
+            "exactMatch": {
+              "value": 21.76,
+              "ciLow": 17.6,
+              "ciHigh": 25.67
+            },
+            "microF1": {
+              "value": 76.03,
+              "ciLow": 74.51,
+              "ciHigh": 77.64
+            }
+          }
+        },
+        {
+          "id": "gemini-3_8-flash",
+          "model": "Gemini 3.8 Flash",
+          "provider": "gemini",
+          "sourceRunId": null,
+          "metrics": {
+            "exactMatch": {
+              "value": 25.92,
+              "ciLow": 21.76,
+              "ciHigh": 30.07
+            },
+            "microF1": {
+              "value": 79.73,
+              "ciLow": 78.1,
+              "ciHigh": 81.42
+            }
+          }
+        },
+        {
+          "id": "gpt-5_6-sol",
+          "model": "GPT-5.6 Sol",
+          "provider": "openai",
+          "sourceRunId": null,
+          "metrics": {
+            "exactMatch": {
+              "value": 24.94,
+              "ciLow": 21.03,
+              "ciHigh": 29.1
+            },
+            "microF1": {
+              "value": 79.42,
+              "ciLow": 78.03,
+              "ciHigh": 80.77
             }
           }
         }
@@ -1143,6 +1287,78 @@
               "value": 63.97135183527305,
               "ciLow": 63.36615935541629,
               "ciHigh": 64.48343777976724
+            }
+          }
+        },
+        {
+          "id": "claude-fable-5_1",
+          "model": "Claude Fable 5.1",
+          "provider": "anthropic",
+          "sourceRunId": null,
+          "metrics": {
+            "exactMatch": {
+              "value": 31.3,
+              "ciLow": 28.3,
+              "ciHigh": 34.2
+            },
+            "microF1": {
+              "value": 31.3,
+              "ciLow": 28.3,
+              "ciHigh": 34.2
+            }
+          }
+        },
+        {
+          "id": "gemini-3_1-pro",
+          "model": "Gemini 3.1 Pro Preview",
+          "provider": "gemini",
+          "sourceRunId": null,
+          "metrics": {
+            "exactMatch": {
+              "value": 27.9,
+              "ciLow": 25.1,
+              "ciHigh": 30.8
+            },
+            "microF1": {
+              "value": 27.9,
+              "ciLow": 25.1,
+              "ciHigh": 30.8
+            }
+          }
+        },
+        {
+          "id": "gemini-3_8-flash",
+          "model": "Gemini 3.8 Flash",
+          "provider": "gemini",
+          "sourceRunId": null,
+          "metrics": {
+            "exactMatch": {
+              "value": 32.5,
+              "ciLow": 29.6,
+              "ciHigh": 35.5
+            },
+            "microF1": {
+              "value": 32.52,
+              "ciLow": 29.63,
+              "ciHigh": 35.5
+            }
+          }
+        },
+        {
+          "id": "gpt-5_6-sol",
+          "model": "GPT-5.6 Sol",
+          "provider": "openai",
+          "sourceRunId": null,
+          "metrics": {
+            "exactMatch": {
+              "value": 18.3,
+              "ciLow": 15.8,
+              "ciHigh": 20.9
+            },
+            "microF1": {
+              "value": 18.3,
+              "ciLow": 15.8,
+              "ciHigh": 20.9
             }
           }
         }
