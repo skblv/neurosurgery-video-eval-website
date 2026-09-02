@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-09-02T19:53:05Z",
+  "generatedAt": "2026-09-02T20:08:22Z",
   "datasets": {
     "dsad": {
       "majorityBaseline": {
@@ -282,8 +282,8 @@
     },
     "cadis": {
       "majorityBaseline": {
-        "exactMatch": null,
-        "microF1": null
+        "exactMatch": 26.59,
+        "microF1": 86.73
       },
       "results": [
         {
@@ -452,8 +452,8 @@
     },
     "endoscapes": {
       "majorityBaseline": {
-        "exactMatch": null,
-        "microF1": null
+        "exactMatch": 16.38,
+        "microF1": 62.85
       },
       "results": [
         {
@@ -1196,8 +1196,8 @@
     },
     "pitvissteps": {
       "majorityBaseline": {
-        "exactMatch": null,
-        "microF1": null
+        "exactMatch": 34.81,
+        "microF1": 34.81
       },
       "results": [
         {
