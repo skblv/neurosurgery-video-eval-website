@@ -65,7 +65,8 @@ h3 {
 /* ---------- masthead ---------- */
 
 .masthead {
-  padding: 5.5rem 0 0;
+  /* Matches the page's side padding so the lockup sits flush with the top. */
+  padding: 1.75rem 0 0;
 }
 
 .lockup {
@@ -175,13 +176,23 @@ h3 {
   padding: 2.25rem 0 1.5rem;
 }
 
+/*
+ * The domain question is a run-in heading: it keeps its <h2> semantics for the
+ * document outline and screen readers, but reads as the opening sentence of the
+ * blurb that follows it.
+ */
 .domain-hero h2 {
-  max-width: 22ch;
-  font-size: clamp(2rem, 4.8vw, 3rem);
+  display: inline;
+  color: var(--ink);
+  font-size: 1.0625rem;
+  font-weight: 700;
+  letter-spacing: normal;
+  line-height: inherit;
 }
 
 .domain-hero > p:last-child {
-  margin: 1.1rem 0 0;
+  display: inline;
+  margin: 0;
   color: var(--ink-soft);
   font-size: 1.0625rem;
 }
@@ -894,7 +905,7 @@ h3 {
 
 @media (max-width: 640px) {
   .masthead {
-    padding: 3.5rem 0 0;
+    padding: 1.1rem 0 0;
   }
 
   .section {

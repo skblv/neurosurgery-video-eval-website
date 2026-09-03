@@ -40,7 +40,7 @@ export function DomainLeaderboard({ page }: { page: DomainPage }) {
   return (
     <>
       <header className="domain-hero">
-        <h2>{page.title}</h2>
+        <h2>{page.title}</h2>{" "}
         <p>
           {page.lead}
           {page.datasetIds.length === 1 ? (
