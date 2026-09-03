@@ -109,7 +109,6 @@ function DomainSources({
   route: keyof typeof DOMAIN_PAGES;
 }) {
   const page = DOMAIN_PAGES[route];
-  const datasetRef = DOMAIN_DATASET_CITATIONS[page.datasetId];
 
   // Site-wide footnote numbers, listed in ascending order: model citations
   // reused from the Instruments page come before the domain dataset numbers.
@@ -119,18 +118,11 @@ function DomainSources({
       number: domainModelFootnote(ref.modelId),
       ref,
     })),
-    {
-      key: `dataset-${page.datasetId}`,
-      number: domainDatasetFootnote(page.datasetId),
-      ref: {
-        authorsShort: datasetRef.authorsShort,
-        title: datasetRef.title,
-        venue: datasetRef.venue,
-        linkLabel: datasetRef.linkLabel,
-        url: datasetRef.url,
-        year: datasetRef.year,
-      },
-    },
+    ...page.datasetIds.map((datasetId) => ({
+      key: `dataset-${datasetId}`,
+      number: domainDatasetFootnote(datasetId),
+      ref: DOMAIN_DATASET_CITATIONS[datasetId],
+    })),
   ].sort((a, b) => (a.number ?? 0) - (b.number ?? 0));
 
   return (

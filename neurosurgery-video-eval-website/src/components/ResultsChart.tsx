@@ -13,6 +13,7 @@ import type { ReactNode } from "react";
 
 import { boothShield, sdscMark } from "../assets/logos";
 import { BAR_COLOR, providerLabel } from "../data/benchmark";
+import { isNewModel } from "../data/leaderboard";
 import type {
   FootnoteLookup,
   LeaderboardBenchmark,
@@ -34,14 +35,27 @@ const FOOTNOTE_FONT =
   '9px "Inter", ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif';
 /** The baseline annotation stays grey so it reads as an annotation, not as data. */
 const ANNOTATION_INK = "#6f6f6f";
+/*
+ * "New" badge geometry. The width is fixed rather than measured because the
+ * label is always the same three characters, and the axis column has to be
+ * sized before any tick renders. Colours match the CSS badge in index.css --
+ * ink on SDSC green, which clears the 4.5:1 contrast minimum where white
+ * would not.
+ */
+const NEW_BADGE_LABEL = "NEW";
+const NEW_BADGE_WIDTH = 30;
+const NEW_BADGE_HEIGHT = 13;
+const NEW_BADGE_GAP = 6;
+const NEW_BADGE_FILL = "#2ebdb5";
 /** Below this the label column leaves too little room to plot, so rows stack. */
 const NARROW_QUERY = "(max-width: 700px)";
 
 /**
- * Width of the y-axis label column: the provider mark, a fixed gap, the longest
- * model name, and the 20px inset between the names and the bars. Sizing the
- * column to the content keeps the mark-to-name whitespace identical across
- * benchmarks with long and short model names.
+ * Width of the y-axis label column: the provider mark, a fixed gap, the widest
+ * label and the 20px inset between the labels and the bars. Sizing the column
+ * to the content keeps the mark-to-name whitespace identical across benchmarks
+ * with long and short model names. A badged row is measured with the badge
+ * included, so the extra width cannot push a long name out of the column.
  */
 function labelColumnWidth(rows: ChartRow[], footnoteFor: FootnoteLookup): number {
   const context = document.createElement("canvas").getContext("2d");
@@ -54,6 +68,9 @@ function labelColumnWidth(rows: ChartRow[], footnoteFor: FootnoteLookup): number
     if (footnote !== null) {
       context.font = FOOTNOTE_FONT;
       width += context.measureText(String(footnote)).width;
+    }
+    if (isNewModel(row.id)) {
+      width += NEW_BADGE_GAP + NEW_BADGE_WIDTH;
     }
     return width;
   });
@@ -104,11 +121,24 @@ function renderAxisTick(rows: ChartRow[], axisWidth: number, footnoteFor: Footno
     const row = rows[index];
     if (!row) return <g />;
 
+    // Labels are right-aligned against the 20px inset before the bars. On a
+    // badged row the badge takes that slot and the name is pushed left of it,
+    // which puts the badge after the name as it is in the table.
+    const isNew = isNewModel(row.id);
+    const nameRight = isNew ? -20 - NEW_BADGE_WIDTH - NEW_BADGE_GAP : -20;
+
     return (
       <g transform={`translate(${x},${y})`}>
         <title>{providerLabel(row.provider)}</title>
         <AxisIcon provider={row.provider} x={-axisWidth} y={-ICON_SIZE / 2} />
-        <text x={-20} y={0} textAnchor="end" dominantBaseline="central" fill={INK} fontSize={13}>
+        <text
+          x={nameRight}
+          y={0}
+          textAnchor="end"
+          dominantBaseline="central"
+          fill={INK}
+          fontSize={13}
+        >
           {row.model}
           {footnoteFor(row.id) === null ? null : (
             <tspan baselineShift="super" fontSize={9}>
@@ -116,6 +146,30 @@ function renderAxisTick(rows: ChartRow[], axisWidth: number, footnoteFor: Footno
             </tspan>
           )}
         </text>
+        {isNew ? (
+          <g>
+            <rect
+              x={-20 - NEW_BADGE_WIDTH}
+              y={-NEW_BADGE_HEIGHT / 2}
+              width={NEW_BADGE_WIDTH}
+              height={NEW_BADGE_HEIGHT}
+              rx={2}
+              fill={NEW_BADGE_FILL}
+            />
+            <text
+              x={-20 - NEW_BADGE_WIDTH / 2}
+              y={0}
+              textAnchor="middle"
+              dominantBaseline="central"
+              fill={INK}
+              fontSize={9}
+              fontWeight={700}
+              letterSpacing="0.04em"
+            >
+              {NEW_BADGE_LABEL}
+            </text>
+          </g>
+        ) : null}
       </g>
     );
   };
