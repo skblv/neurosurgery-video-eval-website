@@ -49,6 +49,7 @@ export const NEW_BADGE_DAYS = 14;
 export const MODEL_PUBLISHED_ON: Readonly<Record<string, string>> = {
   "claude-fable-5_1": "2026-09-02",
   "gemini-3_8-flash": "2026-09-02",
+  "gpt-6-astra": "2026-09-04",
 };
 
 const MS_PER_DAY = 24 * 60 * 60 * 1000;

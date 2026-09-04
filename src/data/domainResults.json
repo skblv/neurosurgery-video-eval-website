@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-09-02T20:08:22Z",
+  "generatedAt": "2026-09-04T23:16:05Z",
   "datasets": {
     "dsad": {
       "majorityBaseline": {
@@ -447,6 +447,24 @@
               "ciHigh": 86.66
             }
           }
+        },
+        {
+          "id": "gpt-6-astra",
+          "model": "GPT-6 Astra",
+          "provider": "openai",
+          "sourceRunId": null,
+          "metrics": {
+            "exactMatch": {
+              "value": 44.38,
+              "ciLow": 40.45,
+              "ciHigh": 48.5
+            },
+            "microF1": {
+              "value": 92.47,
+              "ciLow": 91.81,
+              "ciHigh": 93.16
+            }
+          }
         }
       ]
     },
@@ -615,6 +633,24 @@
               "value": 79.42,
               "ciLow": 78.03,
               "ciHigh": 80.77
+            }
+          }
+        },
+        {
+          "id": "gpt-6-astra",
+          "model": "GPT-6 Astra",
+          "provider": "openai",
+          "sourceRunId": null,
+          "metrics": {
+            "exactMatch": {
+              "value": 26.65,
+              "ciLow": 22.25,
+              "ciHigh": 31.05
+            },
+            "microF1": {
+              "value": 81.61,
+              "ciLow": 80.03,
+              "ciHigh": 83.13
             }
           }
         }
@@ -1359,6 +1395,24 @@
               "value": 18.3,
               "ciLow": 15.8,
               "ciHigh": 20.9
+            }
+          }
+        },
+        {
+          "id": "gpt-6-astra",
+          "model": "GPT-6 Astra",
+          "provider": "openai",
+          "sourceRunId": null,
+          "metrics": {
+            "exactMatch": {
+              "value": 32.3,
+              "ciLow": 29.4,
+              "ciHigh": 35.1
+            },
+            "microF1": {
+              "value": 32.3,
+              "ciLow": 29.4,
+              "ciHigh": 35.1
             }
           }
         }
