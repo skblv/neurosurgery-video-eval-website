@@ -1,6 +1,6 @@
 {
-  "schemaVersion": 1,
-  "generatedAt": "2026-08-28T20:00:00Z",
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-02T20:08:22Z",
   "datasets": {
     "dsad": {
       "majorityBaseline": {
@@ -239,6 +239,382 @@
               "value": 31.0,
               "ciLow": 29.7,
               "ciHigh": 32.3
+            }
+          }
+        },
+        {
+          "id": "claude-fable-5_1",
+          "model": "Claude Fable 5.1",
+          "provider": "anthropic",
+          "sourceRunId": null,
+          "metrics": {
+            "exactMatch": {
+              "value": 11.0,
+              "ciLow": 9.0,
+              "ciHigh": 13.1
+            },
+            "microF1": {
+              "value": 52.3,
+              "ciLow": 50.3,
+              "ciHigh": 54.3
+            }
+          }
+        },
+        {
+          "id": "gemini-3_8-flash",
+          "model": "Gemini 3.8 Flash",
+          "provider": "gemini",
+          "sourceRunId": null,
+          "metrics": {
+            "exactMatch": {
+              "value": 14.1,
+              "ciLow": 12.0,
+              "ciHigh": 16.2
+            },
+            "microF1": {
+              "value": 54.4,
+              "ciLow": 52.4,
+              "ciHigh": 56.5
+            }
+          }
+        }
+      ]
+    },
+    "cadis": {
+      "majorityBaseline": {
+        "exactMatch": 26.59,
+        "microF1": 86.73
+      },
+      "results": [
+        {
+          "id": "gemma3-27b-lora",
+          "model": "Gemma 3 27B fine-tuned",
+          "provider": "internal",
+          "sourceRunId": "206668",
+          "metrics": {
+            "exactMatch": {
+              "value": 41.01123595505618,
+              "ciLow": 36.70411985018727,
+              "ciHigh": 45.50561797752809
+            },
+            "microF1": {
+              "value": 94.16226466206149,
+              "ciLow": 93.66308039792833,
+              "ciHigh": 94.65858918189792
+            }
+          }
+        },
+        {
+          "id": "gemma3-27b-it",
+          "model": "Gemma 3 27B-it",
+          "provider": "google",
+          "sourceRunId": "206634",
+          "metrics": {
+            "exactMatch": {
+              "value": 0.18726591760299627,
+              "ciLow": 0.0,
+              "ciHigh": 0.5617977528089888
+            },
+            "microF1": {
+              "value": 66.96964778445058,
+              "ciLow": 66.05863192182411,
+              "ciHigh": 68.00258564964448
+            }
+          }
+        },
+        {
+          "id": "qwen3-8-27b",
+          "model": "Qwen3.8 27B",
+          "provider": "qwen",
+          "sourceRunId": "206641",
+          "metrics": {
+            "exactMatch": {
+              "value": 0.18726591760299627,
+              "ciLow": 0.0,
+              "ciHigh": 0.5617977528089888
+            },
+            "microF1": {
+              "value": 63.11420982735724,
+              "ciLow": 61.82614555256065,
+              "ciHigh": 64.50230718523401
+            }
+          }
+        },
+        {
+          "id": "resnet50",
+          "model": "ResNet-50",
+          "provider": "internal",
+          "sourceRunId": "206696",
+          "metrics": {
+            "exactMatch": {
+              "value": 41.57303370786517,
+              "ciLow": 37.265917602996254,
+              "ciHigh": 45.69288389513109
+            },
+            "microF1": {
+              "value": 93.67839331446287,
+              "ciLow": 93.10670443814921,
+              "ciHigh": 94.19648840637984
+            }
+          }
+        },
+        {
+          "id": "lemonfm-linear-probe",
+          "model": "LemonFM (linear probe)",
+          "provider": "visurg",
+          "sourceRunId": "206697",
+          "metrics": {
+            "exactMatch": {
+              "value": 3.932584269662921,
+              "ciLow": 2.4344569288389515,
+              "ciHigh": 5.617977528089887
+            },
+            "microF1": {
+              "value": 88.68033496967946,
+              "ciLow": 88.20143884892087,
+              "ciHigh": 89.15175995383727
+            }
+          }
+        },
+        {
+          "id": "claude-fable-5_1",
+          "model": "Claude Fable 5.1",
+          "provider": "anthropic",
+          "sourceRunId": null,
+          "metrics": {
+            "exactMatch": {
+              "value": 15.54,
+              "ciLow": 12.55,
+              "ciHigh": 18.91
+            },
+            "microF1": {
+              "value": 85.15,
+              "ciLow": 84.3,
+              "ciHigh": 86.04
+            }
+          }
+        },
+        {
+          "id": "gemini-3_1-pro",
+          "model": "Gemini 3.1 Pro Preview",
+          "provider": "gemini",
+          "sourceRunId": null,
+          "metrics": {
+            "exactMatch": {
+              "value": 30.52,
+              "ciLow": 26.78,
+              "ciHigh": 33.9
+            },
+            "microF1": {
+              "value": 89.81,
+              "ciLow": 89.06,
+              "ciHigh": 90.49
+            }
+          }
+        },
+        {
+          "id": "gemini-3_8-flash",
+          "model": "Gemini 3.8 Flash",
+          "provider": "gemini",
+          "sourceRunId": null,
+          "metrics": {
+            "exactMatch": {
+              "value": 20.22,
+              "ciLow": 16.67,
+              "ciHigh": 23.97
+            },
+            "microF1": {
+              "value": 86.46,
+              "ciLow": 85.53,
+              "ciHigh": 87.37
+            }
+          }
+        },
+        {
+          "id": "gpt-5_6-sol",
+          "model": "GPT-5.6 Sol",
+          "provider": "openai",
+          "sourceRunId": null,
+          "metrics": {
+            "exactMatch": {
+              "value": 17.04,
+              "ciLow": 14.04,
+              "ciHigh": 20.41
+            },
+            "microF1": {
+              "value": 85.76,
+              "ciLow": 84.94,
+              "ciHigh": 86.66
+            }
+          }
+        }
+      ]
+    },
+    "endoscapes": {
+      "majorityBaseline": {
+        "exactMatch": 16.38,
+        "microF1": 62.85
+      },
+      "results": [
+        {
+          "id": "gemma3-27b-lora",
+          "model": "Gemma 3 27B fine-tuned",
+          "provider": "internal",
+          "sourceRunId": "206691",
+          "metrics": {
+            "exactMatch": {
+              "value": 24.69437652811736,
+              "ciLow": 20.537897310513447,
+              "ciHigh": 29.095354523227385
+            },
+            "microF1": {
+              "value": 82.16106014271152,
+              "ciLow": 80.77115388808364,
+              "ciHigh": 83.51060006460991
+            }
+          }
+        },
+        {
+          "id": "gemma3-27b-it",
+          "model": "Gemma 3 27B-it",
+          "provider": "google",
+          "sourceRunId": "206653",
+          "metrics": {
+            "exactMatch": {
+              "value": 17.114914425427874,
+              "ciLow": 13.202933985330073,
+              "ciHigh": 20.782396088019558
+            },
+            "microF1": {
+              "value": 76.15357520253611,
+              "ciLow": 74.61024498886414,
+              "ciHigh": 77.71147771147772
+            }
+          }
+        },
+        {
+          "id": "qwen3-8-27b",
+          "model": "Qwen3.8 27B",
+          "provider": "qwen",
+          "sourceRunId": "206667",
+          "metrics": {
+            "exactMatch": {
+              "value": 13.93643031784841,
+              "ciLow": 10.757946210268948,
+              "ciHigh": 17.359413202933985
+            },
+            "microF1": {
+              "value": 63.59967715899919,
+              "ciLow": 61.48055207026348,
+              "ciHigh": 65.7589106928314
+            }
+          }
+        },
+        {
+          "id": "resnet50",
+          "model": "ResNet-50",
+          "provider": "internal",
+          "sourceRunId": "206698",
+          "metrics": {
+            "exactMatch": {
+              "value": 25.4278728606357,
+              "ciLow": 21.271393643031786,
+              "ciHigh": 29.584352078239608
+            },
+            "microF1": {
+              "value": 82.55968169761273,
+              "ciLow": 81.31260794473229,
+              "ciHigh": 83.83316097897277
+            }
+          }
+        },
+        {
+          "id": "lemonfm-linear-probe",
+          "model": "LemonFM (linear probe)",
+          "provider": "visurg",
+          "sourceRunId": "206699",
+          "metrics": {
+            "exactMatch": {
+              "value": 25.67237163814181,
+              "ciLow": 21.515892420537895,
+              "ciHigh": 30.073349633251834
+            },
+            "microF1": {
+              "value": 83.02799861735222,
+              "ciLow": 81.7107093184979,
+              "ciHigh": 84.23594342876855
+            }
+          }
+        },
+        {
+          "id": "claude-fable-5_1",
+          "model": "Claude Fable 5.1",
+          "provider": "anthropic",
+          "sourceRunId": null,
+          "metrics": {
+            "exactMatch": {
+              "value": 19.56,
+              "ciLow": 15.65,
+              "ciHigh": 23.47
+            },
+            "microF1": {
+              "value": 76.25,
+              "ciLow": 74.81,
+              "ciHigh": 77.77
+            }
+          }
+        },
+        {
+          "id": "gemini-3_1-pro",
+          "model": "Gemini 3.1 Pro Preview",
+          "provider": "gemini",
+          "sourceRunId": null,
+          "metrics": {
+            "exactMatch": {
+              "value": 21.76,
+              "ciLow": 17.6,
+              "ciHigh": 25.67
+            },
+            "microF1": {
+              "value": 76.03,
+              "ciLow": 74.51,
+              "ciHigh": 77.64
+            }
+          }
+        },
+        {
+          "id": "gemini-3_8-flash",
+          "model": "Gemini 3.8 Flash",
+          "provider": "gemini",
+          "sourceRunId": null,
+          "metrics": {
+            "exactMatch": {
+              "value": 25.92,
+              "ciLow": 21.76,
+              "ciHigh": 30.07
+            },
+            "microF1": {
+              "value": 79.73,
+              "ciLow": 78.1,
+              "ciHigh": 81.42
+            }
+          }
+        },
+        {
+          "id": "gpt-5_6-sol",
+          "model": "GPT-5.6 Sol",
+          "provider": "openai",
+          "sourceRunId": null,
+          "metrics": {
+            "exactMatch": {
+              "value": 24.94,
+              "ciLow": 21.03,
+              "ciHigh": 29.1
+            },
+            "microF1": {
+              "value": 79.42,
+              "ciLow": 78.03,
+              "ciHigh": 80.77
             }
           }
         }
@@ -483,6 +859,42 @@
               "ciHigh": 33.8
             }
           }
+        },
+        {
+          "id": "claude-fable-5_1",
+          "model": "Claude Fable 5.1",
+          "provider": "anthropic",
+          "sourceRunId": null,
+          "metrics": {
+            "exactMatch": {
+              "value": 14.6,
+              "ciLow": 12.5,
+              "ciHigh": 17.0
+            },
+            "microF1": {
+              "value": 37.9,
+              "ciLow": 35.8,
+              "ciHigh": 40.1
+            }
+          }
+        },
+        {
+          "id": "gemini-3_8-flash",
+          "model": "Gemini 3.8 Flash",
+          "provider": "gemini",
+          "sourceRunId": null,
+          "metrics": {
+            "exactMatch": {
+              "value": 24.6,
+              "ciLow": 22.0,
+              "ciHigh": 27.4
+            },
+            "microF1": {
+              "value": 39.9,
+              "ciLow": 37.3,
+              "ciHigh": 42.3
+            }
+          }
         }
       ]
     },
@@ -492,6 +904,42 @@
         "microF1": 39.8
       },
       "results": [
+        {
+          "id": "gemma3-27b-lora",
+          "model": "Gemma 3 27B fine-tuned",
+          "provider": "internal",
+          "sourceRunId": null,
+          "metrics": {
+            "exactMatch": {
+              "value": 60.6,
+              "ciLow": 60.0,
+              "ciHigh": 61.3
+            },
+            "microF1": {
+              "value": 78.8,
+              "ciLow": 78.4,
+              "ciHigh": 79.2
+            }
+          }
+        },
+        {
+          "id": "gemma3-27b-lora-json",
+          "model": "Gemma 3 27B + LoRA (JSON)",
+          "provider": "internal",
+          "sourceRunId": null,
+          "metrics": {
+            "exactMatch": {
+              "value": 60.0,
+              "ciLow": 59.3,
+              "ciHigh": 60.7
+            },
+            "microF1": {
+              "value": 76.6,
+              "ciLow": 76.1,
+              "ciHigh": 77.0
+            }
+          }
+        },
         {
           "id": "resnet50",
           "model": "ResNet-50",
@@ -705,6 +1153,212 @@
               "value": 24.9,
               "ciLow": 24.5,
               "ciHigh": 25.3
+            }
+          }
+        },
+        {
+          "id": "claude-fable-5_1",
+          "model": "Claude Fable 5.1",
+          "provider": "anthropic",
+          "sourceRunId": null,
+          "metrics": {
+            "exactMatch": {
+              "value": 31.3,
+              "ciLow": 28.5,
+              "ciHigh": 34.2
+            },
+            "microF1": {
+              "value": 58.3,
+              "ciLow": 56.1,
+              "ciHigh": 60.6
+            }
+          }
+        },
+        {
+          "id": "gemini-3_8-flash",
+          "model": "Gemini 3.8 Flash",
+          "provider": "gemini",
+          "sourceRunId": null,
+          "metrics": {
+            "exactMatch": {
+              "value": 39.8,
+              "ciLow": 36.8,
+              "ciHigh": 42.7
+            },
+            "microF1": {
+              "value": 70.1,
+              "ciLow": 68.3,
+              "ciHigh": 72.0
+            }
+          }
+        }
+      ]
+    },
+    "pitvissteps": {
+      "majorityBaseline": {
+        "exactMatch": 34.81,
+        "microF1": 34.81
+      },
+      "results": [
+        {
+          "id": "gemma3-27b-lora",
+          "model": "Gemma 3 27B fine-tuned",
+          "provider": "internal",
+          "sourceRunId": "206778",
+          "metrics": {
+            "exactMatch": {
+              "value": 62.74306177260519,
+              "ciLow": 62.16293643688451,
+              "ciHigh": 63.29113697403761
+            },
+            "microF1": {
+              "value": 62.74306177260519,
+              "ciLow": 62.16293643688451,
+              "ciHigh": 63.29113697403761
+            }
+          }
+        },
+        {
+          "id": "gemma3-27b-it",
+          "model": "Gemma 3 27B-it",
+          "provider": "google",
+          "sourceRunId": "206779",
+          "metrics": {
+            "exactMatch": {
+              "value": 23.516562220232767,
+              "ciLow": 23.06177260519248,
+              "ciHigh": 24.00358102059087
+            },
+            "microF1": {
+              "value": 23.526250738889784,
+              "ciLow": 23.070584020064494,
+              "ciHigh": 24.010029551356676
+            }
+          }
+        },
+        {
+          "id": "qwen3-8-27b",
+          "model": "Qwen3.8 27B",
+          "provider": "qwen",
+          "sourceRunId": "206780",
+          "metrics": {
+            "exactMatch": {
+              "value": 20.905998209489704,
+              "ciLow": 20.440465532676813,
+              "ciHigh": 21.378692927484333
+            },
+            "microF1": {
+              "value": 21.04049159353432,
+              "ciLow": 20.569038260430564,
+              "ciHigh": 21.518394407811767
+            }
+          }
+        },
+        {
+          "id": "resnet50",
+          "model": "ResNet-50",
+          "provider": "internal",
+          "sourceRunId": "206781",
+          "metrics": {
+            "exactMatch": {
+              "value": 56.01432408236347,
+              "ciLow": 55.40555058191584,
+              "ciHigh": 56.6123545210385
+            },
+            "microF1": {
+              "value": 56.01432408236347,
+              "ciLow": 55.40555058191584,
+              "ciHigh": 56.6123545210385
+            }
+          }
+        },
+        {
+          "id": "lemonfm-linear-probe",
+          "model": "LemonFM (linear probe)",
+          "provider": "visurg",
+          "sourceRunId": "206782",
+          "metrics": {
+            "exactMatch": {
+              "value": 63.97135183527305,
+              "ciLow": 63.36615935541629,
+              "ciHigh": 64.48343777976724
+            },
+            "microF1": {
+              "value": 63.97135183527305,
+              "ciLow": 63.36615935541629,
+              "ciHigh": 64.48343777976724
+            }
+          }
+        },
+        {
+          "id": "claude-fable-5_1",
+          "model": "Claude Fable 5.1",
+          "provider": "anthropic",
+          "sourceRunId": null,
+          "metrics": {
+            "exactMatch": {
+              "value": 31.3,
+              "ciLow": 28.3,
+              "ciHigh": 34.2
+            },
+            "microF1": {
+              "value": 31.3,
+              "ciLow": 28.3,
+              "ciHigh": 34.2
+            }
+          }
+        },
+        {
+          "id": "gemini-3_1-pro",
+          "model": "Gemini 3.1 Pro Preview",
+          "provider": "gemini",
+          "sourceRunId": null,
+          "metrics": {
+            "exactMatch": {
+              "value": 27.9,
+              "ciLow": 25.1,
+              "ciHigh": 30.8
+            },
+            "microF1": {
+              "value": 27.9,
+              "ciLow": 25.1,
+              "ciHigh": 30.8
+            }
+          }
+        },
+        {
+          "id": "gemini-3_8-flash",
+          "model": "Gemini 3.8 Flash",
+          "provider": "gemini",
+          "sourceRunId": null,
+          "metrics": {
+            "exactMatch": {
+              "value": 32.5,
+              "ciLow": 29.6,
+              "ciHigh": 35.5
+            },
+            "microF1": {
+              "value": 32.52,
+              "ciLow": 29.63,
+              "ciHigh": 35.5
+            }
+          }
+        },
+        {
+          "id": "gpt-5_6-sol",
+          "model": "GPT-5.6 Sol",
+          "provider": "openai",
+          "sourceRunId": null,
+          "metrics": {
+            "exactMatch": {
+              "value": 18.3,
+              "ciLow": 15.8,
+              "ciHigh": 20.9
+            },
+            "microF1": {
+              "value": 18.3,
+              "ciLow": 15.8,
+              "ciHigh": 20.9
             }
           }
         }
@@ -947,6 +1601,42 @@
               "value": 18.6,
               "ciLow": 15.3,
               "ciHigh": 21.9
+            }
+          }
+        },
+        {
+          "id": "claude-fable-5_1",
+          "model": "Claude Fable 5.1",
+          "provider": "anthropic",
+          "sourceRunId": null,
+          "metrics": {
+            "exactMatch": {
+              "value": 30.0,
+              "ciLow": 26.7,
+              "ciHigh": 33.5
+            },
+            "microF1": {
+              "value": 30.0,
+              "ciLow": 26.7,
+              "ciHigh": 33.5
+            }
+          }
+        },
+        {
+          "id": "gemini-3_8-flash",
+          "model": "Gemini 3.8 Flash",
+          "provider": "gemini",
+          "sourceRunId": null,
+          "metrics": {
+            "exactMatch": {
+              "value": 21.5,
+              "ciLow": 18.4,
+              "ciHigh": 24.7
+            },
+            "microF1": {
+              "value": 21.5,
+              "ciLow": 18.4,
+              "ciHigh": 24.7
             }
           }
         }

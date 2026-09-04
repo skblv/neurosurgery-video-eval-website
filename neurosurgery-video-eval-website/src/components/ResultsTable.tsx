@@ -1,3 +1,4 @@
+import { isNewModel } from "../data/leaderboard";
 import type { FootnoteLookup, LeaderboardBenchmark } from "../data/leaderboard";
 import { BASELINE_ICON_LABEL, DieIcon } from "./DieIcon";
 import { ModelIcon } from "./ModelIcon";
@@ -90,6 +91,7 @@ export function ResultsTable<MetricId extends string>({
                 <ModelIcon provider={row.provider} />
               )}
               {row.label}
+              {isNewModel(row.key) ? <span className="badge-new">New</span> : null}
               {footnoteFor(row.key) === null ? null : (
                 <sup className="footnote-ref">{footnoteFor(row.key)}</sup>
               )}
