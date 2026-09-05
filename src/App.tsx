@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 
 import { boothLogo, sdscLogo } from "./assets/logos";
+import { Summary } from "./components/Summary";
 import { AboutUs } from "./components/AboutUs";
 import { DomainLeaderboard } from "./components/DomainLeaderboard";
 import { DomainNav } from "./components/DomainNav";
@@ -22,14 +23,16 @@ import {
 import { ROUTES, type DomainRoute } from "./data/domains";
 
 function routeFromHash(): DomainRoute {
-  const candidate = window.location.hash.replace(/^#\/?/, "") || "instruments";
+  const candidate = window.location.hash.replace(/^#\/?/, "") || "summary";
   return ROUTES.includes(candidate as DomainRoute)
     ? (candidate as DomainRoute)
-    : "instruments";
+    : "summary";
 }
 
 function PageContent({ route }: { route: DomainRoute }) {
   switch (route) {
+    case "summary":
+      return <Summary />;
     case "instruments":
       return <InstrumentLeaderboard />;
     case "gestures":

@@ -1023,3 +1023,29 @@ h3 {
     transition: none !important;
   }
 }
+
+/* Cross-modality summary */
+.summary { padding-top: 2.25rem; }
+.summary-heading { display: flex; align-items: end; justify-content: space-between; gap: 1rem; }
+.summary-eyebrow { color: var(--accent); font-size: .72rem; letter-spacing: .12em; font-weight: 650; margin: 0 0 .7rem; }
+.summary-reference { white-space: nowrap; font-size: .75rem; background: var(--accent-soft); padding: .4rem .65rem; border-radius: 4px; }
+.summary > p { color: var(--annotation); font-size: .9rem; max-width: 52rem; }
+.summary-plot { display: grid; grid-template-columns: 1fr 1.6fr; gap: 1rem; align-items: center; margin: 2rem 0; padding: 1.5rem; border: 1px solid var(--rule); border-radius: 8px; }
+.summary-select { display: grid; gap: .4rem; font-size: .8rem; margin-top: 1.25rem; }
+.summary-select select { width: 100%; padding: .6rem; border: 1px solid var(--rule); background: var(--paper); border-radius: 4px; font: inherit; color: var(--ink); }
+.summary-total { font-size: 2.3rem; color: var(--accent); font-variant-numeric: tabular-nums; }
+.summary-note { font-size: .78rem !important; color: var(--annotation); }
+.summary-radar { min-width: 0; }
+.summary-table-wrap { overflow-x: auto; margin-top: 1rem; }
+.summary-table { width: 100%; border-collapse: collapse; font-size: .78rem; font-variant-numeric: tabular-nums; }
+.summary-table th, .summary-table td { padding: .7rem .5rem; border-bottom: 1px solid var(--rule-soft); text-align: right; }
+.summary-table th:first-child { min-width: 185px; text-align: left; }
+.summary-table thead th { vertical-align: bottom; font-size: .7rem; }
+.summary-table button { border: 0; background: transparent; color: inherit; text-align: left; padding: 0; font: inherit; cursor: pointer; }
+.summary-table button:hover { text-decoration: underline; }
+.summary-table button:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+.summary-table small { display: block; color: var(--annotation); font-size: .65rem; }
+.summary-selected { background: var(--accent-soft); }
+.summary-method { margin-top: 1.5rem; font-size: .82rem; color: var(--annotation); }
+.summary-method summary { cursor: pointer; color: var(--ink); }
+@media(max-width: 680px) { .summary-heading { display: block; } .summary-reference { display: inline-block; margin-top: 1rem; } .summary-plot { grid-template-columns: 1fr; padding: 1rem; } }
