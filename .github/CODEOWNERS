@@ -1,4 +1,4 @@
 # PRs to main require an approving review from a code owner (branch
 # protection has "require code owner review" enabled). Add or remove
 # reviewers here to control whose approval counts.
-* @dytopia @swiftcoder @MargauxMasson @dadonoho
+* @dytopia @swiftcoder @neerajmainkar-ship-it @Surgical-Data-Science-Collective/ml-team
