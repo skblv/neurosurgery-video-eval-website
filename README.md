@@ -7,10 +7,36 @@ next benchmark families.
 
 ## Site structure
 
-- `#/overview` — six-domain benchmark maturity map.
+- `/` and `#/summary` — specialist-normalized scores, total and per-modality table, and interactive web plot (default page).
 - `#/instruments` — the published CholecT50, PitVis-2023, and SurgVU results.
 - `#/gestures` — the continuous-operation gesture comparison.
-- The remaining domain routes are roadmap pages until their protocols are ready.
+- `#/anatomy`, `#/clinical-context`, `#/recommendations`, and `#/skill-assessment` — domain benchmark results.
+
+## Summary scoring
+
+`src/data/summary.ts` derives all scores from the existing validated result files.
+For each dataset, divide the model's metric by the fixed specialist's metric:
+YOLOv12-m for Instruments, SurgMotion for the continuous Action pilot, and
+ResNet-50 for Anatomy, Skill assessment, Clinical context / VQA, and Recommendations.
+Average dataset ratios equally within a modality, then average the six modality
+scores equally for the total. Ratios above 1 are preserved; calculations use
+full source precision before display rounding.
+
+The default uses each existing tab's default metric: micro-F1 except Action
+(exact frame accuracy) and Skill assessment (exact-match accuracy). The Summary
+also offers exact accuracy across all datasets. The dataset breakdown shows
+every numerator, denominator, ratio, and weight.
+
+A modality requires results on every constituent dataset. Missing data is never
+zero-filled or silently reweighted. A full total requires all six modalities;
+incomplete models show a separately labeled partial average over their complete
+modalities, plus coverage. Missing spokes stay missing in the web plot. Partial
+averages are comparable only for matching modality coverage. The GPT-5.6 Sol
+ID spelling in the Action export is joined explicitly; different model versions
+and LEMON video inference versus LemonFM linear probes remain separate.
+
+The build runs `scripts/validate-summary.ts` to check the weighting, missing-data
+handling, aliases, and all specialist denominators against the actual result files.
 
 ## How deployment works
 
