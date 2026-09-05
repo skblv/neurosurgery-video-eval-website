@@ -1,3 +1,4 @@
+import { INSTRUMENT_EXAMPLES, DOMAIN_EXAMPLES, GESTURE_EXAMPLE, type BenchExampleSpec } from "./benchExample";
 import { DATASETS } from './benchmark';
 import { DOMAIN_DATASETS, DOMAIN_PAGES } from './domainBenchmark';
 import { GESTURE_BENCHMARK } from './gestureBenchmark';
@@ -6,8 +7,21 @@ import type { LeaderboardBenchmark } from './leaderboard';
 export function mean(values: number[]): number | null {
   return values.length ? values.reduce((sum, value) => sum + value, 0) / values.length : null;
 }
-export function relativeScore(value: number | null | undefined, baseline: number | null | undefined): number | null {
-  return value != null && baseline != null && Number.isFinite(value) && Number.isFinite(baseline) && baseline > 0 ? value / baseline : null;
+/** Uniform random guesses under each task's closed-set response format. */
+export function chanceAccuracy(spec: BenchExampleSpec): number {
+  const counts = spec.groups?.map(group => group.options.length) ?? [spec.options.length];
+  if (counts.some(count => count <= 0)) throw new Error('Chance requires a nonempty label vocabulary');
+  const outcomes = spec.groups ? counts.reduce((product, count) => product * count, 1)
+    : spec.selection === 'any' ? 2 ** counts[0] : counts[0];
+  return 100 / outcomes;
+}
+export const CHANCE_BASELINES: Record<string, number> = Object.fromEntries(
+  Object.entries({ ...INSTRUMENT_EXAMPLES, ...DOMAIN_EXAMPLES, [GESTURE_BENCHMARK.id]: GESTURE_EXAMPLE })
+    .map(([id, spec]) => [id, chanceAccuracy(spec)]),
+);
+export function relativeScore(value: number | null | undefined, baseline: number | null | undefined, chance: number | null | undefined): number | null {
+  if (value == null || baseline == null || chance == null || !Number.isFinite(value) || !Number.isFinite(baseline) || !Number.isFinite(chance) || chance < 0 || baseline <= chance) return null;
+  return Math.max(0, (value - chance) / (baseline - chance));
 }
 const domain = (key: keyof typeof DOMAIN_PAGES) => DOMAIN_PAGES[key].datasetIds.map(id => DOMAIN_DATASETS[id]);
 export const MODALITIES = [
@@ -27,7 +41,8 @@ export const SUMMARY_ROWS = [...models].map(([id, model]) => {
     const details = (modality.datasets as LeaderboardBenchmark<string>[]).map(dataset => {
       const value = dataset.results.find(result => canonicalId(result.id) === id)?.metrics[modality.metric]?.value;
       const baseline = dataset.results.find(result => result.id === modality.baseline)?.metrics[modality.metric]?.value;
-      return { dataset: dataset.name, value: value ?? null, baseline: baseline ?? null, ratio: relativeScore(value, baseline) };
+      const chance = CHANCE_BASELINES[dataset.id];
+      return { dataset: dataset.name, value: value ?? null, baseline: baseline ?? null, chance, ratio: relativeScore(value, baseline, chance) };
     });
     const ratios = details.flatMap(item => item.ratio === null ? [] : [item.ratio]);
     return { value: mean(ratios), count: ratios.length, total: details.length, details };
