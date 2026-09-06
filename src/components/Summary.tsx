@@ -11,17 +11,40 @@ import { ModelIcon } from "./ModelIcon";
 import "../summary.css";
 
 const PLOT_COLORS = ["#0f766e", "#4f46e5", "#b45309", "#be185d", "#0369a1", "#6d28d9"];
-const DEFAULT_MODELS = ["gpt-6-astra", "gpt-5_6-sol", "gemini-3_8-flash"];
-const WEB_CENTER_X = 270;
-const WEB_CENTER_Y = 210;
-const WEB_RADIUS = 140;
-const WEB_LABEL_RADIUS = 188;
+const DEFAULT_MODELS = ["gpt-6-astra", "claude-fable-5_1", "gemini-3_8-flash"];
+const WEB_CENTER_X = 320;
+const WEB_CENTER_Y = 250;
+const WEB_RADIUS = 132;
+const WEB_LABEL_RADIUS = 178;
+
+function webAngle(index: number): number {
+  return (index * 2 * Math.PI) / SUMMARY_MODALITIES.length - Math.PI / 2;
+}
 
 function webPoint(index: number, value: number, radius = WEB_RADIUS) {
-  const angle = (index * 2 * Math.PI) / SUMMARY_MODALITIES.length - Math.PI / 2;
+  const angle = webAngle(index);
   return {
     x: WEB_CENTER_X + Math.cos(angle) * radius * value,
     y: WEB_CENTER_Y + Math.sin(angle) * radius * value,
+  };
+}
+
+function cornerLabel(index: number) {
+  const angle = webAngle(index);
+  const cos = Math.cos(angle);
+  const sin = Math.sin(angle);
+  const point = webPoint(index, 1, WEB_LABEL_RADIUS);
+  if (Math.abs(cos) < 0.25) {
+    return {
+      x: point.x,
+      y: sin > 0 ? point.y + 6 : point.y - 4,
+      textAnchor: "middle" as const,
+    };
+  }
+  return {
+    x: point.x,
+    y: point.y + (sin > 0.2 ? 6 : 0),
+    textAnchor: (cos > 0 ? "start" : "end") as "start" | "end",
   };
 }
 
@@ -45,7 +68,7 @@ function SummaryWebPlot({ rows }: { rows: SummaryRow[] }) {
   return (
     <figure className="summary-web">
       <svg
-        viewBox="0 0 540 430"
+        viewBox="0 0 640 500"
         role="img"
         aria-labelledby="summary-web-title"
       >
@@ -63,7 +86,7 @@ function SummaryWebPlot({ rows }: { rows: SummaryRow[] }) {
                 strokeWidth={tick === 1 ? 1.6 : 1}
                 strokeDasharray={tick === 1 ? "5 4" : undefined}
               />
-              <text x={277} y={label.y - 4} className="summary-web__tick">
+              <text x={WEB_CENTER_X + 10} y={label.y - 4} className="summary-web__tick">
                 {tick.toFixed(2)}
               </text>
             </g>
@@ -71,7 +94,7 @@ function SummaryWebPlot({ rows }: { rows: SummaryRow[] }) {
         })}
         {SUMMARY_MODALITIES.map((modality, index) => {
           const end = webPoint(index, 1);
-          const label = webPoint(index, 1, WEB_LABEL_RADIUS / WEB_RADIUS);
+          const label = cornerLabel(index);
           return (
             <g key={modality.id}>
               <line
@@ -83,15 +106,12 @@ function SummaryWebPlot({ rows }: { rows: SummaryRow[] }) {
               />
               <text
                 x={label.x}
-                y={label.y - (modality.axisLabel.length - 1) * 8}
-                textAnchor="middle"
+                y={label.y}
+                textAnchor={label.textAnchor}
+                dominantBaseline="middle"
                 className="summary-web__label"
               >
-                {modality.axisLabel.map((line, lineIndex) => (
-                  <tspan key={line} x={label.x} dy={lineIndex ? 17 : 0}>
-                    {line}
-                  </tspan>
-                ))}
+                {modality.axisLabel.join(" ")}
               </text>
             </g>
           );

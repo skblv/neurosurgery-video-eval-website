@@ -185,7 +185,7 @@ export function buildSummaryModalities(input: {
     {
       id: "skill-assessment",
       label: "Skill assessment",
-      axisLabel: ["Skill", "assessment"],
+      axisLabel: ["Skill"],
       specialistId: "resnet50",
       specialistLabel: "ResNet-50",
       datasets: input.skillAssessment.map((dataset) =>
@@ -195,7 +195,7 @@ export function buildSummaryModalities(input: {
     {
       id: "clinical-context",
       label: "Clinical context / VQA",
-      axisLabel: ["Context", "/ VQA"],
+      axisLabel: ["VQA"],
       specialistId: "resnet50",
       specialistLabel: "ResNet-50",
       datasets: input.clinicalContext.map((dataset) =>
@@ -205,7 +205,7 @@ export function buildSummaryModalities(input: {
     {
       id: "recommendations",
       label: "Recommendations",
-      axisLabel: ["Recommen-", "dations"],
+      axisLabel: ["Recs"],
       specialistId: "resnet50",
       specialistLabel: "ResNet-50",
       datasets: input.recommendations.map((dataset) =>

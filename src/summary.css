@@ -48,8 +48,8 @@
 
 .summary-web__label {
   fill: var(--ink);
-  font-size: 15px;
-  font-weight: 550;
+  font-size: 16px;
+  font-weight: 600;
 }
 
 .summary-web figcaption {
@@ -143,6 +143,30 @@
   text-align: left;
 }
 
+.summary-table thead th.summary-table__plot,
+.summary-table thead th.summary-table__model,
+.summary-table tbody td:first-child,
+.summary-table tbody th {
+  position: sticky;
+  background: var(--paper);
+  z-index: 1;
+}
+
+.summary-table thead th.summary-table__plot,
+.summary-table tbody td:first-child {
+  left: 0;
+}
+
+.summary-table thead th.summary-table__model,
+.summary-table tbody th {
+  left: 2.75rem;
+}
+
+.summary-selected td:first-child,
+.summary-selected th {
+  background: var(--accent-soft);
+}
+
 .summary-table tbody th {
   font-weight: 500;
 }
@@ -201,9 +225,17 @@
   }
 
   .summary-web {
-    max-width: 34rem;
     width: 100%;
-    margin-inline: auto;
+    margin: 1rem -0.25rem 1.5rem;
+    padding: 0;
+  }
+
+  .summary-web svg {
+    min-height: 18rem;
+  }
+
+  .summary-web__label {
+    font-size: 18px;
   }
 
   .summary-table .summary-table__model {
