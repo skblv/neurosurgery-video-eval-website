@@ -1,0 +1,249 @@
+.page--summary {
+  max-width: 80rem;
+}
+
+.summary {
+  padding-top: 2rem;
+}
+
+.summary-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.summary-heading h2 {
+  font-size: 1.5rem;
+}
+
+.summary-reference {
+  flex: none;
+  white-space: nowrap;
+  font-size: 0.75rem;
+  background: var(--accent-soft);
+  padding: 0.4rem 0.65rem;
+  border-radius: 4px;
+}
+
+.summary-web {
+  margin: 1.5rem 0 2rem;
+  min-width: 0;
+}
+
+.summary-web svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.summary-web__tick {
+  fill: #626262;
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  paint-order: stroke;
+  stroke: var(--paper);
+  stroke-width: 3px;
+}
+
+.summary-web__label {
+  fill: var(--ink);
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.summary-web figcaption {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.2rem;
+  margin-top: 0.25rem;
+  font-size: 0.875rem;
+}
+
+.summary-legend__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.summary-legend__line,
+.summary-legend__reference {
+  display: inline-block;
+  width: 1.5rem;
+  height: 3px;
+  flex-shrink: 0;
+}
+
+.summary-legend__reference {
+  height: 0;
+  border-top: 2px dashed #626262;
+}
+
+.summary-table-scroll {
+  max-width: 100%;
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+.summary-table-scroll:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.summary-table {
+  border-collapse: collapse;
+  width: 100%;
+  min-width: 86rem;
+  font-size: 0.875rem;
+  line-height: 1.4;
+  font-variant-numeric: tabular-nums;
+}
+
+.summary-table th,
+.summary-table td {
+  padding: 0.85rem 0.55rem;
+  text-align: right;
+  border-bottom: 1px solid var(--rule-soft);
+  vertical-align: middle;
+}
+
+.summary-table thead th {
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  font-weight: 600;
+  vertical-align: bottom;
+}
+
+.summary-table thead .summary-table__dataset {
+  font-size: 0.72rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.summary-table .summary-table__group-start {
+  border-left: 1px solid var(--rule);
+}
+
+.summary-table thead a {
+  text-decoration: none;
+}
+
+.summary-table thead a:hover {
+  text-decoration: underline;
+}
+
+.summary-table th:first-child,
+.summary-table td:first-child {
+  text-align: center;
+}
+
+.summary-table tbody th,
+.summary-table .summary-table__model {
+  text-align: left;
+}
+
+.summary-table thead th.summary-table__plot,
+.summary-table thead th.summary-table__model,
+.summary-table tbody td:first-child,
+.summary-table tbody th {
+  position: sticky;
+  background: var(--paper);
+  z-index: 1;
+}
+
+.summary-table thead th.summary-table__plot,
+.summary-table tbody td:first-child {
+  left: 0;
+}
+
+.summary-table thead th.summary-table__model,
+.summary-table tbody th {
+  left: 2.75rem;
+}
+
+.summary-selected td:first-child,
+.summary-selected th {
+  background: var(--accent-soft);
+}
+
+.summary-table tbody th {
+  font-weight: 500;
+}
+
+.summary-table .summary-table__plot {
+  width: 2.75rem;
+}
+
+.summary-table .summary-table__model {
+  width: 16.5rem;
+}
+
+.summary-table .summary-table__total {
+  background: #f0f7f5;
+  min-width: 8.5rem;
+}
+
+.summary-table__total strong {
+  font-size: 1rem;
+  color: var(--accent);
+  font-weight: 650;
+}
+
+.summary-table input[type="checkbox"] {
+  width: 1.1rem;
+  height: 1.1rem;
+  cursor: pointer;
+  accent-color: var(--accent);
+}
+
+.summary-table input[type="checkbox"]:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.summary-table tbody tr:hover {
+  background: #f4f8f7;
+}
+
+.summary-selected {
+  background: var(--accent-soft);
+}
+
+@media (max-width: 700px) {
+  .summary {
+    padding-top: 1.5rem;
+  }
+
+  .summary-heading {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .summary-heading h2 {
+    font-size: 1.25rem;
+  }
+
+  .summary-web {
+    width: 100%;
+    margin: 1rem -0.25rem 1.5rem;
+    padding: 0;
+  }
+
+  .summary-web svg {
+    min-height: 18rem;
+  }
+
+  .summary-web__label {
+    font-size: 18px;
+  }
+
+  .summary-table .summary-table__model {
+    width: 14rem;
+  }
+
+  .summary-table th,
+  .summary-table td {
+    padding: 0.75rem 0.5rem;
+  }
+}

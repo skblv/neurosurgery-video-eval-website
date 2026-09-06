@@ -5,8 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && node --experimental-strip-types scripts/validate-results.ts && vite build",
+    "build": "tsc -b && node --experimental-strip-types scripts/validate-results.ts && node --experimental-strip-types scripts/validate-summary.ts && vite build",
     "validate-results": "node --experimental-strip-types scripts/validate-results.ts",
+    "validate-summary": "node --experimental-strip-types scripts/validate-summary.ts",
     "lint": "oxlint",
     "preview": "vite preview"
   },

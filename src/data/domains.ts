@@ -1,4 +1,5 @@
 export type DomainRoute =
+  | "summary"
   | "instruments"
   | "gestures"
   | "anatomy"
@@ -15,6 +16,14 @@ export interface DomainDefinition {
 }
 
 export const DOMAINS: DomainDefinition[] = [
+  {
+    id: "summary",
+    label: "Summary",
+    shortLabel: "Summary",
+    status: "published",
+    description:
+      "Performance relative to specialized models across modalities.",
+  },
   {
     id: "instruments",
     label: "Instruments",
