@@ -9,18 +9,12 @@
 .summary-heading {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
   gap: 1.5rem;
 }
 
 .summary-heading h2 {
   font-size: 1.5rem;
-}
-
-.summary-heading p {
-  margin: 0.65rem 0 0;
-  color: var(--ink-faint);
-  max-width: 58rem;
 }
 
 .summary-reference {
@@ -32,16 +26,8 @@
   border-radius: 4px;
 }
 
-.summary-figure-row {
-  display: grid;
-  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
-  gap: 3rem;
-  align-items: center;
-  margin: 1.5rem 0 2.5rem;
-}
-
 .summary-web {
-  margin: 0;
+  margin: 1.5rem 0 2rem;
   min-width: 0;
 }
 
@@ -92,64 +78,6 @@
 .summary-legend__reference {
   height: 0;
   border-top: 2px dashed #626262;
-}
-
-.summary-method {
-  font-size: 0.9375rem;
-  line-height: 1.55;
-}
-
-.summary-method p {
-  margin: 1rem 0 0;
-}
-
-.summary-method .summary-counts {
-  margin-top: 0;
-  font-size: 0.875rem;
-  color: var(--ink-faint);
-}
-
-.summary-formula {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 0.4rem;
-  margin-top: 1rem;
-  padding: 1rem 1.25rem;
-  background: var(--accent-soft);
-  border-left: 3px solid var(--accent);
-}
-
-.summary-formula > span:first-child {
-  color: var(--accent);
-  font-size: 0.875rem;
-}
-
-.summary-formula strong {
-  font-size: 1rem;
-}
-
-.summary-coverage-note {
-  border-top: 1px solid var(--rule);
-  padding-top: 1rem;
-}
-
-.summary-table-heading {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 1rem;
-  margin-bottom: 0.75rem;
-}
-
-.summary-table-heading h3 {
-  font-size: 1.25rem;
-}
-
-.summary-table-heading p {
-  font-size: 0.875rem;
-  color: var(--ink-faint);
-  margin: 0;
 }
 
 .summary-table-scroll {
@@ -227,14 +155,6 @@
   font-weight: 650;
 }
 
-.summary-table small {
-  display: block;
-  margin-top: 0.3rem;
-  color: #666;
-  font-size: 0.75rem;
-  font-weight: 400;
-}
-
 .summary-table input[type="checkbox"] {
   width: 1.1rem;
   height: 1.1rem;
@@ -247,29 +167,6 @@
   outline-offset: 3px;
 }
 
-.summary-table button {
-  border: 0;
-  background: transparent;
-  color: inherit;
-  text-align: left;
-  padding: 0;
-  font: inherit;
-  cursor: pointer;
-}
-
-.summary-table button:hover {
-  text-decoration: underline;
-}
-
-.summary-table button:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 4px;
-}
-
-.summary-table__reference {
-  background: #f4f4f3;
-}
-
 .summary-table tbody tr:hover {
   background: #f4f8f7;
 }
@@ -278,91 +175,24 @@
   background: var(--accent-soft);
 }
 
-.summary-table__reference td {
-  color: #626262;
-}
-
-.summary-note {
-  font-size: 0.875rem;
-  line-height: 1.6;
-  color: var(--ink-faint);
-  margin: 1rem 0 0;
-}
-
-.summary-details {
-  margin-top: 2rem;
-  border-top: 1px solid var(--rule);
-  border-bottom: 1px solid var(--rule);
-  padding: 1rem 0;
-}
-
-.summary-details > summary {
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-}
-
-.summary-detail-picker {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-  font-size: 0.875rem;
-  margin: 1.5rem 0;
-}
-
-.summary-detail-picker select {
-  max-width: 100%;
-}
-
-.summary-detail-table th:first-child,
-.summary-detail-table td:first-child {
-  text-align: left;
-}
-
-.summary-detail-table td {
-  font-size: 0.875rem;
-}
-
-.summary-limitations {
-  margin-top: 1.5rem;
-}
-
-@media (max-width: 1000px) {
-  .summary-heading {
-    flex-direction: column;
-  }
-
-  .summary-figure-row {
-    gap: 1.5rem;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  }
-}
-
 @media (max-width: 700px) {
   .summary {
     padding-top: 1.5rem;
+  }
+
+  .summary-heading {
+    flex-direction: column;
+    align-items: flex-start;
   }
 
   .summary-heading h2 {
     font-size: 1.25rem;
   }
 
-  .summary-figure-row {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 2rem;
-    margin-top: 0.75rem;
-  }
-
   .summary-web {
     max-width: 34rem;
     width: 100%;
     margin-inline: auto;
-  }
-
-  .summary-table-heading {
-    flex-direction: column;
-    gap: 0.5rem;
   }
 
   .summary-table .summary-table__model {

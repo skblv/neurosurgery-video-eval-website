@@ -20,6 +20,15 @@ import {
   type SummaryModality,
 } from "../src/data/summaryScore.ts";
 
+const LLM_PROVIDERS = new Set([
+  "openai",
+  "anthropic",
+  "gemini",
+  "google",
+  "moonshot",
+  "qwen",
+]);
+
 function fixture(
   id: string,
   majority: number,
@@ -231,6 +240,14 @@ for (const row of rows) {
     );
   }
 }
+
+const llmRows = rows.filter((row) => LLM_PROVIDERS.has(row.provider));
+assert.ok(llmRows.every((row) => LLM_PROVIDERS.has(row.provider)));
+assert.equal(llmRows.some((row) => row.id === "yolov12m"), false);
+assert.equal(llmRows.some((row) => row.id === "resnet50"), false);
+assert.equal(llmRows.some((row) => row.id === "surgmotion"), false);
+assert.equal(llmRows.some((row) => row.id === "gemma3-27b-lora"), false);
+assert.ok(llmRows.some((row) => row.id === "gpt-6-astra"));
 
 console.log(
   "Summary valid: majority=0, specialist=1, equal dataset weights, NA gaps, " +

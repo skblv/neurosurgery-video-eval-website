@@ -12,7 +12,6 @@ import {
 
 export {
   formatScore,
-  metricLabel,
   relativeScore,
   canonicalModelId,
   calculateSummary,
@@ -37,9 +36,19 @@ export const SUMMARY_MODALITIES = buildSummaryModalities({
   recommendations: domainDatasets("recommendations"),
 });
 
-export const SUMMARY_DATASET_COUNT = SUMMARY_MODALITIES.reduce(
-  (sum, modality) => sum + modality.datasets.length,
-  0,
-);
-
 export const SUMMARY_ROWS = calculateSummary(SUMMARY_MODALITIES);
+
+const LLM_PROVIDERS = new Set([
+  "openai",
+  "anthropic",
+  "gemini",
+  "google",
+  "moonshot",
+  "qwen",
+]);
+
+export function isSummaryLlm(row: { provider: string }): boolean {
+  return LLM_PROVIDERS.has(row.provider);
+}
+
+export const SUMMARY_LLM_ROWS = SUMMARY_ROWS.filter(isSummaryLlm);
