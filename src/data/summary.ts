@@ -51,4 +51,6 @@ export function isSummaryLlm(row: { provider: string }): boolean {
   return LLM_PROVIDERS.has(row.provider);
 }
 
-export const SUMMARY_LLM_ROWS = SUMMARY_ROWS.filter(isSummaryLlm);
+export const SUMMARY_LLM_ROWS = SUMMARY_ROWS.filter(isSummaryLlm).sort(
+  (left, right) => (right.total ?? -Infinity) - (left.total ?? -Infinity),
+);

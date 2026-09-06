@@ -206,20 +206,42 @@ export function Summary() {
         <table className="summary-table">
           <thead>
             <tr>
-              <th scope="col" className="summary-table__plot">
+              <th scope="col" rowSpan={2} className="summary-table__plot">
                 Plot
               </th>
-              <th scope="col" className="summary-table__model">
+              <th scope="col" rowSpan={2} className="summary-table__model">
                 Model
               </th>
-              <th scope="col" className="summary-table__total">
+              <th scope="col" rowSpan={2} className="summary-table__total">
                 Total
               </th>
               {SUMMARY_MODALITIES.map((modality) => (
-                <th scope="col" key={modality.id}>
+                <th
+                  scope="colgroup"
+                  key={modality.id}
+                  colSpan={modality.datasets.length}
+                  className="summary-table__group-start"
+                >
                   <a href={`#/${modality.id}`}>{modality.label}</a>
                 </th>
               ))}
+            </tr>
+            <tr>
+              {SUMMARY_MODALITIES.flatMap((modality) =>
+                modality.datasets.map((dataset, index) => (
+                  <th
+                    scope="col"
+                    key={dataset.id}
+                    className={
+                      index === 0
+                        ? "summary-table__dataset summary-table__group-start"
+                        : "summary-table__dataset"
+                    }
+                  >
+                    {dataset.name}
+                  </th>
+                )),
+              )}
             </tr>
           </thead>
           <tbody>
@@ -252,11 +274,16 @@ export function Summary() {
                   <td className="summary-table__total">
                     <strong>{formatScore(row.total)}</strong>
                   </td>
-                  {SUMMARY_MODALITIES.map((modality) => (
-                    <td key={modality.id}>
-                      {formatScore(row.modalities[modality.id].value)}
-                    </td>
-                  ))}
+                  {SUMMARY_MODALITIES.flatMap((modality) =>
+                    row.modalities[modality.id].datasets.map((dataset, index) => (
+                      <td
+                        key={dataset.datasetId}
+                        className={index === 0 ? "summary-table__group-start" : undefined}
+                      >
+                        {formatScore(dataset.ratio)}
+                      </td>
+                    )),
+                  )}
                 </tr>
               );
             })}

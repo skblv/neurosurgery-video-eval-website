@@ -94,7 +94,7 @@
 .summary-table {
   border-collapse: collapse;
   width: 100%;
-  min-width: 68rem;
+  min-width: 86rem;
   font-size: 0.875rem;
   line-height: 1.4;
   font-variant-numeric: tabular-nums;
@@ -102,7 +102,7 @@
 
 .summary-table th,
 .summary-table td {
-  padding: 0.85rem 0.6rem;
+  padding: 0.85rem 0.55rem;
   text-align: right;
   border-bottom: 1px solid var(--rule-soft);
   vertical-align: middle;
@@ -112,6 +112,17 @@
   border-top: 1px solid var(--rule);
   border-bottom: 1px solid var(--rule);
   font-weight: 600;
+  vertical-align: bottom;
+}
+
+.summary-table thead .summary-table__dataset {
+  font-size: 0.72rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.summary-table .summary-table__group-start {
+  border-left: 1px solid var(--rule);
 }
 
 .summary-table thead a {
