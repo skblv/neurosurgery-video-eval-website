@@ -31,13 +31,12 @@ close(result.total, 0.5); // Equal modalities, not a pooled four-dataset mean (0
 const missing = structuredClone(input);
 missing[0].datasets[1].results[1].metrics.microF1 = null;
 const incomplete = model(missing);
-assert.equal(incomplete.modalities.a.value, null);
+close(incomplete.modalities.a.value, (0.75 + 1) / 2);
 assert.equal(incomplete.modalities.a.observed, 2);
-assert.equal(incomplete.total, null);
-close(incomplete.partialTotal, 0.25);
+close(incomplete.total, ((0.75 + 1) / 2 + 0.25) / 2);
 assert.equal(incomplete.datasetCoverage, 3);
 missing[1].datasets[0].results.pop();
-assert.equal(model(missing).partialTotal, null);
+close(model(missing).total, (0.75 + 1) / 2);
 
 close(model([{ ...input[0], datasets: [fixture("zero", 80, 0)] }]).total, 0);
 close(model([{ ...input[0], datasets: [fixture("above", 80, 100)] }]).total, 1.25);
@@ -57,7 +56,7 @@ for (const mode of ["primary", "accuracy"] as const) {
   close(sol.modalities.gestures.value, 57.99 / 75.26);
   close(sol.total, SUMMARY_MODALITIES.reduce((sum, item) => sum + sol.modalities[item.id].value!, 0) / 6);
   const astra = rows.find((row) => row.id === "gpt-6-astra")!;
-  assert.equal(astra.total, null);
+  assert.ok(astra.total !== null);
   assert.equal(astra.coverage, 5);
   for (const modality of SUMMARY_MODALITIES) {
     for (const dataset of modality.datasets) {
@@ -67,4 +66,4 @@ for (const mode of ["primary", "accuracy"] as const) {
     }
   }
 }
-console.log("Summary valid: hierarchical weights, missing data, zero scores, uncapped ratios, model identities, and all 11 specialist references (both metric modes).");
+console.log("Summary valid: available-result weights, NA handling, zero scores, uncapped ratios, model identities, and all 11 specialist references (both metric modes).");

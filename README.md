@@ -27,11 +27,11 @@ The default uses each existing tab's default metric: micro-F1 except Action
 also offers exact accuracy across all datasets. The dataset breakdown shows
 every numerator, denominator, ratio, and weight.
 
-A modality requires results on every constituent dataset. Missing data is never
-zero-filled or silently reweighted. A full total requires all six modalities;
-incomplete models show a separately labeled partial average over their complete
-modalities, plus coverage. Missing spokes stay missing in the web plot. Partial
-averages are comparable only for matching modality coverage. The GPT-5.6 Sol
+A model remains on the leaderboard when results are missing. Within each modality,
+its available dataset ratios are averaged equally; its available modality scores
+are then averaged equally for the total. Missing dataset and modality values display
+as NA, and every row reports dataset and modality coverage. Missing spokes stay
+missing in the web plot. The GPT-5.6 Sol
 ID spelling in the Action export is joined explicitly; different model versions
 and LEMON video inference versus LemonFM linear probes remain separate.
 

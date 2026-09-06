@@ -93,7 +93,7 @@ export function Summary() {
   const rows = useMemo(() => calculateSummary(mode), [mode]);
   const selectedRows = selectedIds.flatMap((id) => rows.filter((row) => row.id === id));
   const detail = rows.find((row) => row.id === detailId) ?? rows[0];
-  const completeCount = rows.filter((row) => row.total !== null).length;
+  const completeCount = rows.filter((row) => row.coverage === SUMMARY_MODALITIES.length).length;
 
   function toggleModel(id: string) {
     setSelectedIds((current) => current.includes(id) ? current.filter((item) => item !== id) : [...current, id]);
@@ -125,22 +125,22 @@ export function Summary() {
             <span>60 / 80 = <b>0.750×</b></span>
           </div>
           <p><b>1.000× matches the specialist.</b> Values above 1.000× outperform it and are not capped.</p>
-          <p>For three datasets, each ratio gets ⅓ of the modality score. Each of the six modalities gets ⅙ of a complete total.</p>
+          <p>Available datasets split their modality weight equally. Available modalities split the total weight equally; missing results stay NA.</p>
           <p>References: <b>YOLOv12-m</b> for Instruments, <b>SurgMotion</b> for Action, and <b>ResNet-50</b> for the remaining modalities.</p>
           <p>{mode === "primary"
             ? "Default metrics: micro-F1, except exact frame accuracy for Action and exact-match accuracy for Skill assessment."
             : "Exact-match accuracy for frame benchmarks; exact frame accuracy for the continuous Action pilot."}</p>
-          <p className="summary-coverage-note"><b>{completeCount} of {rows.length} models {completeCount === 1 ? "has" : "have"} full coverage.</b> Missing datasets leave a modality unscored. Partial averages use only complete modalities and are labeled below; they are not full benchmark scores.</p>
+          <p className="summary-coverage-note"><b>{completeCount} of {rows.length} models {completeCount === 1 ? "has" : "have"} all six modalities.</b> Every model remains on the leaderboard. Scores average the results available for that model, with coverage shown beside them.</p>
         </aside>
       </div>
 
       <div className="summary-table-heading">
         <h3>Model scores</h3>
-        <p>Select models to compare in the web plot. Gaps mean incomplete coverage.</p>
+        <p>Select models to compare in the web plot. NA means no result is available.</p>
       </div>
       <div className="summary-table-scroll" role="region" aria-label="Total and per-modality scores" tabIndex={0}>
         <table className="summary-table" aria-describedby="summary-table-note">
-          <caption className="visually-hidden">Specialist-normalized model scores. Full totals require all six modalities.</caption>
+          <caption className="visually-hidden">Specialist-normalized model scores, averaged over each model's available results.</caption>
           <thead><tr>
             <th scope="col" className="summary-table__plot">Plot</th>
             <th scope="col" className="summary-table__model">Model</th>
@@ -167,14 +167,13 @@ export function Summary() {
                 </th>
                 <td className="summary-table__total">
                   <strong>{formatRatio(row.total)}</strong>
-                  {row.total === null ? <small>{row.partialTotal === null ? "No complete modality" : `${formatRatio(row.partialTotal)} partial · ${row.coverage}/6`}</small>
-                    : <small>Complete · 6/6</small>}
+                  <small>{row.coverage}/6 modalities · {row.datasetCoverage}/{SUMMARY_DATASET_COUNT} datasets</small>
                 </td>
                 {SUMMARY_MODALITIES.map((modality) => {
                   const score = row.modalities[modality.id];
                   return <td key={modality.id} title={score.datasets.map((dataset) => `${dataset.name}: ${formatRatio(dataset.ratio)}`).join("\n")}>
                     {formatRatio(score.value)}
-                    {score.value === null ? <small>{score.observed} / {score.expected} available</small> : null}
+                    <small>{score.observed}/{score.expected} datasets</small>
                   </td>;
                 })}
               </tr>;
@@ -183,8 +182,8 @@ export function Summary() {
         </table>
       </div>
       <p id="summary-table-note" className="summary-note">
-        Scores are ratios, not percentages. A dash means insufficient data, not zero.
-        Models are ordered by complete modality coverage, then average score. Compare partial averages only when the same modalities are covered.
+        Scores are ratios, not percentages. NA means no result is available, not zero.
+        Models are ordered by their total over available modalities; coverage should be considered when comparing models.
         The reference row combines different dataset specialists; it is not one model.
       </p>
 
@@ -200,18 +199,19 @@ export function Summary() {
             <thead><tr>
               <th scope="col">Modality / dataset</th><th scope="col">Metric</th><th scope="col">Specialist</th>
               <th scope="col">Model score</th><th scope="col">Specialist score</th><th scope="col">Ratio</th>
-              <th scope="col">Within modality</th><th scope="col">In full total</th>
+              <th scope="col">Within modality</th><th scope="col">In total</th>
             </tr></thead>
             <tbody>{SUMMARY_MODALITIES.flatMap((modality) => detail.modalities[modality.id].datasets.map((dataset) => <tr key={dataset.datasetId}>
               <th scope="row">{dataset.name}<small>{modality.label}</small></th>
               <td>{metricLabel(dataset.metric)}</td><td>{dataset.specialist}</td>
-              <td>{dataset.modelScore === null ? "—" : `${dataset.modelScore.toFixed(2)}%`}</td>
+              <td>{dataset.modelScore === null ? "NA" : `${dataset.modelScore.toFixed(2)}%`}</td>
               <td>{dataset.specialistScore.toFixed(2)}%</td><td>{formatRatio(dataset.ratio)}</td>
-              <td>1/{modality.datasets.length}</td><td>1/{modality.datasets.length * SUMMARY_MODALITIES.length}</td>
+              <td>{dataset.ratio === null ? "NA" : `1/${detail.modalities[modality.id].observed}`}</td>
+              <td>{dataset.ratio === null ? "NA" : `1/${detail.modalities[modality.id].observed * detail.coverage}`}</td>
             </tr>))}</tbody>
           </table>
         </div>
-        <p className="summary-note">Weights describe a complete score. Calculations use the source values at full precision, before display rounding.</p>
+        <p className="summary-note">Within each modality, available datasets receive equal weight. Available modalities receive equal weight in the total. Calculations use full source precision before display rounding.</p>
       </details>
       <p className="summary-note summary-limitations">
         This summary uses the existing evaluation protocols: some API results use subsamples,

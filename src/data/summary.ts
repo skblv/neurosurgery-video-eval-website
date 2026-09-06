@@ -53,7 +53,6 @@ export interface SummaryRow {
   provider: string;
   modalities: Record<string, ModalityScore>;
   total: number | null;
-  partialTotal: number | null;
   coverage: number;
   datasetCoverage: number;
 }
@@ -171,22 +170,22 @@ export function calculateSummary(
       const observed = datasets.filter((dataset) => dataset.ratio !== null).length;
       datasetCoverage += observed;
       scores[modality.id] = {
-        // Fixed 1/N weights: an incomplete modality is unscored, not reweighted.
-        value: observed === datasets.length
-          ? datasets.reduce((sum, dataset) => sum + dataset.ratio!, 0) / datasets.length : null,
+        // Missing results stay NA. Available dataset ratios share the modality
+        // weight equally, so partially evaluated models remain rankable.
+        value: observed
+          ? datasets.reduce((sum, dataset) => sum + (dataset.ratio ?? 0), 0) / observed : null,
         observed, expected: datasets.length, datasets,
       };
     }
-    const complete = Object.values(scores).filter((score) => score.value !== null);
-    const partialTotal = complete.length
-      ? complete.reduce((sum, score) => sum + score.value!, 0) / complete.length : null;
+    const available = Object.values(scores).filter((score) => score.value !== null);
+    const total = available.length
+      ? available.reduce((sum, score) => sum + score.value!, 0) / available.length : null;
     return {
-      ...model, modalities: scores, datasetCoverage, coverage: complete.length, partialTotal,
-      total: complete.length === modalities.length ? partialTotal : null,
+      ...model, modalities: scores, datasetCoverage, coverage: available.length, total,
     };
-  }).sort((a, b) => b.coverage - a.coverage || (b.partialTotal ?? -1) - (a.partialTotal ?? -1) || a.model.localeCompare(b.model));
+  }).sort((a, b) => (b.total ?? -1) - (a.total ?? -1) || b.coverage - a.coverage || a.model.localeCompare(b.model));
 }
 
 export function formatRatio(value: number | null): string {
-  return value === null ? "—" : `${value.toFixed(3)}×`;
+  return value === null ? "NA" : `${value.toFixed(3)}×`;
 }
