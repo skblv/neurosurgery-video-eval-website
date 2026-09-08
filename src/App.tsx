@@ -1,5 +1,3 @@
-import { useEffect, useState } from "react";
-
 import { boothLogo, sdscLogo } from "./assets/logos";
 import { AboutUs } from "./components/AboutUs";
 import { DomainLeaderboard } from "./components/DomainLeaderboard";
@@ -20,14 +18,8 @@ import {
   domainDatasetFootnote,
   domainModelFootnote,
 } from "./data/domainBenchmark";
-import { ROUTES, type DomainRoute } from "./data/domains";
-
-function routeFromHash(): DomainRoute {
-  const candidate = window.location.hash.replace(/^#\/?/, "") || "summary";
-  return ROUTES.includes(candidate as DomainRoute)
-    ? (candidate as DomainRoute)
-    : "summary";
-}
+import type { DomainRoute } from "./data/domains";
+import { routePath } from "./data/routes";
 
 function PageContent({ route }: { route: DomainRoute }) {
   switch (route) {
@@ -144,20 +136,7 @@ function DomainSources({
   );
 }
 
-export default function App() {
-  const [route, setRoute] = useState<DomainRoute>(routeFromHash);
-
-  useEffect(() => {
-    const handleHashChange = () => setRoute(routeFromHash());
-    window.addEventListener("hashchange", handleHashChange);
-    return () => window.removeEventListener("hashchange", handleHashChange);
-  }, []);
-
-  useEffect(() => {
-    document.title = "SDSC x UChicago Surgical Intelligence Leaderboard";
-    window.scrollTo({ top: 0, behavior: "auto" });
-  }, [route]);
-
+export default function App({ route }: { route: DomainRoute | null }) {
   return (
     <div className="page">
       <header className="masthead">
@@ -194,7 +173,10 @@ export default function App() {
       <DomainNav active={route} />
 
       <main id="main-content">
-        <PageContent route={route} />
+        {route ? <PageContent route={route} /> : <section className="domain-hero">
+          <h2>Page not found</h2>
+          <p>This page does not exist. <a href={routePath("summary")}>Return to the summary leaderboard.</a></p>
+        </section>}
       </main>
 
       <footer className="footer">

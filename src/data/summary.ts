@@ -1,6 +1,6 @@
 import { DATASETS } from "./benchmark";
 import { DOMAIN_DATASETS, DOMAIN_PAGES } from "./domainBenchmark";
-import { DOMAINS } from "./domains";
+import { DOMAINS, type DomainRoute } from "./domains";
 import { GESTURE_BENCHMARK } from "./gestureBenchmark";
 import type { LeaderboardBenchmark } from "./leaderboard";
 import { calculateSummary, canonicalModelId, type SummaryDataset, type SummaryModality } from "./summaryScoring";
@@ -12,7 +12,7 @@ function dataset<M extends string>(benchmark: LeaderboardBenchmark<M>, metric: M
   };
 }
 
-export const SUMMARY_MODALITIES: SummaryModality[] = DOMAINS.filter((domain) => domain.id !== "summary").map((domain) => {
+export const SUMMARY_MODALITIES: (SummaryModality & { id: DomainRoute })[] = DOMAINS.filter((domain) => domain.id !== "summary").map((domain) => {
   const datasets = domain.id === "instruments"
     ? DATASETS.map((item) => dataset(item, "microF1", "yolov12m"))
     : domain.id === "gestures"

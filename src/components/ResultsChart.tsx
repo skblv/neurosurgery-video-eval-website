@@ -21,6 +21,7 @@ import type {
 } from "../data/leaderboard";
 import { PROVIDER_ICONS } from "../data/providerIcons";
 import { useMediaQuery } from "../hooks/useMediaQuery";
+import { useHydrated } from "../hooks/useHydrated";
 import { StackedBars } from "./StackedBars";
 import { buildRows, type ChartRow } from "./chartRow";
 
@@ -99,7 +100,7 @@ function AxisIcon({ provider, x, y }: { provider: string; x: number; y: number }
   if (!icon) {
     return (
       <image
-        href={`./provider-logos/${provider}.png`}
+        href={`${import.meta.env.BASE_URL}provider-logos/${provider}.png`}
         x={x}
         y={y}
         height={ICON_SIZE}
@@ -254,13 +255,14 @@ export function ResultsChart<MetricId extends string>({
   caption?: ReactNode;
 }) {
   const rows = buildRows(dataset, metricId);
-  const axisWidth = labelColumnWidth(rows, footnoteFor);
   const baseline = dataset.majorityBaseline[metricId];
   const hasIntervals = rows.some((row) => row.errorOffsets !== null);
   const missing = dataset.results.filter((r) => r.metrics[metricId] === null).map((r) => r.model);
   const isNarrow = useMediaQuery(NARROW_QUERY);
+  const hydrated = useHydrated();
 
-  if (isNarrow) {
+  // CSS bars are readable without JS; measured desktop charts enhance them later.
+  if (!hydrated || isNarrow) {
     return (
       <figure className="chart">
         <StackedBars rows={rows} baseline={baseline} metric={metric} footnoteFor={footnoteFor} />
@@ -274,6 +276,7 @@ export function ResultsChart<MetricId extends string>({
     );
   }
 
+  const axisWidth = labelColumnWidth(rows, footnoteFor);
   return (
     <figure className="chart">
       <ResponsiveContainer width="100%" height={rows.length * ROW_HEIGHT + 70}>

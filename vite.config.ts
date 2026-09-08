@@ -1,9 +1,11 @@
 import react from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
+import { SITE_BASE } from "./site.config.ts";
 
-// Relative base so the same build works on the GitHub Pages project subpath
-// (skblv.github.io/neurosurgery-video-eval-website/) and on a custom domain root.
-export default defineConfig({
-  base: "./",
+// Nested HTML routes must resolve assets from the site root, not their directory.
+// Set SITE_URL for a custom domain; development stays at localhost's root.
+export default defineConfig(({ command, isPreview }) => ({
+  base: command === "serve" && !isPreview ? "/" : SITE_BASE,
+  appType: command === "serve" && !isPreview ? "spa" : "mpa",
   plugins: [react()],
-});
+}));

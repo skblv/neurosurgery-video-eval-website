@@ -1,13 +1,14 @@
 import { DOMAINS, type DomainRoute } from "../data/domains";
+import { routePath } from "../data/routes";
 
-export function DomainNav({ active }: { active: DomainRoute }) {
+export function DomainNav({ active }: { active: DomainRoute | null }) {
   return (
     <nav className="domain-nav" aria-label="Surgical intelligence domains">
       <div className="domain-nav__track">
         {DOMAINS.map((item) => (
           <a
             key={item.id}
-            href={`#/${item.id}`}
+            href={routePath(item.id)}
             className={item.id === active ? "domain-nav__link domain-nav__link--active" : "domain-nav__link"}
             aria-current={item.id === active ? "page" : undefined}
           >

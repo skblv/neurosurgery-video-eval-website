@@ -2,6 +2,7 @@ import { useState } from "react";
 import { SUMMARY_MODALITIES, SUMMARY_ROWS } from "../data/summary";
 import { SummaryModelPicker } from "./SummaryModelPicker";
 import { ModelIcon } from "./ModelIcon";
+import { routePath } from "../data/routes";
 
 const COLORS = ["#0f766e", "#b45309", "#6d28d9", "#2563eb"];
 const plotColor = (index: number) => COLORS[index] ?? `hsl(${(index * 137.5) % 360} 65% 40%)`;
@@ -72,7 +73,7 @@ export function Summary() {
               return `${p.x},${p.y}`;
             }).join(" ")} fill={plotColor(index)} fillOpacity="0.06" stroke={plotColor(index)} strokeWidth="2" /> : null}
             {row.scores.map((score, axis) => score.value === null ? null : <circle key={axis} {...{ cx: point(axis, score.value).x, cy: point(axis, score.value).y }} r="4" fill={plotColor(index)}>
-              <title>{row.model} · {SUMMARY_MODALITIES[axis].label}: {format(score.value)}</title>
+              <title>{`${row.model} · ${SUMMARY_MODALITIES[axis].label}: ${format(score.value)}`}</title>
             </circle>)}
           </g> : null)}
         </svg>
@@ -99,7 +100,7 @@ export function Summary() {
       <p>Dataset score = model performance ÷ specialised reference performance. For example, 60 ÷ 80 = 0.750. Datasets contribute equally to their modality score. The total averages modality scores, so dataset-rich modalities do not dominate. When results are missing, weights are redistributed equally among available datasets and modalities.</p>
       <p>Reference models are fixed per dataset, not selected by the highest score. Ratios above 1 are retained. The Action benchmark is a single operation. Scores compare each model’s reported evaluation and may use different sample sizes, as documented on the modality pages.</p>
       {SUMMARY_MODALITIES.map((modality) => <div key={modality.id}>
-        <h4><a href={`#/${modality.id}`}>{modality.label}</a></h4>
+        <h4><a href={routePath(modality.id)}>{modality.label}</a></h4>
         <p className="summary-muted">{modality.datasets.map((dataset) => `${dataset.name}: ${metricLabels[dataset.metric]} / ${dataset.results.find((result) => result.id === dataset.referenceId)?.model ?? "NA"}`).join(" · ")}</p>
       </div>)}
     </details>
