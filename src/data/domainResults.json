@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-09-08T15:19:28.615989+00:00",
+  "generatedAt": "2026-09-08T15:28:50.820843+00:00",
   "datasets": {
     "dsad": {
       "majorityBaseline": {
@@ -787,6 +787,24 @@
               "value": 70.83,
               "ciLow": 69.64,
               "ciHigh": 71.89
+            }
+          }
+        },
+        {
+          "id": "kimi-k3",
+          "model": "Kimi K3",
+          "provider": "moonshot",
+          "sourceRunId": "summary_gaps_delm_20260907/kimi-k3/cadis",
+          "metrics": {
+            "exactMatch": {
+              "value": 15.17,
+              "ciLow": 12.17,
+              "ciHigh": 18.16
+            },
+            "microF1": {
+              "value": 83.9,
+              "ciLow": 82.84,
+              "ciHigh": 84.9
             }
           }
         }
