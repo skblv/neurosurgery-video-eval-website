@@ -9,6 +9,7 @@
 import rawResults from "./results.json";
 import { DATASET_ORDER, METRIC_ORDER, parseResultsFile } from "./resultsSchema";
 import type { DatasetId, MetricId, MetricValue, ModelResult, Provider } from "./resultsSchema";
+import { isLeaderboardModelVisible } from "./leaderboardVisibility";
 
 export { DATASET_ORDER, METRIC_ORDER };
 export type { DatasetId, MetricId, MetricValue, ModelResult, Provider };
@@ -138,7 +139,7 @@ export const RESULTS_GENERATED_AT = RESULTS.generatedAt;
 export const DATASETS: Dataset[] = DATASET_ORDER.map((datasetId) => ({
   ...DATASET_META[datasetId],
   majorityBaseline: RESULTS.datasets[datasetId].majorityBaseline,
-  results: RESULTS.datasets[datasetId].results,
+  results: RESULTS.datasets[datasetId].results.filter(isLeaderboardModelVisible),
 }));
 
 export const PAPER = {

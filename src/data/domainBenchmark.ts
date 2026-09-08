@@ -19,6 +19,7 @@ import {
 import type { DomainRoute } from "./domains";
 import type { LeaderboardBenchmark } from "./leaderboard";
 import type { MetricId } from "./resultsSchema";
+import { isLeaderboardModelVisible } from "./leaderboardVisibility";
 
 export type { DomainDatasetId };
 
@@ -191,7 +192,7 @@ function buildDomainDatasets(): Record<DomainDatasetId, DomainDataset> {
     datasets[datasetId] = {
       ...DOMAIN_DATASET_META[datasetId],
       majorityBaseline: RESULTS.datasets[datasetId].majorityBaseline,
-      results: RESULTS.datasets[datasetId].results,
+      results: RESULTS.datasets[datasetId].results.filter(isLeaderboardModelVisible),
     };
   }
   return datasets;
