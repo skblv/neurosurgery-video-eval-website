@@ -2766,6 +2766,165 @@
         },
         "failure_policy": "Parse failures and refusals retained in denominator; no answer-repair retries"
       }
+    },
+    {
+      "model": "gemini-3_7-flash",
+      "dataset": "surgvu",
+      "sampleCount": 1000,
+      "sourceRunId": "summary_gaps_20260907/gemini-3_7-flash/surgvu",
+      "result": {
+        "n": 1000,
+        "exact_match_pct": 19.2,
+        "exact_match_ci": [
+          16.8,
+          21.8
+        ],
+        "micro_f1_pct": 35.62932226832642,
+        "micro_f1_ci": [
+          33.46390598768886,
+          37.55434782608696
+        ],
+        "website_entry": {
+          "exactMatch": {
+            "value": 19.2,
+            "ciLow": 16.8,
+            "ciHigh": 21.8
+          },
+          "microF1": {
+            "value": 35.63,
+            "ciLow": 33.46,
+            "ciHigh": 37.55
+          }
+        },
+        "parse_failures": 0,
+        "refusals": 0
+      },
+      "provenance": {
+        "prompt_sha256": "e432ed7e3c94c58e6863180af74d3bcdcf71c00d54cffb0f88254ecb99ef85b8",
+        "schema_sha256": "6ca0938d4bb48d4922d27970d2d7903e6673355e7c0d4ea9807bf30259fb7332",
+        "sample_sha256": "455b741430840103440fa1251916725187c04ef1afbcf8e5150abcdde013d92e",
+        "legacy_contract_reconstructed": true,
+        "verification": "Complete frozen response cache; denominator and point estimates match saved result; CIs recomputed with canonical bootstrap",
+        "legacy_website_entry": {
+          "exactMatch": {
+            "value": 19.2,
+            "ciLow": 16.8,
+            "ciHigh": 21.8
+          },
+          "microF1": {
+            "value": 35.63,
+            "ciLow": 33.46,
+            "ciHigh": 37.55
+          }
+        },
+        "failure_policy": "Parse failures and refusals retained in denominator"
+      }
+    },
+    {
+      "model": "qwen3-8-max-0902",
+      "dataset": "endoscapes",
+      "sampleCount": 409,
+      "sourceRunId": "summary_gaps_20260907/qwen3-8-max-0902/endoscapes",
+      "result": {
+        "n": 409,
+        "exact_match_pct": 20.293398533007334,
+        "exact_match_ci": [
+          16.625916870415647,
+          24.449877750611247
+        ],
+        "micro_f1_pct": 78.0399274047187,
+        "micro_f1_ci": [
+          76.56423546834506,
+          79.4682422451994
+        ],
+        "website_entry": {
+          "exactMatch": {
+            "value": 20.29,
+            "ciLow": 16.63,
+            "ciHigh": 24.45
+          },
+          "microF1": {
+            "value": 78.04,
+            "ciLow": 76.56,
+            "ciHigh": 79.47
+          }
+        },
+        "parse_failures": 3,
+        "refusals": 0
+      },
+      "provenance": {
+        "prompt_sha256": "4247e760fd8bb9aa25d112f0a22177bd877809c57d2e0759ba6f0044ba6b9089",
+        "schema_sha256": "3fc383eda11fe5128d6cf6bd5fdd22c3aa8c5d39a4626c49b78ccfc107253d79",
+        "sample_sha256": "317d4a1ad11112f129ea18b5f9bad1b6f00d9284917cb9c5cc6978e396407d15",
+        "legacy_contract_reconstructed": true,
+        "verification": "Complete frozen response cache; denominator and point estimates match saved result; CIs recomputed with canonical bootstrap",
+        "legacy_website_entry": {
+          "exactMatch": {
+            "value": 20.29,
+            "ciLow": 16.63,
+            "ciHigh": 24.45
+          },
+          "microF1": {
+            "value": 78.04,
+            "ciLow": 76.63,
+            "ciHigh": 79.51
+          }
+        },
+        "failure_policy": "Parse failures and refusals retained in denominator"
+      }
+    },
+    {
+      "model": "glm-5_3-flash",
+      "dataset": "surgvu",
+      "sampleCount": 1000,
+      "sourceRunId": "summary_gaps_20260907/glm-5_3-flash/surgvu",
+      "result": {
+        "n": 1000,
+        "exact_match_pct": 19.8,
+        "exact_match_ci": [
+          17.5,
+          22.400000000000002
+        ],
+        "micro_f1_pct": 31.709377640101376,
+        "micro_f1_ci": [
+          29.577874818049494,
+          33.78378378378378
+        ],
+        "website_entry": {
+          "exactMatch": {
+            "value": 19.8,
+            "ciLow": 17.5,
+            "ciHigh": 22.4
+          },
+          "microF1": {
+            "value": 31.71,
+            "ciLow": 29.58,
+            "ciHigh": 33.78
+          }
+        },
+        "parse_failures": 1,
+        "refusals": 0
+      },
+      "provenance": {
+        "prompt_sha256": "e432ed7e3c94c58e6863180af74d3bcdcf71c00d54cffb0f88254ecb99ef85b8",
+        "schema_sha256": "6ca0938d4bb48d4922d27970d2d7903e6673355e7c0d4ea9807bf30259fb7332",
+        "sample_sha256": "455b741430840103440fa1251916725187c04ef1afbcf8e5150abcdde013d92e",
+        "legacy_contract_reconstructed": true,
+        "verification": "Complete frozen response cache; denominator and point estimates match saved result; CIs recomputed with canonical bootstrap",
+        "legacy_website_entry": {
+          "exactMatch": {
+            "value": 19.8,
+            "ciLow": 17.5,
+            "ciHigh": 22.4
+          },
+          "microF1": {
+            "value": 31.71,
+            "ciLow": 29.58,
+            "ciHigh": 33.78
+          }
+        },
+        "failure_policy": "Parse failures and refusals retained in denominator"
+      }
     }
   ],
   "runs": [

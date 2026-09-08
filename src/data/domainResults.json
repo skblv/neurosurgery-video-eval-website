@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-09-08T15:28:50.820843+00:00",
+  "generatedAt": "2026-09-08T15:40:09.662256+00:00",
   "datasets": {
     "dsad": {
       "majorityBaseline": {
@@ -1227,6 +1227,24 @@
               "value": 70.1,
               "ciLow": 68.39,
               "ciHigh": 71.83
+            }
+          }
+        },
+        {
+          "id": "qwen3-8-max-0902",
+          "model": "Qwen3.8 Max 0902",
+          "provider": "qwen",
+          "sourceRunId": "summary_gaps_20260907/qwen3-8-max-0902/endoscapes",
+          "metrics": {
+            "exactMatch": {
+              "value": 20.29,
+              "ciLow": 16.63,
+              "ciHigh": 24.45
+            },
+            "microF1": {
+              "value": 78.04,
+              "ciLow": 76.56,
+              "ciHigh": 79.47
             }
           }
         }

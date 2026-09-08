@@ -19,6 +19,16 @@ test("completed import is idempotent and preserves unrelated results", () => {
   assert.deepEqual(documents, before);
 });
 
+test("verified legacy exports keep their original source-run prefix", () => {
+  const { documents, bundle } = fixture();
+  bundle.run = "summary_gaps_20260907";
+  bundle.evaluations[0].sourceRunId = "summary_gaps_20260907/glm-5_3-flash/cadis";
+  importCompleted(bundle, documents[0], documents[1], documents[2]);
+  assert.equal(documents[1].datasets.cadis.results.find((row: { id: string }) => row.id === "glm-5_3-flash").sourceRunId,
+    "summary_gaps_20260907/glm-5_3-flash/cadis");
+  assert.deepEqual(documents[2].runs, ["summary_gaps_20260907", "summary_gaps_delm_20260907"]);
+});
+
 test("rejects incomplete denominators, excluded datasets, duplicate pairs, and bad provenance", () => {
   for (const mutate of [
     (b: ReturnType<typeof fixture>["bundle"]) => { b.evaluations[0].sampleCount = 10; },

@@ -12,6 +12,7 @@ const MODELS: Record<string, [string, string]> = {
   "qwen3-8-27b": ["Qwen3.8 27B", "qwen"],
   "qwen3-8-max-0902": ["Qwen3.8 Max 0902", "qwen"],
   "kimi-k3": ["Kimi K3", "moonshot"],
+  "gemini-3_7-flash": ["Gemini 3.7 Flash", "gemini"],
 };
 
 type Metric = { value: number; ciLow: number | null; ciHigh: number | null };
@@ -26,7 +27,7 @@ type Provenance = { evaluations: (Evaluation | Record<string, unknown>)[]; [key:
 export function importCompleted(bundle: { schemaVersion: number; run: string; generatedAt: string; evaluations: Evaluation[] },
   instruments: Document, domains: Document, provenance: Provenance) {
   assert.equal(bundle.schemaVersion, 1);
-  assert.equal(bundle.run, "summary_gaps_delm_20260907");
+  assert.ok(["summary_gaps_20260907", "summary_gaps_delm_20260907"].includes(bundle.run), "Unknown source run");
   assert.ok(Number.isFinite(Date.parse(bundle.generatedAt)));
   const seen = new Set<string>();
   const changes: string[] = [];
@@ -56,7 +57,7 @@ export function importCompleted(bundle: { schemaVersion: number; run: string; ge
     document.generatedAt = bundle.generatedAt;
     changes.push(pair);
   }
-  provenance.runs = ["summary_gaps_20260907", bundle.run];
+  provenance.runs = ["summary_gaps_20260907", "summary_gaps_delm_20260907"];
   provenance.note = "Completed runs only. Original prompts/schemas; parse failures and refusals retained in scoring. Action and SDSC-EEA excluded. Maximum 1000 fixed seed-42 validation samples per dataset; all validation examples when fewer exist.";
   parseResultsFile(instruments);
   parseDomainResultsFile(domains);

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-09-08T15:28:50.820843+00:00",
+  "generatedAt": "2026-09-08T15:40:09.662256+00:00",
   "datasets": {
     "cholect50": {
       "majorityBaseline": {
@@ -1227,6 +1227,42 @@
               "value": 27.73,
               "ciLow": 25.71,
               "ciHigh": 29.78
+            }
+          }
+        },
+        {
+          "id": "gemini-3_7-flash",
+          "model": "Gemini 3.7 Flash",
+          "provider": "gemini",
+          "sourceRunId": "summary_gaps_20260907/gemini-3_7-flash/surgvu",
+          "metrics": {
+            "exactMatch": {
+              "value": 19.2,
+              "ciLow": 16.8,
+              "ciHigh": 21.8
+            },
+            "microF1": {
+              "value": 35.63,
+              "ciLow": 33.46,
+              "ciHigh": 37.55
+            }
+          }
+        },
+        {
+          "id": "glm-5_3-flash",
+          "model": "GLM-5.3-Flash",
+          "provider": "zai",
+          "sourceRunId": "summary_gaps_20260907/glm-5_3-flash/surgvu",
+          "metrics": {
+            "exactMatch": {
+              "value": 19.8,
+              "ciLow": 17.5,
+              "ciHigh": 22.4
+            },
+            "microF1": {
+              "value": 31.71,
+              "ciLow": 29.58,
+              "ciHigh": 33.78
             }
           }
         }
