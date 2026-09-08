@@ -23,6 +23,8 @@ const KNOWN_PROVIDER_LABELS: Record<string, string> = {
   visurg: "Visurg AI",
   surgmotion: "SurgMotion",
   qwen: "Qwen",
+  zai: "Z.ai",
+  xai: "xAI",
 };
 
 /** Display name for a provider id; unknown slugs are title-cased. */

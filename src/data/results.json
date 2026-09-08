@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-09-08T00:54:11.362Z",
+  "generatedAt": "2026-09-08T15:19:28.615989+00:00",
   "datasets": {
     "cholect50": {
       "majorityBaseline": {
@@ -383,6 +383,42 @@
               "value": 73.04,
               "ciLow": 70.79,
               "ciHigh": 75.32
+            }
+          }
+        },
+        {
+          "id": "glm-5_3-flash",
+          "model": "GLM-5.3-Flash",
+          "provider": "zai",
+          "sourceRunId": "summary_gaps_delm_20260907/glm-5_3-flash/cholect50",
+          "metrics": {
+            "exactMatch": {
+              "value": 47.4,
+              "ciLow": 44.3,
+              "ciHigh": 50.4
+            },
+            "microF1": {
+              "value": 64.33,
+              "ciLow": 62.03,
+              "ciHigh": 66.82
+            }
+          }
+        },
+        {
+          "id": "qwen3-8-27b",
+          "model": "Qwen3.8 27B",
+          "provider": "qwen",
+          "sourceRunId": "summary_gaps_delm_20260907/qwen3-8-27b/cholect50",
+          "metrics": {
+            "exactMatch": {
+              "value": 35.2,
+              "ciLow": 32.3,
+              "ciHigh": 38.3
+            },
+            "microF1": {
+              "value": 56.58,
+              "ciLow": 54.53,
+              "ciHigh": 58.73
             }
           }
         }
@@ -789,6 +825,24 @@
               "ciHigh": 39.21
             }
           }
+        },
+        {
+          "id": "glm-5_3-flash",
+          "model": "GLM-5.3-Flash",
+          "provider": "zai",
+          "sourceRunId": "summary_gaps_delm_20260907/glm-5_3-flash/pitvis",
+          "metrics": {
+            "exactMatch": {
+              "value": 48.8,
+              "ciLow": 45.8,
+              "ciHigh": 51.9
+            },
+            "microF1": {
+              "value": 50.12,
+              "ciLow": 47.17,
+              "ciHigh": 53.22
+            }
+          }
         }
       ]
     },
@@ -1155,6 +1209,24 @@
               "value": 31.32,
               "ciLow": 29.37,
               "ciHigh": 33.16
+            }
+          }
+        },
+        {
+          "id": "qwen3-8-27b",
+          "model": "Qwen3.8 27B",
+          "provider": "qwen",
+          "sourceRunId": "summary_gaps_delm_20260907/qwen3-8-27b/surgvu",
+          "metrics": {
+            "exactMatch": {
+              "value": 18.2,
+              "ciLow": 15.9,
+              "ciHigh": 20.7
+            },
+            "microF1": {
+              "value": 27.73,
+              "ciLow": 25.71,
+              "ciHigh": 29.78
             }
           }
         }

@@ -75,6 +75,15 @@ The gesture pilot is currently imported from the normalized evaluation
 artifacts rather than written by the still-frame instrument runner. This keeps
 the existing automated instrument publishing contract unchanged.
 
+## Importing completed gap evaluations
+
+Completed fixed-contract gap runs can be imported with
+`node --experimental-strip-types scripts/import-completed.ts EXPORT.json --apply`.
+The backend exporter first recomputes metrics from the frozen cached sample;
+the importer rejects incomplete denominators and updates only matching
+model/dataset rows, retaining source-run IDs and reproducibility hashes in
+`completedEvalProvenance.json`. Omit `--apply` for a validation-only preview.
+
 ## Updating the gesture pilot
 
 1. Recompute each model's normalized evaluation artifact against the shared

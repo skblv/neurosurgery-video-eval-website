@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-09-08T00:54:11.363Z",
+  "generatedAt": "2026-09-08T15:19:28.615989+00:00",
   "datasets": {
     "dsad": {
       "majorityBaseline": {
@@ -385,6 +385,24 @@
               "ciHigh": 37.6
             }
           }
+        },
+        {
+          "id": "glm-5_3-flash",
+          "model": "GLM-5.3-Flash",
+          "provider": "zai",
+          "sourceRunId": "summary_gaps_delm_20260907/glm-5_3-flash/dsad",
+          "metrics": {
+            "exactMatch": {
+              "value": 8.3,
+              "ciLow": 6.6,
+              "ciHigh": 10.1
+            },
+            "microF1": {
+              "value": 46.66,
+              "ciLow": 44.58,
+              "ciHigh": 48.64
+            }
+          }
         }
       ]
     },
@@ -751,6 +769,24 @@
               "value": 81.3,
               "ciLow": 80.49,
               "ciHigh": 82.13
+            }
+          }
+        },
+        {
+          "id": "glm-5_3-flash",
+          "model": "GLM-5.3-Flash",
+          "provider": "zai",
+          "sourceRunId": "summary_gaps_delm_20260907/glm-5_3-flash/cadis",
+          "metrics": {
+            "exactMatch": {
+              "value": 4.49,
+              "ciLow": 2.81,
+              "ciHigh": 6.37
+            },
+            "microF1": {
+              "value": 70.83,
+              "ciLow": 69.64,
+              "ciHigh": 71.89
             }
           }
         }
@@ -1139,6 +1175,42 @@
               "ciHigh": 77.07
             }
           }
+        },
+        {
+          "id": "glm-5_3-flash",
+          "model": "GLM-5.3-Flash",
+          "provider": "zai",
+          "sourceRunId": "summary_gaps_delm_20260907/glm-5_3-flash/endoscapes",
+          "metrics": {
+            "exactMatch": {
+              "value": 23.96,
+              "ciLow": 19.8,
+              "ciHigh": 28.12
+            },
+            "microF1": {
+              "value": 67.76,
+              "ciLow": 66.15,
+              "ciHigh": 69.46
+            }
+          }
+        },
+        {
+          "id": "grok-4_6",
+          "model": "Grok 4.6",
+          "provider": "xai",
+          "sourceRunId": "summary_gaps_delm_20260907/grok-4_6/endoscapes",
+          "metrics": {
+            "exactMatch": {
+              "value": 24.21,
+              "ciLow": 20.05,
+              "ciHigh": 28.36
+            },
+            "microF1": {
+              "value": 70.1,
+              "ciLow": 68.39,
+              "ciHigh": 71.83
+            }
+          }
         }
       ]
     },
@@ -1523,6 +1595,24 @@
               "value": 49.5,
               "ciLow": 46.9,
               "ciHigh": 52.2
+            }
+          }
+        },
+        {
+          "id": "glm-5_3-flash",
+          "model": "GLM-5.3-Flash",
+          "provider": "zai",
+          "sourceRunId": "summary_gaps_delm_20260907/glm-5_3-flash/pitvqa",
+          "metrics": {
+            "exactMatch": {
+              "value": 26.3,
+              "ciLow": 23.4,
+              "ciHigh": 29.2
+            },
+            "microF1": {
+              "value": 38.03,
+              "ciLow": 35.36,
+              "ciHigh": 40.77
             }
           }
         }
@@ -1929,6 +2019,24 @@
               "ciHigh": 64.6
             }
           }
+        },
+        {
+          "id": "glm-5_3-flash",
+          "model": "GLM-5.3-Flash",
+          "provider": "zai",
+          "sourceRunId": "summary_gaps_delm_20260907/glm-5_3-flash/cholect50verbs",
+          "metrics": {
+            "exactMatch": {
+              "value": 29.6,
+              "ciLow": 26.9,
+              "ciHigh": 32.3
+            },
+            "microF1": {
+              "value": 59.29,
+              "ciLow": 57.16,
+              "ciHigh": 61.45
+            }
+          }
         }
       ]
     },
@@ -2315,6 +2423,24 @@
               "ciHigh": 37.2
             }
           }
+        },
+        {
+          "id": "glm-5_3-flash",
+          "model": "GLM-5.3-Flash",
+          "provider": "zai",
+          "sourceRunId": "summary_gaps_delm_20260907/glm-5_3-flash/pitvissteps",
+          "metrics": {
+            "exactMatch": {
+              "value": 30.5,
+              "ciLow": 27.7,
+              "ciHigh": 33.3
+            },
+            "microF1": {
+              "value": 30.62,
+              "ciLow": 27.78,
+              "ciHigh": 33.47
+            }
+          }
         }
       ]
     },
@@ -2699,6 +2825,24 @@
               "value": 20.6,
               "ciLow": 17.6,
               "ciHigh": 24.1
+            }
+          }
+        },
+        {
+          "id": "glm-5_3-flash",
+          "model": "GLM-5.3-Flash",
+          "provider": "zai",
+          "sourceRunId": "summary_gaps_delm_20260907/glm-5_3-flash/sarrarp50",
+          "metrics": {
+            "exactMatch": {
+              "value": 21.54,
+              "ciLow": 18.55,
+              "ciHigh": 24.84
+            },
+            "microF1": {
+              "value": 22.39,
+              "ciLow": 19.33,
+              "ciHigh": 25.86
             }
           }
         }
