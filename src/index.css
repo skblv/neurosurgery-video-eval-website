@@ -33,6 +33,8 @@
 .summary-picker-options { position: absolute; top: calc(100% + 5px); left: 0; right: 0; z-index: 10; max-height: 290px; overflow-y: auto; padding: 0.3rem; border: 1px solid var(--rule); border-radius: 6px; background: var(--paper); box-shadow: 0 8px 28px #00000014; }
 .summary-picker-option { display: flex; align-items: center; gap: 0.65rem; width: 100%; padding: 0.7rem 0.5rem; border: 0; border-radius: 3px; text-align: left; background: transparent; }
 .summary-picker-option:hover, .summary-picker-option--selected { background: var(--accent-soft); }
+.summary-picker-search { position: sticky; top: 0; box-sizing: border-box; width: 100%; padding: 0.65rem; border: 1px solid var(--rule); border-radius: 4px; background: var(--paper); color: inherit; font: inherit; }
+.summary-picker-empty { padding: 0.5rem; font-size: 0.85rem; }
 .summary-add { display: flex; align-items: center; justify-content: center; gap: 0.5rem; width: 100%; padding: 0.6rem; border: 1px dashed var(--rule); border-radius: 5px; background: transparent; }
 .summary-add:hover { color: var(--accent); border-color: var(--accent); background: var(--accent-soft); }
 .summary-add > span { font-size: 1.2rem; line-height: 1; }
