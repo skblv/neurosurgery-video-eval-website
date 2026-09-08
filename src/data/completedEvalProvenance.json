@@ -1,0 +1,1964 @@
+{
+  "run": "summary_gaps_20260907",
+  "note": "Completed runs only. Original prompts/schemas; parse failures retained in scoring. Action excluded. Maximum 1000 samples per dataset.",
+  "evaluations": [
+    {
+      "model": "gpt-5_6-luna",
+      "dataset": "cholect50",
+      "sampleCount": 1000,
+      "result": {
+        "model": "gpt-5_6-luna",
+        "dataset": "cholect50",
+        "n": 1000,
+        "website_entry": {
+          "exactMatch": {
+            "value": 40.8,
+            "ciLow": 37.7,
+            "ciHigh": 43.7
+          },
+          "microF1": {
+            "value": 60.29,
+            "ciLow": 57.89,
+            "ciHigh": 62.62
+          }
+        }
+      }
+    },
+    {
+      "model": "gpt-5_6-luna",
+      "dataset": "pitvis",
+      "sampleCount": 1000,
+      "result": {
+        "model": "gpt-5_6-luna",
+        "dataset": "pitvis",
+        "n": 1000,
+        "website_entry": {
+          "exactMatch": {
+            "value": 33,
+            "ciLow": 30.2,
+            "ciHigh": 36.2
+          },
+          "microF1": {
+            "value": 40.83,
+            "ciLow": 38.11,
+            "ciHigh": 43.47
+          }
+        }
+      }
+    },
+    {
+      "model": "gpt-5_6-luna",
+      "dataset": "surgvu",
+      "sampleCount": 1000,
+      "result": {
+        "model": "gpt-5_6-luna",
+        "dataset": "surgvu",
+        "n": 1000,
+        "website_entry": {
+          "exactMatch": {
+            "value": 16.4,
+            "ciLow": 14.2,
+            "ciHigh": 18.9
+          },
+          "microF1": {
+            "value": 24.44,
+            "ciLow": 22.57,
+            "ciHigh": 26.3
+          }
+        }
+      }
+    },
+    {
+      "model": "gpt-5_6-luna",
+      "dataset": "cadis",
+      "sampleCount": 534,
+      "result": {
+        "board": "cadis",
+        "model": "gpt-5_6-luna",
+        "slug": "openai/gpt-5.6-luna",
+        "max_tokens": 4096,
+        "decision_rule": "multilabel",
+        "n": 534,
+        "n_obs_requested": 1000,
+        "parse_failures": 19,
+        "responses_at_cap": 0,
+        "cost_usd": 0.4134,
+        "website_entry": {
+          "exactMatch": {
+            "value": 3,
+            "ciLow": 1.5,
+            "ciHigh": 4.49
+          },
+          "microF1": {
+            "value": 73.34,
+            "ciLow": 72.07,
+            "ciHigh": 74.6
+          }
+        }
+      }
+    },
+    {
+      "model": "gpt-5_6-luna",
+      "dataset": "endoscapes",
+      "sampleCount": 409,
+      "result": {
+        "board": "endoscapes",
+        "model": "gpt-5_6-luna",
+        "slug": "openai/gpt-5.6-luna",
+        "max_tokens": 4096,
+        "decision_rule": "multilabel",
+        "n": 409,
+        "n_obs_requested": 1000,
+        "parse_failures": 16,
+        "responses_at_cap": 0,
+        "cost_usd": 0.2337,
+        "website_entry": {
+          "exactMatch": {
+            "value": 19.32,
+            "ciLow": 15.65,
+            "ciHigh": 22.98
+          },
+          "microF1": {
+            "value": 76.11,
+            "ciLow": 74.53,
+            "ciHigh": 77.65
+          }
+        }
+      }
+    },
+    {
+      "model": "gpt-5_6-luna",
+      "dataset": "pitvissteps",
+      "sampleCount": 1000,
+      "result": {
+        "board": "pitvissteps",
+        "model": "gpt-5_6-luna",
+        "slug": "openai/gpt-5.6-luna",
+        "max_tokens": 4096,
+        "decision_rule": "single_label",
+        "n": 1000,
+        "n_obs_requested": 1000,
+        "parse_failures": 16,
+        "responses_at_cap": 0,
+        "cost_usd": 0.6733,
+        "website_entry": {
+          "exactMatch": {
+            "value": 24,
+            "ciLow": 21.6,
+            "ciHigh": 26.9
+          },
+          "microF1": {
+            "value": 24.19,
+            "ciLow": 21.8,
+            "ciHigh": 27.09
+          }
+        }
+      }
+    },
+    {
+      "model": "gemini-3-flash",
+      "dataset": "dsad",
+      "sampleCount": 1000,
+      "result": {
+        "dataset": "dsad",
+        "model": "gemini-3-flash",
+        "provider": "openrouter",
+        "temperature": 1,
+        "total_sampled": 1000,
+        "total_processed": 1000,
+        "skipped_technical": 0,
+        "parse_failures": 0,
+        "refusals": 0,
+        "run_cost_usd": 0.6621,
+        "exact_match_pct": 7.3999999999999995,
+        "exact_match_ci_low_pct": 5.7,
+        "exact_match_ci_high_pct": 9,
+        "micro_f1_pct": 46.871338176704946,
+        "micro_f1_ci_low_pct": 44.984512747200384,
+        "micro_f1_ci_high_pct": 48.82518796992481,
+        "website_entry": {
+          "exactMatch": {
+            "value": 7.4,
+            "ciLow": 5.7,
+            "ciHigh": 9
+          },
+          "microF1": {
+            "value": 46.9,
+            "ciLow": 45,
+            "ciHigh": 48.8
+          }
+        }
+      }
+    },
+    {
+      "model": "gemini-3-flash",
+      "dataset": "cadis",
+      "sampleCount": 534,
+      "result": {
+        "board": "cadis",
+        "model": "gemini-3-flash",
+        "slug": "google/gemini-3-flash-preview",
+        "max_tokens": 4096,
+        "decision_rule": "multilabel",
+        "n": 534,
+        "n_obs_requested": 1000,
+        "parse_failures": 1,
+        "responses_at_cap": 0,
+        "cost_usd": 0.4143,
+        "website_entry": {
+          "exactMatch": {
+            "value": 18.16,
+            "ciLow": 14.79,
+            "ciHigh": 21.72
+          },
+          "microF1": {
+            "value": 85.84,
+            "ciLow": 84.91,
+            "ciHigh": 86.82
+          }
+        }
+      }
+    },
+    {
+      "model": "gemini-3-flash",
+      "dataset": "endoscapes",
+      "sampleCount": 409,
+      "result": {
+        "board": "endoscapes",
+        "model": "gemini-3-flash",
+        "slug": "google/gemini-3-flash-preview",
+        "max_tokens": 4096,
+        "decision_rule": "multilabel",
+        "n": 409,
+        "n_obs_requested": 1000,
+        "parse_failures": 0,
+        "responses_at_cap": 0,
+        "cost_usd": 0.2932,
+        "website_entry": {
+          "exactMatch": {
+            "value": 23.47,
+            "ciLow": 19.56,
+            "ciHigh": 27.38
+          },
+          "microF1": {
+            "value": 75.05,
+            "ciLow": 73.28,
+            "ciHigh": 76.81
+          }
+        }
+      }
+    },
+    {
+      "model": "gemini-3-flash",
+      "dataset": "pitvqa",
+      "sampleCount": 1000,
+      "result": {
+        "dataset": "pitvqa",
+        "model": "gemini-3-flash",
+        "provider": "openrouter",
+        "temperature": 1,
+        "total_sampled": 1000,
+        "total_processed": 1000,
+        "skipped_technical": 0,
+        "parse_failures": 0,
+        "refusals": 0,
+        "run_cost_usd": 0.7048,
+        "exact_match_pct": 24.3,
+        "exact_match_ci_low_pct": 21.5,
+        "exact_match_ci_high_pct": 27.1,
+        "micro_f1_pct": 41.65,
+        "micro_f1_ci_low_pct": 39.25,
+        "micro_f1_ci_high_pct": 44.35,
+        "website_entry": {
+          "exactMatch": {
+            "value": 24.3,
+            "ciLow": 21.5,
+            "ciHigh": 27.1
+          },
+          "microF1": {
+            "value": 41.6,
+            "ciLow": 39.2,
+            "ciHigh": 44.4
+          }
+        }
+      }
+    },
+    {
+      "model": "gemini-3-flash",
+      "dataset": "cholect50verbs",
+      "sampleCount": 1000,
+      "result": {
+        "dataset": "cholect50verbs",
+        "model": "gemini-3-flash",
+        "provider": "openrouter",
+        "temperature": 1,
+        "total_sampled": 1000,
+        "total_processed": 1000,
+        "skipped_technical": 0,
+        "parse_failures": 0,
+        "refusals": 0,
+        "run_cost_usd": 0.7252,
+        "exact_match_pct": 27.200000000000003,
+        "exact_match_ci_low_pct": 24.5,
+        "exact_match_ci_high_pct": 30.099999999999998,
+        "micro_f1_pct": 66.03665521191294,
+        "micro_f1_ci_low_pct": 64.35239206534422,
+        "micro_f1_ci_high_pct": 67.6923076923077,
+        "website_entry": {
+          "exactMatch": {
+            "value": 27.2,
+            "ciLow": 24.5,
+            "ciHigh": 30.1
+          },
+          "microF1": {
+            "value": 66,
+            "ciLow": 64.4,
+            "ciHigh": 67.7
+          }
+        }
+      }
+    },
+    {
+      "model": "gemini-3-flash",
+      "dataset": "pitvissteps",
+      "sampleCount": 1000,
+      "result": {
+        "board": "pitvissteps",
+        "model": "gemini-3-flash",
+        "slug": "google/gemini-3-flash-preview",
+        "max_tokens": 4096,
+        "decision_rule": "single_label",
+        "n": 1000,
+        "n_obs_requested": 1000,
+        "parse_failures": 0,
+        "responses_at_cap": 0,
+        "cost_usd": 0.7042,
+        "website_entry": {
+          "exactMatch": {
+            "value": 25.1,
+            "ciLow": 22.3,
+            "ciHigh": 27.9
+          },
+          "microF1": {
+            "value": 25.1,
+            "ciLow": 22.3,
+            "ciHigh": 27.9
+          }
+        }
+      }
+    },
+    {
+      "model": "gemini-3-flash",
+      "dataset": "sarrarp50",
+      "sampleCount": 636,
+      "result": {
+        "dataset": "sarrarp50",
+        "model": "gemini-3-flash",
+        "provider": "openrouter",
+        "temperature": 1,
+        "total_sampled": 636,
+        "total_processed": 636,
+        "skipped_technical": 0,
+        "parse_failures": 0,
+        "refusals": 0,
+        "run_cost_usd": 0.4132,
+        "exact_match_pct": 28.930817610062892,
+        "exact_match_ci_low_pct": 25.78616352201258,
+        "exact_match_ci_high_pct": 32.70440251572327,
+        "micro_f1_pct": 28.930817610062892,
+        "micro_f1_ci_low_pct": 25.78616352201258,
+        "micro_f1_ci_high_pct": 32.70440251572327,
+        "website_entry": {
+          "exactMatch": {
+            "value": 28.9,
+            "ciLow": 25.8,
+            "ciHigh": 32.7
+          },
+          "microF1": {
+            "value": 28.9,
+            "ciLow": 25.8,
+            "ciHigh": 32.7
+          }
+        }
+      }
+    },
+    {
+      "model": "gemini-3_7-flash",
+      "dataset": "cholect50",
+      "sampleCount": 1000,
+      "result": {
+        "model": "gemini-3_7-flash",
+        "dataset": "cholect50",
+        "n": 1000,
+        "website_entry": {
+          "exactMatch": {
+            "value": 72.9,
+            "ciLow": 69.9,
+            "ciHigh": 75.7
+          },
+          "microF1": {
+            "value": 84.77,
+            "ciLow": 82.77,
+            "ciHigh": 86.51
+          }
+        }
+      }
+    },
+    {
+      "model": "gemini-3_7-flash",
+      "dataset": "pitvis",
+      "sampleCount": 1000,
+      "result": {
+        "model": "gemini-3_7-flash",
+        "dataset": "pitvis",
+        "n": 1000,
+        "website_entry": {
+          "exactMatch": {
+            "value": 59.6,
+            "ciLow": 56.5,
+            "ciHigh": 62.6
+          },
+          "microF1": {
+            "value": 55.88,
+            "ciLow": 52.47,
+            "ciHigh": 59.39
+          }
+        }
+      }
+    },
+    {
+      "model": "gemini-3_7-flash",
+      "dataset": "cadis",
+      "sampleCount": 534,
+      "result": {
+        "board": "cadis",
+        "model": "gemini-3_7-flash",
+        "slug": "google/gemini-3.7-flash",
+        "max_tokens": 4096,
+        "decision_rule": "multilabel",
+        "n": 534,
+        "n_obs_requested": 1000,
+        "parse_failures": 0,
+        "responses_at_cap": 0,
+        "cost_usd": 1.6868,
+        "website_entry": {
+          "exactMatch": {
+            "value": 20.04,
+            "ciLow": 16.48,
+            "ciHigh": 23.41
+          },
+          "microF1": {
+            "value": 86.63,
+            "ciLow": 85.77,
+            "ciHigh": 87.57
+          }
+        }
+      }
+    },
+    {
+      "model": "gemini-3_7-flash",
+      "dataset": "endoscapes",
+      "sampleCount": 409,
+      "result": {
+        "board": "endoscapes",
+        "model": "gemini-3_7-flash",
+        "slug": "google/gemini-3.7-flash",
+        "max_tokens": 4096,
+        "decision_rule": "multilabel",
+        "n": 409,
+        "n_obs_requested": 1000,
+        "parse_failures": 0,
+        "responses_at_cap": 0,
+        "cost_usd": 0.9971,
+        "website_entry": {
+          "exactMatch": {
+            "value": 26.89,
+            "ciLow": 22.49,
+            "ciHigh": 31.05
+          },
+          "microF1": {
+            "value": 80.07,
+            "ciLow": 78.4,
+            "ciHigh": 81.72
+          }
+        }
+      }
+    },
+    {
+      "model": "gemini-3_7-flash",
+      "dataset": "pitvissteps",
+      "sampleCount": 1000,
+      "result": {
+        "board": "pitvissteps",
+        "model": "gemini-3_7-flash",
+        "slug": "google/gemini-3.7-flash",
+        "max_tokens": 4096,
+        "decision_rule": "single_label",
+        "n": 1000,
+        "n_obs_requested": 1000,
+        "parse_failures": 0,
+        "responses_at_cap": 0,
+        "cost_usd": 2.478,
+        "website_entry": {
+          "exactMatch": {
+            "value": 29.3,
+            "ciLow": 26.5,
+            "ciHigh": 32.2
+          },
+          "microF1": {
+            "value": 29.3,
+            "ciLow": 26.5,
+            "ciHigh": 32.2
+          }
+        }
+      }
+    },
+    {
+      "model": "gpt-5_6-terra",
+      "dataset": "cholect50",
+      "sampleCount": 1000,
+      "result": {
+        "model": "gpt-5_6-terra",
+        "dataset": "cholect50",
+        "n": 1000,
+        "website_entry": {
+          "exactMatch": {
+            "value": 41.1,
+            "ciLow": 38.1,
+            "ciHigh": 44.1
+          },
+          "microF1": {
+            "value": 62.81,
+            "ciLow": 60.66,
+            "ciHigh": 64.84
+          }
+        }
+      }
+    },
+    {
+      "model": "gpt-5_6-terra",
+      "dataset": "pitvis",
+      "sampleCount": 1000,
+      "result": {
+        "model": "gpt-5_6-terra",
+        "dataset": "pitvis",
+        "n": 1000,
+        "website_entry": {
+          "exactMatch": {
+            "value": 36.3,
+            "ciLow": 33.4,
+            "ciHigh": 39.1
+          },
+          "microF1": {
+            "value": 44.08,
+            "ciLow": 41.11,
+            "ciHigh": 46.82
+          }
+        }
+      }
+    },
+    {
+      "model": "gpt-5_6-terra",
+      "dataset": "surgvu",
+      "sampleCount": 1000,
+      "result": {
+        "model": "gpt-5_6-terra",
+        "dataset": "surgvu",
+        "n": 1000,
+        "website_entry": {
+          "exactMatch": {
+            "value": 18,
+            "ciLow": 15.7,
+            "ciHigh": 20.4
+          },
+          "microF1": {
+            "value": 34.84,
+            "ciLow": 32.77,
+            "ciHigh": 36.75
+          }
+        }
+      }
+    },
+    {
+      "model": "gpt-5_6-terra",
+      "dataset": "cadis",
+      "sampleCount": 534,
+      "result": {
+        "board": "cadis",
+        "model": "gpt-5_6-terra",
+        "slug": "openai/gpt-5.6-terra",
+        "max_tokens": 4096,
+        "decision_rule": "multilabel",
+        "n": 534,
+        "n_obs_requested": 1000,
+        "parse_failures": 0,
+        "responses_at_cap": 0,
+        "cost_usd": 2.9786,
+        "website_entry": {
+          "exactMatch": {
+            "value": 7.3,
+            "ciLow": 5.24,
+            "ciHigh": 9.55
+          },
+          "microF1": {
+            "value": 80.41,
+            "ciLow": 79.48,
+            "ciHigh": 81.39
+          }
+        }
+      }
+    },
+    {
+      "model": "gpt-5_6-terra",
+      "dataset": "endoscapes",
+      "sampleCount": 409,
+      "result": {
+        "board": "endoscapes",
+        "model": "gpt-5_6-terra",
+        "slug": "openai/gpt-5.6-terra",
+        "max_tokens": 4096,
+        "decision_rule": "multilabel",
+        "n": 409,
+        "n_obs_requested": 1000,
+        "parse_failures": 0,
+        "responses_at_cap": 0,
+        "cost_usd": 1.5543,
+        "website_entry": {
+          "exactMatch": {
+            "value": 22.49,
+            "ciLow": 18.34,
+            "ciHigh": 26.16
+          },
+          "microF1": {
+            "value": 73.97,
+            "ciLow": 72.39,
+            "ciHigh": 75.66
+          }
+        }
+      }
+    },
+    {
+      "model": "gpt-5_6-terra",
+      "dataset": "pitvissteps",
+      "sampleCount": 1000,
+      "result": {
+        "board": "pitvissteps",
+        "model": "gpt-5_6-terra",
+        "slug": "openai/gpt-5.6-terra",
+        "max_tokens": 4096,
+        "decision_rule": "single_label",
+        "n": 1000,
+        "n_obs_requested": 1000,
+        "parse_failures": 0,
+        "responses_at_cap": 0,
+        "cost_usd": 5.3353,
+        "website_entry": {
+          "exactMatch": {
+            "value": 21.7,
+            "ciLow": 19.1,
+            "ciHigh": 24.3
+          },
+          "microF1": {
+            "value": 21.7,
+            "ciLow": 19.1,
+            "ciHigh": 24.3
+          }
+        }
+      }
+    },
+    {
+      "model": "claude-sonnet-5",
+      "dataset": "cholect50",
+      "sampleCount": 1000,
+      "result": {
+        "model": "claude-sonnet-5",
+        "dataset": "cholect50",
+        "n": 1000,
+        "website_entry": {
+          "exactMatch": {
+            "value": 52.8,
+            "ciLow": 49.7,
+            "ciHigh": 56
+          },
+          "microF1": {
+            "value": 70.75,
+            "ciLow": 68.49,
+            "ciHigh": 72.82
+          }
+        }
+      }
+    },
+    {
+      "model": "claude-sonnet-5",
+      "dataset": "pitvis",
+      "sampleCount": 1000,
+      "result": {
+        "model": "claude-sonnet-5",
+        "dataset": "pitvis",
+        "n": 1000,
+        "website_entry": {
+          "exactMatch": {
+            "value": 54.3,
+            "ciLow": 51.1,
+            "ciHigh": 57.3
+          },
+          "microF1": {
+            "value": 45.45,
+            "ciLow": 42.17,
+            "ciHigh": 48.61
+          }
+        }
+      }
+    },
+    {
+      "model": "claude-sonnet-5",
+      "dataset": "surgvu",
+      "sampleCount": 1000,
+      "result": {
+        "model": "claude-sonnet-5",
+        "dataset": "surgvu",
+        "n": 1000,
+        "website_entry": {
+          "exactMatch": {
+            "value": 16.8,
+            "ciLow": 14.6,
+            "ciHigh": 19.3
+          },
+          "microF1": {
+            "value": 26.78,
+            "ciLow": 24.77,
+            "ciHigh": 28.89
+          }
+        }
+      }
+    },
+    {
+      "model": "claude-sonnet-5",
+      "dataset": "cadis",
+      "sampleCount": 534,
+      "result": {
+        "board": "cadis",
+        "model": "claude-sonnet-5",
+        "slug": "anthropic/claude-sonnet-5",
+        "max_tokens": 4096,
+        "decision_rule": "multilabel",
+        "n": 534,
+        "n_obs_requested": 1000,
+        "parse_failures": 0,
+        "responses_at_cap": 0,
+        "cost_usd": 1.5263,
+        "website_entry": {
+          "exactMatch": {
+            "value": 3.18,
+            "ciLow": 1.87,
+            "ciHigh": 4.68
+          },
+          "microF1": {
+            "value": 74.23,
+            "ciLow": 73.24,
+            "ciHigh": 75.32
+          }
+        }
+      }
+    },
+    {
+      "model": "claude-sonnet-5",
+      "dataset": "endoscapes",
+      "sampleCount": 409,
+      "result": {
+        "board": "endoscapes",
+        "model": "claude-sonnet-5",
+        "slug": "anthropic/claude-sonnet-5",
+        "max_tokens": 4096,
+        "decision_rule": "multilabel",
+        "n": 409,
+        "n_obs_requested": 1000,
+        "parse_failures": 0,
+        "responses_at_cap": 0,
+        "cost_usd": 0.9097,
+        "website_entry": {
+          "exactMatch": {
+            "value": 15.65,
+            "ciLow": 12.47,
+            "ciHigh": 19.32
+          },
+          "microF1": {
+            "value": 72.68,
+            "ciLow": 71.17,
+            "ciHigh": 74.34
+          }
+        }
+      }
+    },
+    {
+      "model": "claude-sonnet-5",
+      "dataset": "pitvissteps",
+      "sampleCount": 1000,
+      "result": {
+        "board": "pitvissteps",
+        "model": "claude-sonnet-5",
+        "slug": "anthropic/claude-sonnet-5",
+        "max_tokens": 4096,
+        "decision_rule": "single_label",
+        "n": 1000,
+        "n_obs_requested": 1000,
+        "parse_failures": 0,
+        "responses_at_cap": 0,
+        "cost_usd": 3.4438,
+        "website_entry": {
+          "exactMatch": {
+            "value": 14,
+            "ciLow": 12,
+            "ciHigh": 16.2
+          },
+          "microF1": {
+            "value": 14,
+            "ciLow": 12,
+            "ciHigh": 16.2
+          }
+        }
+      }
+    },
+    {
+      "model": "gpt-5_4",
+      "dataset": "dsad",
+      "sampleCount": 1000,
+      "result": {
+        "dataset": "dsad",
+        "model": "gpt-5_4",
+        "provider": "openrouter",
+        "temperature": 1,
+        "total_sampled": 1000,
+        "total_processed": 1000,
+        "skipped_technical": 0,
+        "parse_failures": 0,
+        "refusals": 0,
+        "run_cost_usd": 4.4409,
+        "exact_match_pct": 4.6,
+        "exact_match_ci_low_pct": 3.4000000000000004,
+        "exact_match_ci_high_pct": 6,
+        "micro_f1_pct": 38.989851309889076,
+        "micro_f1_ci_low_pct": 37.17524799244213,
+        "micro_f1_ci_high_pct": 40.888678799338216,
+        "website_entry": {
+          "exactMatch": {
+            "value": 4.6,
+            "ciLow": 3.4,
+            "ciHigh": 6
+          },
+          "microF1": {
+            "value": 39,
+            "ciLow": 37.2,
+            "ciHigh": 40.9
+          }
+        }
+      }
+    },
+    {
+      "model": "gpt-5_4",
+      "dataset": "cadis",
+      "sampleCount": 534,
+      "result": {
+        "board": "cadis",
+        "model": "gpt-5_4",
+        "slug": "openai/gpt-5.4",
+        "max_tokens": 4096,
+        "decision_rule": "multilabel",
+        "n": 534,
+        "n_obs_requested": 1000,
+        "parse_failures": 0,
+        "responses_at_cap": 0,
+        "cost_usd": 1.4142,
+        "website_entry": {
+          "exactMatch": {
+            "value": 5.06,
+            "ciLow": 3.37,
+            "ciHigh": 6.93
+          },
+          "microF1": {
+            "value": 78.91,
+            "ciLow": 78.13,
+            "ciHigh": 79.77
+          }
+        }
+      }
+    },
+    {
+      "model": "gpt-5_4",
+      "dataset": "endoscapes",
+      "sampleCount": 409,
+      "result": {
+        "board": "endoscapes",
+        "model": "gpt-5_4",
+        "slug": "openai/gpt-5.4",
+        "max_tokens": 4096,
+        "decision_rule": "multilabel",
+        "n": 409,
+        "n_obs_requested": 1000,
+        "parse_failures": 0,
+        "responses_at_cap": 0,
+        "cost_usd": 0.8524,
+        "website_entry": {
+          "exactMatch": {
+            "value": 20.54,
+            "ciLow": 16.63,
+            "ciHigh": 23.96
+          },
+          "microF1": {
+            "value": 70.21,
+            "ciLow": 68.69,
+            "ciHigh": 71.61
+          }
+        }
+      }
+    },
+    {
+      "model": "gpt-5_4",
+      "dataset": "pitvqa",
+      "sampleCount": 1000,
+      "result": {
+        "dataset": "pitvqa",
+        "model": "gpt-5_4",
+        "provider": "openrouter",
+        "temperature": 1,
+        "total_sampled": 1000,
+        "total_processed": 1000,
+        "skipped_technical": 0,
+        "parse_failures": 0,
+        "refusals": 0,
+        "run_cost_usd": 0.9032,
+        "exact_match_pct": 24.5,
+        "exact_match_ci_low_pct": 22,
+        "exact_match_ci_high_pct": 27.200000000000003,
+        "micro_f1_pct": 42.3,
+        "micro_f1_ci_low_pct": 40,
+        "micro_f1_ci_high_pct": 44.75,
+        "website_entry": {
+          "exactMatch": {
+            "value": 24.5,
+            "ciLow": 22,
+            "ciHigh": 27.2
+          },
+          "microF1": {
+            "value": 42.3,
+            "ciLow": 40,
+            "ciHigh": 44.8
+          }
+        }
+      }
+    },
+    {
+      "model": "gpt-5_4",
+      "dataset": "cholect50verbs",
+      "sampleCount": 1000,
+      "result": {
+        "dataset": "cholect50verbs",
+        "model": "gpt-5_4",
+        "provider": "openrouter",
+        "temperature": 1,
+        "total_sampled": 1000,
+        "total_processed": 1000,
+        "skipped_technical": 0,
+        "parse_failures": 0,
+        "refusals": 0,
+        "run_cost_usd": 2.1292,
+        "exact_match_pct": 28.599999999999998,
+        "exact_match_ci_low_pct": 25.7,
+        "exact_match_ci_high_pct": 31.6,
+        "micro_f1_pct": 62.5886524822695,
+        "micro_f1_ci_low_pct": 60.4093567251462,
+        "micro_f1_ci_high_pct": 64.5766188104307,
+        "website_entry": {
+          "exactMatch": {
+            "value": 28.6,
+            "ciLow": 25.7,
+            "ciHigh": 31.6
+          },
+          "microF1": {
+            "value": 62.6,
+            "ciLow": 60.4,
+            "ciHigh": 64.6
+          }
+        }
+      }
+    },
+    {
+      "model": "gpt-5_4",
+      "dataset": "pitvissteps",
+      "sampleCount": 1000,
+      "result": {
+        "board": "pitvissteps",
+        "model": "gpt-5_4",
+        "slug": "openai/gpt-5.4",
+        "max_tokens": 4096,
+        "decision_rule": "single_label",
+        "n": 1000,
+        "n_obs_requested": 1000,
+        "parse_failures": 0,
+        "responses_at_cap": 0,
+        "cost_usd": 3.6058,
+        "website_entry": {
+          "exactMatch": {
+            "value": 23.6,
+            "ciLow": 20.9,
+            "ciHigh": 26.2
+          },
+          "microF1": {
+            "value": 23.6,
+            "ciLow": 20.9,
+            "ciHigh": 26.2
+          }
+        }
+      }
+    },
+    {
+      "model": "gpt-5_4",
+      "dataset": "sarrarp50",
+      "sampleCount": 636,
+      "result": {
+        "dataset": "sarrarp50",
+        "model": "gpt-5_4",
+        "provider": "openrouter",
+        "temperature": 1,
+        "total_sampled": 636,
+        "total_processed": 636,
+        "skipped_technical": 0,
+        "parse_failures": 0,
+        "refusals": 0,
+        "run_cost_usd": 4.1996,
+        "exact_match_pct": 28.930817610062892,
+        "exact_match_ci_low_pct": 25.31446540880503,
+        "exact_match_ci_high_pct": 32.54716981132076,
+        "micro_f1_pct": 28.930817610062892,
+        "micro_f1_ci_low_pct": 25.31446540880503,
+        "micro_f1_ci_high_pct": 32.54716981132076,
+        "website_entry": {
+          "exactMatch": {
+            "value": 28.9,
+            "ciLow": 25.3,
+            "ciHigh": 32.5
+          },
+          "microF1": {
+            "value": 28.9,
+            "ciLow": 25.3,
+            "ciHigh": 32.5
+          }
+        }
+      }
+    },
+    {
+      "model": "kimi-k3",
+      "dataset": "dsad",
+      "sampleCount": 1000,
+      "result": {
+        "dataset": "dsad",
+        "model": "kimi-k3",
+        "provider": "openrouter",
+        "temperature": 1,
+        "total_sampled": 1000,
+        "total_processed": 1000,
+        "skipped_technical": 0,
+        "parse_failures": 1,
+        "refusals": 0,
+        "run_cost_usd": 5.8077,
+        "exact_match_pct": 4.5,
+        "exact_match_ci_low_pct": 3.2,
+        "exact_match_ci_high_pct": 5.8999999999999995,
+        "micro_f1_pct": 41.76136363636363,
+        "micro_f1_ci_low_pct": 39.81792045999042,
+        "micro_f1_ci_high_pct": 43.76459598318543,
+        "website_entry": {
+          "exactMatch": {
+            "value": 4.5,
+            "ciLow": 3.2,
+            "ciHigh": 5.9
+          },
+          "microF1": {
+            "value": 41.8,
+            "ciLow": 39.8,
+            "ciHigh": 43.8
+          }
+        }
+      }
+    },
+    {
+      "model": "kimi-k3",
+      "dataset": "endoscapes",
+      "sampleCount": 409,
+      "result": {
+        "board": "endoscapes",
+        "model": "kimi-k3",
+        "slug": "moonshotai/kimi-k3",
+        "max_tokens": 16384,
+        "decision_rule": "multilabel",
+        "n": 409,
+        "n_obs_requested": 1000,
+        "parse_failures": 55,
+        "responses_at_cap": 55,
+        "cost_usd": 10.2267,
+        "website_entry": {
+          "exactMatch": {
+            "value": 16.87,
+            "ciLow": 13.45,
+            "ciHigh": 20.78
+          },
+          "microF1": {
+            "value": 67.72,
+            "ciLow": 65.34,
+            "ciHigh": 69.91
+          }
+        }
+      }
+    },
+    {
+      "model": "kimi-k3",
+      "dataset": "pitvqa",
+      "sampleCount": 1000,
+      "result": {
+        "dataset": "pitvqa",
+        "model": "kimi-k3",
+        "provider": "openrouter",
+        "temperature": 1,
+        "total_sampled": 1000,
+        "total_processed": 1000,
+        "skipped_technical": 0,
+        "parse_failures": 2,
+        "refusals": 0,
+        "run_cost_usd": 1.2375,
+        "exact_match_pct": 25.4,
+        "exact_match_ci_low_pct": 22.8,
+        "exact_match_ci_high_pct": 28.1,
+        "micro_f1_pct": 42.992992992992995,
+        "micro_f1_ci_low_pct": 40.69069069069069,
+        "micro_f1_ci_high_pct": 45.44544544544545,
+        "website_entry": {
+          "exactMatch": {
+            "value": 25.4,
+            "ciLow": 22.8,
+            "ciHigh": 28.1
+          },
+          "microF1": {
+            "value": 43,
+            "ciLow": 40.7,
+            "ciHigh": 45.4
+          }
+        }
+      }
+    },
+    {
+      "model": "kimi-k3",
+      "dataset": "cholect50verbs",
+      "sampleCount": 1000,
+      "result": {
+        "dataset": "cholect50verbs",
+        "model": "kimi-k3",
+        "provider": "openrouter",
+        "temperature": 1,
+        "total_sampled": 1000,
+        "total_processed": 1000,
+        "skipped_technical": 0,
+        "parse_failures": 1,
+        "refusals": 0,
+        "run_cost_usd": 2.9216,
+        "exact_match_pct": 29.7,
+        "exact_match_ci_low_pct": 27.1,
+        "exact_match_ci_high_pct": 32.6,
+        "micro_f1_pct": 62.12257100149476,
+        "micro_f1_ci_low_pct": 60.205935796486976,
+        "micro_f1_ci_high_pct": 64.05228758169935,
+        "website_entry": {
+          "exactMatch": {
+            "value": 29.7,
+            "ciLow": 27.1,
+            "ciHigh": 32.6
+          },
+          "microF1": {
+            "value": 62.1,
+            "ciLow": 60.2,
+            "ciHigh": 64.1
+          }
+        }
+      }
+    },
+    {
+      "model": "kimi-k3",
+      "dataset": "pitvissteps",
+      "sampleCount": 1000,
+      "result": {
+        "board": "pitvissteps",
+        "model": "kimi-k3",
+        "slug": "moonshotai/kimi-k3",
+        "max_tokens": 16384,
+        "decision_rule": "single_label",
+        "n": 1000,
+        "n_obs_requested": 1000,
+        "parse_failures": 30,
+        "responses_at_cap": 30,
+        "cost_usd": 31.6618,
+        "website_entry": {
+          "exactMatch": {
+            "value": 34,
+            "ciLow": 31,
+            "ciHigh": 37
+          },
+          "microF1": {
+            "value": 34.52,
+            "ciLow": 31.55,
+            "ciHigh": 37.58
+          }
+        }
+      }
+    },
+    {
+      "model": "kimi-k3",
+      "dataset": "sarrarp50",
+      "sampleCount": 636,
+      "result": {
+        "dataset": "sarrarp50",
+        "model": "kimi-k3",
+        "provider": "openrouter",
+        "temperature": 1,
+        "total_sampled": 636,
+        "total_processed": 636,
+        "skipped_technical": 0,
+        "parse_failures": 11,
+        "refusals": 0,
+        "run_cost_usd": 9.9663,
+        "exact_match_pct": 25.943396226415093,
+        "exact_match_ci_low_pct": 22.32704402515723,
+        "exact_match_ci_high_pct": 29.559748427672954,
+        "micro_f1_pct": 26.16970658207772,
+        "micro_f1_ci_low_pct": 22.611464968152866,
+        "micro_f1_ci_high_pct": 29.817605075337035,
+        "website_entry": {
+          "exactMatch": {
+            "value": 25.9,
+            "ciLow": 22.3,
+            "ciHigh": 29.6
+          },
+          "microF1": {
+            "value": 26.2,
+            "ciLow": 22.6,
+            "ciHigh": 29.8
+          }
+        }
+      }
+    },
+    {
+      "model": "claude-sonnet-4_6",
+      "dataset": "dsad",
+      "sampleCount": 1000,
+      "result": {
+        "dataset": "dsad",
+        "model": "claude-sonnet-4_6",
+        "provider": "openrouter",
+        "temperature": 1,
+        "total_sampled": 1000,
+        "total_processed": 1000,
+        "skipped_technical": 0,
+        "parse_failures": 0,
+        "refusals": 0,
+        "run_cost_usd": 5.5168,
+        "exact_match_pct": 1.7999999999999998,
+        "exact_match_ci_low_pct": 1,
+        "exact_match_ci_high_pct": 2.7,
+        "micro_f1_pct": 31.167671355213216,
+        "micro_f1_ci_low_pct": 29.327354260089688,
+        "micro_f1_ci_high_pct": 32.956088727931196,
+        "website_entry": {
+          "exactMatch": {
+            "value": 1.8,
+            "ciLow": 1,
+            "ciHigh": 2.7
+          },
+          "microF1": {
+            "value": 31.2,
+            "ciLow": 29.3,
+            "ciHigh": 33
+          }
+        }
+      }
+    },
+    {
+      "model": "claude-sonnet-4_6",
+      "dataset": "cadis",
+      "sampleCount": 534,
+      "result": {
+        "board": "cadis",
+        "model": "claude-sonnet-4_6",
+        "slug": "anthropic/claude-sonnet-4.6",
+        "max_tokens": 4096,
+        "decision_rule": "multilabel",
+        "n": 534,
+        "n_obs_requested": 1000,
+        "parse_failures": 0,
+        "responses_at_cap": 0,
+        "cost_usd": 1.9297,
+        "website_entry": {
+          "exactMatch": {
+            "value": 3.56,
+            "ciLow": 2.06,
+            "ciHigh": 5.24
+          },
+          "microF1": {
+            "value": 78.57,
+            "ciLow": 77.66,
+            "ciHigh": 79.53
+          }
+        }
+      }
+    },
+    {
+      "model": "claude-sonnet-4_6",
+      "dataset": "endoscapes",
+      "sampleCount": 409,
+      "result": {
+        "board": "endoscapes",
+        "model": "claude-sonnet-4_6",
+        "slug": "anthropic/claude-sonnet-4.6",
+        "max_tokens": 4096,
+        "decision_rule": "multilabel",
+        "n": 409,
+        "n_obs_requested": 1000,
+        "parse_failures": 0,
+        "responses_at_cap": 0,
+        "cost_usd": 1.1668,
+        "website_entry": {
+          "exactMatch": {
+            "value": 14.67,
+            "ciLow": 11.49,
+            "ciHigh": 18.34
+          },
+          "microF1": {
+            "value": 69.63,
+            "ciLow": 68.26,
+            "ciHigh": 71.18
+          }
+        }
+      }
+    },
+    {
+      "model": "claude-sonnet-4_6",
+      "dataset": "pitvqa",
+      "sampleCount": 1000,
+      "result": {
+        "dataset": "pitvqa",
+        "model": "claude-sonnet-4_6",
+        "provider": "openrouter",
+        "temperature": 1,
+        "total_sampled": 1000,
+        "total_processed": 1000,
+        "skipped_technical": 0,
+        "parse_failures": 0,
+        "refusals": 0,
+        "run_cost_usd": 1.2303,
+        "exact_match_pct": 21.3,
+        "exact_match_ci_low_pct": 18.8,
+        "exact_match_ci_high_pct": 23.799999999999997,
+        "micro_f1_pct": 41.4,
+        "micro_f1_ci_low_pct": 39.15,
+        "micro_f1_ci_high_pct": 43.6,
+        "website_entry": {
+          "exactMatch": {
+            "value": 21.3,
+            "ciLow": 18.8,
+            "ciHigh": 23.8
+          },
+          "microF1": {
+            "value": 41.4,
+            "ciLow": 39.1,
+            "ciHigh": 43.6
+          }
+        }
+      }
+    },
+    {
+      "model": "claude-sonnet-4_6",
+      "dataset": "cholect50verbs",
+      "sampleCount": 1000,
+      "result": {
+        "dataset": "cholect50verbs",
+        "model": "claude-sonnet-4_6",
+        "provider": "openrouter",
+        "temperature": 1,
+        "total_sampled": 1000,
+        "total_processed": 1000,
+        "skipped_technical": 0,
+        "parse_failures": 0,
+        "refusals": 0,
+        "run_cost_usd": 2.8246,
+        "exact_match_pct": 35.4,
+        "exact_match_ci_low_pct": 32.300000000000004,
+        "exact_match_ci_high_pct": 38.4,
+        "micro_f1_pct": 59.60442507542743,
+        "micro_f1_ci_low_pct": 57.19108710330858,
+        "micro_f1_ci_high_pct": 61.97564276048715,
+        "website_entry": {
+          "exactMatch": {
+            "value": 35.4,
+            "ciLow": 32.3,
+            "ciHigh": 38.4
+          },
+          "microF1": {
+            "value": 59.6,
+            "ciLow": 57.2,
+            "ciHigh": 62
+          }
+        }
+      }
+    },
+    {
+      "model": "claude-sonnet-4_6",
+      "dataset": "pitvissteps",
+      "sampleCount": 1000,
+      "result": {
+        "board": "pitvissteps",
+        "model": "claude-sonnet-4_6",
+        "slug": "anthropic/claude-sonnet-4.6",
+        "max_tokens": 4096,
+        "decision_rule": "single_label",
+        "n": 1000,
+        "n_obs_requested": 1000,
+        "parse_failures": 0,
+        "responses_at_cap": 0,
+        "cost_usd": 4.6601,
+        "website_entry": {
+          "exactMatch": {
+            "value": 17.5,
+            "ciLow": 15.1,
+            "ciHigh": 19.8
+          },
+          "microF1": {
+            "value": 17.5,
+            "ciLow": 15.1,
+            "ciHigh": 19.8
+          }
+        }
+      }
+    },
+    {
+      "model": "claude-sonnet-4_6",
+      "dataset": "sarrarp50",
+      "sampleCount": 636,
+      "result": {
+        "dataset": "sarrarp50",
+        "model": "claude-sonnet-4_6",
+        "provider": "openrouter",
+        "temperature": 1,
+        "total_sampled": 636,
+        "total_processed": 636,
+        "skipped_technical": 0,
+        "parse_failures": 0,
+        "refusals": 0,
+        "run_cost_usd": 3.447,
+        "exact_match_pct": 21.38364779874214,
+        "exact_match_ci_low_pct": 18.39622641509434,
+        "exact_match_ci_high_pct": 24.842767295597483,
+        "micro_f1_pct": 21.38364779874214,
+        "micro_f1_ci_low_pct": 18.39622641509434,
+        "micro_f1_ci_high_pct": 24.842767295597483,
+        "website_entry": {
+          "exactMatch": {
+            "value": 21.4,
+            "ciLow": 18.4,
+            "ciHigh": 24.8
+          },
+          "microF1": {
+            "value": 21.4,
+            "ciLow": 18.4,
+            "ciHigh": 24.8
+          }
+        }
+      }
+    },
+    {
+      "model": "claude-fable-5",
+      "dataset": "cadis",
+      "sampleCount": 534,
+      "result": {
+        "board": "cadis",
+        "model": "claude-fable-5",
+        "slug": "anthropic/claude-fable-5",
+        "max_tokens": 4096,
+        "decision_rule": "multilabel",
+        "n": 534,
+        "n_obs_requested": 1000,
+        "parse_failures": 0,
+        "responses_at_cap": 0,
+        "cost_usd": 14.1922,
+        "website_entry": {
+          "exactMatch": {
+            "value": 11.61,
+            "ciLow": 8.99,
+            "ciHigh": 14.42
+          },
+          "microF1": {
+            "value": 82.89,
+            "ciLow": 81.97,
+            "ciHigh": 83.86
+          }
+        }
+      }
+    },
+    {
+      "model": "claude-fable-5",
+      "dataset": "endoscapes",
+      "sampleCount": 409,
+      "result": {
+        "board": "endoscapes",
+        "model": "claude-fable-5",
+        "slug": "anthropic/claude-fable-5",
+        "max_tokens": 4096,
+        "decision_rule": "multilabel",
+        "n": 409,
+        "n_obs_requested": 1000,
+        "parse_failures": 0,
+        "responses_at_cap": 0,
+        "cost_usd": 6.0928,
+        "website_entry": {
+          "exactMatch": {
+            "value": 23.72,
+            "ciLow": 19.56,
+            "ciHigh": 27.87
+          },
+          "microF1": {
+            "value": 72.91,
+            "ciLow": 71.33,
+            "ciHigh": 74.63
+          }
+        }
+      }
+    },
+    {
+      "model": "claude-fable-5",
+      "dataset": "pitvissteps",
+      "sampleCount": 1000,
+      "result": {
+        "board": "pitvissteps",
+        "model": "claude-fable-5",
+        "slug": "anthropic/claude-fable-5",
+        "max_tokens": 4096,
+        "decision_rule": "single_label",
+        "n": 1000,
+        "n_obs_requested": 1000,
+        "parse_failures": 0,
+        "responses_at_cap": 0,
+        "cost_usd": 19.9881,
+        "website_entry": {
+          "exactMatch": {
+            "value": 30.5,
+            "ciLow": 27.7,
+            "ciHigh": 33.7
+          },
+          "microF1": {
+            "value": 30.5,
+            "ciLow": 27.7,
+            "ciHigh": 33.7
+          }
+        }
+      }
+    },
+    {
+      "model": "claude-opus-5",
+      "dataset": "cholect50",
+      "sampleCount": 1000,
+      "result": {
+        "model": "claude-opus-5",
+        "dataset": "cholect50",
+        "n": 1000,
+        "website_entry": {
+          "exactMatch": {
+            "value": 55.4,
+            "ciLow": 52.3,
+            "ciHigh": 58.5
+          },
+          "microF1": {
+            "value": 73.04,
+            "ciLow": 70.79,
+            "ciHigh": 75.32
+          }
+        }
+      }
+    },
+    {
+      "model": "claude-opus-5",
+      "dataset": "pitvis",
+      "sampleCount": 1000,
+      "result": {
+        "model": "claude-opus-5",
+        "dataset": "pitvis",
+        "n": 1000,
+        "website_entry": {
+          "exactMatch": {
+            "value": 50.1,
+            "ciLow": 46.9,
+            "ciHigh": 53.2
+          },
+          "microF1": {
+            "value": 46.44,
+            "ciLow": 43.5,
+            "ciHigh": 49.37
+          }
+        }
+      }
+    },
+    {
+      "model": "claude-opus-5",
+      "dataset": "surgvu",
+      "sampleCount": 1000,
+      "result": {
+        "model": "claude-opus-5",
+        "dataset": "surgvu",
+        "n": 1000,
+        "website_entry": {
+          "exactMatch": {
+            "value": 16,
+            "ciLow": 13.8,
+            "ciHigh": 18.4
+          },
+          "microF1": {
+            "value": 31.32,
+            "ciLow": 29.37,
+            "ciHigh": 33.16
+          }
+        }
+      }
+    },
+    {
+      "model": "claude-opus-5",
+      "dataset": "cadis",
+      "sampleCount": 534,
+      "result": {
+        "board": "cadis",
+        "model": "claude-opus-5",
+        "slug": "anthropic/claude-opus-5",
+        "max_tokens": 4096,
+        "decision_rule": "multilabel",
+        "n": 534,
+        "n_obs_requested": 1000,
+        "parse_failures": 1,
+        "responses_at_cap": 0,
+        "cost_usd": 7.8791,
+        "website_entry": {
+          "exactMatch": {
+            "value": 16.1,
+            "ciLow": 13.11,
+            "ciHigh": 19.29
+          },
+          "microF1": {
+            "value": 85.85,
+            "ciLow": 84.98,
+            "ciHigh": 86.69
+          }
+        }
+      }
+    },
+    {
+      "model": "claude-opus-5",
+      "dataset": "endoscapes",
+      "sampleCount": 409,
+      "result": {
+        "board": "endoscapes",
+        "model": "claude-opus-5",
+        "slug": "anthropic/claude-opus-5",
+        "max_tokens": 4096,
+        "decision_rule": "multilabel",
+        "n": 409,
+        "n_obs_requested": 1000,
+        "parse_failures": 0,
+        "responses_at_cap": 0,
+        "cost_usd": 2.3927,
+        "website_entry": {
+          "exactMatch": {
+            "value": 21.76,
+            "ciLow": 17.85,
+            "ciHigh": 25.92
+          },
+          "microF1": {
+            "value": 76.68,
+            "ciLow": 74.78,
+            "ciHigh": 78.45
+          }
+        }
+      }
+    },
+    {
+      "model": "claude-opus-5",
+      "dataset": "pitvissteps",
+      "sampleCount": 1000,
+      "result": {
+        "board": "pitvissteps",
+        "model": "claude-opus-5",
+        "slug": "anthropic/claude-opus-5",
+        "max_tokens": 4096,
+        "decision_rule": "single_label",
+        "n": 1000,
+        "n_obs_requested": 1000,
+        "parse_failures": 0,
+        "responses_at_cap": 0,
+        "cost_usd": 8.6327,
+        "website_entry": {
+          "exactMatch": {
+            "value": 29.7,
+            "ciLow": 26.9,
+            "ciHigh": 32.6
+          },
+          "microF1": {
+            "value": 29.7,
+            "ciLow": 26.9,
+            "ciHigh": 32.6
+          }
+        }
+      }
+    },
+    {
+      "model": "claude-opus-4_6",
+      "dataset": "dsad",
+      "sampleCount": 1000,
+      "result": {
+        "dataset": "dsad",
+        "model": "claude-opus-4_6",
+        "provider": "openrouter",
+        "temperature": 1,
+        "total_sampled": 1000,
+        "total_processed": 1000,
+        "skipped_technical": 0,
+        "parse_failures": 0,
+        "refusals": 0,
+        "run_cost_usd": 9.2704,
+        "exact_match_pct": 3.3000000000000003,
+        "exact_match_ci_low_pct": 2.1999999999999997,
+        "exact_match_ci_high_pct": 4.3999999999999995,
+        "micro_f1_pct": 35.8494031221304,
+        "micro_f1_ci_low_pct": 33.99005707972749,
+        "micro_f1_ci_high_pct": 37.64320785597381,
+        "website_entry": {
+          "exactMatch": {
+            "value": 3.3,
+            "ciLow": 2.2,
+            "ciHigh": 4.4
+          },
+          "microF1": {
+            "value": 35.8,
+            "ciLow": 34,
+            "ciHigh": 37.6
+          }
+        }
+      }
+    },
+    {
+      "model": "claude-opus-4_6",
+      "dataset": "cadis",
+      "sampleCount": 534,
+      "result": {
+        "board": "cadis",
+        "model": "claude-opus-4_6",
+        "slug": "anthropic/claude-opus-4.6",
+        "max_tokens": 4096,
+        "decision_rule": "multilabel",
+        "n": 534,
+        "n_obs_requested": 1000,
+        "parse_failures": 0,
+        "responses_at_cap": 0,
+        "cost_usd": 3.2728,
+        "website_entry": {
+          "exactMatch": {
+            "value": 7.87,
+            "ciLow": 5.62,
+            "ciHigh": 10.3
+          },
+          "microF1": {
+            "value": 81.3,
+            "ciLow": 80.49,
+            "ciHigh": 82.13
+          }
+        }
+      }
+    },
+    {
+      "model": "claude-opus-4_6",
+      "dataset": "endoscapes",
+      "sampleCount": 409,
+      "result": {
+        "board": "endoscapes",
+        "model": "claude-opus-4_6",
+        "slug": "anthropic/claude-opus-4.6",
+        "max_tokens": 4096,
+        "decision_rule": "multilabel",
+        "n": 409,
+        "n_obs_requested": 1000,
+        "parse_failures": 0,
+        "responses_at_cap": 0,
+        "cost_usd": 2.0005,
+        "website_entry": {
+          "exactMatch": {
+            "value": 15.65,
+            "ciLow": 12.22,
+            "ciHigh": 19.32
+          },
+          "microF1": {
+            "value": 75.53,
+            "ciLow": 73.99,
+            "ciHigh": 77.07
+          }
+        }
+      }
+    },
+    {
+      "model": "claude-opus-4_6",
+      "dataset": "pitvqa",
+      "sampleCount": 1000,
+      "result": {
+        "dataset": "pitvqa",
+        "model": "claude-opus-4_6",
+        "provider": "openrouter",
+        "temperature": 1,
+        "total_sampled": 1000,
+        "total_processed": 1000,
+        "skipped_technical": 0,
+        "parse_failures": 0,
+        "refusals": 0,
+        "run_cost_usd": 1.9934,
+        "exact_match_pct": 33,
+        "exact_match_ci_low_pct": 30.2,
+        "exact_match_ci_high_pct": 36,
+        "micro_f1_pct": 49.55,
+        "micro_f1_ci_low_pct": 46.949999999999996,
+        "micro_f1_ci_high_pct": 52.2,
+        "website_entry": {
+          "exactMatch": {
+            "value": 33,
+            "ciLow": 30.2,
+            "ciHigh": 36
+          },
+          "microF1": {
+            "value": 49.5,
+            "ciLow": 46.9,
+            "ciHigh": 52.2
+          }
+        }
+      }
+    },
+    {
+      "model": "claude-opus-4_6",
+      "dataset": "cholect50verbs",
+      "sampleCount": 1000,
+      "result": {
+        "dataset": "cholect50verbs",
+        "model": "claude-opus-4_6",
+        "provider": "openrouter",
+        "temperature": 1,
+        "total_sampled": 1000,
+        "total_processed": 1000,
+        "skipped_technical": 0,
+        "parse_failures": 0,
+        "refusals": 0,
+        "run_cost_usd": 4.7216,
+        "exact_match_pct": 36.5,
+        "exact_match_ci_low_pct": 33.5,
+        "exact_match_ci_high_pct": 39.4,
+        "micro_f1_pct": 62.39536381197682,
+        "micro_f1_ci_low_pct": 60.07089912987431,
+        "micro_f1_ci_high_pct": 64.5618556701031,
+        "website_entry": {
+          "exactMatch": {
+            "value": 36.5,
+            "ciLow": 33.5,
+            "ciHigh": 39.4
+          },
+          "microF1": {
+            "value": 62.4,
+            "ciLow": 60.1,
+            "ciHigh": 64.6
+          }
+        }
+      }
+    },
+    {
+      "model": "claude-opus-4_6",
+      "dataset": "pitvissteps",
+      "sampleCount": 1000,
+      "result": {
+        "board": "pitvissteps",
+        "model": "claude-opus-4_6",
+        "slug": "anthropic/claude-opus-4.6",
+        "max_tokens": 4096,
+        "decision_rule": "single_label",
+        "n": 1000,
+        "n_obs_requested": 1000,
+        "parse_failures": 0,
+        "responses_at_cap": 0,
+        "cost_usd": 7.7683,
+        "website_entry": {
+          "exactMatch": {
+            "value": 34.3,
+            "ciLow": 31.3,
+            "ciHigh": 37.2
+          },
+          "microF1": {
+            "value": 34.3,
+            "ciLow": 31.3,
+            "ciHigh": 37.2
+          }
+        }
+      }
+    },
+    {
+      "model": "claude-opus-4_6",
+      "dataset": "sarrarp50",
+      "sampleCount": 636,
+      "result": {
+        "dataset": "sarrarp50",
+        "model": "claude-opus-4_6",
+        "provider": "openrouter",
+        "temperature": 1,
+        "total_sampled": 636,
+        "total_processed": 636,
+        "skipped_technical": 0,
+        "parse_failures": 0,
+        "refusals": 0,
+        "run_cost_usd": 5.7379,
+        "exact_match_pct": 20.59748427672956,
+        "exact_match_ci_low_pct": 17.61006289308176,
+        "exact_match_ci_high_pct": 24.056603773584907,
+        "micro_f1_pct": 20.59748427672956,
+        "micro_f1_ci_low_pct": 17.61006289308176,
+        "micro_f1_ci_high_pct": 24.056603773584907,
+        "website_entry": {
+          "exactMatch": {
+            "value": 20.6,
+            "ciLow": 17.6,
+            "ciHigh": 24.1
+          },
+          "microF1": {
+            "value": 20.6,
+            "ciLow": 17.6,
+            "ciHigh": 24.1
+          }
+        }
+      }
+    },
+    {
+      "model": "qwen3-8-27b",
+      "dataset": "pitvis",
+      "sampleCount": 1000,
+      "result": {
+        "model": "qwen3-8-27b",
+        "dataset": "pitvis",
+        "n": 1000,
+        "website_entry": {
+          "exactMatch": {
+            "value": 47.7,
+            "ciLow": 44.8,
+            "ciHigh": 50.9
+          },
+          "microF1": {
+            "value": 36.22,
+            "ciLow": 33.09,
+            "ciHigh": 39.21
+          }
+        }
+      }
+    }
+  ]
+}

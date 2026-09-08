@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-09-05T04:26:45Z",
+  "generatedAt": "2026-09-08T00:54:11.362Z",
   "datasets": {
     "cholect50": {
       "majorityBaseline": {
@@ -287,12 +287,102 @@
             "exactMatch": {
               "value": 71.2,
               "ciLow": 68.4,
-              "ciHigh": 74.0
+              "ciHigh": 74
             },
             "microF1": {
               "value": 85.05,
               "ciLow": 83.3,
               "ciHigh": 86.71
+            }
+          }
+        },
+        {
+          "id": "gpt-5_6-luna",
+          "model": "GPT-5.6 Luna",
+          "provider": "openai",
+          "sourceRunId": "summary_gaps_20260907/gpt-5_6-luna/cholect50",
+          "metrics": {
+            "exactMatch": {
+              "value": 40.8,
+              "ciLow": 37.7,
+              "ciHigh": 43.7
+            },
+            "microF1": {
+              "value": 60.29,
+              "ciLow": 57.89,
+              "ciHigh": 62.62
+            }
+          }
+        },
+        {
+          "id": "gemini-3_7-flash",
+          "model": "Gemini 3.7 Flash",
+          "provider": "gemini",
+          "sourceRunId": "summary_gaps_20260907/gemini-3_7-flash/cholect50",
+          "metrics": {
+            "exactMatch": {
+              "value": 72.9,
+              "ciLow": 69.9,
+              "ciHigh": 75.7
+            },
+            "microF1": {
+              "value": 84.77,
+              "ciLow": 82.77,
+              "ciHigh": 86.51
+            }
+          }
+        },
+        {
+          "id": "gpt-5_6-terra",
+          "model": "GPT-5.6 Terra",
+          "provider": "openai",
+          "sourceRunId": "summary_gaps_20260907/gpt-5_6-terra/cholect50",
+          "metrics": {
+            "exactMatch": {
+              "value": 41.1,
+              "ciLow": 38.1,
+              "ciHigh": 44.1
+            },
+            "microF1": {
+              "value": 62.81,
+              "ciLow": 60.66,
+              "ciHigh": 64.84
+            }
+          }
+        },
+        {
+          "id": "claude-sonnet-5",
+          "model": "Claude Sonnet 5",
+          "provider": "anthropic",
+          "sourceRunId": "summary_gaps_20260907/claude-sonnet-5/cholect50",
+          "metrics": {
+            "exactMatch": {
+              "value": 52.8,
+              "ciLow": 49.7,
+              "ciHigh": 56
+            },
+            "microF1": {
+              "value": 70.75,
+              "ciLow": 68.49,
+              "ciHigh": 72.82
+            }
+          }
+        },
+        {
+          "id": "claude-opus-5",
+          "model": "Claude Opus 5",
+          "provider": "anthropic",
+          "sourceRunId": "summary_gaps_20260907/claude-opus-5/cholect50",
+          "metrics": {
+            "exactMatch": {
+              "value": 55.4,
+              "ciLow": 52.3,
+              "ciHigh": 58.5
+            },
+            "microF1": {
+              "value": 73.04,
+              "ciLow": 70.79,
+              "ciHigh": 75.32
             }
           }
         }
@@ -591,6 +681,114 @@
               "ciHigh": 44.25
             }
           }
+        },
+        {
+          "id": "gpt-5_6-luna",
+          "model": "GPT-5.6 Luna",
+          "provider": "openai",
+          "sourceRunId": "summary_gaps_20260907/gpt-5_6-luna/pitvis",
+          "metrics": {
+            "exactMatch": {
+              "value": 33,
+              "ciLow": 30.2,
+              "ciHigh": 36.2
+            },
+            "microF1": {
+              "value": 40.83,
+              "ciLow": 38.11,
+              "ciHigh": 43.47
+            }
+          }
+        },
+        {
+          "id": "gemini-3_7-flash",
+          "model": "Gemini 3.7 Flash",
+          "provider": "gemini",
+          "sourceRunId": "summary_gaps_20260907/gemini-3_7-flash/pitvis",
+          "metrics": {
+            "exactMatch": {
+              "value": 59.6,
+              "ciLow": 56.5,
+              "ciHigh": 62.6
+            },
+            "microF1": {
+              "value": 55.88,
+              "ciLow": 52.47,
+              "ciHigh": 59.39
+            }
+          }
+        },
+        {
+          "id": "gpt-5_6-terra",
+          "model": "GPT-5.6 Terra",
+          "provider": "openai",
+          "sourceRunId": "summary_gaps_20260907/gpt-5_6-terra/pitvis",
+          "metrics": {
+            "exactMatch": {
+              "value": 36.3,
+              "ciLow": 33.4,
+              "ciHigh": 39.1
+            },
+            "microF1": {
+              "value": 44.08,
+              "ciLow": 41.11,
+              "ciHigh": 46.82
+            }
+          }
+        },
+        {
+          "id": "claude-sonnet-5",
+          "model": "Claude Sonnet 5",
+          "provider": "anthropic",
+          "sourceRunId": "summary_gaps_20260907/claude-sonnet-5/pitvis",
+          "metrics": {
+            "exactMatch": {
+              "value": 54.3,
+              "ciLow": 51.1,
+              "ciHigh": 57.3
+            },
+            "microF1": {
+              "value": 45.45,
+              "ciLow": 42.17,
+              "ciHigh": 48.61
+            }
+          }
+        },
+        {
+          "id": "claude-opus-5",
+          "model": "Claude Opus 5",
+          "provider": "anthropic",
+          "sourceRunId": "summary_gaps_20260907/claude-opus-5/pitvis",
+          "metrics": {
+            "exactMatch": {
+              "value": 50.1,
+              "ciLow": 46.9,
+              "ciHigh": 53.2
+            },
+            "microF1": {
+              "value": 46.44,
+              "ciLow": 43.5,
+              "ciHigh": 49.37
+            }
+          }
+        },
+        {
+          "id": "qwen3-8-27b",
+          "model": "Qwen3.8 27B",
+          "provider": "qwen",
+          "sourceRunId": "summary_gaps_20260907/qwen3-8-27b/pitvis",
+          "metrics": {
+            "exactMatch": {
+              "value": 47.7,
+              "ciLow": 44.8,
+              "ciHigh": 50.9
+            },
+            "microF1": {
+              "value": 36.22,
+              "ciLow": 33.09,
+              "ciHigh": 39.21
+            }
+          }
         }
       ]
     },
@@ -841,7 +1039,7 @@
           "sourceRunId": null,
           "metrics": {
             "exactMatch": {
-              "value": 21.0,
+              "value": 21,
               "ciLow": 18.5,
               "ciHigh": 23.7
             },
@@ -885,6 +1083,78 @@
               "value": 43.22,
               "ciLow": 41.12,
               "ciHigh": 45.22
+            }
+          }
+        },
+        {
+          "id": "gpt-5_6-luna",
+          "model": "GPT-5.6 Luna",
+          "provider": "openai",
+          "sourceRunId": "summary_gaps_20260907/gpt-5_6-luna/surgvu",
+          "metrics": {
+            "exactMatch": {
+              "value": 16.4,
+              "ciLow": 14.2,
+              "ciHigh": 18.9
+            },
+            "microF1": {
+              "value": 24.44,
+              "ciLow": 22.57,
+              "ciHigh": 26.3
+            }
+          }
+        },
+        {
+          "id": "gpt-5_6-terra",
+          "model": "GPT-5.6 Terra",
+          "provider": "openai",
+          "sourceRunId": "summary_gaps_20260907/gpt-5_6-terra/surgvu",
+          "metrics": {
+            "exactMatch": {
+              "value": 18,
+              "ciLow": 15.7,
+              "ciHigh": 20.4
+            },
+            "microF1": {
+              "value": 34.84,
+              "ciLow": 32.77,
+              "ciHigh": 36.75
+            }
+          }
+        },
+        {
+          "id": "claude-sonnet-5",
+          "model": "Claude Sonnet 5",
+          "provider": "anthropic",
+          "sourceRunId": "summary_gaps_20260907/claude-sonnet-5/surgvu",
+          "metrics": {
+            "exactMatch": {
+              "value": 16.8,
+              "ciLow": 14.6,
+              "ciHigh": 19.3
+            },
+            "microF1": {
+              "value": 26.78,
+              "ciLow": 24.77,
+              "ciHigh": 28.89
+            }
+          }
+        },
+        {
+          "id": "claude-opus-5",
+          "model": "Claude Opus 5",
+          "provider": "anthropic",
+          "sourceRunId": "summary_gaps_20260907/claude-opus-5/surgvu",
+          "metrics": {
+            "exactMatch": {
+              "value": 16,
+              "ciLow": 13.8,
+              "ciHigh": 18.4
+            },
+            "microF1": {
+              "value": 31.32,
+              "ciLow": 29.37,
+              "ciHigh": 33.16
             }
           }
         }
