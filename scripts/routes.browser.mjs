@@ -17,7 +17,9 @@ const open = (path) => run("open", new URL(path, base).href);
 
 try {
   // No JS bundle: the HTTP response and visible page must already contain the data.
-  open("");
+  // Install interception before the first visit, so production cache headers
+  // cannot reuse a bundle fetched by an earlier warm-up navigation.
+  run("open", "about:blank");
   run("network", "route", "**/*.js", "--abort");
   for (const route of routes) {
     const response = await fetch(new URL(route, base));
