@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-09-08T15:40:09.662256+00:00",
+  "generatedAt": "2026-09-09T00:06:42.374534+00:00",
   "datasets": {
     "dsad": {
       "majorityBaseline": {
@@ -401,6 +401,42 @@
               "value": 46.66,
               "ciLow": 44.58,
               "ciHigh": 48.64
+            }
+          }
+        },
+        {
+          "id": "grok-4_6",
+          "model": "Grok 4.6",
+          "provider": "xai",
+          "sourceRunId": "summary_gaps_delm_20260907/grok-4_6/dsad",
+          "metrics": {
+            "exactMatch": {
+              "value": 4.6,
+              "ciLow": 3.4,
+              "ciHigh": 5.9
+            },
+            "microF1": {
+              "value": 36.69,
+              "ciLow": 34.72,
+              "ciHigh": 38.83
+            }
+          }
+        },
+        {
+          "id": "qwen3-8-max-0902",
+          "model": "Qwen3.8 Max 0902",
+          "provider": "qwen",
+          "sourceRunId": "summary_gaps_delm_20260907/qwen3-8-max-0902/dsad",
+          "metrics": {
+            "exactMatch": {
+              "value": 6.9,
+              "ciLow": 5.4,
+              "ciHigh": 8.5
+            },
+            "microF1": {
+              "value": 48.97,
+              "ciLow": 47.17,
+              "ciHigh": 50.82
             }
           }
         }
@@ -805,6 +841,42 @@
               "value": 83.9,
               "ciLow": 82.84,
               "ciHigh": 84.9
+            }
+          }
+        },
+        {
+          "id": "grok-4_6",
+          "model": "Grok 4.6",
+          "provider": "xai",
+          "sourceRunId": "summary_gaps_delm_20260907/grok-4_6/cadis",
+          "metrics": {
+            "exactMatch": {
+              "value": 7.68,
+              "ciLow": 5.43,
+              "ciHigh": 10.11
+            },
+            "microF1": {
+              "value": 79.5,
+              "ciLow": 78.35,
+              "ciHigh": 80.65
+            }
+          }
+        },
+        {
+          "id": "qwen3-8-max-0902",
+          "model": "Qwen3.8 Max 0902",
+          "provider": "qwen",
+          "sourceRunId": "summary_gaps_delm_20260907/qwen3-8-max-0902/cadis",
+          "metrics": {
+            "exactMatch": {
+              "value": 11.42,
+              "ciLow": 8.8,
+              "ciHigh": 14.04
+            },
+            "microF1": {
+              "value": 81.77,
+              "ciLow": 80.55,
+              "ciHigh": 82.94
             }
           }
         }
@@ -1651,6 +1723,42 @@
               "ciHigh": 40.77
             }
           }
+        },
+        {
+          "id": "grok-4_6",
+          "model": "Grok 4.6",
+          "provider": "xai",
+          "sourceRunId": "summary_gaps_delm_20260907/grok-4_6/pitvqa",
+          "metrics": {
+            "exactMatch": {
+              "value": 30.7,
+              "ciLow": 28.1,
+              "ciHigh": 33.7
+            },
+            "microF1": {
+              "value": 43.1,
+              "ciLow": 40.55,
+              "ciHigh": 45.8
+            }
+          }
+        },
+        {
+          "id": "qwen3-8-max-0902",
+          "model": "Qwen3.8 Max 0902",
+          "provider": "qwen",
+          "sourceRunId": "summary_gaps_delm_20260907/qwen3-8-max-0902/pitvqa",
+          "metrics": {
+            "exactMatch": {
+              "value": 38.2,
+              "ciLow": 34.9,
+              "ciHigh": 41.2
+            },
+            "microF1": {
+              "value": 53.65,
+              "ciLow": 51.14,
+              "ciHigh": 56.21
+            }
+          }
         }
       ]
     },
@@ -2073,6 +2181,42 @@
               "ciHigh": 61.45
             }
           }
+        },
+        {
+          "id": "grok-4_6",
+          "model": "Grok 4.6",
+          "provider": "xai",
+          "sourceRunId": "summary_gaps_delm_20260907/grok-4_6/cholect50verbs",
+          "metrics": {
+            "exactMatch": {
+              "value": 38,
+              "ciLow": 35.2,
+              "ciHigh": 40.9
+            },
+            "microF1": {
+              "value": 61.93,
+              "ciLow": 59.7,
+              "ciHigh": 64.14
+            }
+          }
+        },
+        {
+          "id": "qwen3-8-max-0902",
+          "model": "Qwen3.8 Max 0902",
+          "provider": "qwen",
+          "sourceRunId": "summary_gaps_delm_20260907/qwen3-8-max-0902/cholect50verbs",
+          "metrics": {
+            "exactMatch": {
+              "value": 19.2,
+              "ciLow": 16.7,
+              "ciHigh": 21.6
+            },
+            "microF1": {
+              "value": 64.13,
+              "ciLow": 62.38,
+              "ciHigh": 65.79
+            }
+          }
         }
       ]
     },
@@ -2477,6 +2621,42 @@
               "ciHigh": 33.47
             }
           }
+        },
+        {
+          "id": "grok-4_6",
+          "model": "Grok 4.6",
+          "provider": "xai",
+          "sourceRunId": "summary_gaps_delm_20260907/grok-4_6/pitvissteps",
+          "metrics": {
+            "exactMatch": {
+              "value": 37.2,
+              "ciLow": 34.3,
+              "ciHigh": 40.2
+            },
+            "microF1": {
+              "value": 37.24,
+              "ciLow": 34.33,
+              "ciHigh": 40.24
+            }
+          }
+        },
+        {
+          "id": "qwen3-8-max-0902",
+          "model": "Qwen3.8 Max 0902",
+          "provider": "qwen",
+          "sourceRunId": "summary_gaps_delm_20260907/qwen3-8-max-0902/pitvissteps",
+          "metrics": {
+            "exactMatch": {
+              "value": 46,
+              "ciLow": 42.8,
+              "ciHigh": 49.2
+            },
+            "microF1": {
+              "value": 46.7,
+              "ciLow": 43.42,
+              "ciHigh": 49.87
+            }
+          }
         }
       ]
     },
@@ -2879,6 +3059,42 @@
               "value": 22.39,
               "ciLow": 19.33,
               "ciHigh": 25.86
+            }
+          }
+        },
+        {
+          "id": "grok-4_6",
+          "model": "Grok 4.6",
+          "provider": "xai",
+          "sourceRunId": "summary_gaps_delm_20260907/grok-4_6/sarrarp50",
+          "metrics": {
+            "exactMatch": {
+              "value": 25.47,
+              "ciLow": 22.33,
+              "ciHigh": 29.25
+            },
+            "microF1": {
+              "value": 25.47,
+              "ciLow": 22.33,
+              "ciHigh": 29.25
+            }
+          }
+        },
+        {
+          "id": "qwen3-8-max-0902",
+          "model": "Qwen3.8 Max 0902",
+          "provider": "qwen",
+          "sourceRunId": "summary_gaps_delm_20260907/qwen3-8-max-0902/sarrarp50",
+          "metrics": {
+            "exactMatch": {
+              "value": 22.96,
+              "ciLow": 19.5,
+              "ciHigh": 26.1
+            },
+            "microF1": {
+              "value": 25.13,
+              "ciLow": 21.41,
+              "ciHigh": 28.55
             }
           }
         }

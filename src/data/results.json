@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-09-08T15:40:09.662256+00:00",
+  "generatedAt": "2026-09-09T00:06:42.374534+00:00",
   "datasets": {
     "cholect50": {
       "majorityBaseline": {
@@ -419,6 +419,24 @@
               "value": 56.58,
               "ciLow": 54.53,
               "ciHigh": 58.73
+            }
+          }
+        },
+        {
+          "id": "grok-4_6",
+          "model": "Grok 4.6",
+          "provider": "xai",
+          "sourceRunId": "summary_gaps_delm_20260907/grok-4_6/cholect50",
+          "metrics": {
+            "exactMatch": {
+              "value": 57.4,
+              "ciLow": 54.3,
+              "ciHigh": 60.5
+            },
+            "microF1": {
+              "value": 73.38,
+              "ciLow": 71.13,
+              "ciHigh": 75.53
             }
           }
         }
@@ -843,6 +861,24 @@
               "ciHigh": 53.22
             }
           }
+        },
+        {
+          "id": "grok-4_6",
+          "model": "Grok 4.6",
+          "provider": "xai",
+          "sourceRunId": "summary_gaps_delm_20260907/grok-4_6/pitvis",
+          "metrics": {
+            "exactMatch": {
+              "value": 53.1,
+              "ciLow": 50,
+              "ciHigh": 56.1
+            },
+            "microF1": {
+              "value": 49.04,
+              "ciLow": 45.95,
+              "ciHigh": 52.2
+            }
+          }
         }
       ]
     },
@@ -1263,6 +1299,24 @@
               "value": 31.71,
               "ciLow": 29.58,
               "ciHigh": 33.78
+            }
+          }
+        },
+        {
+          "id": "grok-4_6",
+          "model": "Grok 4.6",
+          "provider": "xai",
+          "sourceRunId": "summary_gaps_delm_20260907/grok-4_6/surgvu",
+          "metrics": {
+            "exactMatch": {
+              "value": 19.2,
+              "ciLow": 16.9,
+              "ciHigh": 21.7
+            },
+            "microF1": {
+              "value": 33.57,
+              "ciLow": 31.49,
+              "ciHigh": 35.52
             }
           }
         }

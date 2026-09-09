@@ -84,13 +84,15 @@ the importer rejects incomplete denominators and updates only matching
 model/dataset rows, retaining source-run IDs and reproducibility hashes in
 `completedEvalProvenance.json`. Omit `--apply` for a validation-only preview.
 
-Qwen Max (both saved IDs) and Grok 4.6 currently have temporary publication
-holds in `src/data/leaderboardVisibility.ts` until their remaining evaluations
-are complete. The holds cover all tables, charts, summary scores, and model
-pickers without deleting JSON results or provenance. Release each model's
-hold only after verifying and importing all its remaining datasets, then
-update the visibility/prerender regression tests. Completed Qwen3.8 27B stays
-visible; the general policy allowing incomplete models is otherwise unchanged.
+Grok 4.6's ten datasets and Qwen3.8 Max 0902's seven requested domain datasets
+are verified and published. Their holds have been released for tables, charts,
+summary scores, and model pickers. Action was not evaluated and remains NA.
+The historical `qwen3-8-max` instrument rows retain their original identity and
+source IDs; they are not relabelled as 0902 evaluations. That older model's
+remaining runs were blocked by API availability, so only its publication hold
+remains in `src/data/leaderboardVisibility.ts`. The normal NA policy remains
+unchanged for missing scores. Tests verify imported denominators, metrics,
+provenance, and visibility in prerendered pages.
 
 ## Updating the gesture pilot
 

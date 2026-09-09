@@ -1,12 +1,11 @@
-/** Temporary publication holds; keep scores/provenance intact while runs finish. */
+/** Preserve historical scores while holding models with uncompleted evaluations. */
 const HELD_MODEL_IDS = new Set([
   "qwen3-8-max",
-  "qwen3-8-max-0902",
-  "grok-4_6",
 ]);
 
-// Release each model's hold after all its remaining evaluations are verified
-// complete and imported. Qwen3.8 27B is already complete and remains visible.
+// Grok and Qwen Max 0902's requested gap runs are complete and verified/imported.
+// The older Max ID remains unavailable/incomplete; do not relabel its historical
+// instrument scores as 0902 results. Unmeasured scores keep their normal NA policy.
 export function isLeaderboardModelVisible(result: { id: string }): boolean {
   return !HELD_MODEL_IDS.has(result.id);
 }

@@ -18,8 +18,11 @@ test("every public route ships readable HTML, scores, metadata, real links, and 
     assert(html.includes('name="robots" content="index, follow'));
     assert(!html.includes('href="#/'));
     assert(!html.includes('<!--seo-head-->'));
-    assert(!html.includes("Qwen3.8 Max"), `${route}: unfinished Qwen Max is hidden`);
-    assert(!html.includes("Grok 4.6"), `${route}: unfinished Grok is hidden`);
+    const showsGrok = route !== "gestures";
+    const showsQwen0902 = route !== "gestures" && route !== "instruments";
+    assert.equal(html.includes("Grok 4.6"), showsGrok, `${route}: completed Grok follows dataset coverage`);
+    assert.equal(html.includes("Qwen3.8 Max 0902"), showsQwen0902, `${route}: completed Qwen 0902 follows dataset coverage`);
+    assert(!/Qwen3\.8 Max(?! 0902)/.test(html), `${route}: older unavailable Max remains hidden`);
     for (const target of ROUTES) assert(html.includes(`href="${routePath(target, SITE_BASE)}"`));
     for (const match of html.matchAll(/(?:src|href)="([^"#]+)"/g)) {
       const path = match[1];

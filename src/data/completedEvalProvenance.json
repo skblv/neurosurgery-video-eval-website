@@ -2925,6 +2925,951 @@
         },
         "failure_policy": "Parse failures and refusals retained in denominator"
       }
+    },
+    {
+      "model": "grok-4_6",
+      "dataset": "cadis",
+      "sampleCount": 534,
+      "sourceRunId": "summary_gaps_delm_20260907/grok-4_6/cadis",
+      "result": {
+        "n": 534,
+        "exact_match_pct": 7.677902621722846,
+        "exact_match_ci": [
+          5.430711610486892,
+          10.112359550561797
+        ],
+        "micro_f1_pct": 79.50440364233468,
+        "micro_f1_ci": [
+          78.34586466165413,
+          80.65185185185186
+        ],
+        "website_entry": {
+          "exactMatch": {
+            "value": 7.68,
+            "ciLow": 5.43,
+            "ciHigh": 10.11
+          },
+          "microF1": {
+            "value": 79.5,
+            "ciLow": 78.35,
+            "ciHigh": 80.65
+          }
+        },
+        "parse_failures": 3,
+        "refusals": 0
+      },
+      "provenance": {
+        "prompt_sha256": "630ee289c556bc1fa9a42ecdd2cbce149c9d81f4e2cd1a98e302c5b4734c8254",
+        "schema_sha256": "c8c6ebc3bab109b31ed9023804579fc130185a0ba8e1a1b984af1eccf580aecf",
+        "sample_sha256": "3ca936fb537822393a1dc337e128f6fccf16d6f34c4d16f0be486907b09efb47",
+        "max_tokens_for_new_requests": 16384,
+        "versions": {
+          "delm": "1.2.0",
+          "openai": "1.109.1",
+          "pydantic": "2.13.5",
+          "instructor": "1.3.2",
+          "numpy": "2.5.2",
+          "pandas": "3.0.5"
+        },
+        "source_sha256": {
+          "runtime.py": "18a8793eaf4c7e280aae06e6f470f867a11f204434c24f14d3d8c178a63630a2",
+          "export_completed.py": "3ed57c8dbe899fe41c7fc41ad7f25b7f4c757578a86ca54a4d024c430c0067c3",
+          "monitor.py": "7d9e476d18f2a169f28672da67e65a237995bd454b39f3cc1e4b9e13a309e2c6",
+          "cli.py": "86bc73843eb9ab8c5e52bf27fcac5a4fa25f28eb7f3ae0d9fa54982c8d1a48b2",
+          "__init__.py": "8804240b11e177bb9007f5a3b05e046e71bde8846bc7ed7269895191d590621f",
+          "contracts.py": "1f4902fb679ec4c6fddab877ad0fbc0f50cb80e0ccf918b295fd038349b39fe0",
+          "delm_adapter.py": "59bb69c48f07bee53753d7bd00a02c218ab0d8e795e541454cf33142aa2af68b",
+          "frozen/leaderboard_metrics.py": "e6e3d2f44eb1cfb05c04b37231db6745feca1137a2098d7f457c4c1c393315f8",
+          "frozen/s55_kimik3_openrouter_eval.py": "c266e7d56f3d229d468396956fd702347ac45f064b4c997502bbedc17d5d5013",
+          "frozen/s91_openrouter_eval.py": "17b0daee55d09bac0f1a345631212a8bef135944d1954c0410e5a585aef38419",
+          "frozen/__init__.py": "b383d027c60368ca2197fc042e6b3f833e24b9a9d35d1857999098ac9e8301e0",
+          "frozen/s93_vision_openrouter.py": "b38ed100e2dd1d1f07cca702c1566e36edb0d9f785ba4268eabab1a9ae5ee11a",
+          "frozen/vision_eval.py": "929aab12cbc6ecc9863ede3e1857126ff016a41baf88d58a7229320bd4d2520c"
+        },
+        "failure_policy": "Parse failures and refusals retained in denominator; no answer-repair retries"
+      }
+    },
+    {
+      "model": "grok-4_6",
+      "dataset": "cholect50",
+      "sampleCount": 1000,
+      "sourceRunId": "summary_gaps_delm_20260907/grok-4_6/cholect50",
+      "result": {
+        "n": 1000,
+        "exact_match_pct": 57.4,
+        "exact_match_ci": [
+          54.300000000000004,
+          60.5
+        ],
+        "micro_f1_pct": 73.37738048970074,
+        "micro_f1_ci": [
+          71.1281070745698,
+          75.52986512524085
+        ],
+        "website_entry": {
+          "exactMatch": {
+            "value": 57.4,
+            "ciLow": 54.3,
+            "ciHigh": 60.5
+          },
+          "microF1": {
+            "value": 73.38,
+            "ciLow": 71.13,
+            "ciHigh": 75.53
+          }
+        },
+        "parse_failures": 0,
+        "refusals": 0
+      },
+      "provenance": {
+        "prompt_sha256": "be8a266aa7af64bef4fa6f284f652aad92003506b2b22bd8a43fa7e9d4f2e941",
+        "schema_sha256": "6ca0938d4bb48d4922d27970d2d7903e6673355e7c0d4ea9807bf30259fb7332",
+        "sample_sha256": "4afe133cacd8c776673e5b3df9497aafc8c0e9dca619a70b89df5ff592aedeb7",
+        "max_tokens_for_new_requests": 16384,
+        "versions": {
+          "delm": "1.2.0",
+          "openai": "1.109.1",
+          "pydantic": "2.13.5",
+          "instructor": "1.3.2",
+          "numpy": "2.5.2",
+          "pandas": "3.0.5"
+        },
+        "source_sha256": {
+          "runtime.py": "5d4870857ed490dc3b57127ef61473e1e9238ac6933e14f464501eb9e3b5186b",
+          "export_completed.py": "3ed57c8dbe899fe41c7fc41ad7f25b7f4c757578a86ca54a4d024c430c0067c3",
+          "monitor.py": "7d9e476d18f2a169f28672da67e65a237995bd454b39f3cc1e4b9e13a309e2c6",
+          "cli.py": "6a3959cfc1dd69dbae28f187148147ae277ee228b2d2653267ed71fea6470858",
+          "__init__.py": "8804240b11e177bb9007f5a3b05e046e71bde8846bc7ed7269895191d590621f",
+          "contracts.py": "1f4902fb679ec4c6fddab877ad0fbc0f50cb80e0ccf918b295fd038349b39fe0",
+          "delm_adapter.py": "59bb69c48f07bee53753d7bd00a02c218ab0d8e795e541454cf33142aa2af68b",
+          "frozen/leaderboard_metrics.py": "e6e3d2f44eb1cfb05c04b37231db6745feca1137a2098d7f457c4c1c393315f8",
+          "frozen/s55_kimik3_openrouter_eval.py": "c266e7d56f3d229d468396956fd702347ac45f064b4c997502bbedc17d5d5013",
+          "frozen/s91_openrouter_eval.py": "17b0daee55d09bac0f1a345631212a8bef135944d1954c0410e5a585aef38419",
+          "frozen/__init__.py": "b383d027c60368ca2197fc042e6b3f833e24b9a9d35d1857999098ac9e8301e0",
+          "frozen/s93_vision_openrouter.py": "b38ed100e2dd1d1f07cca702c1566e36edb0d9f785ba4268eabab1a9ae5ee11a",
+          "frozen/vision_eval.py": "929aab12cbc6ecc9863ede3e1857126ff016a41baf88d58a7229320bd4d2520c"
+        },
+        "failure_policy": "Parse failures and refusals retained in denominator; no answer-repair retries"
+      }
+    },
+    {
+      "model": "grok-4_6",
+      "dataset": "cholect50verbs",
+      "sampleCount": 1000,
+      "sourceRunId": "summary_gaps_delm_20260907/grok-4_6/cholect50verbs",
+      "result": {
+        "n": 1000,
+        "exact_match_pct": 38,
+        "exact_match_ci": [
+          35.199999999999996,
+          40.9
+        ],
+        "micro_f1_pct": 61.931629605044805,
+        "micro_f1_ci": [
+          59.70449966420417,
+          64.13748378728924
+        ],
+        "website_entry": {
+          "exactMatch": {
+            "value": 38,
+            "ciLow": 35.2,
+            "ciHigh": 40.9
+          },
+          "microF1": {
+            "value": 61.93,
+            "ciLow": 59.7,
+            "ciHigh": 64.14
+          }
+        },
+        "parse_failures": 0,
+        "refusals": 0
+      },
+      "provenance": {
+        "prompt_sha256": "ed01b2cacd99abc928874eeb7143c254aafa34ddb4280bb525bf6b70416421a7",
+        "schema_sha256": "3bf9089ab5dd1909af7ec2557f05edb610807939db6ed7567573452c83967d47",
+        "sample_sha256": "4afe133cacd8c776673e5b3df9497aafc8c0e9dca619a70b89df5ff592aedeb7",
+        "max_tokens_for_new_requests": 16384,
+        "versions": {
+          "delm": "1.2.0",
+          "openai": "1.109.1",
+          "pydantic": "2.13.5",
+          "instructor": "1.3.2",
+          "numpy": "2.5.2",
+          "pandas": "3.0.5"
+        },
+        "source_sha256": {
+          "runtime.py": "5d4870857ed490dc3b57127ef61473e1e9238ac6933e14f464501eb9e3b5186b",
+          "export_completed.py": "3ed57c8dbe899fe41c7fc41ad7f25b7f4c757578a86ca54a4d024c430c0067c3",
+          "monitor.py": "7d9e476d18f2a169f28672da67e65a237995bd454b39f3cc1e4b9e13a309e2c6",
+          "cli.py": "6a3959cfc1dd69dbae28f187148147ae277ee228b2d2653267ed71fea6470858",
+          "__init__.py": "8804240b11e177bb9007f5a3b05e046e71bde8846bc7ed7269895191d590621f",
+          "contracts.py": "1f4902fb679ec4c6fddab877ad0fbc0f50cb80e0ccf918b295fd038349b39fe0",
+          "delm_adapter.py": "59bb69c48f07bee53753d7bd00a02c218ab0d8e795e541454cf33142aa2af68b",
+          "frozen/leaderboard_metrics.py": "e6e3d2f44eb1cfb05c04b37231db6745feca1137a2098d7f457c4c1c393315f8",
+          "frozen/s55_kimik3_openrouter_eval.py": "c266e7d56f3d229d468396956fd702347ac45f064b4c997502bbedc17d5d5013",
+          "frozen/s91_openrouter_eval.py": "17b0daee55d09bac0f1a345631212a8bef135944d1954c0410e5a585aef38419",
+          "frozen/__init__.py": "b383d027c60368ca2197fc042e6b3f833e24b9a9d35d1857999098ac9e8301e0",
+          "frozen/s93_vision_openrouter.py": "b38ed100e2dd1d1f07cca702c1566e36edb0d9f785ba4268eabab1a9ae5ee11a",
+          "frozen/vision_eval.py": "929aab12cbc6ecc9863ede3e1857126ff016a41baf88d58a7229320bd4d2520c"
+        },
+        "failure_policy": "Parse failures and refusals retained in denominator; no answer-repair retries"
+      }
+    },
+    {
+      "model": "grok-4_6",
+      "dataset": "dsad",
+      "sampleCount": 1000,
+      "sourceRunId": "summary_gaps_delm_20260907/grok-4_6/dsad",
+      "result": {
+        "n": 1000,
+        "exact_match_pct": 4.6,
+        "exact_match_ci": [
+          3.4000000000000004,
+          5.8999999999999995
+        ],
+        "micro_f1_pct": 36.69045730901401,
+        "micro_f1_ci": [
+          34.71598414795245,
+          38.83495145631068
+        ],
+        "website_entry": {
+          "exactMatch": {
+            "value": 4.6,
+            "ciLow": 3.4,
+            "ciHigh": 5.9
+          },
+          "microF1": {
+            "value": 36.69,
+            "ciLow": 34.72,
+            "ciHigh": 38.83
+          }
+        },
+        "parse_failures": 0,
+        "refusals": 0
+      },
+      "provenance": {
+        "prompt_sha256": "64e9b7e2ea38d905c5105f0d06da45381b29c79654ae3842f14e5522893fd42c",
+        "schema_sha256": "99ca267bab012190a559e060e90d65098b77367fda7f5ae911ffb5d1644df866",
+        "sample_sha256": "d66aaacd126416492db2fa86a58f41dbe22cfc4c857105c708640366584f855a",
+        "max_tokens_for_new_requests": 16384,
+        "versions": {
+          "delm": "1.2.0",
+          "openai": "1.109.1",
+          "pydantic": "2.13.5",
+          "instructor": "1.3.2",
+          "numpy": "2.5.2",
+          "pandas": "3.0.5"
+        },
+        "source_sha256": {
+          "runtime.py": "5d4870857ed490dc3b57127ef61473e1e9238ac6933e14f464501eb9e3b5186b",
+          "export_completed.py": "3ed57c8dbe899fe41c7fc41ad7f25b7f4c757578a86ca54a4d024c430c0067c3",
+          "monitor.py": "7d9e476d18f2a169f28672da67e65a237995bd454b39f3cc1e4b9e13a309e2c6",
+          "cli.py": "6a3959cfc1dd69dbae28f187148147ae277ee228b2d2653267ed71fea6470858",
+          "__init__.py": "8804240b11e177bb9007f5a3b05e046e71bde8846bc7ed7269895191d590621f",
+          "contracts.py": "1f4902fb679ec4c6fddab877ad0fbc0f50cb80e0ccf918b295fd038349b39fe0",
+          "delm_adapter.py": "59bb69c48f07bee53753d7bd00a02c218ab0d8e795e541454cf33142aa2af68b",
+          "frozen/leaderboard_metrics.py": "e6e3d2f44eb1cfb05c04b37231db6745feca1137a2098d7f457c4c1c393315f8",
+          "frozen/s55_kimik3_openrouter_eval.py": "c266e7d56f3d229d468396956fd702347ac45f064b4c997502bbedc17d5d5013",
+          "frozen/s91_openrouter_eval.py": "17b0daee55d09bac0f1a345631212a8bef135944d1954c0410e5a585aef38419",
+          "frozen/__init__.py": "b383d027c60368ca2197fc042e6b3f833e24b9a9d35d1857999098ac9e8301e0",
+          "frozen/s93_vision_openrouter.py": "b38ed100e2dd1d1f07cca702c1566e36edb0d9f785ba4268eabab1a9ae5ee11a",
+          "frozen/vision_eval.py": "929aab12cbc6ecc9863ede3e1857126ff016a41baf88d58a7229320bd4d2520c"
+        },
+        "failure_policy": "Parse failures and refusals retained in denominator; no answer-repair retries"
+      }
+    },
+    {
+      "model": "grok-4_6",
+      "dataset": "pitvis",
+      "sampleCount": 1000,
+      "sourceRunId": "summary_gaps_delm_20260907/grok-4_6/pitvis",
+      "result": {
+        "n": 1000,
+        "exact_match_pct": 53.1,
+        "exact_match_ci": [
+          50,
+          56.10000000000001
+        ],
+        "micro_f1_pct": 49.04109589041096,
+        "micro_f1_ci": [
+          45.951557093425606,
+          52.20293724966623
+        ],
+        "website_entry": {
+          "exactMatch": {
+            "value": 53.1,
+            "ciLow": 50,
+            "ciHigh": 56.1
+          },
+          "microF1": {
+            "value": 49.04,
+            "ciLow": 45.95,
+            "ciHigh": 52.2
+          }
+        },
+        "parse_failures": 0,
+        "refusals": 0
+      },
+      "provenance": {
+        "prompt_sha256": "32af30ef3b0bf6f7a862ec4fa5be96acac009a5868a16ef3177a4fc64095241b",
+        "schema_sha256": "6ca0938d4bb48d4922d27970d2d7903e6673355e7c0d4ea9807bf30259fb7332",
+        "sample_sha256": "834420f04c8c64ef9b7eb0aee1a2ffc4a156cbb47001c70954ae741c97da826a",
+        "max_tokens_for_new_requests": 16384,
+        "versions": {
+          "delm": "1.2.0",
+          "openai": "1.109.1",
+          "pydantic": "2.13.5",
+          "instructor": "1.3.2",
+          "numpy": "2.5.2",
+          "pandas": "3.0.5"
+        },
+        "source_sha256": {
+          "runtime.py": "18a8793eaf4c7e280aae06e6f470f867a11f204434c24f14d3d8c178a63630a2",
+          "export_completed.py": "3ed57c8dbe899fe41c7fc41ad7f25b7f4c757578a86ca54a4d024c430c0067c3",
+          "monitor.py": "7d9e476d18f2a169f28672da67e65a237995bd454b39f3cc1e4b9e13a309e2c6",
+          "cli.py": "86bc73843eb9ab8c5e52bf27fcac5a4fa25f28eb7f3ae0d9fa54982c8d1a48b2",
+          "__init__.py": "8804240b11e177bb9007f5a3b05e046e71bde8846bc7ed7269895191d590621f",
+          "contracts.py": "1f4902fb679ec4c6fddab877ad0fbc0f50cb80e0ccf918b295fd038349b39fe0",
+          "delm_adapter.py": "59bb69c48f07bee53753d7bd00a02c218ab0d8e795e541454cf33142aa2af68b",
+          "frozen/leaderboard_metrics.py": "e6e3d2f44eb1cfb05c04b37231db6745feca1137a2098d7f457c4c1c393315f8",
+          "frozen/s55_kimik3_openrouter_eval.py": "c266e7d56f3d229d468396956fd702347ac45f064b4c997502bbedc17d5d5013",
+          "frozen/s91_openrouter_eval.py": "17b0daee55d09bac0f1a345631212a8bef135944d1954c0410e5a585aef38419",
+          "frozen/__init__.py": "b383d027c60368ca2197fc042e6b3f833e24b9a9d35d1857999098ac9e8301e0",
+          "frozen/s93_vision_openrouter.py": "b38ed100e2dd1d1f07cca702c1566e36edb0d9f785ba4268eabab1a9ae5ee11a",
+          "frozen/vision_eval.py": "929aab12cbc6ecc9863ede3e1857126ff016a41baf88d58a7229320bd4d2520c"
+        },
+        "failure_policy": "Parse failures and refusals retained in denominator; no answer-repair retries"
+      }
+    },
+    {
+      "model": "grok-4_6",
+      "dataset": "pitvissteps",
+      "sampleCount": 1000,
+      "sourceRunId": "summary_gaps_delm_20260907/grok-4_6/pitvissteps",
+      "result": {
+        "n": 1000,
+        "exact_match_pct": 37.2,
+        "exact_match_ci": [
+          34.300000000000004,
+          40.2
+        ],
+        "micro_f1_pct": 37.23723723723724,
+        "micro_f1_ci": [
+          34.33433433433433,
+          40.24024024024024
+        ],
+        "website_entry": {
+          "exactMatch": {
+            "value": 37.2,
+            "ciLow": 34.3,
+            "ciHigh": 40.2
+          },
+          "microF1": {
+            "value": 37.24,
+            "ciLow": 34.33,
+            "ciHigh": 40.24
+          }
+        },
+        "parse_failures": 2,
+        "refusals": 0
+      },
+      "provenance": {
+        "prompt_sha256": "afbb010b106ec8b25d6cfaea544603dd2c45e34ba13466797e3a082e63f53934",
+        "schema_sha256": "148894acb495ef3a7ee3bb7479fc8de1a71b350c8d27a01848862cfc504183eb",
+        "sample_sha256": "3aae2b4515b679a406a552e62c8e531e03ac9d2a56ebc50a818ac7a37b38d646",
+        "max_tokens_for_new_requests": 16384,
+        "versions": {
+          "delm": "1.2.0",
+          "openai": "1.109.1",
+          "pydantic": "2.13.5",
+          "instructor": "1.3.2",
+          "numpy": "2.5.2",
+          "pandas": "3.0.5"
+        },
+        "source_sha256": {
+          "runtime.py": "5d4870857ed490dc3b57127ef61473e1e9238ac6933e14f464501eb9e3b5186b",
+          "export_completed.py": "3ed57c8dbe899fe41c7fc41ad7f25b7f4c757578a86ca54a4d024c430c0067c3",
+          "monitor.py": "7d9e476d18f2a169f28672da67e65a237995bd454b39f3cc1e4b9e13a309e2c6",
+          "cli.py": "6a3959cfc1dd69dbae28f187148147ae277ee228b2d2653267ed71fea6470858",
+          "__init__.py": "8804240b11e177bb9007f5a3b05e046e71bde8846bc7ed7269895191d590621f",
+          "contracts.py": "1f4902fb679ec4c6fddab877ad0fbc0f50cb80e0ccf918b295fd038349b39fe0",
+          "delm_adapter.py": "59bb69c48f07bee53753d7bd00a02c218ab0d8e795e541454cf33142aa2af68b",
+          "frozen/leaderboard_metrics.py": "e6e3d2f44eb1cfb05c04b37231db6745feca1137a2098d7f457c4c1c393315f8",
+          "frozen/s55_kimik3_openrouter_eval.py": "c266e7d56f3d229d468396956fd702347ac45f064b4c997502bbedc17d5d5013",
+          "frozen/s91_openrouter_eval.py": "17b0daee55d09bac0f1a345631212a8bef135944d1954c0410e5a585aef38419",
+          "frozen/__init__.py": "b383d027c60368ca2197fc042e6b3f833e24b9a9d35d1857999098ac9e8301e0",
+          "frozen/s93_vision_openrouter.py": "b38ed100e2dd1d1f07cca702c1566e36edb0d9f785ba4268eabab1a9ae5ee11a",
+          "frozen/vision_eval.py": "929aab12cbc6ecc9863ede3e1857126ff016a41baf88d58a7229320bd4d2520c"
+        },
+        "failure_policy": "Parse failures and refusals retained in denominator; no answer-repair retries"
+      }
+    },
+    {
+      "model": "grok-4_6",
+      "dataset": "pitvqa",
+      "sampleCount": 1000,
+      "sourceRunId": "summary_gaps_delm_20260907/grok-4_6/pitvqa",
+      "result": {
+        "n": 1000,
+        "exact_match_pct": 30.7,
+        "exact_match_ci": [
+          28.1,
+          33.7
+        ],
+        "micro_f1_pct": 43.1,
+        "micro_f1_ci": [
+          40.550000000000004,
+          45.800000000000004
+        ],
+        "website_entry": {
+          "exactMatch": {
+            "value": 30.7,
+            "ciLow": 28.1,
+            "ciHigh": 33.7
+          },
+          "microF1": {
+            "value": 43.1,
+            "ciLow": 40.55,
+            "ciHigh": 45.8
+          }
+        },
+        "parse_failures": 0,
+        "refusals": 0
+      },
+      "provenance": {
+        "prompt_sha256": "c644ed303b285c8b8725cc32b5d1f681cbe60e2265f46612164dcc43ce4674dc",
+        "schema_sha256": "94b930d0ccc1d6e1e184b776a4053c673d93c51d6d79c6ed829bda103203a7e3",
+        "sample_sha256": "258ab43113cde1462e75ff975742d3e796725e229f04a79af40cd28be6f5b430",
+        "max_tokens_for_new_requests": 16384,
+        "versions": {
+          "delm": "1.2.0",
+          "openai": "1.109.1",
+          "pydantic": "2.13.5",
+          "instructor": "1.3.2",
+          "numpy": "2.5.2",
+          "pandas": "3.0.5"
+        },
+        "source_sha256": {
+          "runtime.py": "5d4870857ed490dc3b57127ef61473e1e9238ac6933e14f464501eb9e3b5186b",
+          "export_completed.py": "3ed57c8dbe899fe41c7fc41ad7f25b7f4c757578a86ca54a4d024c430c0067c3",
+          "monitor.py": "7d9e476d18f2a169f28672da67e65a237995bd454b39f3cc1e4b9e13a309e2c6",
+          "cli.py": "6a3959cfc1dd69dbae28f187148147ae277ee228b2d2653267ed71fea6470858",
+          "__init__.py": "8804240b11e177bb9007f5a3b05e046e71bde8846bc7ed7269895191d590621f",
+          "contracts.py": "1f4902fb679ec4c6fddab877ad0fbc0f50cb80e0ccf918b295fd038349b39fe0",
+          "delm_adapter.py": "59bb69c48f07bee53753d7bd00a02c218ab0d8e795e541454cf33142aa2af68b",
+          "frozen/leaderboard_metrics.py": "e6e3d2f44eb1cfb05c04b37231db6745feca1137a2098d7f457c4c1c393315f8",
+          "frozen/s55_kimik3_openrouter_eval.py": "c266e7d56f3d229d468396956fd702347ac45f064b4c997502bbedc17d5d5013",
+          "frozen/s91_openrouter_eval.py": "17b0daee55d09bac0f1a345631212a8bef135944d1954c0410e5a585aef38419",
+          "frozen/__init__.py": "b383d027c60368ca2197fc042e6b3f833e24b9a9d35d1857999098ac9e8301e0",
+          "frozen/s93_vision_openrouter.py": "b38ed100e2dd1d1f07cca702c1566e36edb0d9f785ba4268eabab1a9ae5ee11a",
+          "frozen/vision_eval.py": "929aab12cbc6ecc9863ede3e1857126ff016a41baf88d58a7229320bd4d2520c"
+        },
+        "failure_policy": "Parse failures and refusals retained in denominator; no answer-repair retries"
+      }
+    },
+    {
+      "model": "grok-4_6",
+      "dataset": "sarrarp50",
+      "sampleCount": 636,
+      "sourceRunId": "summary_gaps_delm_20260907/grok-4_6/sarrarp50",
+      "result": {
+        "n": 636,
+        "exact_match_pct": 25.471698113207548,
+        "exact_match_ci": [
+          22.32704402515723,
+          29.245283018867923
+        ],
+        "micro_f1_pct": 25.471698113207548,
+        "micro_f1_ci": [
+          22.32704402515723,
+          29.245283018867923
+        ],
+        "website_entry": {
+          "exactMatch": {
+            "value": 25.47,
+            "ciLow": 22.33,
+            "ciHigh": 29.25
+          },
+          "microF1": {
+            "value": 25.47,
+            "ciLow": 22.33,
+            "ciHigh": 29.25
+          }
+        },
+        "parse_failures": 0,
+        "refusals": 0
+      },
+      "provenance": {
+        "prompt_sha256": "963a610e32bc65dabe046353d046fc1032f3622abc8591fc5c16db9291f031c4",
+        "schema_sha256": "4e94bb317c136b8455320d3ef26b224f729eccfc62b6d602b9c4111bff47c9f7",
+        "sample_sha256": "a0ebde6cee24941a4b031e8d2399c52a71387fcdb36da7e97cad1b8136417bee",
+        "max_tokens_for_new_requests": 16384,
+        "versions": {
+          "delm": "1.2.0",
+          "openai": "1.109.1",
+          "pydantic": "2.13.5",
+          "instructor": "1.3.2",
+          "numpy": "2.5.2",
+          "pandas": "3.0.5"
+        },
+        "source_sha256": {
+          "runtime.py": "5d4870857ed490dc3b57127ef61473e1e9238ac6933e14f464501eb9e3b5186b",
+          "export_completed.py": "3ed57c8dbe899fe41c7fc41ad7f25b7f4c757578a86ca54a4d024c430c0067c3",
+          "monitor.py": "7d9e476d18f2a169f28672da67e65a237995bd454b39f3cc1e4b9e13a309e2c6",
+          "cli.py": "6a3959cfc1dd69dbae28f187148147ae277ee228b2d2653267ed71fea6470858",
+          "__init__.py": "8804240b11e177bb9007f5a3b05e046e71bde8846bc7ed7269895191d590621f",
+          "contracts.py": "1f4902fb679ec4c6fddab877ad0fbc0f50cb80e0ccf918b295fd038349b39fe0",
+          "delm_adapter.py": "59bb69c48f07bee53753d7bd00a02c218ab0d8e795e541454cf33142aa2af68b",
+          "frozen/leaderboard_metrics.py": "e6e3d2f44eb1cfb05c04b37231db6745feca1137a2098d7f457c4c1c393315f8",
+          "frozen/s55_kimik3_openrouter_eval.py": "c266e7d56f3d229d468396956fd702347ac45f064b4c997502bbedc17d5d5013",
+          "frozen/s91_openrouter_eval.py": "17b0daee55d09bac0f1a345631212a8bef135944d1954c0410e5a585aef38419",
+          "frozen/__init__.py": "b383d027c60368ca2197fc042e6b3f833e24b9a9d35d1857999098ac9e8301e0",
+          "frozen/s93_vision_openrouter.py": "b38ed100e2dd1d1f07cca702c1566e36edb0d9f785ba4268eabab1a9ae5ee11a",
+          "frozen/vision_eval.py": "929aab12cbc6ecc9863ede3e1857126ff016a41baf88d58a7229320bd4d2520c"
+        },
+        "failure_policy": "Parse failures and refusals retained in denominator; no answer-repair retries"
+      }
+    },
+    {
+      "model": "grok-4_6",
+      "dataset": "surgvu",
+      "sampleCount": 1000,
+      "sourceRunId": "summary_gaps_delm_20260907/grok-4_6/surgvu",
+      "result": {
+        "n": 1000,
+        "exact_match_pct": 19.2,
+        "exact_match_ci": [
+          16.900000000000002,
+          21.7
+        ],
+        "micro_f1_pct": 33.56948228882834,
+        "micro_f1_ci": [
+          31.48509334076344,
+          35.51554828150573
+        ],
+        "website_entry": {
+          "exactMatch": {
+            "value": 19.2,
+            "ciLow": 16.9,
+            "ciHigh": 21.7
+          },
+          "microF1": {
+            "value": 33.57,
+            "ciLow": 31.49,
+            "ciHigh": 35.52
+          }
+        },
+        "parse_failures": 0,
+        "refusals": 0
+      },
+      "provenance": {
+        "prompt_sha256": "e432ed7e3c94c58e6863180af74d3bcdcf71c00d54cffb0f88254ecb99ef85b8",
+        "schema_sha256": "6ca0938d4bb48d4922d27970d2d7903e6673355e7c0d4ea9807bf30259fb7332",
+        "sample_sha256": "455b741430840103440fa1251916725187c04ef1afbcf8e5150abcdde013d92e",
+        "max_tokens_for_new_requests": 16384,
+        "versions": {
+          "delm": "1.2.0",
+          "openai": "1.109.1",
+          "pydantic": "2.13.5",
+          "instructor": "1.3.2",
+          "numpy": "2.5.2",
+          "pandas": "3.0.5"
+        },
+        "source_sha256": {
+          "runtime.py": "5d4870857ed490dc3b57127ef61473e1e9238ac6933e14f464501eb9e3b5186b",
+          "export_completed.py": "3ed57c8dbe899fe41c7fc41ad7f25b7f4c757578a86ca54a4d024c430c0067c3",
+          "monitor.py": "7d9e476d18f2a169f28672da67e65a237995bd454b39f3cc1e4b9e13a309e2c6",
+          "cli.py": "6a3959cfc1dd69dbae28f187148147ae277ee228b2d2653267ed71fea6470858",
+          "__init__.py": "8804240b11e177bb9007f5a3b05e046e71bde8846bc7ed7269895191d590621f",
+          "contracts.py": "1f4902fb679ec4c6fddab877ad0fbc0f50cb80e0ccf918b295fd038349b39fe0",
+          "delm_adapter.py": "59bb69c48f07bee53753d7bd00a02c218ab0d8e795e541454cf33142aa2af68b",
+          "frozen/leaderboard_metrics.py": "e6e3d2f44eb1cfb05c04b37231db6745feca1137a2098d7f457c4c1c393315f8",
+          "frozen/s55_kimik3_openrouter_eval.py": "c266e7d56f3d229d468396956fd702347ac45f064b4c997502bbedc17d5d5013",
+          "frozen/s91_openrouter_eval.py": "17b0daee55d09bac0f1a345631212a8bef135944d1954c0410e5a585aef38419",
+          "frozen/__init__.py": "b383d027c60368ca2197fc042e6b3f833e24b9a9d35d1857999098ac9e8301e0",
+          "frozen/s93_vision_openrouter.py": "b38ed100e2dd1d1f07cca702c1566e36edb0d9f785ba4268eabab1a9ae5ee11a",
+          "frozen/vision_eval.py": "929aab12cbc6ecc9863ede3e1857126ff016a41baf88d58a7229320bd4d2520c"
+        },
+        "failure_policy": "Parse failures and refusals retained in denominator; no answer-repair retries"
+      }
+    },
+    {
+      "model": "qwen3-8-max-0902",
+      "dataset": "cadis",
+      "sampleCount": 534,
+      "sourceRunId": "summary_gaps_delm_20260907/qwen3-8-max-0902/cadis",
+      "result": {
+        "n": 534,
+        "exact_match_pct": 11.423220973782772,
+        "exact_match_ci": [
+          8.801498127340825,
+          14.04494382022472
+        ],
+        "micro_f1_pct": 81.77267373380448,
+        "micro_f1_ci": [
+          80.55188610010275,
+          82.94413242684008
+        ],
+        "website_entry": {
+          "exactMatch": {
+            "value": 11.42,
+            "ciLow": 8.8,
+            "ciHigh": 14.04
+          },
+          "microF1": {
+            "value": 81.77,
+            "ciLow": 80.55,
+            "ciHigh": 82.94
+          }
+        },
+        "parse_failures": 10,
+        "refusals": 0
+      },
+      "provenance": {
+        "prompt_sha256": "630ee289c556bc1fa9a42ecdd2cbce149c9d81f4e2cd1a98e302c5b4734c8254",
+        "schema_sha256": "c8c6ebc3bab109b31ed9023804579fc130185a0ba8e1a1b984af1eccf580aecf",
+        "sample_sha256": "3ca936fb537822393a1dc337e128f6fccf16d6f34c4d16f0be486907b09efb47",
+        "max_tokens_for_new_requests": 16384,
+        "versions": {
+          "delm": "1.2.0",
+          "openai": "1.109.1",
+          "pydantic": "2.13.5",
+          "instructor": "1.3.2",
+          "numpy": "2.5.2",
+          "pandas": "3.0.5"
+        },
+        "source_sha256": {
+          "runtime.py": "18a8793eaf4c7e280aae06e6f470f867a11f204434c24f14d3d8c178a63630a2",
+          "export_completed.py": "3ed57c8dbe899fe41c7fc41ad7f25b7f4c757578a86ca54a4d024c430c0067c3",
+          "monitor.py": "7d9e476d18f2a169f28672da67e65a237995bd454b39f3cc1e4b9e13a309e2c6",
+          "cli.py": "86bc73843eb9ab8c5e52bf27fcac5a4fa25f28eb7f3ae0d9fa54982c8d1a48b2",
+          "__init__.py": "8804240b11e177bb9007f5a3b05e046e71bde8846bc7ed7269895191d590621f",
+          "contracts.py": "1f4902fb679ec4c6fddab877ad0fbc0f50cb80e0ccf918b295fd038349b39fe0",
+          "delm_adapter.py": "59bb69c48f07bee53753d7bd00a02c218ab0d8e795e541454cf33142aa2af68b",
+          "frozen/leaderboard_metrics.py": "e6e3d2f44eb1cfb05c04b37231db6745feca1137a2098d7f457c4c1c393315f8",
+          "frozen/s55_kimik3_openrouter_eval.py": "c266e7d56f3d229d468396956fd702347ac45f064b4c997502bbedc17d5d5013",
+          "frozen/s91_openrouter_eval.py": "17b0daee55d09bac0f1a345631212a8bef135944d1954c0410e5a585aef38419",
+          "frozen/__init__.py": "b383d027c60368ca2197fc042e6b3f833e24b9a9d35d1857999098ac9e8301e0",
+          "frozen/s93_vision_openrouter.py": "b38ed100e2dd1d1f07cca702c1566e36edb0d9f785ba4268eabab1a9ae5ee11a",
+          "frozen/vision_eval.py": "929aab12cbc6ecc9863ede3e1857126ff016a41baf88d58a7229320bd4d2520c"
+        },
+        "failure_policy": "Parse failures and refusals retained in denominator; no answer-repair retries"
+      }
+    },
+    {
+      "model": "qwen3-8-max-0902",
+      "dataset": "cholect50verbs",
+      "sampleCount": 1000,
+      "sourceRunId": "summary_gaps_delm_20260907/qwen3-8-max-0902/cholect50verbs",
+      "result": {
+        "n": 1000,
+        "exact_match_pct": 19.2,
+        "exact_match_ci": [
+          16.7,
+          21.6
+        ],
+        "micro_f1_pct": 64.13043478260869,
+        "micro_f1_ci": [
+          62.37650200267023,
+          65.78876646062886
+        ],
+        "website_entry": {
+          "exactMatch": {
+            "value": 19.2,
+            "ciLow": 16.7,
+            "ciHigh": 21.6
+          },
+          "microF1": {
+            "value": 64.13,
+            "ciLow": 62.38,
+            "ciHigh": 65.79
+          }
+        },
+        "parse_failures": 2,
+        "refusals": 0
+      },
+      "provenance": {
+        "prompt_sha256": "ed01b2cacd99abc928874eeb7143c254aafa34ddb4280bb525bf6b70416421a7",
+        "schema_sha256": "3bf9089ab5dd1909af7ec2557f05edb610807939db6ed7567573452c83967d47",
+        "sample_sha256": "4afe133cacd8c776673e5b3df9497aafc8c0e9dca619a70b89df5ff592aedeb7",
+        "max_tokens_for_new_requests": 16384,
+        "versions": {
+          "delm": "1.2.0",
+          "openai": "1.109.1",
+          "pydantic": "2.13.5",
+          "instructor": "1.3.2",
+          "numpy": "2.5.2",
+          "pandas": "3.0.5"
+        },
+        "source_sha256": {
+          "runtime.py": "5d4870857ed490dc3b57127ef61473e1e9238ac6933e14f464501eb9e3b5186b",
+          "export_completed.py": "3ed57c8dbe899fe41c7fc41ad7f25b7f4c757578a86ca54a4d024c430c0067c3",
+          "monitor.py": "7d9e476d18f2a169f28672da67e65a237995bd454b39f3cc1e4b9e13a309e2c6",
+          "cli.py": "6a3959cfc1dd69dbae28f187148147ae277ee228b2d2653267ed71fea6470858",
+          "__init__.py": "8804240b11e177bb9007f5a3b05e046e71bde8846bc7ed7269895191d590621f",
+          "contracts.py": "1f4902fb679ec4c6fddab877ad0fbc0f50cb80e0ccf918b295fd038349b39fe0",
+          "delm_adapter.py": "59bb69c48f07bee53753d7bd00a02c218ab0d8e795e541454cf33142aa2af68b",
+          "frozen/leaderboard_metrics.py": "e6e3d2f44eb1cfb05c04b37231db6745feca1137a2098d7f457c4c1c393315f8",
+          "frozen/s55_kimik3_openrouter_eval.py": "c266e7d56f3d229d468396956fd702347ac45f064b4c997502bbedc17d5d5013",
+          "frozen/s91_openrouter_eval.py": "17b0daee55d09bac0f1a345631212a8bef135944d1954c0410e5a585aef38419",
+          "frozen/__init__.py": "b383d027c60368ca2197fc042e6b3f833e24b9a9d35d1857999098ac9e8301e0",
+          "frozen/s93_vision_openrouter.py": "b38ed100e2dd1d1f07cca702c1566e36edb0d9f785ba4268eabab1a9ae5ee11a",
+          "frozen/vision_eval.py": "929aab12cbc6ecc9863ede3e1857126ff016a41baf88d58a7229320bd4d2520c"
+        },
+        "failure_policy": "Parse failures and refusals retained in denominator; no answer-repair retries"
+      }
+    },
+    {
+      "model": "qwen3-8-max-0902",
+      "dataset": "dsad",
+      "sampleCount": 1000,
+      "sourceRunId": "summary_gaps_delm_20260907/qwen3-8-max-0902/dsad",
+      "result": {
+        "n": 1000,
+        "exact_match_pct": 6.9,
+        "exact_match_ci": [
+          5.4,
+          8.5
+        ],
+        "micro_f1_pct": 48.97188417960554,
+        "micro_f1_ci": [
+          47.16505669886602,
+          50.81761006289308
+        ],
+        "website_entry": {
+          "exactMatch": {
+            "value": 6.9,
+            "ciLow": 5.4,
+            "ciHigh": 8.5
+          },
+          "microF1": {
+            "value": 48.97,
+            "ciLow": 47.17,
+            "ciHigh": 50.82
+          }
+        },
+        "parse_failures": 45,
+        "refusals": 1
+      },
+      "provenance": {
+        "prompt_sha256": "64e9b7e2ea38d905c5105f0d06da45381b29c79654ae3842f14e5522893fd42c",
+        "schema_sha256": "99ca267bab012190a559e060e90d65098b77367fda7f5ae911ffb5d1644df866",
+        "sample_sha256": "d66aaacd126416492db2fa86a58f41dbe22cfc4c857105c708640366584f855a",
+        "max_tokens_for_new_requests": 16384,
+        "versions": {
+          "delm": "1.2.0",
+          "openai": "1.109.1",
+          "pydantic": "2.13.5",
+          "instructor": "1.3.2",
+          "numpy": "2.5.2",
+          "pandas": "3.0.5"
+        },
+        "source_sha256": {
+          "runtime.py": "5d4870857ed490dc3b57127ef61473e1e9238ac6933e14f464501eb9e3b5186b",
+          "export_completed.py": "3ed57c8dbe899fe41c7fc41ad7f25b7f4c757578a86ca54a4d024c430c0067c3",
+          "monitor.py": "7d9e476d18f2a169f28672da67e65a237995bd454b39f3cc1e4b9e13a309e2c6",
+          "cli.py": "6a3959cfc1dd69dbae28f187148147ae277ee228b2d2653267ed71fea6470858",
+          "__init__.py": "8804240b11e177bb9007f5a3b05e046e71bde8846bc7ed7269895191d590621f",
+          "contracts.py": "1f4902fb679ec4c6fddab877ad0fbc0f50cb80e0ccf918b295fd038349b39fe0",
+          "delm_adapter.py": "59bb69c48f07bee53753d7bd00a02c218ab0d8e795e541454cf33142aa2af68b",
+          "frozen/leaderboard_metrics.py": "e6e3d2f44eb1cfb05c04b37231db6745feca1137a2098d7f457c4c1c393315f8",
+          "frozen/s55_kimik3_openrouter_eval.py": "c266e7d56f3d229d468396956fd702347ac45f064b4c997502bbedc17d5d5013",
+          "frozen/s91_openrouter_eval.py": "17b0daee55d09bac0f1a345631212a8bef135944d1954c0410e5a585aef38419",
+          "frozen/__init__.py": "b383d027c60368ca2197fc042e6b3f833e24b9a9d35d1857999098ac9e8301e0",
+          "frozen/s93_vision_openrouter.py": "b38ed100e2dd1d1f07cca702c1566e36edb0d9f785ba4268eabab1a9ae5ee11a",
+          "frozen/vision_eval.py": "929aab12cbc6ecc9863ede3e1857126ff016a41baf88d58a7229320bd4d2520c"
+        },
+        "failure_policy": "Parse failures and refusals retained in denominator; no answer-repair retries"
+      }
+    },
+    {
+      "model": "qwen3-8-max-0902",
+      "dataset": "pitvissteps",
+      "sampleCount": 1000,
+      "sourceRunId": "summary_gaps_delm_20260907/qwen3-8-max-0902/pitvissteps",
+      "result": {
+        "n": 1000,
+        "exact_match_pct": 46,
+        "exact_match_ci": [
+          42.8,
+          49.2
+        ],
+        "micro_f1_pct": 46.7005076142132,
+        "micro_f1_ci": [
+          43.41637010676156,
+          49.873545776428934
+        ],
+        "website_entry": {
+          "exactMatch": {
+            "value": 46,
+            "ciLow": 42.8,
+            "ciHigh": 49.2
+          },
+          "microF1": {
+            "value": 46.7,
+            "ciLow": 43.42,
+            "ciHigh": 49.87
+          }
+        },
+        "parse_failures": 7,
+        "refusals": 23
+      },
+      "provenance": {
+        "prompt_sha256": "afbb010b106ec8b25d6cfaea544603dd2c45e34ba13466797e3a082e63f53934",
+        "schema_sha256": "148894acb495ef3a7ee3bb7479fc8de1a71b350c8d27a01848862cfc504183eb",
+        "sample_sha256": "3aae2b4515b679a406a552e62c8e531e03ac9d2a56ebc50a818ac7a37b38d646",
+        "max_tokens_for_new_requests": 16384,
+        "versions": {
+          "delm": "1.2.0",
+          "openai": "1.109.1",
+          "pydantic": "2.13.5",
+          "instructor": "1.3.2",
+          "numpy": "2.5.2",
+          "pandas": "3.0.5"
+        },
+        "source_sha256": {
+          "runtime.py": "5d4870857ed490dc3b57127ef61473e1e9238ac6933e14f464501eb9e3b5186b",
+          "export_completed.py": "3ed57c8dbe899fe41c7fc41ad7f25b7f4c757578a86ca54a4d024c430c0067c3",
+          "monitor.py": "7d9e476d18f2a169f28672da67e65a237995bd454b39f3cc1e4b9e13a309e2c6",
+          "cli.py": "6a3959cfc1dd69dbae28f187148147ae277ee228b2d2653267ed71fea6470858",
+          "__init__.py": "8804240b11e177bb9007f5a3b05e046e71bde8846bc7ed7269895191d590621f",
+          "contracts.py": "1f4902fb679ec4c6fddab877ad0fbc0f50cb80e0ccf918b295fd038349b39fe0",
+          "delm_adapter.py": "59bb69c48f07bee53753d7bd00a02c218ab0d8e795e541454cf33142aa2af68b",
+          "frozen/leaderboard_metrics.py": "e6e3d2f44eb1cfb05c04b37231db6745feca1137a2098d7f457c4c1c393315f8",
+          "frozen/s55_kimik3_openrouter_eval.py": "c266e7d56f3d229d468396956fd702347ac45f064b4c997502bbedc17d5d5013",
+          "frozen/s91_openrouter_eval.py": "17b0daee55d09bac0f1a345631212a8bef135944d1954c0410e5a585aef38419",
+          "frozen/__init__.py": "b383d027c60368ca2197fc042e6b3f833e24b9a9d35d1857999098ac9e8301e0",
+          "frozen/s93_vision_openrouter.py": "b38ed100e2dd1d1f07cca702c1566e36edb0d9f785ba4268eabab1a9ae5ee11a",
+          "frozen/vision_eval.py": "929aab12cbc6ecc9863ede3e1857126ff016a41baf88d58a7229320bd4d2520c"
+        },
+        "failure_policy": "Parse failures and refusals retained in denominator; no answer-repair retries"
+      }
+    },
+    {
+      "model": "qwen3-8-max-0902",
+      "dataset": "pitvqa",
+      "sampleCount": 1000,
+      "sourceRunId": "summary_gaps_delm_20260907/qwen3-8-max-0902/pitvqa",
+      "result": {
+        "n": 1000,
+        "exact_match_pct": 38.2,
+        "exact_match_ci": [
+          34.9,
+          41.199999999999996
+        ],
+        "micro_f1_pct": 53.648716658278815,
+        "micro_f1_ci": [
+          51.13579000504795,
+          56.209150326797385
+        ],
+        "website_entry": {
+          "exactMatch": {
+            "value": 38.2,
+            "ciLow": 34.9,
+            "ciHigh": 41.2
+          },
+          "microF1": {
+            "value": 53.65,
+            "ciLow": 51.14,
+            "ciHigh": 56.21
+          }
+        },
+        "parse_failures": 13,
+        "refusals": 0
+      },
+      "provenance": {
+        "prompt_sha256": "c644ed303b285c8b8725cc32b5d1f681cbe60e2265f46612164dcc43ce4674dc",
+        "schema_sha256": "94b930d0ccc1d6e1e184b776a4053c673d93c51d6d79c6ed829bda103203a7e3",
+        "sample_sha256": "258ab43113cde1462e75ff975742d3e796725e229f04a79af40cd28be6f5b430",
+        "max_tokens_for_new_requests": 16384,
+        "versions": {
+          "delm": "1.2.0",
+          "openai": "1.109.1",
+          "pydantic": "2.13.5",
+          "instructor": "1.3.2",
+          "numpy": "2.5.2",
+          "pandas": "3.0.5"
+        },
+        "source_sha256": {
+          "runtime.py": "5d4870857ed490dc3b57127ef61473e1e9238ac6933e14f464501eb9e3b5186b",
+          "export_completed.py": "3ed57c8dbe899fe41c7fc41ad7f25b7f4c757578a86ca54a4d024c430c0067c3",
+          "monitor.py": "7d9e476d18f2a169f28672da67e65a237995bd454b39f3cc1e4b9e13a309e2c6",
+          "cli.py": "6a3959cfc1dd69dbae28f187148147ae277ee228b2d2653267ed71fea6470858",
+          "__init__.py": "8804240b11e177bb9007f5a3b05e046e71bde8846bc7ed7269895191d590621f",
+          "contracts.py": "1f4902fb679ec4c6fddab877ad0fbc0f50cb80e0ccf918b295fd038349b39fe0",
+          "delm_adapter.py": "59bb69c48f07bee53753d7bd00a02c218ab0d8e795e541454cf33142aa2af68b",
+          "frozen/leaderboard_metrics.py": "e6e3d2f44eb1cfb05c04b37231db6745feca1137a2098d7f457c4c1c393315f8",
+          "frozen/s55_kimik3_openrouter_eval.py": "c266e7d56f3d229d468396956fd702347ac45f064b4c997502bbedc17d5d5013",
+          "frozen/s91_openrouter_eval.py": "17b0daee55d09bac0f1a345631212a8bef135944d1954c0410e5a585aef38419",
+          "frozen/__init__.py": "b383d027c60368ca2197fc042e6b3f833e24b9a9d35d1857999098ac9e8301e0",
+          "frozen/s93_vision_openrouter.py": "b38ed100e2dd1d1f07cca702c1566e36edb0d9f785ba4268eabab1a9ae5ee11a",
+          "frozen/vision_eval.py": "929aab12cbc6ecc9863ede3e1857126ff016a41baf88d58a7229320bd4d2520c"
+        },
+        "failure_policy": "Parse failures and refusals retained in denominator; no answer-repair retries"
+      }
+    },
+    {
+      "model": "qwen3-8-max-0902",
+      "dataset": "sarrarp50",
+      "sampleCount": 636,
+      "sourceRunId": "summary_gaps_delm_20260907/qwen3-8-max-0902/sarrarp50",
+      "result": {
+        "n": 636,
+        "exact_match_pct": 22.955974842767297,
+        "exact_match_ci": [
+          19.49685534591195,
+          26.10062893081761
+        ],
+        "micro_f1_pct": 25.12908777969019,
+        "micro_f1_ci": [
+          21.409921671018274,
+          28.547008547008545
+        ],
+        "website_entry": {
+          "exactMatch": {
+            "value": 22.96,
+            "ciLow": 19.5,
+            "ciHigh": 26.1
+          },
+          "microF1": {
+            "value": 25.13,
+            "ciLow": 21.41,
+            "ciHigh": 28.55
+          }
+        },
+        "parse_failures": 110,
+        "refusals": 0
+      },
+      "provenance": {
+        "prompt_sha256": "963a610e32bc65dabe046353d046fc1032f3622abc8591fc5c16db9291f031c4",
+        "schema_sha256": "4e94bb317c136b8455320d3ef26b224f729eccfc62b6d602b9c4111bff47c9f7",
+        "sample_sha256": "a0ebde6cee24941a4b031e8d2399c52a71387fcdb36da7e97cad1b8136417bee",
+        "max_tokens_for_new_requests": 16384,
+        "versions": {
+          "delm": "1.2.0",
+          "openai": "1.109.1",
+          "pydantic": "2.13.5",
+          "instructor": "1.3.2",
+          "numpy": "2.5.2",
+          "pandas": "3.0.5"
+        },
+        "source_sha256": {
+          "runtime.py": "5d4870857ed490dc3b57127ef61473e1e9238ac6933e14f464501eb9e3b5186b",
+          "export_completed.py": "3ed57c8dbe899fe41c7fc41ad7f25b7f4c757578a86ca54a4d024c430c0067c3",
+          "monitor.py": "7d9e476d18f2a169f28672da67e65a237995bd454b39f3cc1e4b9e13a309e2c6",
+          "cli.py": "6a3959cfc1dd69dbae28f187148147ae277ee228b2d2653267ed71fea6470858",
+          "__init__.py": "8804240b11e177bb9007f5a3b05e046e71bde8846bc7ed7269895191d590621f",
+          "contracts.py": "1f4902fb679ec4c6fddab877ad0fbc0f50cb80e0ccf918b295fd038349b39fe0",
+          "delm_adapter.py": "59bb69c48f07bee53753d7bd00a02c218ab0d8e795e541454cf33142aa2af68b",
+          "frozen/leaderboard_metrics.py": "e6e3d2f44eb1cfb05c04b37231db6745feca1137a2098d7f457c4c1c393315f8",
+          "frozen/s55_kimik3_openrouter_eval.py": "c266e7d56f3d229d468396956fd702347ac45f064b4c997502bbedc17d5d5013",
+          "frozen/s91_openrouter_eval.py": "17b0daee55d09bac0f1a345631212a8bef135944d1954c0410e5a585aef38419",
+          "frozen/__init__.py": "b383d027c60368ca2197fc042e6b3f833e24b9a9d35d1857999098ac9e8301e0",
+          "frozen/s93_vision_openrouter.py": "b38ed100e2dd1d1f07cca702c1566e36edb0d9f785ba4268eabab1a9ae5ee11a",
+          "frozen/vision_eval.py": "929aab12cbc6ecc9863ede3e1857126ff016a41baf88d58a7229320bd4d2520c"
+        },
+        "failure_policy": "Parse failures and refusals retained in denominator; no answer-repair retries"
+      }
     }
   ],
   "runs": [
