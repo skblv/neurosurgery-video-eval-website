@@ -13,7 +13,7 @@ test("every public route ships readable HTML, scores, metadata, real links, and 
     const html = readFileSync(resolve("dist", route === "summary" ? "" : route, "index.html"), "utf8");
     assert(html.includes('<div id="root" data-prerendered="true">') && html.includes('<div class="page">'), `${route}: prerendered root and page content`);
     assert.match(html, /<main id="main-content">[\s\S]+<table/);
-    assert.match(html, /<tbody>[\s\S]+<tr>/);
+    assert.match(html, /<tbody>[\s\S]*<tr(?:\s|>)/);
     assert(html.includes(PAGE_SEO[route].title));
     assert(html.includes(`rel="canonical" href="${new URL(routePath(route, SITE_BASE), SITE_URL).href}"`));
     assert(html.includes('name="robots" content="index, follow'));
@@ -57,7 +57,8 @@ test("summary hides only the Action column and prerenders every model on the bra
   const table = html.match(/<table class="summary-table">([\s\S]*?)<\/table>/)![1];
   const columns = Array.from(table.match(/<thead>([\s\S]*?)<\/thead>/)![1].matchAll(/<th[^>]*>([\s\S]*?)<\/th>/g), (match) => match[1].replace(/<[^>]+>/g, ""));
   assert.deepEqual(columns, ["Model", "Total", "Instrument", "Anatomy", "Skill assessment", "Context / VQA", "Recommendations"]);
-  const totals = Array.from(table.matchAll(/<td class="summary-total">(-?[\d.]+)<\/td>/g), (match) => match[1]).sort();
+  const zeroShotRows = [...table.matchAll(/<tr[^>]*data-model-kind="zero-shot"[^>]*>([\s\S]*?)<\/tr>/g)].map((match) => match[1]).join("");
+  const totals = Array.from(zeroShotRows.matchAll(/<td class="summary-total">(-?[\d.]+)<\/td>/g), (match) => match[1]).sort();
   const figure = html.match(/<figure class="release-plot"[^>]*>([\s\S]*?)<\/figure>/)![1];
   assert(html.indexOf('<figure class="release-plot"') > html.indexOf(table) + table.length, "Release chart follows the leaderboard");
   assert.match(figure, /<h3 id="release-plot-heading">Surgical Intelligence Index: How well do LLMs perform against specialized models across surgical tasks\?<\/h3>/);
@@ -77,7 +78,7 @@ test("summary hides only the Action column and prerenders every model on the bra
     assert(dateTicks.length > 0);
     assert.match(dateTicks.at(-1)![1], /text-anchor="end"/, "Final date label extends inward, leaving room at the right border");
     const points = Array.from(svg.matchAll(/data-model="([^"]+)" data-release-date="([^"]+)" data-total="([^"]+)"/g));
-    assert.deepEqual(points.map((point) => Number(point[3]).toFixed(3)).sort(), totals, "Identical totals and coverage to table");
+    assert.deepEqual(points.map((point) => Number(point[3]).toFixed(3)).sort(), totals, "Identical totals and coverage to the table's zero-shot models");
     assert.equal(new Set(points.map((point) => point[1])).size, 21);
     for (const point of points) assert.equal(point[2], MODEL_RELEASES[point[1]].date);
     assert.match(svg, /class="release-point" role="button" tabindex="0"/);

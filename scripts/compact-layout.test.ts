@@ -10,7 +10,7 @@ test("summary starts with the complete leaderboard, then history, then modality 
   assert.equal([...table.matchAll(/class="summary-sort"/g)].length, 7, "Every column is sortable");
   assert.match(table, /<th scope="col" aria-sort="descending"><button[^>]*aria-label="Sort by Total"/);
   assert.equal([...table.matchAll(/aria-sort=/g)].length, 1);
-  assert.equal(Array.from(table.matchAll(/<td class="summary-total">/g)).length, 21);
+  assert.equal(Array.from(table.matchAll(/<td class="summary-total">/g)).length, 23);
   assert(main.indexOf('class="index-explorer"') > main.indexOf(table) + table.length);
   const figures = [...main.matchAll(/<figure class="(release-plot|summary-web)"[^>]*>/g)];
   assert.deepEqual(figures.map((figure) => figure[1]), ["release-plot", "summary-web"]);
@@ -20,7 +20,7 @@ test("summary starts with the complete leaderboard, then history, then modality 
   assert(main.indexOf('aria-label="Models to compare"') > main.indexOf('class="summary-web"'));
   const tableFooter = main.match(/<p class="summary-muted">([^<]*)<\/p>/)![1];
   const plotFooter = main.match(/<p class="plot-methodology">([^<]*)<\/p>/)![1];
-  assert.equal(tableFooter, plotFooter.replace("The plot", "The table"));
+  assert.equal(tableFooter, plotFooter.replace("The plot", "The table").replace("zero-shot performance of LLMs", "performance of models"));
 });
 
 test("responsive radar retains every selected profile and legend in both layouts", () => {

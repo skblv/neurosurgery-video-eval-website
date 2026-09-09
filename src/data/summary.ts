@@ -3,7 +3,7 @@ import { DOMAIN_DATASETS, DOMAIN_PAGES } from "./domainBenchmark";
 import { DOMAINS, type DomainRoute } from "./domains";
 import { GESTURE_BENCHMARK } from "./gestureBenchmark";
 import type { LeaderboardBenchmark } from "./leaderboard";
-import { calculateSummary, canonicalModelId, type SummaryDataset, type SummaryModality } from "./summaryScoring";
+import { calculateSummary, calculateSpecialistReference, canonicalModelId, type SummaryDataset, type SummaryModality } from "./summaryScoring";
 import chanceBaselines from "./chanceBaselines.json";
 
 const CHANCE_DATASETS: Record<string, { metrics: Record<string, number> }> = chanceBaselines.datasets;
@@ -34,7 +34,14 @@ const providers = new Map(
     .flatMap((benchmark) => benchmark.results.map((result) => [canonicalModelId(result.id), result.provider] as const)),
 );
 
-export const SUMMARY_ROWS = calculateSummary(SUMMARY_MODALITIES)
-  .filter((row) => !EXCLUDED_SUMMARY_IDS.has(row.id))
+const modelRows = calculateSummary(SUMMARY_MODALITIES)
   .map((row) => ({ ...row, provider: providers.get(row.id)! }));
+// Keep the zero-shot plots and their model selectors unchanged.
+export const SUMMARY_ROWS = modelRows.filter((row) => !EXCLUDED_SUMMARY_IDS.has(row.id));
+const specialistReference = calculateSpecialistReference(SUMMARY_MODALITIES);
+export const SUMMARY_TABLE_ROWS = [
+  ...SUMMARY_ROWS.map((row) => ({ ...row, kind: "zero-shot" as const })),
+  ...modelRows.filter((row) => row.id === "lemonfm-linear-probe").map((row) => ({ ...row, kind: "linear-probe" as const })),
+  ...(specialistReference ? [{ ...specialistReference, provider: "internal", kind: "specialist-reference" as const }] : []),
+];
 export const SUMMARY_DATASET_COUNT = SUMMARY_MODALITIES.reduce((sum, modality) => sum + modality.datasets.length, 0);

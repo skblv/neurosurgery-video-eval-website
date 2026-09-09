@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import { SUMMARY_MODALITIES, SUMMARY_ROWS } from "../data/summary";
+import { SUMMARY_MODALITIES, SUMMARY_ROWS, SUMMARY_TABLE_ROWS } from "../data/summary";
 import { SummaryModelPicker } from "./SummaryModelPicker";
 import { ModelIcon } from "./ModelIcon";
 import { ReleaseDatePlot } from "./ReleaseDatePlot";
@@ -8,6 +8,8 @@ import { plotMethodology } from "../data/plotMethodology";
 import { PlotCopyButton } from "./PlotCopyButton";
 import { PlotFooter } from "./PlotFooter";
 import { DEFAULT_SUMMARY_SORT, nextSummarySort, sortSummaryRows, type SummaryColumn } from "../data/summarySort";
+import { isNewModel } from "../data/leaderboard";
+import { useBadgeDate } from "../hooks/useBadgeDate";
 
 const METHODOLOGY = plotMethodology(SUMMARY_MODALITIES);
 const TITLE = "Surgical Intelligence Index: How well do LLMs perform against specialized models across surgical tasks?";
@@ -99,7 +101,8 @@ function ModalityPlot() {
 
 export function Summary() {
   const [sort, setSort] = useState(DEFAULT_SUMMARY_SORT);
-  const rows = sortSummaryRows(SUMMARY_ROWS, sort);
+  const badgeDate = useBadgeDate();
+  const rows = sortSummaryRows(SUMMARY_TABLE_ROWS, sort);
   const columns: { key: SummaryColumn; label: string }[] = [
     { key: "model", label: "Model" }, { key: "total", label: "Total" },
     ...TABLE_MODALITIES.map((modality) => ({ key: modality.index, label: modality.label })),
@@ -118,8 +121,11 @@ export function Summary() {
               </svg>
             </button>
           </th>)}</tr></thead>
-          <tbody>{rows.map((row) => <tr key={row.id}>
-            <th scope="row"><span className="summary-model-name"><ModelIcon provider={row.provider} />{row.model}</span></th>
+          <tbody>{rows.map((row) => <tr key={row.id} data-model-id={row.id} data-model-kind={row.kind}>
+            <th scope="row"><span className="summary-model-name"><ModelIcon provider={row.provider} /><span className="summary-model-label">
+              {row.model}{badgeDate && isNewModel(row.id, badgeDate) ? <span className="badge-new">New</span> : null}
+              {row.kind === "specialist-reference" ? <small>Composite specialist reference</small> : null}
+            </span></span></th>
             <td className="summary-total">{format(row.total)}</td>
             {TABLE_MODALITIES.map((modality) => <td key={modality.id}>{format(row.scores[modality.index].value)}</td>)}
           </tr>)}</tbody>
