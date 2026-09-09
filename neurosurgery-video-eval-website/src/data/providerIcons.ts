@@ -6,6 +6,16 @@ export interface ProviderIcon {
 }
 
 export const PROVIDER_ICONS: Record<string, ProviderIcon> = {
+  // Lobe Icons, MIT: https://github.com/lobehub/lobe-icons
+  // License retained in public/provider-logos/LOBE-ICONS-LICENSE.txt.
+  zai: {
+    title: "Z.ai", viewBox: "0 0 24 24", hex: "#111111",
+    path: "M12.105 2L9.927 4.953H.653L2.83 2h9.276zM23.254 19.048L21.078 22h-9.242l2.174-2.952h9.244zM24 2L9.264 22H0L14.736 2H24z",
+  },
+  xai: {
+    title: "xAI", viewBox: "0 0 24 24", hex: "#111111",
+    path: "M6.469 8.776L16.512 23h-4.464L2.005 8.776H6.47zm-.004 7.9l2.233 3.164L6.467 23H2l4.465-6.324zM22 2.582V23h-3.659V7.764L22 2.582zM22 1l-9.952 14.095-2.233-3.163L17.533 1H22z",
+  },
   openai: {
     title: "OpenAI",
     viewBox: "0 0 256 260",

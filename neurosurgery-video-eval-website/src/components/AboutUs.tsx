@@ -2,7 +2,9 @@ import { useEffect, useState } from "react";
 
 import kirillPhoto from "../assets/portraits/kirill-skobelev.jpg";
 import nanaPhoto from "../assets/portraits/zhuang-fang-yi.jpg";
+import ericPhoto from "../assets/portraits/eric-fithian.jpg";
 import { PAPER } from "../data/benchmark";
+import { CopyIcon } from "./CopyIcon";
 
 type CopyState = "idle" | "copied" | "failed";
 
@@ -32,6 +34,16 @@ const MAINTAINERS = [
         href: "https://www.linkedin.com/in/zhuang-fang-yi-phd-01178a34/",
         label: "LinkedIn",
       },
+    ],
+  },
+  {
+    id: "eric-fithian",
+    name: "Eric Fithian",
+    role: "Predoctoral Fellow at Chicago Booth",
+    photo: ericPhoto,
+    links: [
+      { href: "https://ericfithian.com/", label: "ericfithian.com" },
+      { href: "https://www.linkedin.com/in/ericbfithian", label: "LinkedIn" },
     ],
   },
 ] as const;
@@ -133,12 +145,15 @@ export function AboutUs() {
       </ul>
 
       <div className="citation">
+        <p className="citation__intro">If you found this website useful, please cite as:</p>
         <button
           type="button"
-          className="citation__copy"
+          className="plot-copy citation__copy"
+          aria-label={copyButtonLabel(copyState)}
+          title="Copy citation"
           onClick={handleCopy}
         >
-          {copyButtonLabel(copyState)}
+          <CopyIcon copied={copyState === "copied"} />
         </button>
         <pre className="citation__bibtex">{PAPER.bibtex}</pre>
         {copyState === "failed" ? (

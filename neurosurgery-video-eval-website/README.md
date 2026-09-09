@@ -7,12 +7,54 @@ next benchmark families.
 
 ## Site structure
 
-- `#/overview` — six-domain benchmark maturity map.
-- `#/instruments` — the published CholecT50, PitVis-2023, and SurgVU results.
-- `#/gestures` — the continuous-operation gesture comparison.
-- The remaining domain routes are roadmap pages until their protocols are ready.
+- `/` — summary leaderboard and modality-balanced model comparison.
+- `/instruments/` — CholecT50, PitVis-2023, and SurgVU results.
+- `/gestures/` — the continuous-operation gesture comparison.
+- `/anatomy/`, `/clinical-context/`, `/recommendations/`, and `/skill-assessment/`
+  — the corresponding domain benchmarks.
+
+Paths are relative to the deployment root (currently
+`https://skblv.github.io/neurosurgery-video-eval-website/`). Navigation uses
+ordinary links, so direct visits, refresh, and browser history work without a
+client-side router. Old `#/instruments`-style links redirect to their real URLs;
+`/summary/` redirects to the homepage.
+
+## Prerendering and search indexing
+
+`npm run build` builds the browser bundle and a build-only React renderer, then
+generates actual HTML for every route. The initial response includes the page
+copy, default-dataset scores, tables, and static charts; React hydrates it to
+enable dataset/metric controls and the model picker. No server runtime is needed.
+Only `dist/` is deployed; `dist-ssr/` is a local build artifact.
+
+The same route definitions generate unique titles/descriptions, canonical and
+social URLs, `sitemap.xml`, an allow-all `robots.txt`, and a noindex `404.html`.
+The build tests each route for readable content, correct links, and existing
+assets. Run `node --experimental-strip-types --test scripts/routes.test.ts`
+for URL/legacy-link tests. Browser regression scripts accept a local base URL.
+For example, after `npm run preview`, run
+`node scripts/routes.browser.mjs http://localhost:4173/neurosurgery-video-eval-website/`
+and `node scripts/model-picker.browser.mjs http://localhost:4173/neurosurgery-video-eval-website/`.
+Both use `agent-browser` on PATH (or the executable in `AGENT_BROWSER_CLI`).
+
+`site.config.ts` is the single deployment URL source. For a custom domain, build
+with `SITE_URL=https://your-domain.example/ npm run build`; for a project site,
+include its trailing-slash path. `npm run dev` uses `/` locally; `npm run preview`
+serves the production path.
+
+**GitHub Pages indexing caveat:** Google reads `robots.txt` only at the domain
+root, not inside a project path. This build supplies the file for root/custom
+domain hosting too, but cannot change `https://skblv.github.io/robots.txt` from
+this project. That root currently returns 404 (no crawling restrictions). Submit
+the project's absolute sitemap URL in Google Search Console to help discovery;
+there is no guarantee of indexing or a particular ranking.
 
 ## How deployment works
+
+For the collaborators' later custom-domain deployment, follow the
+[deployment handoff](docs/deployment-handoff.md). It covers the required
+build-time URL setting, publishing the complete generated site, live checks,
+and Google Search Console setup without changing the current deployment.
 
 **Every push to `main` deploys the site.** A GitHub Actions workflow
 (`.github/workflows/deploy.yml`) runs `npm ci && npm run build` and publishes
@@ -37,6 +79,43 @@ importing results computed elsewhere.
 The gesture pilot is currently imported from the normalized evaluation
 artifacts rather than written by the still-frame instrument runner. This keeps
 the existing automated instrument publishing contract unchanged.
+
+## Importing completed gap evaluations
+
+The summary index uses `(model − chance) / (specialist − chance)` per dataset,
+then equal weights over available datasets within each modality and available
+modalities overall. Chance is the exact expected metric under uniformly random
+permutations of the frozen validation ground-truth label sets (including fixed
+points), preserving the observed class frequencies and label-set cardinalities.
+For micro-F1 it is `100 × Σ label_count² / (N × total_positive_labels)`; for
+exact match it is `100 × Σ label_set_count² / N²`. Baselines are percentages,
+like the stored raw metrics. No Monte Carlo draws or additional model calls are
+needed. Negative scores and values above one are retained.
+
+`scripts/export-chance-baselines.py` exports aggregate counts and source/sample
+hashes from existing contracts into `src/data/chanceBaselines.json`. It must run
+on a CPU compute allocation, not a Pythia login node. Baseline tests compare the
+analytic formula with every permutation of small examples and verify the real
+sample hashes. The old continuous-operation Action pilot lacks verified label
+counts, so it is NA/excluded from this adjusted index; its raw Action-page
+metrics remain unchanged. Missing baselines are never silently treated as zero.
+
+Completed fixed-contract gap runs can be imported with
+`node --experimental-strip-types scripts/import-completed.ts EXPORT.json --apply`.
+The backend exporter first recomputes metrics from the frozen cached sample;
+the importer rejects incomplete denominators and updates only matching
+model/dataset rows, retaining source-run IDs and reproducibility hashes in
+`completedEvalProvenance.json`. Omit `--apply` for a validation-only preview.
+
+Grok 4.6 and Qwen3.8 Max 0902 each have ten verified, imported datasets,
+including all three instrument datasets. Their holds have been released for tables, charts,
+summary scores, and model pickers. Action was not evaluated and remains NA.
+The historical `qwen3-8-max` instrument rows retain their original identity and
+source IDs; they are not relabelled as 0902 evaluations. That older model's
+remaining runs were blocked by API availability, so only its publication hold
+remains in `src/data/leaderboardVisibility.ts`. The normal NA policy remains
+unchanged for missing scores. Tests verify imported denominators, metrics,
+provenance, and visibility in prerendered pages.
 
 ## Updating the gesture pilot
 

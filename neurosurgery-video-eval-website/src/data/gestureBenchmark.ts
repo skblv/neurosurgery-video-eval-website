@@ -1,5 +1,6 @@
 import rawGestureResults from "./gestureResults.json";
 import type { LeaderboardBenchmark, LeaderboardMetric } from "./leaderboard";
+import { isLeaderboardModelVisible } from "./leaderboardVisibility";
 import {
   GESTURE_METRIC_ORDER,
   parseGestureResultsFile,
@@ -40,7 +41,7 @@ export const GESTURE_BENCHMARK: LeaderboardBenchmark<GestureMetricId> &
     macroF1: null,
     weightedF1: null,
   },
-  results: parsed.benchmark.results,
+  results: parsed.benchmark.results.filter(isLeaderboardModelVisible),
 };
 
 export const GESTURE_RESULTS_GENERATED_AT = parsed.generatedAt;

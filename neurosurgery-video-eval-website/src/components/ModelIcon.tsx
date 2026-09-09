@@ -21,7 +21,7 @@ function JointMark({ size }: { size: number }) {
 function UploadedMark({ provider, size }: { provider: Provider; size: number }) {
   const label = providerLabel(provider);
   const candidates = ["png", "svg", "jpg", "jpeg", "webp"].map(
-    (ext) => `./provider-logos/${provider}.${ext}`,
+    (ext) => `${import.meta.env.BASE_URL}provider-logos/${provider}.${ext}`,
   );
 
   return (

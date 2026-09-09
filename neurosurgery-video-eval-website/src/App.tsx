@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react";
-
 import { boothLogo, sdscLogo } from "./assets/logos";
 import { AboutUs } from "./components/AboutUs";
 import { DomainLeaderboard } from "./components/DomainLeaderboard";
 import { DomainNav } from "./components/DomainNav";
 import { GestureLeaderboard } from "./components/GestureLeaderboard";
 import { InstrumentLeaderboard } from "./components/Leaderboard";
+import { Summary } from "./components/Summary";
+import { Methodology } from "./components/Methodology";
 import {
   DATASET_CITATIONS,
   GESTURE_MODEL_CITATIONS,
@@ -19,17 +19,13 @@ import {
   domainDatasetFootnote,
   domainModelFootnote,
 } from "./data/domainBenchmark";
-import { ROUTES, type DomainRoute } from "./data/domains";
-
-function routeFromHash(): DomainRoute {
-  const candidate = window.location.hash.replace(/^#\/?/, "") || "instruments";
-  return ROUTES.includes(candidate as DomainRoute)
-    ? (candidate as DomainRoute)
-    : "instruments";
-}
+import type { DomainRoute } from "./data/domains";
+import { routePath } from "./data/routes";
 
 function PageContent({ route }: { route: DomainRoute }) {
   switch (route) {
+    case "summary":
+      return <Summary />;
     case "instruments":
       return <InstrumentLeaderboard />;
     case "gestures":
@@ -141,23 +137,11 @@ function DomainSources({
   );
 }
 
-export default function App() {
-  const [route, setRoute] = useState<DomainRoute>(routeFromHash);
-
-  useEffect(() => {
-    const handleHashChange = () => setRoute(routeFromHash());
-    window.addEventListener("hashchange", handleHashChange);
-    return () => window.removeEventListener("hashchange", handleHashChange);
-  }, []);
-
-  useEffect(() => {
-    document.title = "SDSC x UChicago Surgical Intelligence Leaderboard";
-    window.scrollTo({ top: 0, behavior: "auto" });
-  }, [route]);
-
+export default function App({ route }: { route: DomainRoute | null }) {
   return (
     <div className="page">
       <header className="masthead">
+        <h1>Surgical Intelligence Leaderboard</h1>
         <div className="lockup">
           <a
             href="https://www.surgicalvideo.io"
@@ -185,16 +169,18 @@ export default function App() {
             />
           </a>
         </div>
-        <h1>Surgical Intelligence Leaderboard</h1>
       </header>
 
       <DomainNav active={route} />
 
       <main id="main-content">
-        <PageContent route={route} />
+        {route ? <PageContent route={route} /> : <section className="domain-hero">
+          <h2>Page not found</h2>
+          <p>This page does not exist. <a href={routePath("summary")}>Return to the summary leaderboard.</a></p>
+        </section>}
       </main>
 
-      <footer className="footer">
+      {route && route !== "summary" ? <footer className="footer">
         {route === "instruments" ? <InstrumentSources /> : null}
         {route === "gestures" ? <GestureSources /> : null}
         {route === "anatomy" ||
@@ -203,9 +189,10 @@ export default function App() {
         route === "skill-assessment" ? (
           <DomainSources route={route} />
         ) : null}
-      </footer>
+      </footer> : null}
 
       <AboutUs />
+      {route === "summary" ? <Methodology /> : null}
     </div>
   );
 }
