@@ -5,6 +5,7 @@ import { DomainNav } from "./components/DomainNav";
 import { GestureLeaderboard } from "./components/GestureLeaderboard";
 import { InstrumentLeaderboard } from "./components/Leaderboard";
 import { Summary } from "./components/Summary";
+import { Methodology } from "./components/Methodology";
 import {
   DATASET_CITATIONS,
   GESTURE_MODEL_CITATIONS,
@@ -191,6 +192,7 @@ export default function App({ route }: { route: DomainRoute | null }) {
       </footer>
 
       <AboutUs />
+      {route === "summary" ? <Methodology /> : null}
     </div>
   );
 }

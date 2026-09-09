@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 
 import kirillPhoto from "../assets/portraits/kirill-skobelev.jpg";
 import nanaPhoto from "../assets/portraits/zhuang-fang-yi.jpg";
+import ericPhoto from "../assets/portraits/eric-fithian.jpg";
 import { PAPER } from "../data/benchmark";
 
 type CopyState = "idle" | "copied" | "failed";
@@ -32,6 +33,16 @@ const MAINTAINERS = [
         href: "https://www.linkedin.com/in/zhuang-fang-yi-phd-01178a34/",
         label: "LinkedIn",
       },
+    ],
+  },
+  {
+    id: "eric-fithian",
+    name: "Eric Fithian",
+    role: "Predoctoral Fellow at Chicago Booth",
+    photo: ericPhoto,
+    links: [
+      { href: "https://ericfithian.com/", label: "ericfithian.com" },
+      { href: "https://www.linkedin.com/in/ericbfithian", label: "LinkedIn" },
     ],
   },
 ] as const;

@@ -3,6 +3,7 @@ export interface SummaryDataset {
   name: string;
   metric: string;
   referenceId: string;
+  chance: number | null;
   results: { id: string; model: string; value: number | null }[];
 }
 
@@ -21,6 +22,12 @@ export function meanAvailable(values: (number | null)[]): number | null {
   return available.length ? available.reduce((sum, value) => sum + value, 0) / available.length : null;
 }
 
+/** One fixed no-image baseline per dataset; undefined or degenerate scales remain NA. */
+export function chanceAdjustedScore(value: number | null | undefined, reference: number | null | undefined, chance: number | null | undefined): number | null {
+  if (value == null || reference == null || chance == null || !Number.isFinite(value) || !Number.isFinite(reference) || !Number.isFinite(chance) || reference <= chance) return null;
+  return (value - chance) / (reference - chance);
+}
+
 export function calculateSummary(modalities: SummaryModality[]) {
   const models = new Map<string, string>();
   for (const modality of modalities) {
@@ -33,7 +40,7 @@ export function calculateSummary(modalities: SummaryModality[]) {
       const datasets = modality.datasets.map((dataset) => {
         const reference = dataset.results.find((result) => result.id === dataset.referenceId)?.value;
         const value = dataset.results.find((result) => canonicalModelId(result.id) === id)?.value;
-        return value != null && reference != null && reference > 0 ? value / reference : null;
+        return chanceAdjustedScore(value, reference, dataset.chance);
       });
       return { value: meanAvailable(datasets), datasets, covered: datasets.filter((value) => value !== null).length };
     });

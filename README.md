@@ -77,6 +77,24 @@ the existing automated instrument publishing contract unchanged.
 
 ## Importing completed gap evaluations
 
+The summary index uses `(model − chance) / (specialist − chance)` per dataset,
+then equal weights over available datasets within each modality and available
+modalities overall. Chance is the exact expected metric under uniformly random
+permutations of the frozen validation ground-truth label sets (including fixed
+points), preserving the observed class frequencies and label-set cardinalities.
+For micro-F1 it is `100 × Σ label_count² / (N × total_positive_labels)`; for
+exact match it is `100 × Σ label_set_count² / N²`. Baselines are percentages,
+like the stored raw metrics. No Monte Carlo draws or additional model calls are
+needed. Negative scores and values above one are retained.
+
+`scripts/export-chance-baselines.py` exports aggregate counts and source/sample
+hashes from existing contracts into `src/data/chanceBaselines.json`. It must run
+on a CPU compute allocation, not a Pythia login node. Baseline tests compare the
+analytic formula with every permutation of small examples and verify the real
+sample hashes. The old continuous-operation Action pilot lacks verified label
+counts, so it is NA/excluded from this adjusted index; its raw Action-page
+metrics remain unchanged. Missing baselines are never silently treated as zero.
+
 Completed fixed-contract gap runs can be imported with
 `node --experimental-strip-types scripts/import-completed.ts EXPORT.json --apply`.
 The backend exporter first recomputes metrics from the frozen cached sample;
@@ -84,8 +102,8 @@ the importer rejects incomplete denominators and updates only matching
 model/dataset rows, retaining source-run IDs and reproducibility hashes in
 `completedEvalProvenance.json`. Omit `--apply` for a validation-only preview.
 
-Grok 4.6's ten datasets and Qwen3.8 Max 0902's seven requested domain datasets
-are verified and published. Their holds have been released for tables, charts,
+Grok 4.6 and Qwen3.8 Max 0902 each have ten verified, imported datasets,
+including all three instrument datasets. Their holds have been released for tables, charts,
 summary scores, and model pickers. Action was not evaluated and remains NA.
 The historical `qwen3-8-max` instrument rows retain their original identity and
 source IDs; they are not relabelled as 0902 evaluations. That older model's

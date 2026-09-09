@@ -4,10 +4,14 @@ import { DOMAINS, type DomainRoute } from "./domains";
 import { GESTURE_BENCHMARK } from "./gestureBenchmark";
 import type { LeaderboardBenchmark } from "./leaderboard";
 import { calculateSummary, canonicalModelId, type SummaryDataset, type SummaryModality } from "./summaryScoring";
+import chanceBaselines from "./chanceBaselines.json";
+
+const CHANCE_DATASETS: Record<string, { metrics: Record<string, number> }> = chanceBaselines.datasets;
 
 function dataset<M extends string>(benchmark: LeaderboardBenchmark<M>, metric: M, referenceId: string): SummaryDataset {
   return {
     id: benchmark.id, name: benchmark.name, metric, referenceId,
+    chance: CHANCE_DATASETS[benchmark.id]?.metrics[metric] ?? null,
     results: benchmark.results.map((result) => ({ id: result.id, model: result.model, value: result.metrics[metric]?.value ?? null })),
   };
 }

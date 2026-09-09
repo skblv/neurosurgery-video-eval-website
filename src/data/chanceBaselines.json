@@ -1,0 +1,2886 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-09-09T01:34:18.319010+00:00",
+  "method": "Exact expectation over uniformly random permutations of the observed ground-truth label sets, including fixed points; one fixed baseline per dataset.",
+  "sampling": "Same frozen seed-42 validation sample used by completed API evaluations: at most 1000 frames, or the full validation set when smaller.",
+  "datasets": {
+    "cholect50": {
+      "sampleCount": 1000,
+      "positiveLabelCount": 1333,
+      "labelCounts": {
+        "bipolar": 57,
+        "clipper": 36,
+        "grasper": 642,
+        "hook": 538,
+        "irrigator": 42,
+        "scissors": 18
+      },
+      "labelSetCounts": [
+        {
+          "labels": [],
+          "count": 145
+        },
+        {
+          "labels": [
+            "bipolar"
+          ],
+          "count": 15
+        },
+        {
+          "labels": [
+            "bipolar",
+            "grasper"
+          ],
+          "count": 30
+        },
+        {
+          "labels": [
+            "bipolar",
+            "grasper",
+            "irrigator"
+          ],
+          "count": 10
+        },
+        {
+          "labels": [
+            "bipolar",
+            "irrigator"
+          ],
+          "count": 2
+        },
+        {
+          "labels": [
+            "clipper"
+          ],
+          "count": 7
+        },
+        {
+          "labels": [
+            "clipper",
+            "grasper"
+          ],
+          "count": 29
+        },
+        {
+          "labels": [
+            "grasper"
+          ],
+          "count": 176
+        },
+        {
+          "labels": [
+            "grasper",
+            "hook"
+          ],
+          "count": 364
+        },
+        {
+          "labels": [
+            "grasper",
+            "irrigator"
+          ],
+          "count": 24
+        },
+        {
+          "labels": [
+            "grasper",
+            "scissors"
+          ],
+          "count": 9
+        },
+        {
+          "labels": [
+            "hook"
+          ],
+          "count": 174
+        },
+        {
+          "labels": [
+            "irrigator"
+          ],
+          "count": 6
+        },
+        {
+          "labels": [
+            "scissors"
+          ],
+          "count": 9
+        }
+      ],
+      "metrics": {
+        "microF1": 53.13135783945987,
+        "exactMatch": 21.7666
+      },
+      "label_sha256": "3eac63b1e4eeb5f87340b513cf60ce4a19a0846353f92f654194a998c67e48de",
+      "sample_sha256": "4afe133cacd8c776673e5b3df9497aafc8c0e9dca619a70b89df5ff592aedeb7",
+      "source": "summary_gaps_delm_20260907/grok-4_6/cholect50/contract.json",
+      "source_sha256": "93adbad8f5ef341f5933fbf4ea0602798fac948b899e0e41419af7ad5fdb6048"
+    },
+    "pitvis": {
+      "sampleCount": 1000,
+      "positiveLabelCount": 791,
+      "labelCounts": {
+        "bipolar_forceps": 1,
+        "cottle": 4,
+        "cup_forceps": 6,
+        "dural_scissors": 6,
+        "freer_elevator": 8,
+        "haemostatic_foam": 6,
+        "irrigation_syringe": 8,
+        "kerrisons": 116,
+        "micro_doppler": 8,
+        "nasal_cutting_forceps": 12,
+        "pituitary_rongeurs": 32,
+        "retractable_knife": 4,
+        "ring_curette": 142,
+        "spatula_dissector": 15,
+        "stealth_pointer": 21,
+        "suction": 396,
+        "surgical_drill": 3,
+        "tissue_glue": 3
+      },
+      "labelSetCounts": [
+        {
+          "labels": [],
+          "count": 377
+        },
+        {
+          "labels": [
+            "bipolar_forceps"
+          ],
+          "count": 1
+        },
+        {
+          "labels": [
+            "cottle"
+          ],
+          "count": 4
+        },
+        {
+          "labels": [
+            "cup_forceps"
+          ],
+          "count": 1
+        },
+        {
+          "labels": [
+            "cup_forceps",
+            "suction"
+          ],
+          "count": 5
+        },
+        {
+          "labels": [
+            "dural_scissors",
+            "suction"
+          ],
+          "count": 6
+        },
+        {
+          "labels": [
+            "freer_elevator"
+          ],
+          "count": 8
+        },
+        {
+          "labels": [
+            "haemostatic_foam"
+          ],
+          "count": 3
+        },
+        {
+          "labels": [
+            "haemostatic_foam",
+            "suction"
+          ],
+          "count": 3
+        },
+        {
+          "labels": [
+            "irrigation_syringe",
+            "suction"
+          ],
+          "count": 8
+        },
+        {
+          "labels": [
+            "kerrisons"
+          ],
+          "count": 107
+        },
+        {
+          "labels": [
+            "kerrisons",
+            "suction"
+          ],
+          "count": 9
+        },
+        {
+          "labels": [
+            "micro_doppler"
+          ],
+          "count": 7
+        },
+        {
+          "labels": [
+            "micro_doppler",
+            "suction"
+          ],
+          "count": 1
+        },
+        {
+          "labels": [
+            "nasal_cutting_forceps"
+          ],
+          "count": 10
+        },
+        {
+          "labels": [
+            "nasal_cutting_forceps",
+            "suction"
+          ],
+          "count": 2
+        },
+        {
+          "labels": [
+            "pituitary_rongeurs"
+          ],
+          "count": 30
+        },
+        {
+          "labels": [
+            "pituitary_rongeurs",
+            "suction"
+          ],
+          "count": 2
+        },
+        {
+          "labels": [
+            "retractable_knife"
+          ],
+          "count": 3
+        },
+        {
+          "labels": [
+            "retractable_knife",
+            "suction"
+          ],
+          "count": 1
+        },
+        {
+          "labels": [
+            "ring_curette"
+          ],
+          "count": 18
+        },
+        {
+          "labels": [
+            "ring_curette",
+            "suction"
+          ],
+          "count": 124
+        },
+        {
+          "labels": [
+            "spatula_dissector"
+          ],
+          "count": 8
+        },
+        {
+          "labels": [
+            "spatula_dissector",
+            "suction"
+          ],
+          "count": 7
+        },
+        {
+          "labels": [
+            "stealth_pointer"
+          ],
+          "count": 21
+        },
+        {
+          "labels": [
+            "suction"
+          ],
+          "count": 228
+        },
+        {
+          "labels": [
+            "surgical_drill"
+          ],
+          "count": 3
+        },
+        {
+          "labels": [
+            "tissue_glue"
+          ],
+          "count": 3
+        }
+      ],
+      "metrics": {
+        "microF1": 24.35158027812895,
+        "exactMatch": 22.3208
+      },
+      "label_sha256": "2f587d06635f25d6fd9ac24b85e97281267248298ccf4cd90914a9ef1216057c",
+      "sample_sha256": "834420f04c8c64ef9b7eb0aee1a2ffc4a156cbb47001c70954ae741c97da826a",
+      "source": "summary_gaps_delm_20260907/grok-4_6/pitvis/contract.json",
+      "source_sha256": "80c14e66bb81a81ad33d12ef589d76e42cef2f98853c9a78cc9d2f090a02fa4e"
+    },
+    "surgvu": {
+      "sampleCount": 1000,
+      "positiveLabelCount": 2240,
+      "labelCounts": {
+        "bipolar forceps": 355,
+        "cadiere forceps": 423,
+        "clip applier": 60,
+        "force bipolar": 90,
+        "grasping retractor": 149,
+        "monopolar curved scissors": 368,
+        "needle driver": 430,
+        "permanent cautery hook/spatula": 71,
+        "prograsp forceps": 192,
+        "stapler": 26,
+        "suction irrigator": 2,
+        "tip-up fenestrated grasper": 22,
+        "vessel sealer": 52
+      },
+      "labelSetCounts": [
+        {
+          "labels": [],
+          "count": 173
+        },
+        {
+          "labels": [
+            "bipolar forceps"
+          ],
+          "count": 2
+        },
+        {
+          "labels": [
+            "bipolar forceps",
+            "cadiere forceps"
+          ],
+          "count": 13
+        },
+        {
+          "labels": [
+            "bipolar forceps",
+            "cadiere forceps",
+            "clip applier"
+          ],
+          "count": 8
+        },
+        {
+          "labels": [
+            "bipolar forceps",
+            "cadiere forceps",
+            "clip applier",
+            "monopolar curved scissors",
+            "needle driver",
+            "permanent cautery hook/spatula"
+          ],
+          "count": 11
+        },
+        {
+          "labels": [
+            "bipolar forceps",
+            "cadiere forceps",
+            "clip applier",
+            "monopolar curved scissors",
+            "permanent cautery hook/spatula"
+          ],
+          "count": 9
+        },
+        {
+          "labels": [
+            "bipolar forceps",
+            "cadiere forceps",
+            "clip applier",
+            "monopolar curved scissors",
+            "permanent cautery hook/spatula",
+            "vessel sealer"
+          ],
+          "count": 1
+        },
+        {
+          "labels": [
+            "bipolar forceps",
+            "cadiere forceps",
+            "force bipolar",
+            "monopolar curved scissors"
+          ],
+          "count": 2
+        },
+        {
+          "labels": [
+            "bipolar forceps",
+            "cadiere forceps",
+            "force bipolar",
+            "stapler"
+          ],
+          "count": 2
+        },
+        {
+          "labels": [
+            "bipolar forceps",
+            "cadiere forceps",
+            "grasping retractor"
+          ],
+          "count": 6
+        },
+        {
+          "labels": [
+            "bipolar forceps",
+            "cadiere forceps",
+            "grasping retractor",
+            "monopolar curved scissors"
+          ],
+          "count": 2
+        },
+        {
+          "labels": [
+            "bipolar forceps",
+            "cadiere forceps",
+            "grasping retractor",
+            "needle driver"
+          ],
+          "count": 5
+        },
+        {
+          "labels": [
+            "bipolar forceps",
+            "cadiere forceps",
+            "grasping retractor",
+            "vessel sealer"
+          ],
+          "count": 2
+        },
+        {
+          "labels": [
+            "bipolar forceps",
+            "cadiere forceps",
+            "monopolar curved scissors"
+          ],
+          "count": 87
+        },
+        {
+          "labels": [
+            "bipolar forceps",
+            "cadiere forceps",
+            "monopolar curved scissors",
+            "needle driver"
+          ],
+          "count": 20
+        },
+        {
+          "labels": [
+            "bipolar forceps",
+            "cadiere forceps",
+            "monopolar curved scissors",
+            "needle driver",
+            "prograsp forceps"
+          ],
+          "count": 4
+        },
+        {
+          "labels": [
+            "bipolar forceps",
+            "cadiere forceps",
+            "monopolar curved scissors",
+            "needle driver",
+            "stapler"
+          ],
+          "count": 2
+        },
+        {
+          "labels": [
+            "bipolar forceps",
+            "cadiere forceps",
+            "monopolar curved scissors",
+            "prograsp forceps"
+          ],
+          "count": 6
+        },
+        {
+          "labels": [
+            "bipolar forceps",
+            "cadiere forceps",
+            "needle driver"
+          ],
+          "count": 3
+        },
+        {
+          "labels": [
+            "bipolar forceps",
+            "cadiere forceps",
+            "needle driver",
+            "prograsp forceps",
+            "vessel sealer"
+          ],
+          "count": 3
+        },
+        {
+          "labels": [
+            "bipolar forceps",
+            "cadiere forceps",
+            "needle driver",
+            "stapler"
+          ],
+          "count": 1
+        },
+        {
+          "labels": [
+            "bipolar forceps",
+            "cadiere forceps",
+            "needle driver",
+            "vessel sealer"
+          ],
+          "count": 6
+        },
+        {
+          "labels": [
+            "bipolar forceps",
+            "cadiere forceps",
+            "permanent cautery hook/spatula",
+            "prograsp forceps"
+          ],
+          "count": 3
+        },
+        {
+          "labels": [
+            "bipolar forceps",
+            "cadiere forceps",
+            "stapler"
+          ],
+          "count": 5
+        },
+        {
+          "labels": [
+            "bipolar forceps",
+            "cadiere forceps",
+            "suction irrigator"
+          ],
+          "count": 1
+        },
+        {
+          "labels": [
+            "bipolar forceps",
+            "cadiere forceps",
+            "tip-up fenestrated grasper"
+          ],
+          "count": 4
+        },
+        {
+          "labels": [
+            "bipolar forceps",
+            "cadiere forceps",
+            "vessel sealer"
+          ],
+          "count": 16
+        },
+        {
+          "labels": [
+            "bipolar forceps",
+            "clip applier",
+            "grasping retractor"
+          ],
+          "count": 1
+        },
+        {
+          "labels": [
+            "bipolar forceps",
+            "clip applier",
+            "grasping retractor",
+            "monopolar curved scissors",
+            "needle driver",
+            "permanent cautery hook/spatula"
+          ],
+          "count": 2
+        },
+        {
+          "labels": [
+            "bipolar forceps",
+            "clip applier",
+            "grasping retractor",
+            "monopolar curved scissors",
+            "permanent cautery hook/spatula"
+          ],
+          "count": 2
+        },
+        {
+          "labels": [
+            "bipolar forceps",
+            "clip applier",
+            "grasping retractor",
+            "needle driver",
+            "prograsp forceps"
+          ],
+          "count": 1
+        },
+        {
+          "labels": [
+            "bipolar forceps",
+            "clip applier",
+            "monopolar curved scissors",
+            "needle driver",
+            "permanent cautery hook/spatula",
+            "prograsp forceps"
+          ],
+          "count": 3
+        },
+        {
+          "labels": [
+            "bipolar forceps",
+            "clip applier",
+            "monopolar curved scissors",
+            "permanent cautery hook/spatula"
+          ],
+          "count": 17
+        },
+        {
+          "labels": [
+            "bipolar forceps",
+            "force bipolar"
+          ],
+          "count": 3
+        },
+        {
+          "labels": [
+            "bipolar forceps",
+            "grasping retractor"
+          ],
+          "count": 1
+        },
+        {
+          "labels": [
+            "bipolar forceps",
+            "grasping retractor",
+            "monopolar curved scissors"
+          ],
+          "count": 43
+        },
+        {
+          "labels": [
+            "bipolar forceps",
+            "grasping retractor",
+            "monopolar curved scissors",
+            "needle driver"
+          ],
+          "count": 10
+        },
+        {
+          "labels": [
+            "bipolar forceps",
+            "grasping retractor",
+            "monopolar curved scissors",
+            "needle driver",
+            "prograsp forceps"
+          ],
+          "count": 6
+        },
+        {
+          "labels": [
+            "bipolar forceps",
+            "grasping retractor",
+            "monopolar curved scissors",
+            "needle driver",
+            "vessel sealer"
+          ],
+          "count": 2
+        },
+        {
+          "labels": [
+            "bipolar forceps",
+            "grasping retractor",
+            "monopolar curved scissors",
+            "prograsp forceps"
+          ],
+          "count": 4
+        },
+        {
+          "labels": [
+            "bipolar forceps",
+            "grasping retractor",
+            "needle driver",
+            "stapler"
+          ],
+          "count": 1
+        },
+        {
+          "labels": [
+            "bipolar forceps",
+            "grasping retractor",
+            "vessel sealer"
+          ],
+          "count": 3
+        },
+        {
+          "labels": [
+            "bipolar forceps",
+            "monopolar curved scissors"
+          ],
+          "count": 6
+        },
+        {
+          "labels": [
+            "bipolar forceps",
+            "monopolar curved scissors",
+            "needle driver",
+            "prograsp forceps"
+          ],
+          "count": 4
+        },
+        {
+          "labels": [
+            "bipolar forceps",
+            "monopolar curved scissors",
+            "needle driver",
+            "prograsp forceps",
+            "stapler"
+          ],
+          "count": 1
+        },
+        {
+          "labels": [
+            "bipolar forceps",
+            "monopolar curved scissors",
+            "prograsp forceps",
+            "suction irrigator"
+          ],
+          "count": 1
+        },
+        {
+          "labels": [
+            "bipolar forceps",
+            "monopolar curved scissors",
+            "stapler"
+          ],
+          "count": 2
+        },
+        {
+          "labels": [
+            "bipolar forceps",
+            "monopolar curved scissors",
+            "tip-up fenestrated grasper"
+          ],
+          "count": 6
+        },
+        {
+          "labels": [
+            "bipolar forceps",
+            "needle driver"
+          ],
+          "count": 1
+        },
+        {
+          "labels": [
+            "bipolar forceps",
+            "needle driver",
+            "permanent cautery hook/spatula",
+            "prograsp forceps"
+          ],
+          "count": 2
+        },
+        {
+          "labels": [
+            "bipolar forceps",
+            "needle driver",
+            "prograsp forceps"
+          ],
+          "count": 1
+        },
+        {
+          "labels": [
+            "bipolar forceps",
+            "needle driver",
+            "prograsp forceps",
+            "stapler",
+            "vessel sealer"
+          ],
+          "count": 2
+        },
+        {
+          "labels": [
+            "bipolar forceps",
+            "needle driver",
+            "stapler",
+            "tip-up fenestrated grasper"
+          ],
+          "count": 1
+        },
+        {
+          "labels": [
+            "bipolar forceps",
+            "needle driver",
+            "tip-up fenestrated grasper"
+          ],
+          "count": 2
+        },
+        {
+          "labels": [
+            "bipolar forceps",
+            "stapler",
+            "vessel sealer"
+          ],
+          "count": 1
+        },
+        {
+          "labels": [
+            "bipolar forceps",
+            "vessel sealer"
+          ],
+          "count": 2
+        },
+        {
+          "labels": [
+            "cadiere forceps"
+          ],
+          "count": 13
+        },
+        {
+          "labels": [
+            "cadiere forceps",
+            "force bipolar",
+            "monopolar curved scissors"
+          ],
+          "count": 13
+        },
+        {
+          "labels": [
+            "cadiere forceps",
+            "force bipolar",
+            "monopolar curved scissors",
+            "needle driver"
+          ],
+          "count": 1
+        },
+        {
+          "labels": [
+            "cadiere forceps",
+            "force bipolar",
+            "monopolar curved scissors",
+            "needle driver",
+            "prograsp forceps"
+          ],
+          "count": 2
+        },
+        {
+          "labels": [
+            "cadiere forceps",
+            "force bipolar",
+            "needle driver"
+          ],
+          "count": 3
+        },
+        {
+          "labels": [
+            "cadiere forceps",
+            "force bipolar",
+            "permanent cautery hook/spatula"
+          ],
+          "count": 4
+        },
+        {
+          "labels": [
+            "cadiere forceps",
+            "force bipolar",
+            "permanent cautery hook/spatula",
+            "prograsp forceps"
+          ],
+          "count": 1
+        },
+        {
+          "labels": [
+            "cadiere forceps",
+            "force bipolar",
+            "stapler"
+          ],
+          "count": 2
+        },
+        {
+          "labels": [
+            "cadiere forceps",
+            "grasping retractor",
+            "needle driver"
+          ],
+          "count": 1
+        },
+        {
+          "labels": [
+            "cadiere forceps",
+            "monopolar curved scissors"
+          ],
+          "count": 2
+        },
+        {
+          "labels": [
+            "cadiere forceps",
+            "monopolar curved scissors",
+            "needle driver"
+          ],
+          "count": 26
+        },
+        {
+          "labels": [
+            "cadiere forceps",
+            "monopolar curved scissors",
+            "needle driver",
+            "prograsp forceps"
+          ],
+          "count": 2
+        },
+        {
+          "labels": [
+            "cadiere forceps",
+            "monopolar curved scissors",
+            "needle driver",
+            "stapler",
+            "vessel sealer"
+          ],
+          "count": 4
+        },
+        {
+          "labels": [
+            "cadiere forceps",
+            "needle driver"
+          ],
+          "count": 104
+        },
+        {
+          "labels": [
+            "cadiere forceps",
+            "needle driver",
+            "prograsp forceps"
+          ],
+          "count": 14
+        },
+        {
+          "labels": [
+            "cadiere forceps",
+            "needle driver",
+            "prograsp forceps",
+            "tip-up fenestrated grasper"
+          ],
+          "count": 1
+        },
+        {
+          "labels": [
+            "cadiere forceps",
+            "permanent cautery hook/spatula",
+            "prograsp forceps"
+          ],
+          "count": 3
+        },
+        {
+          "labels": [
+            "cadiere forceps",
+            "tip-up fenestrated grasper",
+            "vessel sealer"
+          ],
+          "count": 5
+        },
+        {
+          "labels": [
+            "clip applier"
+          ],
+          "count": 3
+        },
+        {
+          "labels": [
+            "clip applier",
+            "monopolar curved scissors",
+            "needle driver"
+          ],
+          "count": 1
+        },
+        {
+          "labels": [
+            "clip applier",
+            "prograsp forceps"
+          ],
+          "count": 1
+        },
+        {
+          "labels": [
+            "force bipolar"
+          ],
+          "count": 12
+        },
+        {
+          "labels": [
+            "force bipolar",
+            "grasping retractor",
+            "monopolar curved scissors"
+          ],
+          "count": 25
+        },
+        {
+          "labels": [
+            "force bipolar",
+            "grasping retractor",
+            "monopolar curved scissors",
+            "needle driver"
+          ],
+          "count": 5
+        },
+        {
+          "labels": [
+            "force bipolar",
+            "grasping retractor",
+            "monopolar curved scissors",
+            "stapler"
+          ],
+          "count": 1
+        },
+        {
+          "labels": [
+            "force bipolar",
+            "grasping retractor",
+            "monopolar curved scissors",
+            "vessel sealer"
+          ],
+          "count": 4
+        },
+        {
+          "labels": [
+            "force bipolar",
+            "monopolar curved scissors"
+          ],
+          "count": 10
+        },
+        {
+          "labels": [
+            "grasping retractor"
+          ],
+          "count": 2
+        },
+        {
+          "labels": [
+            "grasping retractor",
+            "monopolar curved scissors",
+            "needle driver"
+          ],
+          "count": 5
+        },
+        {
+          "labels": [
+            "grasping retractor",
+            "needle driver"
+          ],
+          "count": 13
+        },
+        {
+          "labels": [
+            "grasping retractor",
+            "needle driver",
+            "prograsp forceps"
+          ],
+          "count": 1
+        },
+        {
+          "labels": [
+            "grasping retractor",
+            "stapler"
+          ],
+          "count": 1
+        },
+        {
+          "labels": [
+            "monopolar curved scissors"
+          ],
+          "count": 2
+        },
+        {
+          "labels": [
+            "monopolar curved scissors",
+            "needle driver"
+          ],
+          "count": 4
+        },
+        {
+          "labels": [
+            "monopolar curved scissors",
+            "needle driver",
+            "prograsp forceps"
+          ],
+          "count": 8
+        },
+        {
+          "labels": [
+            "needle driver"
+          ],
+          "count": 40
+        },
+        {
+          "labels": [
+            "needle driver",
+            "prograsp forceps"
+          ],
+          "count": 98
+        },
+        {
+          "labels": [
+            "needle driver",
+            "tip-up fenestrated grasper"
+          ],
+          "count": 3
+        },
+        {
+          "labels": [
+            "permanent cautery hook/spatula"
+          ],
+          "count": 12
+        },
+        {
+          "labels": [
+            "permanent cautery hook/spatula",
+            "prograsp forceps"
+          ],
+          "count": 1
+        },
+        {
+          "labels": [
+            "prograsp forceps"
+          ],
+          "count": 18
+        },
+        {
+          "labels": [
+            "prograsp forceps",
+            "vessel sealer"
+          ],
+          "count": 1
+        }
+      ],
+      "metrics": {
+        "microF1": 31.471071428571427,
+        "exactMatch": 6.629
+      },
+      "label_sha256": "80f8da06241e3863ca07a3ace83ea40684cf4fa5f422b75262af0a6e980739c6",
+      "sample_sha256": "455b741430840103440fa1251916725187c04ef1afbcf8e5150abcdde013d92e",
+      "source": "summary_gaps_delm_20260907/grok-4_6/surgvu/contract.json",
+      "source_sha256": "b21b329989be490f48bc293e6a173c4cf67cf2d4d327e3b6285861d45a0f8a15"
+    },
+    "dsad": {
+      "sampleCount": 1000,
+      "positiveLabelCount": 2209,
+      "labelCounts": {
+        "abdominal_wall": 470,
+        "colon": 430,
+        "inferior_mesenteric_artery": 133,
+        "intestinal_veins": 148,
+        "liver": 129,
+        "pancreas": 69,
+        "small_intestine": 346,
+        "spleen": 112,
+        "stomach": 163,
+        "ureter": 118,
+        "vesicular_glands": 91
+      },
+      "labelSetCounts": [
+        {
+          "labels": [
+            "abdominal_wall"
+          ],
+          "count": 14
+        },
+        {
+          "labels": [
+            "abdominal_wall",
+            "colon"
+          ],
+          "count": 77
+        },
+        {
+          "labels": [
+            "abdominal_wall",
+            "colon",
+            "inferior_mesenteric_artery",
+            "intestinal_veins"
+          ],
+          "count": 3
+        },
+        {
+          "labels": [
+            "abdominal_wall",
+            "colon",
+            "intestinal_veins"
+          ],
+          "count": 6
+        },
+        {
+          "labels": [
+            "abdominal_wall",
+            "colon",
+            "intestinal_veins",
+            "small_intestine"
+          ],
+          "count": 2
+        },
+        {
+          "labels": [
+            "abdominal_wall",
+            "colon",
+            "intestinal_veins",
+            "ureter"
+          ],
+          "count": 4
+        },
+        {
+          "labels": [
+            "abdominal_wall",
+            "colon",
+            "liver"
+          ],
+          "count": 6
+        },
+        {
+          "labels": [
+            "abdominal_wall",
+            "colon",
+            "liver",
+            "small_intestine",
+            "stomach"
+          ],
+          "count": 7
+        },
+        {
+          "labels": [
+            "abdominal_wall",
+            "colon",
+            "liver",
+            "stomach"
+          ],
+          "count": 27
+        },
+        {
+          "labels": [
+            "abdominal_wall",
+            "colon",
+            "pancreas"
+          ],
+          "count": 1
+        },
+        {
+          "labels": [
+            "abdominal_wall",
+            "colon",
+            "small_intestine"
+          ],
+          "count": 58
+        },
+        {
+          "labels": [
+            "abdominal_wall",
+            "colon",
+            "small_intestine",
+            "stomach"
+          ],
+          "count": 1
+        },
+        {
+          "labels": [
+            "abdominal_wall",
+            "colon",
+            "spleen"
+          ],
+          "count": 68
+        },
+        {
+          "labels": [
+            "abdominal_wall",
+            "colon",
+            "stomach"
+          ],
+          "count": 18
+        },
+        {
+          "labels": [
+            "abdominal_wall",
+            "colon",
+            "ureter"
+          ],
+          "count": 19
+        },
+        {
+          "labels": [
+            "abdominal_wall",
+            "intestinal_veins",
+            "small_intestine"
+          ],
+          "count": 1
+        },
+        {
+          "labels": [
+            "abdominal_wall",
+            "liver"
+          ],
+          "count": 14
+        },
+        {
+          "labels": [
+            "abdominal_wall",
+            "liver",
+            "small_intestine"
+          ],
+          "count": 2
+        },
+        {
+          "labels": [
+            "abdominal_wall",
+            "liver",
+            "small_intestine",
+            "stomach"
+          ],
+          "count": 1
+        },
+        {
+          "labels": [
+            "abdominal_wall",
+            "liver",
+            "stomach"
+          ],
+          "count": 42
+        },
+        {
+          "labels": [
+            "abdominal_wall",
+            "pancreas"
+          ],
+          "count": 1
+        },
+        {
+          "labels": [
+            "abdominal_wall",
+            "pancreas",
+            "small_intestine"
+          ],
+          "count": 4
+        },
+        {
+          "labels": [
+            "abdominal_wall",
+            "small_intestine"
+          ],
+          "count": 3
+        },
+        {
+          "labels": [
+            "abdominal_wall",
+            "small_intestine",
+            "stomach"
+          ],
+          "count": 2
+        },
+        {
+          "labels": [
+            "abdominal_wall",
+            "spleen"
+          ],
+          "count": 44
+        },
+        {
+          "labels": [
+            "abdominal_wall",
+            "stomach"
+          ],
+          "count": 36
+        },
+        {
+          "labels": [
+            "abdominal_wall",
+            "ureter"
+          ],
+          "count": 9
+        },
+        {
+          "labels": [
+            "colon"
+          ],
+          "count": 5
+        },
+        {
+          "labels": [
+            "colon",
+            "inferior_mesenteric_artery"
+          ],
+          "count": 6
+        },
+        {
+          "labels": [
+            "colon",
+            "inferior_mesenteric_artery",
+            "small_intestine"
+          ],
+          "count": 24
+        },
+        {
+          "labels": [
+            "colon",
+            "intestinal_veins"
+          ],
+          "count": 2
+        },
+        {
+          "labels": [
+            "colon",
+            "intestinal_veins",
+            "small_intestine"
+          ],
+          "count": 45
+        },
+        {
+          "labels": [
+            "colon",
+            "liver"
+          ],
+          "count": 4
+        },
+        {
+          "labels": [
+            "colon",
+            "liver",
+            "small_intestine"
+          ],
+          "count": 1
+        },
+        {
+          "labels": [
+            "colon",
+            "liver",
+            "stomach"
+          ],
+          "count": 7
+        },
+        {
+          "labels": [
+            "colon",
+            "pancreas"
+          ],
+          "count": 5
+        },
+        {
+          "labels": [
+            "colon",
+            "small_intestine"
+          ],
+          "count": 13
+        },
+        {
+          "labels": [
+            "colon",
+            "small_intestine",
+            "stomach"
+          ],
+          "count": 1
+        },
+        {
+          "labels": [
+            "colon",
+            "small_intestine",
+            "ureter"
+          ],
+          "count": 9
+        },
+        {
+          "labels": [
+            "colon",
+            "stomach"
+          ],
+          "count": 2
+        },
+        {
+          "labels": [
+            "colon",
+            "ureter"
+          ],
+          "count": 9
+        },
+        {
+          "labels": [
+            "inferior_mesenteric_artery"
+          ],
+          "count": 22
+        },
+        {
+          "labels": [
+            "inferior_mesenteric_artery",
+            "intestinal_veins"
+          ],
+          "count": 1
+        },
+        {
+          "labels": [
+            "inferior_mesenteric_artery",
+            "intestinal_veins",
+            "small_intestine"
+          ],
+          "count": 6
+        },
+        {
+          "labels": [
+            "inferior_mesenteric_artery",
+            "small_intestine"
+          ],
+          "count": 45
+        },
+        {
+          "labels": [
+            "inferior_mesenteric_artery",
+            "small_intestine",
+            "ureter"
+          ],
+          "count": 12
+        },
+        {
+          "labels": [
+            "inferior_mesenteric_artery",
+            "ureter"
+          ],
+          "count": 14
+        },
+        {
+          "labels": [
+            "intestinal_veins",
+            "liver",
+            "small_intestine"
+          ],
+          "count": 1
+        },
+        {
+          "labels": [
+            "intestinal_veins",
+            "pancreas"
+          ],
+          "count": 1
+        },
+        {
+          "labels": [
+            "intestinal_veins",
+            "small_intestine"
+          ],
+          "count": 69
+        },
+        {
+          "labels": [
+            "intestinal_veins",
+            "small_intestine",
+            "ureter"
+          ],
+          "count": 4
+        },
+        {
+          "labels": [
+            "intestinal_veins",
+            "ureter"
+          ],
+          "count": 3
+        },
+        {
+          "labels": [
+            "liver"
+          ],
+          "count": 1
+        },
+        {
+          "labels": [
+            "liver",
+            "stomach"
+          ],
+          "count": 16
+        },
+        {
+          "labels": [
+            "pancreas"
+          ],
+          "count": 49
+        },
+        {
+          "labels": [
+            "pancreas",
+            "small_intestine"
+          ],
+          "count": 8
+        },
+        {
+          "labels": [
+            "small_intestine"
+          ],
+          "count": 16
+        },
+        {
+          "labels": [
+            "small_intestine",
+            "ureter"
+          ],
+          "count": 11
+        },
+        {
+          "labels": [
+            "stomach"
+          ],
+          "count": 3
+        },
+        {
+          "labels": [
+            "ureter"
+          ],
+          "count": 24
+        },
+        {
+          "labels": [
+            "vesicular_glands"
+          ],
+          "count": 91
+        }
+      ],
+      "metrics": {
+        "microF1": 29.32679945676777,
+        "exactMatch": 4.372
+      },
+      "label_sha256": "b2b67ab3f51793ca49dc50b461e002af871f892b91c000387bec5f807bf6e032",
+      "sample_sha256": "d66aaacd126416492db2fa86a58f41dbe22cfc4c857105c708640366584f855a",
+      "source": "summary_gaps_delm_20260907/grok-4_6/dsad/contract.json",
+      "source_sha256": "2a1ddf10455780ce795f592917570350ef7d61d7676e6554ff53fa564ee6c1b6"
+    },
+    "cadis": {
+      "sampleCount": 534,
+      "positiveLabelCount": 3770,
+      "labelCounts": {
+        "Cannula": 164,
+        "Cap. Cystotome": 56,
+        "Cap. Forceps": 8,
+        "Cornea": 534,
+        "Eye Retractors": 499,
+        "Hand": 55,
+        "I/A Handpiece": 112,
+        "Iris": 534,
+        "Lens Injector": 55,
+        "Micromanipulator": 81,
+        "Ph. Handpiece": 59,
+        "Primary Knife": 30,
+        "Pupil": 534,
+        "Secondary Knife": 31,
+        "Skin": 528,
+        "Surgical Tape": 463,
+        "Tissue Forceps": 27
+      },
+      "labelSetCounts": [
+        {
+          "labels": [
+            "Cannula",
+            "Cornea",
+            "Eye Retractors",
+            "Hand",
+            "Iris",
+            "Pupil",
+            "Skin",
+            "Surgical Tape"
+          ],
+          "count": 4
+        },
+        {
+          "labels": [
+            "Cannula",
+            "Cornea",
+            "Eye Retractors",
+            "Iris",
+            "Pupil",
+            "Skin"
+          ],
+          "count": 9
+        },
+        {
+          "labels": [
+            "Cannula",
+            "Cornea",
+            "Eye Retractors",
+            "Iris",
+            "Pupil",
+            "Skin",
+            "Surgical Tape"
+          ],
+          "count": 142
+        },
+        {
+          "labels": [
+            "Cannula",
+            "Cornea",
+            "Iris",
+            "Pupil",
+            "Skin"
+          ],
+          "count": 6
+        },
+        {
+          "labels": [
+            "Cannula",
+            "Cornea",
+            "Iris",
+            "Pupil",
+            "Skin",
+            "Surgical Tape"
+          ],
+          "count": 3
+        },
+        {
+          "labels": [
+            "Cap. Cystotome",
+            "Cornea",
+            "Eye Retractors",
+            "Iris",
+            "Pupil",
+            "Skin"
+          ],
+          "count": 20
+        },
+        {
+          "labels": [
+            "Cap. Cystotome",
+            "Cornea",
+            "Eye Retractors",
+            "Iris",
+            "Pupil",
+            "Skin",
+            "Surgical Tape"
+          ],
+          "count": 32
+        },
+        {
+          "labels": [
+            "Cap. Cystotome",
+            "Cornea",
+            "Iris",
+            "Pupil",
+            "Skin",
+            "Surgical Tape"
+          ],
+          "count": 4
+        },
+        {
+          "labels": [
+            "Cap. Forceps",
+            "Cornea",
+            "Eye Retractors",
+            "Iris",
+            "Pupil",
+            "Skin",
+            "Surgical Tape"
+          ],
+          "count": 8
+        },
+        {
+          "labels": [
+            "Cornea",
+            "Eye Retractors",
+            "Hand",
+            "I/A Handpiece",
+            "Iris",
+            "Micromanipulator",
+            "Pupil",
+            "Skin"
+          ],
+          "count": 7
+        },
+        {
+          "labels": [
+            "Cornea",
+            "Eye Retractors",
+            "Hand",
+            "I/A Handpiece",
+            "Iris",
+            "Pupil",
+            "Skin",
+            "Surgical Tape"
+          ],
+          "count": 20
+        },
+        {
+          "labels": [
+            "Cornea",
+            "Eye Retractors",
+            "Hand",
+            "Iris",
+            "Micromanipulator",
+            "Ph. Handpiece",
+            "Pupil",
+            "Skin",
+            "Surgical Tape"
+          ],
+          "count": 5
+        },
+        {
+          "labels": [
+            "Cornea",
+            "Eye Retractors",
+            "Hand",
+            "Iris",
+            "Primary Knife",
+            "Pupil",
+            "Skin"
+          ],
+          "count": 6
+        },
+        {
+          "labels": [
+            "Cornea",
+            "Eye Retractors",
+            "Hand",
+            "Iris",
+            "Primary Knife",
+            "Pupil",
+            "Skin",
+            "Surgical Tape"
+          ],
+          "count": 5
+        },
+        {
+          "labels": [
+            "Cornea",
+            "Eye Retractors",
+            "Hand",
+            "Iris",
+            "Pupil",
+            "Secondary Knife",
+            "Skin",
+            "Surgical Tape"
+          ],
+          "count": 3
+        },
+        {
+          "labels": [
+            "Cornea",
+            "Eye Retractors",
+            "Hand",
+            "Iris",
+            "Pupil",
+            "Secondary Knife",
+            "Skin",
+            "Surgical Tape",
+            "Tissue Forceps"
+          ],
+          "count": 2
+        },
+        {
+          "labels": [
+            "Cornea",
+            "Eye Retractors",
+            "I/A Handpiece",
+            "Iris",
+            "Micromanipulator",
+            "Pupil",
+            "Skin"
+          ],
+          "count": 11
+        },
+        {
+          "labels": [
+            "Cornea",
+            "Eye Retractors",
+            "I/A Handpiece",
+            "Iris",
+            "Micromanipulator",
+            "Pupil",
+            "Skin",
+            "Surgical Tape"
+          ],
+          "count": 11
+        },
+        {
+          "labels": [
+            "Cornea",
+            "Eye Retractors",
+            "I/A Handpiece",
+            "Iris",
+            "Pupil",
+            "Skin",
+            "Surgical Tape"
+          ],
+          "count": 49
+        },
+        {
+          "labels": [
+            "Cornea",
+            "Eye Retractors",
+            "I/A Handpiece",
+            "Iris",
+            "Pupil",
+            "Surgical Tape"
+          ],
+          "count": 1
+        },
+        {
+          "labels": [
+            "Cornea",
+            "Eye Retractors",
+            "Iris",
+            "Lens Injector",
+            "Pupil",
+            "Skin"
+          ],
+          "count": 4
+        },
+        {
+          "labels": [
+            "Cornea",
+            "Eye Retractors",
+            "Iris",
+            "Lens Injector",
+            "Pupil",
+            "Skin",
+            "Surgical Tape"
+          ],
+          "count": 47
+        },
+        {
+          "labels": [
+            "Cornea",
+            "Eye Retractors",
+            "Iris",
+            "Lens Injector",
+            "Pupil",
+            "Surgical Tape"
+          ],
+          "count": 4
+        },
+        {
+          "labels": [
+            "Cornea",
+            "Eye Retractors",
+            "Iris",
+            "Micromanipulator",
+            "Ph. Handpiece",
+            "Pupil",
+            "Skin",
+            "Surgical Tape"
+          ],
+          "count": 39
+        },
+        {
+          "labels": [
+            "Cornea",
+            "Eye Retractors",
+            "Iris",
+            "Micromanipulator",
+            "Pupil",
+            "Skin"
+          ],
+          "count": 1
+        },
+        {
+          "labels": [
+            "Cornea",
+            "Eye Retractors",
+            "Iris",
+            "Micromanipulator",
+            "Pupil",
+            "Skin",
+            "Surgical Tape"
+          ],
+          "count": 4
+        },
+        {
+          "labels": [
+            "Cornea",
+            "Eye Retractors",
+            "Iris",
+            "Micromanipulator",
+            "Pupil",
+            "Surgical Tape"
+          ],
+          "count": 1
+        },
+        {
+          "labels": [
+            "Cornea",
+            "Eye Retractors",
+            "Iris",
+            "Ph. Handpiece",
+            "Pupil",
+            "Skin",
+            "Surgical Tape"
+          ],
+          "count": 13
+        },
+        {
+          "labels": [
+            "Cornea",
+            "Eye Retractors",
+            "Iris",
+            "Primary Knife",
+            "Pupil",
+            "Skin",
+            "Surgical Tape"
+          ],
+          "count": 8
+        },
+        {
+          "labels": [
+            "Cornea",
+            "Eye Retractors",
+            "Iris",
+            "Primary Knife",
+            "Pupil",
+            "Skin",
+            "Surgical Tape",
+            "Tissue Forceps"
+          ],
+          "count": 9
+        },
+        {
+          "labels": [
+            "Cornea",
+            "Eye Retractors",
+            "Iris",
+            "Pupil",
+            "Secondary Knife",
+            "Skin"
+          ],
+          "count": 5
+        },
+        {
+          "labels": [
+            "Cornea",
+            "Eye Retractors",
+            "Iris",
+            "Pupil",
+            "Secondary Knife",
+            "Skin",
+            "Surgical Tape"
+          ],
+          "count": 5
+        },
+        {
+          "labels": [
+            "Cornea",
+            "Eye Retractors",
+            "Iris",
+            "Pupil",
+            "Secondary Knife",
+            "Skin",
+            "Surgical Tape",
+            "Tissue Forceps"
+          ],
+          "count": 13
+        },
+        {
+          "labels": [
+            "Cornea",
+            "Eye Retractors",
+            "Iris",
+            "Pupil",
+            "Skin",
+            "Surgical Tape"
+          ],
+          "count": 11
+        },
+        {
+          "labels": [
+            "Cornea",
+            "Hand",
+            "Iris",
+            "Pupil",
+            "Secondary Knife",
+            "Skin",
+            "Surgical Tape",
+            "Tissue Forceps"
+          ],
+          "count": 3
+        },
+        {
+          "labels": [
+            "Cornea",
+            "I/A Handpiece",
+            "Iris",
+            "Pupil",
+            "Skin",
+            "Surgical Tape"
+          ],
+          "count": 13
+        },
+        {
+          "labels": [
+            "Cornea",
+            "Iris",
+            "Micromanipulator",
+            "Ph. Handpiece",
+            "Pupil",
+            "Skin",
+            "Surgical Tape"
+          ],
+          "count": 2
+        },
+        {
+          "labels": [
+            "Cornea",
+            "Iris",
+            "Primary Knife",
+            "Pupil",
+            "Skin",
+            "Surgical Tape"
+          ],
+          "count": 2
+        },
+        {
+          "labels": [
+            "Cornea",
+            "Iris",
+            "Pupil",
+            "Skin"
+          ],
+          "count": 2
+        }
+      ],
+      "metrics": {
+        "microF1": 82.40415660795358,
+        "exactMatch": 10.389400889337766
+      },
+      "label_sha256": "26cf816a25622637da678cbca9f2fd9563986758ffd5101369efbce680ada35e",
+      "sample_sha256": "3ca936fb537822393a1dc337e128f6fccf16d6f34c4d16f0be486907b09efb47",
+      "source": "summary_gaps_delm_20260907/grok-4_6/cadis/contract.json",
+      "source_sha256": "51be2e3f7f951c10fda6af873e9ce9e409f739db2a9ad2e0f0c30a4d37e9039d"
+    },
+    "endoscapes": {
+      "sampleCount": 409,
+      "positiveLabelCount": 1438,
+      "labelCounts": {
+        "calot_triangle": 133,
+        "cystic_artery": 191,
+        "cystic_duct": 267,
+        "cystic_plate": 138,
+        "gallbladder": 357,
+        "tool": 352
+      },
+      "labelSetCounts": [
+        {
+          "labels": [],
+          "count": 42
+        },
+        {
+          "labels": [
+            "calot_triangle",
+            "cystic_artery",
+            "cystic_duct",
+            "cystic_plate",
+            "gallbladder"
+          ],
+          "count": 2
+        },
+        {
+          "labels": [
+            "calot_triangle",
+            "cystic_artery",
+            "cystic_duct",
+            "cystic_plate",
+            "gallbladder",
+            "tool"
+          ],
+          "count": 55
+        },
+        {
+          "labels": [
+            "calot_triangle",
+            "cystic_artery",
+            "cystic_duct",
+            "cystic_plate",
+            "tool"
+          ],
+          "count": 1
+        },
+        {
+          "labels": [
+            "calot_triangle",
+            "cystic_artery",
+            "cystic_duct",
+            "gallbladder",
+            "tool"
+          ],
+          "count": 41
+        },
+        {
+          "labels": [
+            "calot_triangle",
+            "cystic_artery",
+            "cystic_plate",
+            "gallbladder",
+            "tool"
+          ],
+          "count": 3
+        },
+        {
+          "labels": [
+            "calot_triangle",
+            "cystic_artery",
+            "gallbladder"
+          ],
+          "count": 1
+        },
+        {
+          "labels": [
+            "calot_triangle",
+            "cystic_artery",
+            "gallbladder",
+            "tool"
+          ],
+          "count": 2
+        },
+        {
+          "labels": [
+            "calot_triangle",
+            "cystic_duct",
+            "cystic_plate",
+            "gallbladder"
+          ],
+          "count": 1
+        },
+        {
+          "labels": [
+            "calot_triangle",
+            "cystic_duct",
+            "cystic_plate",
+            "gallbladder",
+            "tool"
+          ],
+          "count": 11
+        },
+        {
+          "labels": [
+            "calot_triangle",
+            "cystic_duct",
+            "cystic_plate",
+            "tool"
+          ],
+          "count": 1
+        },
+        {
+          "labels": [
+            "calot_triangle",
+            "cystic_duct",
+            "gallbladder",
+            "tool"
+          ],
+          "count": 12
+        },
+        {
+          "labels": [
+            "calot_triangle",
+            "cystic_plate",
+            "gallbladder",
+            "tool"
+          ],
+          "count": 1
+        },
+        {
+          "labels": [
+            "calot_triangle",
+            "gallbladder",
+            "tool"
+          ],
+          "count": 2
+        },
+        {
+          "labels": [
+            "cystic_artery",
+            "cystic_duct",
+            "cystic_plate",
+            "gallbladder"
+          ],
+          "count": 2
+        },
+        {
+          "labels": [
+            "cystic_artery",
+            "cystic_duct",
+            "cystic_plate",
+            "gallbladder",
+            "tool"
+          ],
+          "count": 38
+        },
+        {
+          "labels": [
+            "cystic_artery",
+            "cystic_duct",
+            "gallbladder"
+          ],
+          "count": 1
+        },
+        {
+          "labels": [
+            "cystic_artery",
+            "cystic_duct",
+            "gallbladder",
+            "tool"
+          ],
+          "count": 37
+        },
+        {
+          "labels": [
+            "cystic_artery",
+            "cystic_plate",
+            "gallbladder",
+            "tool"
+          ],
+          "count": 4
+        },
+        {
+          "labels": [
+            "cystic_artery",
+            "gallbladder",
+            "tool"
+          ],
+          "count": 4
+        },
+        {
+          "labels": [
+            "cystic_duct",
+            "cystic_plate",
+            "gallbladder",
+            "tool"
+          ],
+          "count": 13
+        },
+        {
+          "labels": [
+            "cystic_duct",
+            "cystic_plate",
+            "tool"
+          ],
+          "count": 1
+        },
+        {
+          "labels": [
+            "cystic_duct",
+            "gallbladder"
+          ],
+          "count": 4
+        },
+        {
+          "labels": [
+            "cystic_duct",
+            "gallbladder",
+            "tool"
+          ],
+          "count": 47
+        },
+        {
+          "labels": [
+            "cystic_plate",
+            "gallbladder",
+            "tool"
+          ],
+          "count": 5
+        },
+        {
+          "labels": [
+            "gallbladder"
+          ],
+          "count": 4
+        },
+        {
+          "labels": [
+            "gallbladder",
+            "tool"
+          ],
+          "count": 67
+        },
+        {
+          "labels": [
+            "tool"
+          ],
+          "count": 7
+        }
+      ],
+      "metrics": {
+        "microF1": 67.30619476248933,
+        "exactMatch": 9.914455317698962
+      },
+      "label_sha256": "d46eab6dcd1b3936552ff9e5f0721dc78e689dc2e3bda898dc45fe1d7a99beb7",
+      "sample_sha256": "317d4a1ad11112f129ea18b5f9bad1b6f00d9284917cb9c5cc6978e396407d15",
+      "source": "summary_gaps_delm_20260907/grok-4_6/endoscapes/contract.json",
+      "source_sha256": "87ea9dae695f5c45ca72c4bce11878c00102cb2cea238d4b4d43cd34bd1f8d74"
+    },
+    "pitvqa": {
+      "sampleCount": 1000,
+      "positiveLabelCount": 2000,
+      "labelCounts": {
+        "phase:closure": 202,
+        "phase:nasal_sphenoid": 313,
+        "phase:sellar": 485,
+        "step:anterior_sphenoidotomy": 108,
+        "step:debris_clearance": 6,
+        "step:dural_sealant": 8,
+        "step:durotomy": 61,
+        "step:fat_graft_placement": 21,
+        "step:haemostasis": 125,
+        "step:nasal_corridor_creation": 22,
+        "step:sellotomy": 132,
+        "step:septum_displacement": 9,
+        "step:sphenoid_sinus_clearance": 174,
+        "step:synthetic_graft_placement": 42,
+        "step:tumour_excision": 292
+      },
+      "labelSetCounts": [
+        {
+          "labels": [
+            "phase:closure",
+            "step:debris_clearance"
+          ],
+          "count": 6
+        },
+        {
+          "labels": [
+            "phase:closure",
+            "step:dural_sealant"
+          ],
+          "count": 8
+        },
+        {
+          "labels": [
+            "phase:closure",
+            "step:fat_graft_placement"
+          ],
+          "count": 21
+        },
+        {
+          "labels": [
+            "phase:closure",
+            "step:haemostasis"
+          ],
+          "count": 125
+        },
+        {
+          "labels": [
+            "phase:closure",
+            "step:synthetic_graft_placement"
+          ],
+          "count": 42
+        },
+        {
+          "labels": [
+            "phase:nasal_sphenoid",
+            "step:anterior_sphenoidotomy"
+          ],
+          "count": 108
+        },
+        {
+          "labels": [
+            "phase:nasal_sphenoid",
+            "step:nasal_corridor_creation"
+          ],
+          "count": 22
+        },
+        {
+          "labels": [
+            "phase:nasal_sphenoid",
+            "step:septum_displacement"
+          ],
+          "count": 9
+        },
+        {
+          "labels": [
+            "phase:nasal_sphenoid",
+            "step:sphenoid_sinus_clearance"
+          ],
+          "count": 174
+        },
+        {
+          "labels": [
+            "phase:sellar",
+            "step:durotomy"
+          ],
+          "count": 61
+        },
+        {
+          "labels": [
+            "phase:sellar",
+            "step:sellotomy"
+          ],
+          "count": 132
+        },
+        {
+          "labels": [
+            "phase:sellar",
+            "step:tumour_excision"
+          ],
+          "count": 292
+        }
+      ],
+      "metrics": {
+        "microF1": 27.0421,
+        "exactMatch": 16.6844
+      },
+      "label_sha256": "9dbabf6983a7f35fae70bc0bb1559e903d469afea4a9ab49dc4a04063e4447f4",
+      "sample_sha256": "258ab43113cde1462e75ff975742d3e796725e229f04a79af40cd28be6f5b430",
+      "source": "summary_gaps_delm_20260907/grok-4_6/pitvqa/contract.json",
+      "source_sha256": "f7ae5e1becb36eb4a994c65075b4458c857e505742db2ecb0d417dd7446e3d56"
+    },
+    "cholect50verbs": {
+      "sampleCount": 1000,
+      "positiveLabelCount": 1458,
+      "labelCounts": {
+        "aspirate": 27,
+        "clip": 33,
+        "coagulate": 50,
+        "cut": 18,
+        "dissect": 488,
+        "grasp": 159,
+        "idle": 174,
+        "irrigate": 6,
+        "pack": 3,
+        "retract": 500
+      },
+      "labelSetCounts": [
+        {
+          "labels": [
+            "aspirate"
+          ],
+          "count": 3
+        },
+        {
+          "labels": [
+            "aspirate",
+            "coagulate",
+            "retract"
+          ],
+          "count": 4
+        },
+        {
+          "labels": [
+            "aspirate",
+            "grasp"
+          ],
+          "count": 2
+        },
+        {
+          "labels": [
+            "aspirate",
+            "retract"
+          ],
+          "count": 18
+        },
+        {
+          "labels": [
+            "clip"
+          ],
+          "count": 7
+        },
+        {
+          "labels": [
+            "clip",
+            "grasp"
+          ],
+          "count": 8
+        },
+        {
+          "labels": [
+            "clip",
+            "grasp",
+            "retract"
+          ],
+          "count": 4
+        },
+        {
+          "labels": [
+            "clip",
+            "retract"
+          ],
+          "count": 14
+        },
+        {
+          "labels": [
+            "coagulate"
+          ],
+          "count": 18
+        },
+        {
+          "labels": [
+            "coagulate",
+            "retract"
+          ],
+          "count": 28
+        },
+        {
+          "labels": [
+            "cut"
+          ],
+          "count": 9
+        },
+        {
+          "labels": [
+            "cut",
+            "grasp"
+          ],
+          "count": 2
+        },
+        {
+          "labels": [
+            "cut",
+            "retract"
+          ],
+          "count": 7
+        },
+        {
+          "labels": [
+            "dissect"
+          ],
+          "count": 168
+        },
+        {
+          "labels": [
+            "dissect",
+            "grasp"
+          ],
+          "count": 40
+        },
+        {
+          "labels": [
+            "dissect",
+            "grasp",
+            "retract"
+          ],
+          "count": 25
+        },
+        {
+          "labels": [
+            "dissect",
+            "retract"
+          ],
+          "count": 255
+        },
+        {
+          "labels": [
+            "grasp"
+          ],
+          "count": 65
+        },
+        {
+          "labels": [
+            "grasp",
+            "pack"
+          ],
+          "count": 2
+        },
+        {
+          "labels": [
+            "grasp",
+            "retract"
+          ],
+          "count": 11
+        },
+        {
+          "labels": [
+            "idle"
+          ],
+          "count": 174
+        },
+        {
+          "labels": [
+            "irrigate"
+          ],
+          "count": 1
+        },
+        {
+          "labels": [
+            "irrigate",
+            "retract"
+          ],
+          "count": 5
+        },
+        {
+          "labels": [
+            "pack"
+          ],
+          "count": 1
+        },
+        {
+          "labels": [
+            "retract"
+          ],
+          "count": 129
+        }
+      ],
+      "metrics": {
+        "microF1": 37.61234567901234,
+        "exactMatch": 14.8688
+      },
+      "label_sha256": "c8077902dec7fa069b053fac0db52995462b3459faba528c9cbef01492774341",
+      "sample_sha256": "4afe133cacd8c776673e5b3df9497aafc8c0e9dca619a70b89df5ff592aedeb7",
+      "source": "summary_gaps_delm_20260907/grok-4_6/cholect50verbs/contract.json",
+      "source_sha256": "7ae3c79eefedb2356da10aebddc341600f32b7c09b0df9ba3ac0ae803921e5c1"
+    },
+    "pitvissteps": {
+      "sampleCount": 1000,
+      "positiveLabelCount": 1000,
+      "labelCounts": {
+        "anterior sphenoidotomy": 86,
+        "debris clearance": 13,
+        "dural sealant": 3,
+        "durotomy": 46,
+        "fat graft placement": 14,
+        "haemostasis": 114,
+        "nasal corridor creation": 12,
+        "sellotomy": 141,
+        "septum displacement": 17,
+        "sphenoid sinus clearance": 172,
+        "synthetic_graft_placement": 31,
+        "tumour excision": 351
+      },
+      "labelSetCounts": [
+        {
+          "labels": [
+            "anterior sphenoidotomy"
+          ],
+          "count": 86
+        },
+        {
+          "labels": [
+            "debris clearance"
+          ],
+          "count": 13
+        },
+        {
+          "labels": [
+            "dural sealant"
+          ],
+          "count": 3
+        },
+        {
+          "labels": [
+            "durotomy"
+          ],
+          "count": 46
+        },
+        {
+          "labels": [
+            "fat graft placement"
+          ],
+          "count": 14
+        },
+        {
+          "labels": [
+            "haemostasis"
+          ],
+          "count": 114
+        },
+        {
+          "labels": [
+            "nasal corridor creation"
+          ],
+          "count": 12
+        },
+        {
+          "labels": [
+            "sellotomy"
+          ],
+          "count": 141
+        },
+        {
+          "labels": [
+            "septum displacement"
+          ],
+          "count": 17
+        },
+        {
+          "labels": [
+            "sphenoid sinus clearance"
+          ],
+          "count": 172
+        },
+        {
+          "labels": [
+            "synthetic_graft_placement"
+          ],
+          "count": 31
+        },
+        {
+          "labels": [
+            "tumour excision"
+          ],
+          "count": 351
+        }
+      ],
+      "metrics": {
+        "microF1": 19.6942,
+        "exactMatch": 19.6942
+      },
+      "label_sha256": "01056f2c1b8e2dcc011bc99a3ba47cbcddb465ae84b36a754388caa72df2e281",
+      "sample_sha256": "3aae2b4515b679a406a552e62c8e531e03ac9d2a56ebc50a818ac7a37b38d646",
+      "source": "summary_gaps_delm_20260907/grok-4_6/pitvissteps/contract.json",
+      "source_sha256": "57e05d5f52e6f58483cc7e0eab397782212832c47b81c2609f43612da4aa71fc"
+    },
+    "sarrarp50": {
+      "sampleCount": 636,
+      "positiveLabelCount": 636,
+      "labelCounts": {
+        "Cutting The Suture": 10,
+        "Other": 59,
+        "Picking Up The Needle": 71,
+        "Positioning The Needle Tip": 163,
+        "Pulling The Needle Out Of The Tissue": 149,
+        "Pushing The Needle Through The Tissue": 155,
+        "Returning Or Dropping The Needle": 23,
+        "Tying A Knot": 6
+      },
+      "labelSetCounts": [
+        {
+          "labels": [
+            "Cutting The Suture"
+          ],
+          "count": 10
+        },
+        {
+          "labels": [
+            "Other"
+          ],
+          "count": 59
+        },
+        {
+          "labels": [
+            "Picking Up The Needle"
+          ],
+          "count": 71
+        },
+        {
+          "labels": [
+            "Positioning The Needle Tip"
+          ],
+          "count": 163
+        },
+        {
+          "labels": [
+            "Pulling The Needle Out Of The Tissue"
+          ],
+          "count": 149
+        },
+        {
+          "labels": [
+            "Pushing The Needle Through The Tissue"
+          ],
+          "count": 155
+        },
+        {
+          "labels": [
+            "Returning Or Dropping The Needle"
+          ],
+          "count": 23
+        },
+        {
+          "labels": [
+            "Tying A Knot"
+          ],
+          "count": 6
+        }
+      ],
+      "metrics": {
+        "microF1": 20.267691151457615,
+        "exactMatch": 20.267691151457615
+      },
+      "label_sha256": "9089885bd3b5dfb394937cf7187b162cd7a6c81a8e6bf38b29bba578ef8d867c",
+      "sample_sha256": "a0ebde6cee24941a4b031e8d2399c52a71387fcdb36da7e97cad1b8136417bee",
+      "source": "summary_gaps_delm_20260907/grok-4_6/sarrarp50/contract.json",
+      "source_sha256": "ecd0f29cc837bb3a61e8aa2924bbd07691348b9ae65948f476e8300b92d435f2"
+    }
+  }
+}

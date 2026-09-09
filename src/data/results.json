@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-09-09T00:06:42.374534+00:00",
+  "generatedAt": "2026-09-09T01:13:29.955331+00:00",
   "datasets": {
     "cholect50": {
       "majorityBaseline": {
@@ -437,6 +437,24 @@
               "value": 73.38,
               "ciLow": 71.13,
               "ciHigh": 75.53
+            }
+          }
+        },
+        {
+          "id": "qwen3-8-max-0902",
+          "model": "Qwen3.8 Max 0902",
+          "provider": "qwen",
+          "sourceRunId": "summary_gaps_delm_20260907/qwen3-8-max-0902/cholect50",
+          "metrics": {
+            "exactMatch": {
+              "value": 69.5,
+              "ciLow": 66.5,
+              "ciHigh": 72.2
+            },
+            "microF1": {
+              "value": 83.8,
+              "ciLow": 82,
+              "ciHigh": 85.5
             }
           }
         }
@@ -879,6 +897,24 @@
               "ciHigh": 52.2
             }
           }
+        },
+        {
+          "id": "qwen3-8-max-0902",
+          "model": "Qwen3.8 Max 0902",
+          "provider": "qwen",
+          "sourceRunId": "summary_gaps_delm_20260907/qwen3-8-max-0902/pitvis",
+          "metrics": {
+            "exactMatch": {
+              "value": 51.5,
+              "ciLow": 48.4,
+              "ciHigh": 54.7
+            },
+            "microF1": {
+              "value": 49.5,
+              "ciLow": 46.24,
+              "ciHigh": 52.77
+            }
+          }
         }
       ]
     },
@@ -1317,6 +1353,24 @@
               "value": 33.57,
               "ciLow": 31.49,
               "ciHigh": 35.52
+            }
+          }
+        },
+        {
+          "id": "qwen3-8-max-0902",
+          "model": "Qwen3.8 Max 0902",
+          "provider": "qwen",
+          "sourceRunId": "summary_gaps_delm_20260907/qwen3-8-max-0902/surgvu",
+          "metrics": {
+            "exactMatch": {
+              "value": 16.9,
+              "ciLow": 14.7,
+              "ciHigh": 19.3
+            },
+            "microF1": {
+              "value": 31.48,
+              "ciLow": 29.74,
+              "ciHigh": 33.12
             }
           }
         }

@@ -17,7 +17,7 @@ test("released models retain complete frozen denominators and source provenance 
   const datasets = { ...instruments.datasets, ...domains.datasets };
   const expectedBoards = {
     "grok-4_6": Object.keys(datasets),
-    "qwen3-8-max-0902": Object.keys(domains.datasets),
+    "qwen3-8-max-0902": Object.keys(datasets),
   };
   for (const [model, boards] of Object.entries(expectedBoards)) {
     const evaluations = provenance.evaluations.filter((row: { model: string }) => row.model === model);
@@ -35,8 +35,12 @@ test("released models retain complete frozen denominators and source provenance 
       }
     }
   }
-  for (const dataset of Object.values(instruments.datasets) as { results: { id: string }[] }[]) {
-    assert(dataset.results.some((row) => row.id === "qwen3-8-max"), "Historical scores are not deleted");
-    assert(!dataset.results.some((row) => row.id === "qwen3-8-max-0902"), "Do not relabel an unverified model version");
+  for (const dataset of Object.values(instruments.datasets) as { results: { id: string; sourceRunId: string }[] }[]) {
+    const historical = dataset.results.find((row) => row.id === "qwen3-8-max");
+    const current = dataset.results.find((row) => row.id === "qwen3-8-max-0902");
+    assert(historical, "Historical scores are not deleted");
+    assert(current, "Verified 0902 instrument scores are included");
+    assert.equal(historical.sourceRunId, "20260808T032953Z__qwen3-8-max__e2d44e91cd474c1c91f325ef12e593c1", "Historical scores keep their original source");
+    assert.notEqual(current.sourceRunId, historical.sourceRunId, "New model version has its own verified run");
   }
 });
