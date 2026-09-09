@@ -101,7 +101,7 @@ test("summary hides only the Action column and prerenders every model on the bra
     }
   }
   assert.equal(Array.from(figure.matchAll(/<p(?:\s|>)/g)).length, 2, "Only the subtitle and requested methodology paragraph");
-  assert(html.includes("Performance by modality"), "Preserve the existing radar plot");
+  assert.match(html, /<h3 id="summary-plot-heading">Surgical Intelligence Index<\/h3>/, "Spider plot uses the same index title");
 });
 
 test("both plots have icon-only copy controls, black axes, and the requested grey methodology footer", () => {
@@ -109,6 +109,8 @@ test("both plots have icon-only copy controls, black axes, and the requested gre
   const figures = Array.from(html.matchAll(/<figure class="(?:release-plot|summary-web)"[^>]*>([\s\S]*?)<\/figure>/g), (match) => match[1]);
   assert.equal(figures.length, 2);
   for (const figure of figures) {
+    assert.match(figure, /<h3[^>]*>Surgical Intelligence Index<\/h3>/);
+    assert.match(figure, /<p class="release-subtitle">How well do LLMs perform against specialized models across surgical tasks\?<\/p>/);
     const button = figure.match(/<button class="plot-copy"[^>]*>([\s\S]*?)<\/button>/)![1];
     assert.match(button, /<svg class="plot-copy-icon"/);
     assert.equal(button.replace(/<[^>]+>/g, ""), "", "No visible Copy PNG words");

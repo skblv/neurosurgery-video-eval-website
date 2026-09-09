@@ -86,7 +86,8 @@
 .summary-model-name { display: flex; align-items: center; gap: 0.5rem; }
 .summary-swatch { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
 .summary-web { margin: 0; min-width: 0; color: #000; }
-.summary-web-heading { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding-inline: 1rem; }
+.summary-web-heading { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.75rem; padding: 0 1rem 0.75rem; }
+.summary-web-heading h3 { font-size: 1.5rem; font-weight: 560; }
 .summary-web > svg { width: 100%; height: auto; display: block; }
 .summary-axis { font-size: 14px; fill: #000; }
 .summary-tick { font-size: 12px; fill: #000; }

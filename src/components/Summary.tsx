@@ -9,6 +9,8 @@ import { PlotCopyButton } from "./PlotCopyButton";
 import { PlotFooter } from "./PlotFooter";
 
 const METHODOLOGY = plotMethodology(SUMMARY_MODALITIES);
+const TITLE = "Surgical Intelligence Index";
+const SUBTITLE = "How well do LLMs perform against specialized models across surgical tasks?";
 const format = (value: number | null) => value === null ? "NA" : value.toFixed(3);
 // Action remains hidden in the table; its adjusted score is NA until a baseline is verified.
 const TABLE_MODALITIES = SUMMARY_MODALITIES.flatMap((modality, index) => modality.id === "gestures" ? [] : [{ ...modality, index }]);
@@ -48,11 +50,12 @@ export function Summary() {
       </div>
       <figure className="summary-web" aria-labelledby="summary-plot-heading">
         <figcaption className="summary-web-heading">
-          <h3 id="summary-plot-heading">Performance by modality</h3>
-          <PlotCopyButton plotRef={plotRef} title="Surgical Intelligence Index" subtitle="Performance by modality" methodology={METHODOLOGY} />
+          <h3 id="summary-plot-heading">{TITLE}</h3>
+          <PlotCopyButton plotRef={plotRef} title={TITLE} subtitle={SUBTITLE} methodology={METHODOLOGY} />
+          <p className="release-subtitle">{SUBTITLE}</p>
         </figcaption>
         <svg ref={plotRef} className="summary-radar" viewBox={`0 0 560 ${420 + legendHeight}`} role="img" aria-labelledby="web-title web-description" data-axis-max="1">
-          <title id="web-title">Relative model performance web plot</title>
+          <title id="web-title">Surgical Intelligence Index by modality</title>
           <desc id="web-description">Six axes show modality scores. Exact values and missing evaluations are listed in the leaderboard below.</desc>
           {[0.25, 0.5, 0.75, 1].map((fraction) => <g key={fraction}>
             <polygon points={polygon(scale.valueAt(fraction))} fill="none" stroke="#e0e4e3" />
