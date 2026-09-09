@@ -144,6 +144,7 @@ export function AboutUs() {
       </ul>
 
       <div className="citation">
+        <p className="citation__intro">If you found this website useful, please cite as:</p>
         <button
           type="button"
           className="citation__copy"

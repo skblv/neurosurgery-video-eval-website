@@ -7,6 +7,7 @@ import { radarColor, radarProfiles, radarScale } from "../data/radarScale";
 import { plotMethodology } from "../data/plotMethodology";
 import { PlotCopyButton } from "./PlotCopyButton";
 import { PlotFooter } from "./PlotFooter";
+import { CHART_VIEWS, chartViewForKey, type ChartView } from "../data/chartViews";
 
 const METHODOLOGY = plotMethodology(SUMMARY_MODALITIES);
 const TITLE = "Surgical Intelligence Index: How well do LLMs perform against specialized models across surgical tasks?";
@@ -15,7 +16,7 @@ const format = (value: number | null) => value === null ? "NA" : value.toFixed(3
 // Action remains hidden in the table; its adjusted score is NA until a baseline is verified.
 const TABLE_MODALITIES = SUMMARY_MODALITIES.flatMap((modality, index) => modality.id === "gestures" ? [] : [{ ...modality, index }]);
 
-export function Summary() {
+function ModalityPlot() {
   const [selected, setSelected] = useState<string[]>(["gpt-6-astra", "claude-fable-5_1", "gemini-3_8-flash"]);
   const plotted = radarProfiles(selected, SUMMARY_ROWS);
   const scale = radarScale(plotted.flatMap((row) => row.scores.map((score) => score.value)));
@@ -31,32 +32,22 @@ export function Summary() {
     return `${p.x},${p.y}`;
   }).join(" ");
 
-  return <>
-    <header className="domain-hero summary-hero">
-      <h2>How close are general models to the specialists?</h2>{" "}
-      <p>We measure the performance of Visual Language Models (VLMs) on 6 surgical modalities.</p>
-    </header>
-
-    <section className="summary-figure" aria-labelledby="summary-plot-heading">
-      <div>
-        <p className="summary-muted">Choose models to compare.</p>
-        <div className="summary-selectors">
+  return <figure className="summary-web" aria-labelledby="summary-plot-heading">
+        <figcaption className="summary-web-heading">
+          <h3 id="summary-plot-heading">{TITLE}</h3>
+          <PlotCopyButton plotRef={plotRef} title={TITLE} subtitle={SUBTITLE} methodology={METHODOLOGY} />
+          <p className="release-subtitle">{SUBTITLE}</p>
+        </figcaption>
+        <div className="summary-selectors" role="group" aria-label="Models to compare">
           {selected.map((id, index) => <div className="summary-selection" key={index}>
             <SummaryModelPicker modelId={id} excluded={selected} color={radarColor(index)} onChoose={(nextId) => setSelected((previous) => previous.map((value, i) => i === index ? nextId : value))} />
             <button type="button" className="summary-remove" aria-label={`Remove ${SUMMARY_ROWS.find((row) => row.id === id)?.model}`} onClick={() => setSelected((previous) => previous.filter((_, i) => i !== index))}>×</button>
           </div>)}
           {selected.length < SUMMARY_ROWS.length ? <SummaryModelPicker excluded={selected} onChoose={(id) => setSelected((previous) => [...previous, id])} /> : null}
         </div>
-      </div>
-      <figure className="summary-web" aria-labelledby="summary-plot-heading">
-        <figcaption className="summary-web-heading">
-          <h3 id="summary-plot-heading">{TITLE}</h3>
-          <PlotCopyButton plotRef={plotRef} title={TITLE} subtitle={SUBTITLE} methodology={METHODOLOGY} />
-          <p className="release-subtitle">{SUBTITLE}</p>
-        </figcaption>
         <svg ref={plotRef} className="summary-radar" viewBox={`0 0 560 ${420 + legendHeight}`} role="img" aria-labelledby="web-title web-description" data-axis-max="1">
           <title id="web-title">Surgical Intelligence Index by modality</title>
-          <desc id="web-description">Six axes show modality scores. Exact values and missing evaluations are listed in the leaderboard below.</desc>
+          <desc id="web-description">Six axes show modality scores. Exact values and missing evaluations are listed in the leaderboard above.</desc>
           {[0.25, 0.5, 0.75, 1].map((fraction) => <g key={fraction}>
             <polygon points={polygon(scale.valueAt(fraction))} fill="none" stroke="#e0e4e3" />
             <text x="286" y={205 - 155 * fraction + 12} className="summary-tick">{scale.valueAt(fraction).toFixed(2)}</text>
@@ -96,9 +87,13 @@ export function Summary() {
           </g>
         </svg>
         <PlotFooter methodology={METHODOLOGY} />
-      </figure>
-    </section>
+      </figure>;
+}
 
+export function Summary() {
+  const [view, setView] = useState<ChartView>("history");
+  const tabs = useRef<Record<ChartView, HTMLButtonElement | null>>({ history: null, modality: null });
+  return <>
     <section className="section summary-results" aria-label="Model leaderboard">
       <div className="summary-table-scroll" tabIndex={0} role="region" aria-label="Model scores, scroll horizontally for all modalities">
         <table className="summary-table">
@@ -114,7 +109,26 @@ export function Summary() {
       <p className="summary-muted">Equal weight per available dataset within each modality, then equal weight per available modality. Missing results are shown as NA and excluded from averages.</p>
     </section>
 
-    <ReleaseDatePlot />
-
+    <section className="index-explorer" aria-label="Explore the Surgical Intelligence Index">
+      <div className="index-view-tabs" role="tablist" aria-label="Chart view">
+        {CHART_VIEWS.map((item) => <button key={item.id} type="button" role="tab"
+          ref={(element) => { tabs.current[item.id] = element; }}
+          id={`index-tab-${item.id}`} aria-controls={`index-panel-${item.id}`}
+          aria-selected={view === item.id} tabIndex={view === item.id ? 0 : -1}
+          onClick={() => setView(item.id)} onKeyDown={(event) => {
+            const next = chartViewForKey(item.id, event.key);
+            if (!next) return;
+            event.preventDefault();
+            setView(next);
+            tabs.current[next]?.focus();
+          }}>{item.label}</button>)}
+      </div>
+      <div id="index-panel-history" className="index-panel" role="tabpanel" aria-labelledby="index-tab-history" hidden={view !== "history"} tabIndex={0}>
+        <ReleaseDatePlot />
+      </div>
+      <div id="index-panel-modality" className="index-panel" role="tabpanel" aria-labelledby="index-tab-modality" hidden={view !== "modality"} tabIndex={0}>
+        <ModalityPlot />
+      </div>
+    </section>
   </>;
 }

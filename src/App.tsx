@@ -141,6 +141,7 @@ export default function App({ route }: { route: DomainRoute | null }) {
   return (
     <div className="page">
       <header className="masthead">
+        <h1>Surgical Intelligence Leaderboard</h1>
         <div className="lockup">
           <a
             href="https://www.surgicalvideo.io"
@@ -168,7 +169,6 @@ export default function App({ route }: { route: DomainRoute | null }) {
             />
           </a>
         </div>
-        <h1>Surgical Intelligence Leaderboard</h1>
       </header>
 
       <DomainNav active={route} />
@@ -180,7 +180,7 @@ export default function App({ route }: { route: DomainRoute | null }) {
         </section>}
       </main>
 
-      <footer className="footer">
+      {route && route !== "summary" ? <footer className="footer">
         {route === "instruments" ? <InstrumentSources /> : null}
         {route === "gestures" ? <GestureSources /> : null}
         {route === "anatomy" ||
@@ -189,7 +189,7 @@ export default function App({ route }: { route: DomainRoute | null }) {
         route === "skill-assessment" ? (
           <DomainSources route={route} />
         ) : null}
-      </footer>
+      </footer> : null}
 
       <AboutUs />
       {route === "summary" ? <Methodology /> : null}
