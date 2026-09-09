@@ -46,10 +46,15 @@ serves the production path.
 root, not inside a project path. This build supplies the file for root/custom
 domain hosting too, but cannot change `https://skblv.github.io/robots.txt` from
 this project. That root currently returns 404 (no crawling restrictions). Submit
-the project's absolute sitemap URL in Google Search Console to ensure discovery;
+the project's absolute sitemap URL in Google Search Console to help discovery;
 there is no guarantee of indexing or a particular ranking.
 
 ## How deployment works
+
+For the collaborators' later custom-domain deployment, follow the
+[deployment handoff](docs/deployment-handoff.md). It covers the required
+build-time URL setting, publishing the complete generated site, live checks,
+and Google Search Console setup without changing the current deployment.
 
 **Every push to `main` deploys the site.** A GitHub Actions workflow
 (`.github/workflows/deploy.yml`) runs `npm ci && npm run build` and publishes
