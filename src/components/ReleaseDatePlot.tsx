@@ -15,10 +15,12 @@ const METHODOLOGY = plotMethodology(SUMMARY_MODALITIES);
 const HEIGHT = 480;
 const LAYOUTS = [
   { width: 920, className: "release-plot-wide", layout: releasePlotLayout(POINTS, 920, HEIGHT) },
-  { width: 480, className: "release-plot-compact", layout: releasePlotLayout(POINTS, 480, HEIGHT) },
+  { width: 680, className: "release-plot-medium", layout: releasePlotLayout(POINTS, 680, HEIGHT) },
+  { width: 360, className: "release-plot-compact", layout: releasePlotLayout(POINTS, 360, HEIGHT) },
 ];
 const dateFormat = new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" });
 const tickFormat = new Intl.DateTimeFormat("en-US", { month: "short", year: "numeric", timeZone: "UTC" });
+const monthFormat = new Intl.DateTimeFormat("en-US", { month: "short", timeZone: "UTC" });
 
 function ReleaseModelLogo({ provider, x, y }: { provider: string; x: number; y: number }) {
   const icon = PROVIDER_ICONS[provider];
@@ -45,6 +47,8 @@ export function ReleaseDatePlot() {
       <p className="release-subtitle">{SUBTITLE}</p>
     </figcaption>
     {LAYOUTS.map(({ width, className, layout }) => {
+      const compact = width === 360;
+      const legendColumnWidth = compact ? 100 : 84;
       const active = layout.points.find((point) => point.id === activeId);
       const tooltipWidth = 238;
       const tooltipX = active ? Math.max(12, Math.min(width - tooltipWidth - 12, active.x - tooltipWidth / 2)) : 0;
@@ -53,7 +57,7 @@ export function ReleaseDatePlot() {
         const rect = event.currentTarget.getBoundingClientRect();
         const x = (event.clientX - rect.left) * width / rect.width;
         const y = (event.clientY - rect.top) * HEIGHT / rect.height;
-        let distance = 18 ** 2;
+        let distance = (24 * width / rect.width) ** 2;
         let id: string | null = null;
         for (const point of layout.points) {
           const next = (point.x - x) ** 2 + (point.y - y) ** 2;
@@ -69,12 +73,14 @@ export function ReleaseDatePlot() {
         </g>)}
         {layout.xTicks.map((tick, index) => <g key={tick}>
           <line x1={layout.x(tick)} x2={layout.x(tick)} y1={layout.bounds.top} y2={layout.bounds.bottom} className="release-grid release-grid-vertical" />
-          <text x={layout.x(tick)} y={layout.bounds.bottom + 25} textAnchor={index === layout.xTicks.length - 1 ? "end" : "middle"} className="release-tick">{tickFormat.format(tick)}</text>
+          <text x={layout.x(tick)} y={layout.bounds.bottom + (compact ? 21 : 25)} textAnchor={index === layout.xTicks.length - 1 ? "end" : "middle"} className="release-tick">
+            {compact ? <><tspan x={layout.x(tick)}>{monthFormat.format(tick)}</tspan><tspan x={layout.x(tick)} dy="19">{new Date(tick).getUTCFullYear()}</tspan></> : tickFormat.format(tick)}
+          </text>
         </g>)}
-        <text x={(layout.bounds.left + layout.bounds.right) / 2} y={layout.bounds.bottom + 54} textAnchor="middle" className="release-axis-label">Release date</text>
+        <text x={(layout.bounds.left + layout.bounds.right) / 2} y={layout.bounds.bottom + (compact ? 64 : 54)} textAnchor="middle" className="release-axis-label">Release date</text>
         <g className="release-family-legend" role="group" aria-label="Model families" transform={`translate(${layout.bounds.left + 12} ${layout.bounds.top + 12})`}>
-          <rect className="release-family-legend-box" width={Math.ceil(FAMILIES.length / 4) * 84 + 20} height={Math.min(FAMILIES.length, 4) * 25 + 18} />
-          {FAMILIES.map((family, index) => <g key={family.provider} data-family={family.provider} transform={`translate(${Math.floor(index / 4) * 84} ${22 + index % 4 * 25})`}>
+          <rect className="release-family-legend-box" width={Math.ceil(FAMILIES.length / 4) * legendColumnWidth + 20} height={Math.min(FAMILIES.length, 4) * 25 + 18} />
+          {FAMILIES.map((family, index) => <g key={family.provider} data-family={family.provider} transform={`translate(${Math.floor(index / 4) * legendColumnWidth} ${22 + index % 4 * 25})`}>
             <ReleaseModelLogo provider={family.provider} x={22} y={0} />
             <text x="37" y="0" dy="0.35em">{family.label}</text>
           </g>)}

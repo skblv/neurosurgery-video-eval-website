@@ -55,7 +55,7 @@ test("sitemap lists only canonical pages, robots allow crawling, and unknown pag
 test("summary hides only the Action column and prerenders every model on the branded release plot", () => {
   const html = readFileSync("dist/index.html", "utf8");
   const table = html.match(/<table class="summary-table">([\s\S]*?)<\/table>/)![1];
-  const columns = Array.from(table.match(/<thead>([\s\S]*?)<\/thead>/)![1].matchAll(/<th[^>]*>([^<]*)<\/th>/g), (match) => match[1]);
+  const columns = Array.from(table.match(/<thead>([\s\S]*?)<\/thead>/)![1].matchAll(/<th[^>]*>([\s\S]*?)<\/th>/g), (match) => match[1].replace(/<[^>]+>/g, ""));
   assert.deepEqual(columns, ["Model", "Total", "Instrument", "Anatomy", "Skill assessment", "Context / VQA", "Recommendations"]);
   const totals = Array.from(table.matchAll(/<td class="summary-total">(-?[\d.]+)<\/td>/g), (match) => match[1]).sort();
   const figure = html.match(/<figure class="release-plot"[^>]*>([\s\S]*?)<\/figure>/)![1];
@@ -65,14 +65,15 @@ test("summary hides only the Action column and prerenders every model on the bra
   assert(!figure.includes("Plot copied as PNG.") && !figure.includes("release-copy-status"));
   assert(!figure.toLowerCase().includes("total index"));
   assert.match(figure, /<p class="release-subtitle">Historical performance<\/p>/);
-  const layouts = Array.from(figure.matchAll(/<svg class="release-plot-(?:wide|compact)"[^>]*>([\s\S]*?)<\/svg>/g), (match) => match[1]);
-  assert.equal(layouts.length, 2, "Desktop and compact layouts");
-  assert.equal(Array.from(figure.matchAll(/data-axis-max="1"/g)).length, 2);
+  const layouts = Array.from(figure.matchAll(/<svg class="release-plot-(?:wide|medium|compact)"[^>]*>([\s\S]*?)<\/svg>/g), (match) => match[1]);
+  assert.equal(layouts.length, 3, "Desktop, tablet and phone layouts");
+  assert.equal(Array.from(figure.matchAll(/data-axis-max="1"/g)).length, 3);
   assert.match(figure, /<span class="plot-address">eval\.surgicalvideo\.io<\/span>/);
   assert(figure.includes('alt="SDSC"') && figure.includes('alt="Chicago Booth"'), "Branding lives inside the chart figure");
-  for (const svg of layouts) {
+  for (const [index, svg] of layouts.entries()) {
+    const compact = index === 2;
     assert.match(svg, /class="release-tick">1\.00<\/text>/);
-    const dateTicks = Array.from(svg.matchAll(/<text([^>]*) class="release-tick">([A-Z][a-z]{2} \d{4})<\/text>/g));
+    const dateTicks = Array.from(svg.matchAll(/<text([^>]*) class="release-tick">((?:[A-Z][a-z]{2} \d{4})|(?:<tspan[^>]*>[A-Z][a-z]{2}<\/tspan><tspan[^>]*>\d{4}<\/tspan>))<\/text>/g));
     assert(dateTicks.length > 0);
     assert.match(dateTicks.at(-1)![1], /text-anchor="end"/, "Final date label extends inward, leaving room at the right border");
     const points = Array.from(svg.matchAll(/data-model="([^"]+)" data-release-date="([^"]+)" data-total="([^"]+)"/g));
@@ -84,8 +85,9 @@ test("summary hides only the Action column and prerenders every model on the bra
     const families = Array.from(legend.matchAll(/data-family="([^"]+)"/g), (match) => match[1]);
     assert.deepEqual(families, ["openai", "anthropic", "gemini", "google", "qwen", "moonshot", "zai", "xai"]);
     assert.match(legend, /transform="translate\(76 46\)"/, "Legend is inset in the plot's upper-left corner");
-    assert.match(legend, /<rect class="release-family-legend-box" width="188" height="118"/, "Transposed two-column, four-row legend");
-    assert.deepEqual(Array.from(legend.matchAll(/data-family="[^"]+" transform="translate\((\d+) (\d+)\)"/g), (match) => match.slice(1).map(Number)), [[0, 22], [0, 47], [0, 72], [0, 97], [84, 22], [84, 47], [84, 72], [84, 97]]);
+    assert(legend.includes(`<rect class="release-family-legend-box" width="${compact ? 220 : 188}" height="118"`), "Two columns, four rows, with room for larger phone text");
+    const columnWidth = compact ? 100 : 84;
+    assert.deepEqual(Array.from(legend.matchAll(/data-family="[^"]+" transform="translate\((\d+) (\d+)\)"/g), (match) => match.slice(1).map(Number)), [[0, 22], [0, 47], [0, 72], [0, 97], [columnWidth, 22], [columnWidth, 47], [columnWidth, 72], [columnWidth, 97]]);
     assert.deepEqual(Array.from(legend.matchAll(/<text[^>]*>([^<]+)<\/text>/g), (match) => match[1]), ["GPT", "Claude", "Gemini", "Gemma", "Qwen", "Kimi", "GLM", "Grok"]);
     assert.equal(Array.from(svg.matchAll(/class="release-model-logo"/g)).length, points.length + families.length, "Every point and legend family uses the same logo");
     for (const logo of svg.matchAll(/<g class="release-model-logo"[^>]*>([\s\S]*?)<\/g>/g)) {

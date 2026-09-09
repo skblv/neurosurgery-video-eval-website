@@ -39,7 +39,7 @@ test("points preserve exact table totals, keep incomplete models, and never inve
 test("responsive layout preserves dates and scores without jitter or clipping", () => {
   const rows = Object.keys(MODEL_RELEASES).map((id, index) => ({ id, model: id, total: 0.48 + index / 100, provider: id.split("-")[0] }));
   const points = releasePoints(rows);
-  for (const width of [480, 920]) {
+  for (const width of [360, 480, 680, 920]) {
     const layout = releasePlotLayout(points, width, 480);
     assert.equal(Math.max(...layout.yTicks), 1);
     assert.equal(layout.y(1), layout.bounds.top);

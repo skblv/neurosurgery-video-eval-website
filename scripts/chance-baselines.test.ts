@@ -63,6 +63,7 @@ test("methodology uses the requested wording and lists only included datasets", 
   const dataset: SummaryDataset = { id: "d1", name: "Dataset one", metric: "microF1", referenceId: "s", chance: 20, results: [] };
   const modalities = [{ id: "m1", label: "Modality one", datasets: [dataset] }, { id: "action", label: "Action", datasets: [{ ...dataset, chance: null }] }];
   const footer = plotMethodology(modalities);
+  assert.equal(plotMethodology(modalities, "table"), footer.replace("The plot", "The table"));
   assert.equal(footer, "The plot shows a weighted average zero-shot performance of LLMs on surgical modalities. 1 means as good as a specialized computer-vision model and 0 means as good as chance. Modalities include Modality one (Dataset one).");
   assert(!footer.includes("Action"));
 });
