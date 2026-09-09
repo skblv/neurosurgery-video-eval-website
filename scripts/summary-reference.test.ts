@@ -2,6 +2,8 @@ import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { test } from "node:test";
 import { calculateSpecialistReference, SPECIALIST_REFERENCE_ID, type SummaryDataset } from "../src/data/summaryScoring.ts";
+import { radarProfiles, radarScale } from "../src/data/radarScale.ts";
+import { matchesModelSearch } from "../src/data/modelSearch.ts";
 
 function dataset(id: string, referenceId: string, reference: number | null, chance: number | null): SummaryDataset {
   return { id, name: id, metric: "microF1", referenceId, chance, results: [
@@ -69,4 +71,47 @@ test("summary shows only the requested extra rows, using measured LemonFM scores
   assert(html.includes("LemonFM uses task-trained linear probes.") && html.includes("it is not one model."));
   assert(!html.includes(`data-model="${SPECIALIST_REFERENCE_ID}"`) && !html.includes('data-model="lemonfm-linear-probe"'), "No invented release dates or changes to the zero-shot historical plot");
   assert(!html.includes("Change LemonFM") && !html.includes("Change SDSC/UChicago"), "Default spider selections stay unchanged");
+});
+
+test("historical plots show a dashed SDSC-green reference at one without inventing a release", () => {
+  const html = readFileSync("dist/index.html", "utf8");
+  const charts = [...html.matchAll(/<svg class="release-plot-(wide|medium|compact)"[^>]*>([\s\S]*?)<\/svg>/g)];
+  assert.equal(charts.length, 3);
+  for (const chart of charts) {
+    const reference = chart[2].match(/<g class="release-reference"[^>]*>([\s\S]*?)<\/g>/)![0];
+    assert(reference.includes(`data-reference-model="${SPECIALIST_REFERENCE_ID}" data-reference-score="1"`));
+    assert.match(reference, /<line x1="64" x2="(?:892|652|332)" y1="34" y2="34" class="release-reference-line"/);
+    assert(reference.includes("not a dated model release"));
+    assert(!reference.includes("data-release-date"));
+    assert(!reference.includes("<text"), "No visible text annotation on the reference line");
+    const legend = chart[2].slice(chart[2].indexOf('<g class="release-family-legend"'), chart[2].indexOf('<g class="release-point"'));
+    const key = legend.match(/<g class="release-reference-key"[^>]*>([\s\S]*?)<\/g>/)![0];
+    assert(key.includes('class="release-reference-line"') && key.includes('aria-label="SDSC/UChicago composite specialist reference"'));
+    assert(!/<text|<image|<path/.test(key), "Legend key is a dashed swatch only: no visible text or logo");
+  }
+  const css = readFileSync("src/index.css", "utf8");
+  assert.match(css, /\.release-reference-line\s*\{[^}]*stroke: var\(--sdsc-green\);[^}]*stroke-dasharray: 7 5;/);
+});
+
+test("spider options and profiles share the table's specialist and LemonFM rows", () => {
+  const picker = readFileSync("src/components/SummaryModelPicker.tsx", "utf8");
+  const plot = readFileSync("src/components/Summary.tsx", "utf8");
+  assert(picker.includes("SUMMARY_TABLE_ROWS.find") && picker.includes("SUMMARY_TABLE_ROWS.filter"));
+  assert.match(readFileSync("src/index.css", "utf8"), /\.summary-picker \.model-icon\s*\{[^}]*width: auto;/, "The joint SDSC/Booth logo must not overlap the option label");
+  assert(plot.includes("radarProfiles(selected, SUMMARY_TABLE_ROWS)") && plot.includes("selected.length < SUMMARY_TABLE_ROWS.length"));
+  const html = readFileSync("dist/index.html", "utf8");
+  const rows = [...html.matchAll(/<tr data-model-id="([^"]+)" data-model-kind="([^"]+)">([\s\S]*?)<\/tr>/g)].map((match) => {
+    const model = match[3].match(/class="summary-model-title"><span>([^<]+)<\/span>/)![1];
+    const cells = [...match[3].matchAll(/<td[^>]*>([^<]*)<\/td>/g)].map((cell) => cell[1] === "NA" ? null : Number(cell[1]));
+    return { id: match[1], model, total: cells[0], scores: [cells[1], null, ...cells.slice(2)] };
+  });
+  assert.deepEqual(rows.filter((row) => matchesModelSearch(row.model, "sdsc")).map((row) => row.id), [SPECIALIST_REFERENCE_ID]);
+  assert.deepEqual(rows.filter((row) => matchesModelSearch(row.model, "LEMON")).map((row) => row.id), ["lemonfm-linear-probe"]);
+  const selection = ["gpt-6-astra", SPECIALIST_REFERENCE_ID, "lemonfm-linear-probe"];
+  const profiles = radarProfiles(selection, rows);
+  assert.deepEqual(profiles.map((row) => row.id), selection);
+  assert.deepEqual(profiles[1].scores, [1, null, 1, 1, 1, 1]);
+  assert.deepEqual(profiles[2].scores, [0.813, null, 0.752, 0.691, 0.980, 1.079]);
+  assert.equal(radarScale(profiles.flatMap((row) => row.scores)).ceiling, 1);
+  assert.equal(radarProfiles(selection.slice(1), rows).length, 2);
 });

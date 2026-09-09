@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import { SUMMARY_MODALITIES, SUMMARY_ROWS, SUMMARY_TABLE_ROWS } from "../data/summary";
+import { SUMMARY_MODALITIES, SUMMARY_TABLE_ROWS } from "../data/summary";
 import { SummaryModelPicker } from "./SummaryModelPicker";
 import { ModelIcon } from "./ModelIcon";
 import { ReleaseDatePlot } from "./ReleaseDatePlot";
@@ -11,7 +11,6 @@ import { DEFAULT_SUMMARY_SORT, nextSummarySort, sortSummaryRows, type SummaryCol
 import { isNewModel } from "../data/leaderboard";
 import { useBadgeDate } from "../hooks/useBadgeDate";
 
-const METHODOLOGY = plotMethodology(SUMMARY_MODALITIES);
 const TITLE = "Surgical Intelligence Index: How well do LLMs perform against specialized models across surgical tasks?";
 const SUBTITLE = "Performance by modality";
 const RADAR_LAYOUTS = [
@@ -24,22 +23,23 @@ const TABLE_MODALITIES = SUMMARY_MODALITIES.flatMap((modality, index) => modalit
 
 function ModalityPlot() {
   const [selected, setSelected] = useState<string[]>(["gpt-6-astra", "claude-fable-5_1", "gemini-3_8-flash"]);
-  const plotted = radarProfiles(selected, SUMMARY_ROWS);
+  const plotted = radarProfiles(selected, SUMMARY_TABLE_ROWS);
+  const methodology = plotMethodology(SUMMARY_MODALITIES, "plot", plotted.some((row) => row.kind !== "zero-shot"));
   const scale = radarScale(plotted.flatMap((row) => row.scores.map((score) => score.value)));
   const plotRef = useRef<SVGSVGElement>(null);
 
   return <figure className="summary-web" aria-labelledby="summary-plot-heading">
         <figcaption className="summary-web-heading">
           <h3 id="summary-plot-heading">{TITLE}</h3>
-          <PlotCopyButton plotRef={plotRef} title={TITLE} subtitle={SUBTITLE} methodology={METHODOLOGY} />
+          <PlotCopyButton plotRef={plotRef} title={TITLE} subtitle={SUBTITLE} methodology={methodology} />
           <p className="release-subtitle">{SUBTITLE}</p>
         </figcaption>
         <div className="summary-selectors" role="group" aria-label="Models to compare">
           {selected.map((id, index) => <div className="summary-selection" key={index}>
             <SummaryModelPicker modelId={id} excluded={selected} color={radarColor(index)} onChoose={(nextId) => setSelected((previous) => previous.map((value, i) => i === index ? nextId : value))} />
-            <button type="button" className="summary-remove" aria-label={`Remove ${SUMMARY_ROWS.find((row) => row.id === id)?.model}`} onClick={() => setSelected((previous) => previous.filter((_, i) => i !== index))}>×</button>
+            <button type="button" className="summary-remove" aria-label={`Remove ${SUMMARY_TABLE_ROWS.find((row) => row.id === id)?.model}`} onClick={() => setSelected((previous) => previous.filter((_, i) => i !== index))}>×</button>
           </div>)}
-          {selected.length < SUMMARY_ROWS.length ? <SummaryModelPicker excluded={selected} onChoose={(id) => setSelected((previous) => [...previous, id])} /> : null}
+          {selected.length < SUMMARY_TABLE_ROWS.length ? <SummaryModelPicker excluded={selected} onChoose={(id) => setSelected((previous) => [...previous, id])} /> : null}
         </div>
         {RADAR_LAYOUTS.map(({ width, centerY, radius, chartHeight, columns, rowHeight }) => {
           const centerX = width / 2;
@@ -95,7 +95,7 @@ function ModalityPlot() {
           </g>
         </svg>;
         })}
-        <PlotFooter methodology={METHODOLOGY} />
+        <PlotFooter methodology={methodology} />
       </figure>;
 }
 
@@ -123,7 +123,7 @@ export function Summary() {
           </th>)}</tr></thead>
           <tbody>{rows.map((row) => <tr key={row.id} data-model-id={row.id} data-model-kind={row.kind}>
             <th scope="row"><span className="summary-model-name"><ModelIcon provider={row.provider} /><span className="summary-model-label">
-              {row.model}{badgeDate && isNewModel(row.id, badgeDate) ? <span className="badge-new">New</span> : null}
+              <span className="summary-model-title"><span>{row.model}</span>{badgeDate && isNewModel(row.id, badgeDate) ? <span className="badge-new">New</span> : null}</span>
               {row.kind === "specialist-reference" ? <small>Composite specialist reference</small> : null}
             </span></span></th>
             <td className="summary-total">{format(row.total)}</td>

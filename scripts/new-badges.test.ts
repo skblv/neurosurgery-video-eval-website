@@ -43,3 +43,12 @@ test("prerendered tables never bake in New badges that could outlive their relea
     assert(!html.includes('class="badge-new"'), route || "summary");
   }
 });
+
+test("summary model titles reserve an inline badge slot without creating a separate badge line", () => {
+  const html = readFileSync("dist/index.html", "utf8");
+  assert.equal([...html.matchAll(/class="summary-model-title"><span>/g)].length, 23);
+  const css = readFileSync("src/index.css", "utf8");
+  assert.match(css, /\.summary-model-title\s*\{[^}]*display: inline-flex;[^}]*flex-wrap: nowrap;[^}]*white-space: nowrap;/);
+  assert.match(css, /\.summary-model-title > \.badge-new\s*\{[^}]*flex: none;[^}]*margin-left: 0;/);
+  assert.match(css, /@media \(max-width: 650px\)\s*\{[\s\S]*?\.summary-model-title\s*\{\s*white-space: normal;/, "Phone names can still wrap beside the badge within the sticky column");
+});

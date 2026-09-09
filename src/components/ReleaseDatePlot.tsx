@@ -1,6 +1,6 @@
 import { useRef, useState, type MouseEvent } from "react";
 import qwenLogo from "../assets/logos/qwen.svg?no-inline";
-import { SUMMARY_MODALITIES, SUMMARY_ROWS } from "../data/summary";
+import { SUMMARY_MODALITIES, SUMMARY_ROWS, SUMMARY_TABLE_ROWS } from "../data/summary";
 import { releasePoints, releasePlotLayout, releaseFamilies } from "../data/releasePlot";
 import { PROVIDER_ICONS } from "../data/providerIcons";
 import { plotMethodology } from "../data/plotMethodology";
@@ -8,6 +8,7 @@ import { PlotCopyButton } from "./PlotCopyButton";
 import { PlotFooter } from "./PlotFooter";
 
 const POINTS = releasePoints(SUMMARY_ROWS);
+const REFERENCE = SUMMARY_TABLE_ROWS.find((row) => row.kind === "specialist-reference");
 const FAMILIES = releaseFamilies(POINTS);
 const TITLE = "Surgical Intelligence Index: How well do LLMs perform against specialized models across surgical tasks?";
 const SUBTITLE = "Historical performance";
@@ -77,13 +78,21 @@ export function ReleaseDatePlot() {
             {compact ? <><tspan x={layout.x(tick)}>{monthFormat.format(tick)}</tspan><tspan x={layout.x(tick)} dy="19">{new Date(tick).getUTCFullYear()}</tspan></> : tickFormat.format(tick)}
           </text>
         </g>)}
+        {REFERENCE?.total != null ? <g className="release-reference" data-reference-model={REFERENCE.id} data-reference-score={REFERENCE.total}>
+          <title>{`${REFERENCE.model}: composite specialist reference (${REFERENCE.total.toFixed(3)}), not a dated model release`}</title>
+          <line x1={layout.bounds.left} x2={layout.bounds.right} y1={layout.y(REFERENCE.total)} y2={layout.y(REFERENCE.total)} className="release-reference-line" />
+        </g> : null}
         <text x={(layout.bounds.left + layout.bounds.right) / 2} y={layout.bounds.bottom + (compact ? 64 : 54)} textAnchor="middle" className="release-axis-label">Release date</text>
         <g className="release-family-legend" role="group" aria-label="Model families" transform={`translate(${layout.bounds.left + 12} ${layout.bounds.top + 12})`}>
-          <rect className="release-family-legend-box" width={Math.ceil(FAMILIES.length / 4) * legendColumnWidth + 20} height={Math.min(FAMILIES.length, 4) * 25 + 18} />
+          <rect className="release-family-legend-box" width={Math.ceil(FAMILIES.length / 4) * legendColumnWidth + 20} height={Math.min(FAMILIES.length, 4) * 25 + 18 + (REFERENCE?.total != null ? 20 : 0)} />
           {FAMILIES.map((family, index) => <g key={family.provider} data-family={family.provider} transform={`translate(${Math.floor(index / 4) * legendColumnWidth} ${22 + index % 4 * 25})`}>
             <ReleaseModelLogo provider={family.provider} x={22} y={0} />
             <text x="37" y="0" dy="0.35em">{family.label}</text>
           </g>)}
+          {REFERENCE?.total != null ? <g className="release-reference-key" role="img" aria-label={`${REFERENCE.model} composite specialist reference`}>
+            <title>{`${REFERENCE.model}: composite specialist reference (${REFERENCE.total.toFixed(3)})`}</title>
+            <line x1="10" x2="34" y1={Math.min(FAMILIES.length, 4) * 25 + 26} y2={Math.min(FAMILIES.length, 4) * 25 + 26} className="release-reference-line" />
+          </g> : null}
         </g>
         {layout.points.map((point) => <g key={point.id} className="release-point" role="button" tabIndex={0}
           aria-label={`${point.model}, released ${dateFormat.format(point.releasedAt)}, index ${point.total.toFixed(3)}`}

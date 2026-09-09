@@ -86,7 +86,7 @@ test("summary hides only the Action column and prerenders every model on the bra
     const families = Array.from(legend.matchAll(/data-family="([^"]+)"/g), (match) => match[1]);
     assert.deepEqual(families, ["openai", "anthropic", "gemini", "google", "qwen", "moonshot", "zai", "xai"]);
     assert.match(legend, /transform="translate\(76 46\)"/, "Legend is inset in the plot's upper-left corner");
-    assert(legend.includes(`<rect class="release-family-legend-box" width="${compact ? 220 : 188}" height="118"`), "Two columns, four rows, with room for larger phone text");
+    assert(legend.includes(`<rect class="release-family-legend-box" width="${compact ? 220 : 188}" height="138"`), "Two columns, four family rows and a compact reference swatch, with room for larger phone text");
     const columnWidth = compact ? 100 : 84;
     assert.deepEqual(Array.from(legend.matchAll(/data-family="[^"]+" transform="translate\((\d+) (\d+)\)"/g), (match) => match.slice(1).map(Number)), [[0, 22], [0, 47], [0, 72], [0, 97], [columnWidth, 22], [columnWidth, 47], [columnWidth, 72], [columnWidth, 97]]);
     assert.deepEqual(Array.from(legend.matchAll(/<text[^>]*>([^<]+)<\/text>/g), (match) => match[1]), ["GPT", "Claude", "Gemini", "Gemma", "Qwen", "Kimi", "GLM", "Grok"]);

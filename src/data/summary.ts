@@ -36,7 +36,7 @@ const providers = new Map(
 
 const modelRows = calculateSummary(SUMMARY_MODALITIES)
   .map((row) => ({ ...row, provider: providers.get(row.id)! }));
-// Keep the zero-shot plots and their model selectors unchanged.
+// Only zero-shot models appear as dated points; the table and spider also include trained references.
 export const SUMMARY_ROWS = modelRows.filter((row) => !EXCLUDED_SUMMARY_IDS.has(row.id));
 const specialistReference = calculateSpecialistReference(SUMMARY_MODALITIES);
 export const SUMMARY_TABLE_ROWS = [
