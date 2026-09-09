@@ -9,8 +9,8 @@ import { PlotCopyButton } from "./PlotCopyButton";
 import { PlotFooter } from "./PlotFooter";
 
 const METHODOLOGY = plotMethodology(SUMMARY_MODALITIES);
-const TITLE = "Surgical Intelligence Index";
-const SUBTITLE = "How well do LLMs perform against specialized models across surgical tasks?";
+const TITLE = "Surgical Intelligence Index: How well do LLMs perform against specialized models across surgical tasks?";
+const SUBTITLE = "Performance by modality";
 const format = (value: number | null) => value === null ? "NA" : value.toFixed(3);
 // Action remains hidden in the table; its adjusted score is NA until a baseline is verified.
 const TABLE_MODALITIES = SUMMARY_MODALITIES.flatMap((modality, index) => modality.id === "gestures" ? [] : [{ ...modality, index }]);

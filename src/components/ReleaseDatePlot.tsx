@@ -9,8 +9,8 @@ import { PlotFooter } from "./PlotFooter";
 
 const POINTS = releasePoints(SUMMARY_ROWS);
 const FAMILIES = releaseFamilies(POINTS);
-const TITLE = "Surgical Intelligence Index";
-const SUBTITLE = "How well do LLMs perform against specialized models across surgical tasks?";
+const TITLE = "Surgical Intelligence Index: How well do LLMs perform against specialized models across surgical tasks?";
+const SUBTITLE = "Historical performance";
 const METHODOLOGY = plotMethodology(SUMMARY_MODALITIES);
 const HEIGHT = 480;
 const LAYOUTS = [

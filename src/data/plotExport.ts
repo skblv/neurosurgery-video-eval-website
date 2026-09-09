@@ -47,9 +47,12 @@ export async function standalonePlotSvg(plot: SVGSVGElement, title: string, subt
   const figureStyle = getComputedStyle(plot.closest("figure") ?? plot);
   const measure = document.createElement("canvas").getContext("2d");
   if (!measure) throw new Error("Image export is unavailable.");
+  measure.font = `560 24px ${figureStyle.fontFamily}`;
+  const titleLines = wrapPlotSubtitle(title, width - 52, (text) => measure.measureText(text).width);
+  const titleExtraHeight = Math.max(0, titleLines.length - 1) * 30;
   measure.font = `20px ${figureStyle.fontFamily}`;
   const subtitleLines = wrapPlotSubtitle(subtitle, width - 52, (text) => measure.measureText(text).width);
-  const headerHeight = 64 + subtitleLines.length * 28;
+  const headerHeight = 64 + titleExtraHeight + subtitleLines.length * 28;
   measure.font = `12px ${figureStyle.fontFamily}`;
   const footerLines = wrapPlotSubtitle(methodology, width - 52, (text) => measure.measureText(text).width);
   const footerHeight = footerLines.length ? footerLines.length * 18 + 20 : 0;
@@ -70,7 +73,13 @@ export async function standalonePlotSvg(plot: SVGSVGElement, title: string, subt
   heading.setAttribute("font-family", figureStyle.fontFamily);
   heading.setAttribute("font-size", "24");
   heading.setAttribute("font-weight", "560");
-  heading.textContent = title;
+  titleLines.forEach((line, index) => {
+    const span = document.createElementNS(SVG_NS, "tspan");
+    span.setAttribute("x", "26");
+    span.setAttribute("y", String(42 + index * 30));
+    span.textContent = line;
+    heading.append(span);
+  });
   const description = document.createElementNS(SVG_NS, "text");
   description.setAttribute("fill", "#000");
   description.setAttribute("font-family", figureStyle.fontFamily);
@@ -78,7 +87,7 @@ export async function standalonePlotSvg(plot: SVGSVGElement, title: string, subt
   subtitleLines.forEach((line, index) => {
     const span = document.createElementNS(SVG_NS, "tspan");
     span.setAttribute("x", "26");
-    span.setAttribute("y", String(70 + index * 28));
+    span.setAttribute("y", String(70 + titleExtraHeight + index * 28));
     span.textContent = line;
     description.append(span);
   });

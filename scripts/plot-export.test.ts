@@ -25,6 +25,20 @@ test("export subtitle wraps without dropping words and leaves no lines for empty
   assert(!component.includes("Plot copied as PNG."), "No success sentence is rendered after copying");
 });
 
+test("long index titles wrap completely and reserve room before the subtitle and plot", () => {
+  const title = "Surgical Intelligence Index: How well do LLMs perform against specialized models across surgical tasks?";
+  for (const width of [508, 868]) {
+    const lines = wrapPlotSubtitle(title, width, (text) => text.length * 13);
+    assert.equal(lines.join(" "), title);
+    assert(lines.length > 1);
+    assert(lines.every((line) => line.length * 13 <= width));
+  }
+  const source = readFileSync("src/data/plotExport.ts", "utf8");
+  assert(source.includes("64 + titleExtraHeight + subtitleLines.length * 28"));
+  assert(source.includes("70 + titleExtraHeight + index * 28"));
+  assert(!source.includes("heading.textContent = title"));
+});
+
 test("PNG footer uses smaller grey type and bold SDSC-to-UChicago gradient branding without an underline", () => {
   const source = readFileSync("src/data/plotExport.ts", "utf8");
   assert(source.includes('footer.setAttribute("font-size", "12")'));
