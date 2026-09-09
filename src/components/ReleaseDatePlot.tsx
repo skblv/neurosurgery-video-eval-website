@@ -84,14 +84,15 @@ export function ReleaseDatePlot() {
         </g> : null}
         <text x={(layout.bounds.left + layout.bounds.right) / 2} y={layout.bounds.bottom + (compact ? 64 : 54)} textAnchor="middle" className="release-axis-label">Release date</text>
         <g className="release-family-legend" role="group" aria-label="Model families" transform={`translate(${layout.bounds.left + 12} ${layout.bounds.top + 12})`}>
-          <rect className="release-family-legend-box" width={Math.ceil(FAMILIES.length / 4) * legendColumnWidth + 20} height={Math.min(FAMILIES.length, 4) * 25 + 18 + (REFERENCE?.total != null ? 20 : 0)} />
+          <rect className="release-family-legend-box" width={Math.ceil(FAMILIES.length / 4) * legendColumnWidth + 20} height={Math.min(FAMILIES.length, 4) * 25 + 18 + (REFERENCE?.total != null ? 42 : 0)} />
           {FAMILIES.map((family, index) => <g key={family.provider} data-family={family.provider} transform={`translate(${Math.floor(index / 4) * legendColumnWidth} ${22 + index % 4 * 25})`}>
             <ReleaseModelLogo provider={family.provider} x={22} y={0} />
             <text x="37" y="0" dy="0.35em">{family.label}</text>
           </g>)}
-          {REFERENCE?.total != null ? <g className="release-reference-key" role="img" aria-label={`${REFERENCE.model} composite specialist reference`}>
+          {REFERENCE?.total != null ? <g className="release-reference-key" role="img" aria-label="SDSC/UChicago specialist model">
             <title>{`${REFERENCE.model}: composite specialist reference (${REFERENCE.total.toFixed(3)})`}</title>
             <line x1="10" x2="34" y1={Math.min(FAMILIES.length, 4) * 25 + 26} y2={Math.min(FAMILIES.length, 4) * 25 + 26} className="release-reference-line" />
+            <text x="37" y={Math.min(FAMILIES.length, 4) * 25 + 26} dy="0.35em">SDSC/UChicago<tspan x="37" dy="18"> specialist model</tspan></text>
           </g> : null}
         </g>
         {layout.points.map((point) => <g key={point.id} className="release-point" role="button" tabIndex={0}

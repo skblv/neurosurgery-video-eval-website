@@ -49,7 +49,7 @@ test("summary shows only the requested extra rows, using measured LemonFM scores
   const reference = rows.find((row) => row[1] === SPECIALIST_REFERENCE_ID)![3];
   const cells = (row: string) => [...row.matchAll(/<td[^>]*>([^<]*)<\/td>/g)].map((match) => match[1]);
   assert.deepEqual(cells(reference), Array(6).fill("1.000"));
-  assert(reference.includes("SDSC/UChicago") && reference.includes("Composite specialist reference") && reference.includes('class="joint-mark"'));
+  assert(reference.includes("<small>SDSC/UChicago specialist model</small>") && reference.includes('class="joint-mark"'));
 
   type Results = { datasets: Record<string, { results: { id: string; metrics: Record<string, { value: number | null }> }[] }> };
   const instrument: Results = JSON.parse(readFileSync("src/data/results.json", "utf8"));
@@ -86,8 +86,11 @@ test("historical plots show a dashed SDSC-green reference at one without inventi
     assert(!reference.includes("<text"), "No visible text annotation on the reference line");
     const legend = chart[2].slice(chart[2].indexOf('<g class="release-family-legend"'), chart[2].indexOf('<g class="release-point"'));
     const key = legend.match(/<g class="release-reference-key"[^>]*>([\s\S]*?)<\/g>/)![0];
-    assert(key.includes('class="release-reference-line"') && key.includes('aria-label="SDSC/UChicago composite specialist reference"'));
-    assert(!/<text|<image|<path/.test(key), "Legend key is a dashed swatch only: no visible text or logo");
+    assert(key.includes('class="release-reference-line"') && key.includes('aria-label="SDSC/UChicago specialist model"'));
+    assert(!/<image|<path/.test(key), "Reference legend uses a dash, not a logo");
+    const label = key.match(/<text[^>]*>([\s\S]*?)<\/text>/)![1];
+    assert.equal(label.replace(/<[^>]+>/g, ""), "SDSC/UChicago specialist model");
+    assert(label.includes('<tspan x="37" dy="18">'), "Wrap the label inside the compact legend instead of expanding its width");
   }
   const css = readFileSync("src/index.css", "utf8");
   assert.match(css, /\.release-reference-line\s*\{[^}]*stroke: var\(--sdsc-green\);[^}]*stroke-dasharray: 7 5;/);

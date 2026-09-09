@@ -124,7 +124,7 @@ export function Summary() {
           <tbody>{rows.map((row) => <tr key={row.id} data-model-id={row.id} data-model-kind={row.kind}>
             <th scope="row"><span className="summary-model-name"><ModelIcon provider={row.provider} /><span className="summary-model-label">
               <span className="summary-model-title"><span>{row.model}</span>{badgeDate && isNewModel(row.id, badgeDate) ? <span className="badge-new">New</span> : null}</span>
-              {row.kind === "specialist-reference" ? <small>Composite specialist reference</small> : null}
+              {row.kind === "specialist-reference" ? <small>SDSC/UChicago specialist model</small> : null}
             </span></span></th>
             <td className="summary-total">{format(row.total)}</td>
             {TABLE_MODALITIES.map((modality) => <td key={modality.id}>{format(row.scores[modality.index].value)}</td>)}
