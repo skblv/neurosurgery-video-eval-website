@@ -2,7 +2,7 @@ import { isNewModel } from "../data/leaderboard";
 import type { FootnoteLookup, LeaderboardBenchmark } from "../data/leaderboard";
 import { BASELINE_ICON_LABEL, DieIcon } from "./DieIcon";
 import { ModelIcon } from "./ModelIcon";
-import { useHydrated } from "../hooks/useHydrated";
+import { useBadgeDate } from "../hooks/useBadgeDate";
 
 /** The majority-class baseline ranks alongside the models, so rows are provider-optional. */
 interface TableRow {
@@ -66,7 +66,7 @@ export function ResultsTable<MetricId extends string>({
   showConfidenceInterval?: boolean;
 }) {
   const rows = buildRows(dataset, metricId);
-  const hydrated = useHydrated();
+  const badgeDate = useBadgeDate();
 
   return (
     <table className="table">
@@ -93,7 +93,7 @@ export function ResultsTable<MetricId extends string>({
                 <ModelIcon provider={row.provider} />
               )}
               {row.label}
-              {hydrated && isNewModel(row.key) ? <span className="badge-new">New</span> : null}
+              {badgeDate && isNewModel(row.key, badgeDate) ? <span className="badge-new">New</span> : null}
               {footnoteFor(row.key) === null ? null : (
                 <sup className="footnote-ref">{footnoteFor(row.key)}</sup>
               )}

@@ -1,5 +1,5 @@
 import { useEffect, useId, useRef, useState } from "react";
-import { SUMMARY_ROWS } from "../data/summary";
+import { SUMMARY_TABLE_ROWS } from "../data/summary";
 import { ModelIcon } from "./ModelIcon";
 import { matchesModelSearch } from "../data/modelSearch";
 
@@ -16,8 +16,8 @@ export function SummaryModelPicker({ modelId, excluded, color, onChoose }: {
   const search = useRef<HTMLInputElement>(null);
   const root = useRef<HTMLDivElement>(null);
   const trigger = useRef<HTMLButtonElement>(null);
-  const model = SUMMARY_ROWS.find((row) => row.id === modelId);
-  const options = SUMMARY_ROWS.filter((row) => (row.id === modelId || !excluded.includes(row.id)) && matchesModelSearch(row.model, query));
+  const model = SUMMARY_TABLE_ROWS.find((row) => row.id === modelId);
+  const options = SUMMARY_TABLE_ROWS.filter((row) => (row.id === modelId || !excluded.includes(row.id)) && matchesModelSearch(row.model, query));
   const activeOptionId = activeIndex >= 0 && activeIndex < options.length ? `${listId}-${options[activeIndex].id}` : undefined;
 
   function choose(id: string) {

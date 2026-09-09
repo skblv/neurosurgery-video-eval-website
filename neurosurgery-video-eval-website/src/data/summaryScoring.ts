@@ -47,3 +47,19 @@ export function calculateSummary(modalities: SummaryModality[]) {
     return { id, model, scores, total: meanAvailable(scores.map((score) => score.value)), covered: scores.reduce((sum, score) => sum + score.covered, 0) };
   }).sort((a, b) => (b.total ?? -Infinity) - (a.total ?? -Infinity) || b.covered - a.covered || a.model.localeCompare(b.model));
 }
+
+export const SPECIALIST_REFERENCE_ID = "sdsc-uchicago-reference";
+
+/** A composite of each dataset's fixed specialist, not an independently evaluated model. */
+export function calculateSpecialistReference(modalities: SummaryModality[]) {
+  return calculateSummary(modalities.map((modality) => ({
+    ...modality,
+    datasets: modality.datasets.map((dataset) => ({
+      ...dataset,
+      results: [
+        ...dataset.results.filter((result) => result.id === dataset.referenceId),
+        { id: SPECIALIST_REFERENCE_ID, model: "SDSC/UChicago", value: dataset.results.find((result) => result.id === dataset.referenceId)?.value ?? null },
+      ],
+    })),
+  }))).find((row) => row.id === SPECIALIST_REFERENCE_ID);
+}
