@@ -29,7 +29,7 @@ export function InstrumentLeaderboard() {
   return (
     <>
       <header className="domain-hero">
-        <h2>Which instruments are visible?</h2>
+        <h2>Which instruments are visible?</h2>{" "}
         <p>
           Identifying surgical tools is a prerequisite for understanding what is
           happening in an operation. We compare frontier and specialist models
