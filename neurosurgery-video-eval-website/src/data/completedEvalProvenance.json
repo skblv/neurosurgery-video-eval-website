@@ -1,0 +1,4068 @@
+{
+  "run": "summary_gaps_20260907",
+  "note": "Completed runs only. Original prompts/schemas; parse failures and refusals retained in scoring. Action and SDSC-EEA excluded. Maximum 1000 fixed seed-42 validation samples per dataset; all validation examples when fewer exist.",
+  "evaluations": [
+    {
+      "model": "gpt-5_6-luna",
+      "dataset": "cholect50",
+      "sampleCount": 1000,
+      "result": {
+        "model": "gpt-5_6-luna",
+        "dataset": "cholect50",
+        "n": 1000,
+        "website_entry": {
+          "exactMatch": {
+            "value": 40.8,
+            "ciLow": 37.7,
+            "ciHigh": 43.7
+          },
+          "microF1": {
+            "value": 60.29,
+            "ciLow": 57.89,
+            "ciHigh": 62.62
+          }
+        }
+      }
+    },
+    {
+      "model": "gpt-5_6-luna",
+      "dataset": "pitvis",
+      "sampleCount": 1000,
+      "result": {
+        "model": "gpt-5_6-luna",
+        "dataset": "pitvis",
+        "n": 1000,
+        "website_entry": {
+          "exactMatch": {
+            "value": 33,
+            "ciLow": 30.2,
+            "ciHigh": 36.2
+          },
+          "microF1": {
+            "value": 40.83,
+            "ciLow": 38.11,
+            "ciHigh": 43.47
+          }
+        }
+      }
+    },
+    {
+      "model": "gpt-5_6-luna",
+      "dataset": "surgvu",
+      "sampleCount": 1000,
+      "result": {
+        "model": "gpt-5_6-luna",
+        "dataset": "surgvu",
+        "n": 1000,
+        "website_entry": {
+          "exactMatch": {
+            "value": 16.4,
+            "ciLow": 14.2,
+            "ciHigh": 18.9
+          },
+          "microF1": {
+            "value": 24.44,
+            "ciLow": 22.57,
+            "ciHigh": 26.3
+          }
+        }
+      }
+    },
+    {
+      "model": "gpt-5_6-luna",
+      "dataset": "cadis",
+      "sampleCount": 534,
+      "result": {
+        "board": "cadis",
+        "model": "gpt-5_6-luna",
+        "slug": "openai/gpt-5.6-luna",
+        "max_tokens": 4096,
+        "decision_rule": "multilabel",
+        "n": 534,
+        "n_obs_requested": 1000,
+        "parse_failures": 19,
+        "responses_at_cap": 0,
+        "cost_usd": 0.4134,
+        "website_entry": {
+          "exactMatch": {
+            "value": 3,
+            "ciLow": 1.5,
+            "ciHigh": 4.49
+          },
+          "microF1": {
+            "value": 73.34,
+            "ciLow": 72.07,
+            "ciHigh": 74.6
+          }
+        }
+      }
+    },
+    {
+      "model": "gpt-5_6-luna",
+      "dataset": "endoscapes",
+      "sampleCount": 409,
+      "result": {
+        "board": "endoscapes",
+        "model": "gpt-5_6-luna",
+        "slug": "openai/gpt-5.6-luna",
+        "max_tokens": 4096,
+        "decision_rule": "multilabel",
+        "n": 409,
+        "n_obs_requested": 1000,
+        "parse_failures": 16,
+        "responses_at_cap": 0,
+        "cost_usd": 0.2337,
+        "website_entry": {
+          "exactMatch": {
+            "value": 19.32,
+            "ciLow": 15.65,
+            "ciHigh": 22.98
+          },
+          "microF1": {
+            "value": 76.11,
+            "ciLow": 74.53,
+            "ciHigh": 77.65
+          }
+        }
+      }
+    },
+    {
+      "model": "gpt-5_6-luna",
+      "dataset": "pitvissteps",
+      "sampleCount": 1000,
+      "result": {
+        "board": "pitvissteps",
+        "model": "gpt-5_6-luna",
+        "slug": "openai/gpt-5.6-luna",
+        "max_tokens": 4096,
+        "decision_rule": "single_label",
+        "n": 1000,
+        "n_obs_requested": 1000,
+        "parse_failures": 16,
+        "responses_at_cap": 0,
+        "cost_usd": 0.6733,
+        "website_entry": {
+          "exactMatch": {
+            "value": 24,
+            "ciLow": 21.6,
+            "ciHigh": 26.9
+          },
+          "microF1": {
+            "value": 24.19,
+            "ciLow": 21.8,
+            "ciHigh": 27.09
+          }
+        }
+      }
+    },
+    {
+      "model": "gemini-3-flash",
+      "dataset": "dsad",
+      "sampleCount": 1000,
+      "result": {
+        "dataset": "dsad",
+        "model": "gemini-3-flash",
+        "provider": "openrouter",
+        "temperature": 1,
+        "total_sampled": 1000,
+        "total_processed": 1000,
+        "skipped_technical": 0,
+        "parse_failures": 0,
+        "refusals": 0,
+        "run_cost_usd": 0.6621,
+        "exact_match_pct": 7.3999999999999995,
+        "exact_match_ci_low_pct": 5.7,
+        "exact_match_ci_high_pct": 9,
+        "micro_f1_pct": 46.871338176704946,
+        "micro_f1_ci_low_pct": 44.984512747200384,
+        "micro_f1_ci_high_pct": 48.82518796992481,
+        "website_entry": {
+          "exactMatch": {
+            "value": 7.4,
+            "ciLow": 5.7,
+            "ciHigh": 9
+          },
+          "microF1": {
+            "value": 46.9,
+            "ciLow": 45,
+            "ciHigh": 48.8
+          }
+        }
+      }
+    },
+    {
+      "model": "gemini-3-flash",
+      "dataset": "cadis",
+      "sampleCount": 534,
+      "result": {
+        "board": "cadis",
+        "model": "gemini-3-flash",
+        "slug": "google/gemini-3-flash-preview",
+        "max_tokens": 4096,
+        "decision_rule": "multilabel",
+        "n": 534,
+        "n_obs_requested": 1000,
+        "parse_failures": 1,
+        "responses_at_cap": 0,
+        "cost_usd": 0.4143,
+        "website_entry": {
+          "exactMatch": {
+            "value": 18.16,
+            "ciLow": 14.79,
+            "ciHigh": 21.72
+          },
+          "microF1": {
+            "value": 85.84,
+            "ciLow": 84.91,
+            "ciHigh": 86.82
+          }
+        }
+      }
+    },
+    {
+      "model": "gemini-3-flash",
+      "dataset": "endoscapes",
+      "sampleCount": 409,
+      "result": {
+        "board": "endoscapes",
+        "model": "gemini-3-flash",
+        "slug": "google/gemini-3-flash-preview",
+        "max_tokens": 4096,
+        "decision_rule": "multilabel",
+        "n": 409,
+        "n_obs_requested": 1000,
+        "parse_failures": 0,
+        "responses_at_cap": 0,
+        "cost_usd": 0.2932,
+        "website_entry": {
+          "exactMatch": {
+            "value": 23.47,
+            "ciLow": 19.56,
+            "ciHigh": 27.38
+          },
+          "microF1": {
+            "value": 75.05,
+            "ciLow": 73.28,
+            "ciHigh": 76.81
+          }
+        }
+      }
+    },
+    {
+      "model": "gemini-3-flash",
+      "dataset": "pitvqa",
+      "sampleCount": 1000,
+      "result": {
+        "dataset": "pitvqa",
+        "model": "gemini-3-flash",
+        "provider": "openrouter",
+        "temperature": 1,
+        "total_sampled": 1000,
+        "total_processed": 1000,
+        "skipped_technical": 0,
+        "parse_failures": 0,
+        "refusals": 0,
+        "run_cost_usd": 0.7048,
+        "exact_match_pct": 24.3,
+        "exact_match_ci_low_pct": 21.5,
+        "exact_match_ci_high_pct": 27.1,
+        "micro_f1_pct": 41.65,
+        "micro_f1_ci_low_pct": 39.25,
+        "micro_f1_ci_high_pct": 44.35,
+        "website_entry": {
+          "exactMatch": {
+            "value": 24.3,
+            "ciLow": 21.5,
+            "ciHigh": 27.1
+          },
+          "microF1": {
+            "value": 41.6,
+            "ciLow": 39.2,
+            "ciHigh": 44.4
+          }
+        }
+      }
+    },
+    {
+      "model": "gemini-3-flash",
+      "dataset": "cholect50verbs",
+      "sampleCount": 1000,
+      "result": {
+        "dataset": "cholect50verbs",
+        "model": "gemini-3-flash",
+        "provider": "openrouter",
+        "temperature": 1,
+        "total_sampled": 1000,
+        "total_processed": 1000,
+        "skipped_technical": 0,
+        "parse_failures": 0,
+        "refusals": 0,
+        "run_cost_usd": 0.7252,
+        "exact_match_pct": 27.200000000000003,
+        "exact_match_ci_low_pct": 24.5,
+        "exact_match_ci_high_pct": 30.099999999999998,
+        "micro_f1_pct": 66.03665521191294,
+        "micro_f1_ci_low_pct": 64.35239206534422,
+        "micro_f1_ci_high_pct": 67.6923076923077,
+        "website_entry": {
+          "exactMatch": {
+            "value": 27.2,
+            "ciLow": 24.5,
+            "ciHigh": 30.1
+          },
+          "microF1": {
+            "value": 66,
+            "ciLow": 64.4,
+            "ciHigh": 67.7
+          }
+        }
+      }
+    },
+    {
+      "model": "gemini-3-flash",
+      "dataset": "pitvissteps",
+      "sampleCount": 1000,
+      "result": {
+        "board": "pitvissteps",
+        "model": "gemini-3-flash",
+        "slug": "google/gemini-3-flash-preview",
+        "max_tokens": 4096,
+        "decision_rule": "single_label",
+        "n": 1000,
+        "n_obs_requested": 1000,
+        "parse_failures": 0,
+        "responses_at_cap": 0,
+        "cost_usd": 0.7042,
+        "website_entry": {
+          "exactMatch": {
+            "value": 25.1,
+            "ciLow": 22.3,
+            "ciHigh": 27.9
+          },
+          "microF1": {
+            "value": 25.1,
+            "ciLow": 22.3,
+            "ciHigh": 27.9
+          }
+        }
+      }
+    },
+    {
+      "model": "gemini-3-flash",
+      "dataset": "sarrarp50",
+      "sampleCount": 636,
+      "result": {
+        "dataset": "sarrarp50",
+        "model": "gemini-3-flash",
+        "provider": "openrouter",
+        "temperature": 1,
+        "total_sampled": 636,
+        "total_processed": 636,
+        "skipped_technical": 0,
+        "parse_failures": 0,
+        "refusals": 0,
+        "run_cost_usd": 0.4132,
+        "exact_match_pct": 28.930817610062892,
+        "exact_match_ci_low_pct": 25.78616352201258,
+        "exact_match_ci_high_pct": 32.70440251572327,
+        "micro_f1_pct": 28.930817610062892,
+        "micro_f1_ci_low_pct": 25.78616352201258,
+        "micro_f1_ci_high_pct": 32.70440251572327,
+        "website_entry": {
+          "exactMatch": {
+            "value": 28.9,
+            "ciLow": 25.8,
+            "ciHigh": 32.7
+          },
+          "microF1": {
+            "value": 28.9,
+            "ciLow": 25.8,
+            "ciHigh": 32.7
+          }
+        }
+      }
+    },
+    {
+      "model": "gemini-3_7-flash",
+      "dataset": "cholect50",
+      "sampleCount": 1000,
+      "result": {
+        "model": "gemini-3_7-flash",
+        "dataset": "cholect50",
+        "n": 1000,
+        "website_entry": {
+          "exactMatch": {
+            "value": 72.9,
+            "ciLow": 69.9,
+            "ciHigh": 75.7
+          },
+          "microF1": {
+            "value": 84.77,
+            "ciLow": 82.77,
+            "ciHigh": 86.51
+          }
+        }
+      }
+    },
+    {
+      "model": "gemini-3_7-flash",
+      "dataset": "pitvis",
+      "sampleCount": 1000,
+      "result": {
+        "model": "gemini-3_7-flash",
+        "dataset": "pitvis",
+        "n": 1000,
+        "website_entry": {
+          "exactMatch": {
+            "value": 59.6,
+            "ciLow": 56.5,
+            "ciHigh": 62.6
+          },
+          "microF1": {
+            "value": 55.88,
+            "ciLow": 52.47,
+            "ciHigh": 59.39
+          }
+        }
+      }
+    },
+    {
+      "model": "gemini-3_7-flash",
+      "dataset": "cadis",
+      "sampleCount": 534,
+      "result": {
+        "board": "cadis",
+        "model": "gemini-3_7-flash",
+        "slug": "google/gemini-3.7-flash",
+        "max_tokens": 4096,
+        "decision_rule": "multilabel",
+        "n": 534,
+        "n_obs_requested": 1000,
+        "parse_failures": 0,
+        "responses_at_cap": 0,
+        "cost_usd": 1.6868,
+        "website_entry": {
+          "exactMatch": {
+            "value": 20.04,
+            "ciLow": 16.48,
+            "ciHigh": 23.41
+          },
+          "microF1": {
+            "value": 86.63,
+            "ciLow": 85.77,
+            "ciHigh": 87.57
+          }
+        }
+      }
+    },
+    {
+      "model": "gemini-3_7-flash",
+      "dataset": "endoscapes",
+      "sampleCount": 409,
+      "result": {
+        "board": "endoscapes",
+        "model": "gemini-3_7-flash",
+        "slug": "google/gemini-3.7-flash",
+        "max_tokens": 4096,
+        "decision_rule": "multilabel",
+        "n": 409,
+        "n_obs_requested": 1000,
+        "parse_failures": 0,
+        "responses_at_cap": 0,
+        "cost_usd": 0.9971,
+        "website_entry": {
+          "exactMatch": {
+            "value": 26.89,
+            "ciLow": 22.49,
+            "ciHigh": 31.05
+          },
+          "microF1": {
+            "value": 80.07,
+            "ciLow": 78.4,
+            "ciHigh": 81.72
+          }
+        }
+      }
+    },
+    {
+      "model": "gemini-3_7-flash",
+      "dataset": "pitvissteps",
+      "sampleCount": 1000,
+      "result": {
+        "board": "pitvissteps",
+        "model": "gemini-3_7-flash",
+        "slug": "google/gemini-3.7-flash",
+        "max_tokens": 4096,
+        "decision_rule": "single_label",
+        "n": 1000,
+        "n_obs_requested": 1000,
+        "parse_failures": 0,
+        "responses_at_cap": 0,
+        "cost_usd": 2.478,
+        "website_entry": {
+          "exactMatch": {
+            "value": 29.3,
+            "ciLow": 26.5,
+            "ciHigh": 32.2
+          },
+          "microF1": {
+            "value": 29.3,
+            "ciLow": 26.5,
+            "ciHigh": 32.2
+          }
+        }
+      }
+    },
+    {
+      "model": "gpt-5_6-terra",
+      "dataset": "cholect50",
+      "sampleCount": 1000,
+      "result": {
+        "model": "gpt-5_6-terra",
+        "dataset": "cholect50",
+        "n": 1000,
+        "website_entry": {
+          "exactMatch": {
+            "value": 41.1,
+            "ciLow": 38.1,
+            "ciHigh": 44.1
+          },
+          "microF1": {
+            "value": 62.81,
+            "ciLow": 60.66,
+            "ciHigh": 64.84
+          }
+        }
+      }
+    },
+    {
+      "model": "gpt-5_6-terra",
+      "dataset": "pitvis",
+      "sampleCount": 1000,
+      "result": {
+        "model": "gpt-5_6-terra",
+        "dataset": "pitvis",
+        "n": 1000,
+        "website_entry": {
+          "exactMatch": {
+            "value": 36.3,
+            "ciLow": 33.4,
+            "ciHigh": 39.1
+          },
+          "microF1": {
+            "value": 44.08,
+            "ciLow": 41.11,
+            "ciHigh": 46.82
+          }
+        }
+      }
+    },
+    {
+      "model": "gpt-5_6-terra",
+      "dataset": "surgvu",
+      "sampleCount": 1000,
+      "result": {
+        "model": "gpt-5_6-terra",
+        "dataset": "surgvu",
+        "n": 1000,
+        "website_entry": {
+          "exactMatch": {
+            "value": 18,
+            "ciLow": 15.7,
+            "ciHigh": 20.4
+          },
+          "microF1": {
+            "value": 34.84,
+            "ciLow": 32.77,
+            "ciHigh": 36.75
+          }
+        }
+      }
+    },
+    {
+      "model": "gpt-5_6-terra",
+      "dataset": "cadis",
+      "sampleCount": 534,
+      "result": {
+        "board": "cadis",
+        "model": "gpt-5_6-terra",
+        "slug": "openai/gpt-5.6-terra",
+        "max_tokens": 4096,
+        "decision_rule": "multilabel",
+        "n": 534,
+        "n_obs_requested": 1000,
+        "parse_failures": 0,
+        "responses_at_cap": 0,
+        "cost_usd": 2.9786,
+        "website_entry": {
+          "exactMatch": {
+            "value": 7.3,
+            "ciLow": 5.24,
+            "ciHigh": 9.55
+          },
+          "microF1": {
+            "value": 80.41,
+            "ciLow": 79.48,
+            "ciHigh": 81.39
+          }
+        }
+      }
+    },
+    {
+      "model": "gpt-5_6-terra",
+      "dataset": "endoscapes",
+      "sampleCount": 409,
+      "result": {
+        "board": "endoscapes",
+        "model": "gpt-5_6-terra",
+        "slug": "openai/gpt-5.6-terra",
+        "max_tokens": 4096,
+        "decision_rule": "multilabel",
+        "n": 409,
+        "n_obs_requested": 1000,
+        "parse_failures": 0,
+        "responses_at_cap": 0,
+        "cost_usd": 1.5543,
+        "website_entry": {
+          "exactMatch": {
+            "value": 22.49,
+            "ciLow": 18.34,
+            "ciHigh": 26.16
+          },
+          "microF1": {
+            "value": 73.97,
+            "ciLow": 72.39,
+            "ciHigh": 75.66
+          }
+        }
+      }
+    },
+    {
+      "model": "gpt-5_6-terra",
+      "dataset": "pitvissteps",
+      "sampleCount": 1000,
+      "result": {
+        "board": "pitvissteps",
+        "model": "gpt-5_6-terra",
+        "slug": "openai/gpt-5.6-terra",
+        "max_tokens": 4096,
+        "decision_rule": "single_label",
+        "n": 1000,
+        "n_obs_requested": 1000,
+        "parse_failures": 0,
+        "responses_at_cap": 0,
+        "cost_usd": 5.3353,
+        "website_entry": {
+          "exactMatch": {
+            "value": 21.7,
+            "ciLow": 19.1,
+            "ciHigh": 24.3
+          },
+          "microF1": {
+            "value": 21.7,
+            "ciLow": 19.1,
+            "ciHigh": 24.3
+          }
+        }
+      }
+    },
+    {
+      "model": "claude-sonnet-5",
+      "dataset": "cholect50",
+      "sampleCount": 1000,
+      "result": {
+        "model": "claude-sonnet-5",
+        "dataset": "cholect50",
+        "n": 1000,
+        "website_entry": {
+          "exactMatch": {
+            "value": 52.8,
+            "ciLow": 49.7,
+            "ciHigh": 56
+          },
+          "microF1": {
+            "value": 70.75,
+            "ciLow": 68.49,
+            "ciHigh": 72.82
+          }
+        }
+      }
+    },
+    {
+      "model": "claude-sonnet-5",
+      "dataset": "pitvis",
+      "sampleCount": 1000,
+      "result": {
+        "model": "claude-sonnet-5",
+        "dataset": "pitvis",
+        "n": 1000,
+        "website_entry": {
+          "exactMatch": {
+            "value": 54.3,
+            "ciLow": 51.1,
+            "ciHigh": 57.3
+          },
+          "microF1": {
+            "value": 45.45,
+            "ciLow": 42.17,
+            "ciHigh": 48.61
+          }
+        }
+      }
+    },
+    {
+      "model": "claude-sonnet-5",
+      "dataset": "surgvu",
+      "sampleCount": 1000,
+      "result": {
+        "model": "claude-sonnet-5",
+        "dataset": "surgvu",
+        "n": 1000,
+        "website_entry": {
+          "exactMatch": {
+            "value": 16.8,
+            "ciLow": 14.6,
+            "ciHigh": 19.3
+          },
+          "microF1": {
+            "value": 26.78,
+            "ciLow": 24.77,
+            "ciHigh": 28.89
+          }
+        }
+      }
+    },
+    {
+      "model": "claude-sonnet-5",
+      "dataset": "cadis",
+      "sampleCount": 534,
+      "result": {
+        "board": "cadis",
+        "model": "claude-sonnet-5",
+        "slug": "anthropic/claude-sonnet-5",
+        "max_tokens": 4096,
+        "decision_rule": "multilabel",
+        "n": 534,
+        "n_obs_requested": 1000,
+        "parse_failures": 0,
+        "responses_at_cap": 0,
+        "cost_usd": 1.5263,
+        "website_entry": {
+          "exactMatch": {
+            "value": 3.18,
+            "ciLow": 1.87,
+            "ciHigh": 4.68
+          },
+          "microF1": {
+            "value": 74.23,
+            "ciLow": 73.24,
+            "ciHigh": 75.32
+          }
+        }
+      }
+    },
+    {
+      "model": "claude-sonnet-5",
+      "dataset": "endoscapes",
+      "sampleCount": 409,
+      "result": {
+        "board": "endoscapes",
+        "model": "claude-sonnet-5",
+        "slug": "anthropic/claude-sonnet-5",
+        "max_tokens": 4096,
+        "decision_rule": "multilabel",
+        "n": 409,
+        "n_obs_requested": 1000,
+        "parse_failures": 0,
+        "responses_at_cap": 0,
+        "cost_usd": 0.9097,
+        "website_entry": {
+          "exactMatch": {
+            "value": 15.65,
+            "ciLow": 12.47,
+            "ciHigh": 19.32
+          },
+          "microF1": {
+            "value": 72.68,
+            "ciLow": 71.17,
+            "ciHigh": 74.34
+          }
+        }
+      }
+    },
+    {
+      "model": "claude-sonnet-5",
+      "dataset": "pitvissteps",
+      "sampleCount": 1000,
+      "result": {
+        "board": "pitvissteps",
+        "model": "claude-sonnet-5",
+        "slug": "anthropic/claude-sonnet-5",
+        "max_tokens": 4096,
+        "decision_rule": "single_label",
+        "n": 1000,
+        "n_obs_requested": 1000,
+        "parse_failures": 0,
+        "responses_at_cap": 0,
+        "cost_usd": 3.4438,
+        "website_entry": {
+          "exactMatch": {
+            "value": 14,
+            "ciLow": 12,
+            "ciHigh": 16.2
+          },
+          "microF1": {
+            "value": 14,
+            "ciLow": 12,
+            "ciHigh": 16.2
+          }
+        }
+      }
+    },
+    {
+      "model": "gpt-5_4",
+      "dataset": "dsad",
+      "sampleCount": 1000,
+      "result": {
+        "dataset": "dsad",
+        "model": "gpt-5_4",
+        "provider": "openrouter",
+        "temperature": 1,
+        "total_sampled": 1000,
+        "total_processed": 1000,
+        "skipped_technical": 0,
+        "parse_failures": 0,
+        "refusals": 0,
+        "run_cost_usd": 4.4409,
+        "exact_match_pct": 4.6,
+        "exact_match_ci_low_pct": 3.4000000000000004,
+        "exact_match_ci_high_pct": 6,
+        "micro_f1_pct": 38.989851309889076,
+        "micro_f1_ci_low_pct": 37.17524799244213,
+        "micro_f1_ci_high_pct": 40.888678799338216,
+        "website_entry": {
+          "exactMatch": {
+            "value": 4.6,
+            "ciLow": 3.4,
+            "ciHigh": 6
+          },
+          "microF1": {
+            "value": 39,
+            "ciLow": 37.2,
+            "ciHigh": 40.9
+          }
+        }
+      }
+    },
+    {
+      "model": "gpt-5_4",
+      "dataset": "cadis",
+      "sampleCount": 534,
+      "result": {
+        "board": "cadis",
+        "model": "gpt-5_4",
+        "slug": "openai/gpt-5.4",
+        "max_tokens": 4096,
+        "decision_rule": "multilabel",
+        "n": 534,
+        "n_obs_requested": 1000,
+        "parse_failures": 0,
+        "responses_at_cap": 0,
+        "cost_usd": 1.4142,
+        "website_entry": {
+          "exactMatch": {
+            "value": 5.06,
+            "ciLow": 3.37,
+            "ciHigh": 6.93
+          },
+          "microF1": {
+            "value": 78.91,
+            "ciLow": 78.13,
+            "ciHigh": 79.77
+          }
+        }
+      }
+    },
+    {
+      "model": "gpt-5_4",
+      "dataset": "endoscapes",
+      "sampleCount": 409,
+      "result": {
+        "board": "endoscapes",
+        "model": "gpt-5_4",
+        "slug": "openai/gpt-5.4",
+        "max_tokens": 4096,
+        "decision_rule": "multilabel",
+        "n": 409,
+        "n_obs_requested": 1000,
+        "parse_failures": 0,
+        "responses_at_cap": 0,
+        "cost_usd": 0.8524,
+        "website_entry": {
+          "exactMatch": {
+            "value": 20.54,
+            "ciLow": 16.63,
+            "ciHigh": 23.96
+          },
+          "microF1": {
+            "value": 70.21,
+            "ciLow": 68.69,
+            "ciHigh": 71.61
+          }
+        }
+      }
+    },
+    {
+      "model": "gpt-5_4",
+      "dataset": "pitvqa",
+      "sampleCount": 1000,
+      "result": {
+        "dataset": "pitvqa",
+        "model": "gpt-5_4",
+        "provider": "openrouter",
+        "temperature": 1,
+        "total_sampled": 1000,
+        "total_processed": 1000,
+        "skipped_technical": 0,
+        "parse_failures": 0,
+        "refusals": 0,
+        "run_cost_usd": 0.9032,
+        "exact_match_pct": 24.5,
+        "exact_match_ci_low_pct": 22,
+        "exact_match_ci_high_pct": 27.200000000000003,
+        "micro_f1_pct": 42.3,
+        "micro_f1_ci_low_pct": 40,
+        "micro_f1_ci_high_pct": 44.75,
+        "website_entry": {
+          "exactMatch": {
+            "value": 24.5,
+            "ciLow": 22,
+            "ciHigh": 27.2
+          },
+          "microF1": {
+            "value": 42.3,
+            "ciLow": 40,
+            "ciHigh": 44.8
+          }
+        }
+      }
+    },
+    {
+      "model": "gpt-5_4",
+      "dataset": "cholect50verbs",
+      "sampleCount": 1000,
+      "result": {
+        "dataset": "cholect50verbs",
+        "model": "gpt-5_4",
+        "provider": "openrouter",
+        "temperature": 1,
+        "total_sampled": 1000,
+        "total_processed": 1000,
+        "skipped_technical": 0,
+        "parse_failures": 0,
+        "refusals": 0,
+        "run_cost_usd": 2.1292,
+        "exact_match_pct": 28.599999999999998,
+        "exact_match_ci_low_pct": 25.7,
+        "exact_match_ci_high_pct": 31.6,
+        "micro_f1_pct": 62.5886524822695,
+        "micro_f1_ci_low_pct": 60.4093567251462,
+        "micro_f1_ci_high_pct": 64.5766188104307,
+        "website_entry": {
+          "exactMatch": {
+            "value": 28.6,
+            "ciLow": 25.7,
+            "ciHigh": 31.6
+          },
+          "microF1": {
+            "value": 62.6,
+            "ciLow": 60.4,
+            "ciHigh": 64.6
+          }
+        }
+      }
+    },
+    {
+      "model": "gpt-5_4",
+      "dataset": "pitvissteps",
+      "sampleCount": 1000,
+      "result": {
+        "board": "pitvissteps",
+        "model": "gpt-5_4",
+        "slug": "openai/gpt-5.4",
+        "max_tokens": 4096,
+        "decision_rule": "single_label",
+        "n": 1000,
+        "n_obs_requested": 1000,
+        "parse_failures": 0,
+        "responses_at_cap": 0,
+        "cost_usd": 3.6058,
+        "website_entry": {
+          "exactMatch": {
+            "value": 23.6,
+            "ciLow": 20.9,
+            "ciHigh": 26.2
+          },
+          "microF1": {
+            "value": 23.6,
+            "ciLow": 20.9,
+            "ciHigh": 26.2
+          }
+        }
+      }
+    },
+    {
+      "model": "gpt-5_4",
+      "dataset": "sarrarp50",
+      "sampleCount": 636,
+      "result": {
+        "dataset": "sarrarp50",
+        "model": "gpt-5_4",
+        "provider": "openrouter",
+        "temperature": 1,
+        "total_sampled": 636,
+        "total_processed": 636,
+        "skipped_technical": 0,
+        "parse_failures": 0,
+        "refusals": 0,
+        "run_cost_usd": 4.1996,
+        "exact_match_pct": 28.930817610062892,
+        "exact_match_ci_low_pct": 25.31446540880503,
+        "exact_match_ci_high_pct": 32.54716981132076,
+        "micro_f1_pct": 28.930817610062892,
+        "micro_f1_ci_low_pct": 25.31446540880503,
+        "micro_f1_ci_high_pct": 32.54716981132076,
+        "website_entry": {
+          "exactMatch": {
+            "value": 28.9,
+            "ciLow": 25.3,
+            "ciHigh": 32.5
+          },
+          "microF1": {
+            "value": 28.9,
+            "ciLow": 25.3,
+            "ciHigh": 32.5
+          }
+        }
+      }
+    },
+    {
+      "model": "kimi-k3",
+      "dataset": "dsad",
+      "sampleCount": 1000,
+      "result": {
+        "dataset": "dsad",
+        "model": "kimi-k3",
+        "provider": "openrouter",
+        "temperature": 1,
+        "total_sampled": 1000,
+        "total_processed": 1000,
+        "skipped_technical": 0,
+        "parse_failures": 1,
+        "refusals": 0,
+        "run_cost_usd": 5.8077,
+        "exact_match_pct": 4.5,
+        "exact_match_ci_low_pct": 3.2,
+        "exact_match_ci_high_pct": 5.8999999999999995,
+        "micro_f1_pct": 41.76136363636363,
+        "micro_f1_ci_low_pct": 39.81792045999042,
+        "micro_f1_ci_high_pct": 43.76459598318543,
+        "website_entry": {
+          "exactMatch": {
+            "value": 4.5,
+            "ciLow": 3.2,
+            "ciHigh": 5.9
+          },
+          "microF1": {
+            "value": 41.8,
+            "ciLow": 39.8,
+            "ciHigh": 43.8
+          }
+        }
+      }
+    },
+    {
+      "model": "kimi-k3",
+      "dataset": "endoscapes",
+      "sampleCount": 409,
+      "result": {
+        "board": "endoscapes",
+        "model": "kimi-k3",
+        "slug": "moonshotai/kimi-k3",
+        "max_tokens": 16384,
+        "decision_rule": "multilabel",
+        "n": 409,
+        "n_obs_requested": 1000,
+        "parse_failures": 55,
+        "responses_at_cap": 55,
+        "cost_usd": 10.2267,
+        "website_entry": {
+          "exactMatch": {
+            "value": 16.87,
+            "ciLow": 13.45,
+            "ciHigh": 20.78
+          },
+          "microF1": {
+            "value": 67.72,
+            "ciLow": 65.34,
+            "ciHigh": 69.91
+          }
+        }
+      }
+    },
+    {
+      "model": "kimi-k3",
+      "dataset": "pitvqa",
+      "sampleCount": 1000,
+      "result": {
+        "dataset": "pitvqa",
+        "model": "kimi-k3",
+        "provider": "openrouter",
+        "temperature": 1,
+        "total_sampled": 1000,
+        "total_processed": 1000,
+        "skipped_technical": 0,
+        "parse_failures": 2,
+        "refusals": 0,
+        "run_cost_usd": 1.2375,
+        "exact_match_pct": 25.4,
+        "exact_match_ci_low_pct": 22.8,
+        "exact_match_ci_high_pct": 28.1,
+        "micro_f1_pct": 42.992992992992995,
+        "micro_f1_ci_low_pct": 40.69069069069069,
+        "micro_f1_ci_high_pct": 45.44544544544545,
+        "website_entry": {
+          "exactMatch": {
+            "value": 25.4,
+            "ciLow": 22.8,
+            "ciHigh": 28.1
+          },
+          "microF1": {
+            "value": 43,
+            "ciLow": 40.7,
+            "ciHigh": 45.4
+          }
+        }
+      }
+    },
+    {
+      "model": "kimi-k3",
+      "dataset": "cholect50verbs",
+      "sampleCount": 1000,
+      "result": {
+        "dataset": "cholect50verbs",
+        "model": "kimi-k3",
+        "provider": "openrouter",
+        "temperature": 1,
+        "total_sampled": 1000,
+        "total_processed": 1000,
+        "skipped_technical": 0,
+        "parse_failures": 1,
+        "refusals": 0,
+        "run_cost_usd": 2.9216,
+        "exact_match_pct": 29.7,
+        "exact_match_ci_low_pct": 27.1,
+        "exact_match_ci_high_pct": 32.6,
+        "micro_f1_pct": 62.12257100149476,
+        "micro_f1_ci_low_pct": 60.205935796486976,
+        "micro_f1_ci_high_pct": 64.05228758169935,
+        "website_entry": {
+          "exactMatch": {
+            "value": 29.7,
+            "ciLow": 27.1,
+            "ciHigh": 32.6
+          },
+          "microF1": {
+            "value": 62.1,
+            "ciLow": 60.2,
+            "ciHigh": 64.1
+          }
+        }
+      }
+    },
+    {
+      "model": "kimi-k3",
+      "dataset": "pitvissteps",
+      "sampleCount": 1000,
+      "result": {
+        "board": "pitvissteps",
+        "model": "kimi-k3",
+        "slug": "moonshotai/kimi-k3",
+        "max_tokens": 16384,
+        "decision_rule": "single_label",
+        "n": 1000,
+        "n_obs_requested": 1000,
+        "parse_failures": 30,
+        "responses_at_cap": 30,
+        "cost_usd": 31.6618,
+        "website_entry": {
+          "exactMatch": {
+            "value": 34,
+            "ciLow": 31,
+            "ciHigh": 37
+          },
+          "microF1": {
+            "value": 34.52,
+            "ciLow": 31.55,
+            "ciHigh": 37.58
+          }
+        }
+      }
+    },
+    {
+      "model": "kimi-k3",
+      "dataset": "sarrarp50",
+      "sampleCount": 636,
+      "result": {
+        "dataset": "sarrarp50",
+        "model": "kimi-k3",
+        "provider": "openrouter",
+        "temperature": 1,
+        "total_sampled": 636,
+        "total_processed": 636,
+        "skipped_technical": 0,
+        "parse_failures": 11,
+        "refusals": 0,
+        "run_cost_usd": 9.9663,
+        "exact_match_pct": 25.943396226415093,
+        "exact_match_ci_low_pct": 22.32704402515723,
+        "exact_match_ci_high_pct": 29.559748427672954,
+        "micro_f1_pct": 26.16970658207772,
+        "micro_f1_ci_low_pct": 22.611464968152866,
+        "micro_f1_ci_high_pct": 29.817605075337035,
+        "website_entry": {
+          "exactMatch": {
+            "value": 25.9,
+            "ciLow": 22.3,
+            "ciHigh": 29.6
+          },
+          "microF1": {
+            "value": 26.2,
+            "ciLow": 22.6,
+            "ciHigh": 29.8
+          }
+        }
+      }
+    },
+    {
+      "model": "claude-sonnet-4_6",
+      "dataset": "dsad",
+      "sampleCount": 1000,
+      "result": {
+        "dataset": "dsad",
+        "model": "claude-sonnet-4_6",
+        "provider": "openrouter",
+        "temperature": 1,
+        "total_sampled": 1000,
+        "total_processed": 1000,
+        "skipped_technical": 0,
+        "parse_failures": 0,
+        "refusals": 0,
+        "run_cost_usd": 5.5168,
+        "exact_match_pct": 1.7999999999999998,
+        "exact_match_ci_low_pct": 1,
+        "exact_match_ci_high_pct": 2.7,
+        "micro_f1_pct": 31.167671355213216,
+        "micro_f1_ci_low_pct": 29.327354260089688,
+        "micro_f1_ci_high_pct": 32.956088727931196,
+        "website_entry": {
+          "exactMatch": {
+            "value": 1.8,
+            "ciLow": 1,
+            "ciHigh": 2.7
+          },
+          "microF1": {
+            "value": 31.2,
+            "ciLow": 29.3,
+            "ciHigh": 33
+          }
+        }
+      }
+    },
+    {
+      "model": "claude-sonnet-4_6",
+      "dataset": "cadis",
+      "sampleCount": 534,
+      "result": {
+        "board": "cadis",
+        "model": "claude-sonnet-4_6",
+        "slug": "anthropic/claude-sonnet-4.6",
+        "max_tokens": 4096,
+        "decision_rule": "multilabel",
+        "n": 534,
+        "n_obs_requested": 1000,
+        "parse_failures": 0,
+        "responses_at_cap": 0,
+        "cost_usd": 1.9297,
+        "website_entry": {
+          "exactMatch": {
+            "value": 3.56,
+            "ciLow": 2.06,
+            "ciHigh": 5.24
+          },
+          "microF1": {
+            "value": 78.57,
+            "ciLow": 77.66,
+            "ciHigh": 79.53
+          }
+        }
+      }
+    },
+    {
+      "model": "claude-sonnet-4_6",
+      "dataset": "endoscapes",
+      "sampleCount": 409,
+      "result": {
+        "board": "endoscapes",
+        "model": "claude-sonnet-4_6",
+        "slug": "anthropic/claude-sonnet-4.6",
+        "max_tokens": 4096,
+        "decision_rule": "multilabel",
+        "n": 409,
+        "n_obs_requested": 1000,
+        "parse_failures": 0,
+        "responses_at_cap": 0,
+        "cost_usd": 1.1668,
+        "website_entry": {
+          "exactMatch": {
+            "value": 14.67,
+            "ciLow": 11.49,
+            "ciHigh": 18.34
+          },
+          "microF1": {
+            "value": 69.63,
+            "ciLow": 68.26,
+            "ciHigh": 71.18
+          }
+        }
+      }
+    },
+    {
+      "model": "claude-sonnet-4_6",
+      "dataset": "pitvqa",
+      "sampleCount": 1000,
+      "result": {
+        "dataset": "pitvqa",
+        "model": "claude-sonnet-4_6",
+        "provider": "openrouter",
+        "temperature": 1,
+        "total_sampled": 1000,
+        "total_processed": 1000,
+        "skipped_technical": 0,
+        "parse_failures": 0,
+        "refusals": 0,
+        "run_cost_usd": 1.2303,
+        "exact_match_pct": 21.3,
+        "exact_match_ci_low_pct": 18.8,
+        "exact_match_ci_high_pct": 23.799999999999997,
+        "micro_f1_pct": 41.4,
+        "micro_f1_ci_low_pct": 39.15,
+        "micro_f1_ci_high_pct": 43.6,
+        "website_entry": {
+          "exactMatch": {
+            "value": 21.3,
+            "ciLow": 18.8,
+            "ciHigh": 23.8
+          },
+          "microF1": {
+            "value": 41.4,
+            "ciLow": 39.1,
+            "ciHigh": 43.6
+          }
+        }
+      }
+    },
+    {
+      "model": "claude-sonnet-4_6",
+      "dataset": "cholect50verbs",
+      "sampleCount": 1000,
+      "result": {
+        "dataset": "cholect50verbs",
+        "model": "claude-sonnet-4_6",
+        "provider": "openrouter",
+        "temperature": 1,
+        "total_sampled": 1000,
+        "total_processed": 1000,
+        "skipped_technical": 0,
+        "parse_failures": 0,
+        "refusals": 0,
+        "run_cost_usd": 2.8246,
+        "exact_match_pct": 35.4,
+        "exact_match_ci_low_pct": 32.300000000000004,
+        "exact_match_ci_high_pct": 38.4,
+        "micro_f1_pct": 59.60442507542743,
+        "micro_f1_ci_low_pct": 57.19108710330858,
+        "micro_f1_ci_high_pct": 61.97564276048715,
+        "website_entry": {
+          "exactMatch": {
+            "value": 35.4,
+            "ciLow": 32.3,
+            "ciHigh": 38.4
+          },
+          "microF1": {
+            "value": 59.6,
+            "ciLow": 57.2,
+            "ciHigh": 62
+          }
+        }
+      }
+    },
+    {
+      "model": "claude-sonnet-4_6",
+      "dataset": "pitvissteps",
+      "sampleCount": 1000,
+      "result": {
+        "board": "pitvissteps",
+        "model": "claude-sonnet-4_6",
+        "slug": "anthropic/claude-sonnet-4.6",
+        "max_tokens": 4096,
+        "decision_rule": "single_label",
+        "n": 1000,
+        "n_obs_requested": 1000,
+        "parse_failures": 0,
+        "responses_at_cap": 0,
+        "cost_usd": 4.6601,
+        "website_entry": {
+          "exactMatch": {
+            "value": 17.5,
+            "ciLow": 15.1,
+            "ciHigh": 19.8
+          },
+          "microF1": {
+            "value": 17.5,
+            "ciLow": 15.1,
+            "ciHigh": 19.8
+          }
+        }
+      }
+    },
+    {
+      "model": "claude-sonnet-4_6",
+      "dataset": "sarrarp50",
+      "sampleCount": 636,
+      "result": {
+        "dataset": "sarrarp50",
+        "model": "claude-sonnet-4_6",
+        "provider": "openrouter",
+        "temperature": 1,
+        "total_sampled": 636,
+        "total_processed": 636,
+        "skipped_technical": 0,
+        "parse_failures": 0,
+        "refusals": 0,
+        "run_cost_usd": 3.447,
+        "exact_match_pct": 21.38364779874214,
+        "exact_match_ci_low_pct": 18.39622641509434,
+        "exact_match_ci_high_pct": 24.842767295597483,
+        "micro_f1_pct": 21.38364779874214,
+        "micro_f1_ci_low_pct": 18.39622641509434,
+        "micro_f1_ci_high_pct": 24.842767295597483,
+        "website_entry": {
+          "exactMatch": {
+            "value": 21.4,
+            "ciLow": 18.4,
+            "ciHigh": 24.8
+          },
+          "microF1": {
+            "value": 21.4,
+            "ciLow": 18.4,
+            "ciHigh": 24.8
+          }
+        }
+      }
+    },
+    {
+      "model": "claude-fable-5",
+      "dataset": "cadis",
+      "sampleCount": 534,
+      "result": {
+        "board": "cadis",
+        "model": "claude-fable-5",
+        "slug": "anthropic/claude-fable-5",
+        "max_tokens": 4096,
+        "decision_rule": "multilabel",
+        "n": 534,
+        "n_obs_requested": 1000,
+        "parse_failures": 0,
+        "responses_at_cap": 0,
+        "cost_usd": 14.1922,
+        "website_entry": {
+          "exactMatch": {
+            "value": 11.61,
+            "ciLow": 8.99,
+            "ciHigh": 14.42
+          },
+          "microF1": {
+            "value": 82.89,
+            "ciLow": 81.97,
+            "ciHigh": 83.86
+          }
+        }
+      }
+    },
+    {
+      "model": "claude-fable-5",
+      "dataset": "endoscapes",
+      "sampleCount": 409,
+      "result": {
+        "board": "endoscapes",
+        "model": "claude-fable-5",
+        "slug": "anthropic/claude-fable-5",
+        "max_tokens": 4096,
+        "decision_rule": "multilabel",
+        "n": 409,
+        "n_obs_requested": 1000,
+        "parse_failures": 0,
+        "responses_at_cap": 0,
+        "cost_usd": 6.0928,
+        "website_entry": {
+          "exactMatch": {
+            "value": 23.72,
+            "ciLow": 19.56,
+            "ciHigh": 27.87
+          },
+          "microF1": {
+            "value": 72.91,
+            "ciLow": 71.33,
+            "ciHigh": 74.63
+          }
+        }
+      }
+    },
+    {
+      "model": "claude-fable-5",
+      "dataset": "pitvissteps",
+      "sampleCount": 1000,
+      "result": {
+        "board": "pitvissteps",
+        "model": "claude-fable-5",
+        "slug": "anthropic/claude-fable-5",
+        "max_tokens": 4096,
+        "decision_rule": "single_label",
+        "n": 1000,
+        "n_obs_requested": 1000,
+        "parse_failures": 0,
+        "responses_at_cap": 0,
+        "cost_usd": 19.9881,
+        "website_entry": {
+          "exactMatch": {
+            "value": 30.5,
+            "ciLow": 27.7,
+            "ciHigh": 33.7
+          },
+          "microF1": {
+            "value": 30.5,
+            "ciLow": 27.7,
+            "ciHigh": 33.7
+          }
+        }
+      }
+    },
+    {
+      "model": "claude-opus-5",
+      "dataset": "cholect50",
+      "sampleCount": 1000,
+      "result": {
+        "model": "claude-opus-5",
+        "dataset": "cholect50",
+        "n": 1000,
+        "website_entry": {
+          "exactMatch": {
+            "value": 55.4,
+            "ciLow": 52.3,
+            "ciHigh": 58.5
+          },
+          "microF1": {
+            "value": 73.04,
+            "ciLow": 70.79,
+            "ciHigh": 75.32
+          }
+        }
+      }
+    },
+    {
+      "model": "claude-opus-5",
+      "dataset": "pitvis",
+      "sampleCount": 1000,
+      "result": {
+        "model": "claude-opus-5",
+        "dataset": "pitvis",
+        "n": 1000,
+        "website_entry": {
+          "exactMatch": {
+            "value": 50.1,
+            "ciLow": 46.9,
+            "ciHigh": 53.2
+          },
+          "microF1": {
+            "value": 46.44,
+            "ciLow": 43.5,
+            "ciHigh": 49.37
+          }
+        }
+      }
+    },
+    {
+      "model": "claude-opus-5",
+      "dataset": "surgvu",
+      "sampleCount": 1000,
+      "result": {
+        "model": "claude-opus-5",
+        "dataset": "surgvu",
+        "n": 1000,
+        "website_entry": {
+          "exactMatch": {
+            "value": 16,
+            "ciLow": 13.8,
+            "ciHigh": 18.4
+          },
+          "microF1": {
+            "value": 31.32,
+            "ciLow": 29.37,
+            "ciHigh": 33.16
+          }
+        }
+      }
+    },
+    {
+      "model": "claude-opus-5",
+      "dataset": "cadis",
+      "sampleCount": 534,
+      "result": {
+        "board": "cadis",
+        "model": "claude-opus-5",
+        "slug": "anthropic/claude-opus-5",
+        "max_tokens": 4096,
+        "decision_rule": "multilabel",
+        "n": 534,
+        "n_obs_requested": 1000,
+        "parse_failures": 1,
+        "responses_at_cap": 0,
+        "cost_usd": 7.8791,
+        "website_entry": {
+          "exactMatch": {
+            "value": 16.1,
+            "ciLow": 13.11,
+            "ciHigh": 19.29
+          },
+          "microF1": {
+            "value": 85.85,
+            "ciLow": 84.98,
+            "ciHigh": 86.69
+          }
+        }
+      }
+    },
+    {
+      "model": "claude-opus-5",
+      "dataset": "endoscapes",
+      "sampleCount": 409,
+      "result": {
+        "board": "endoscapes",
+        "model": "claude-opus-5",
+        "slug": "anthropic/claude-opus-5",
+        "max_tokens": 4096,
+        "decision_rule": "multilabel",
+        "n": 409,
+        "n_obs_requested": 1000,
+        "parse_failures": 0,
+        "responses_at_cap": 0,
+        "cost_usd": 2.3927,
+        "website_entry": {
+          "exactMatch": {
+            "value": 21.76,
+            "ciLow": 17.85,
+            "ciHigh": 25.92
+          },
+          "microF1": {
+            "value": 76.68,
+            "ciLow": 74.78,
+            "ciHigh": 78.45
+          }
+        }
+      }
+    },
+    {
+      "model": "claude-opus-5",
+      "dataset": "pitvissteps",
+      "sampleCount": 1000,
+      "result": {
+        "board": "pitvissteps",
+        "model": "claude-opus-5",
+        "slug": "anthropic/claude-opus-5",
+        "max_tokens": 4096,
+        "decision_rule": "single_label",
+        "n": 1000,
+        "n_obs_requested": 1000,
+        "parse_failures": 0,
+        "responses_at_cap": 0,
+        "cost_usd": 8.6327,
+        "website_entry": {
+          "exactMatch": {
+            "value": 29.7,
+            "ciLow": 26.9,
+            "ciHigh": 32.6
+          },
+          "microF1": {
+            "value": 29.7,
+            "ciLow": 26.9,
+            "ciHigh": 32.6
+          }
+        }
+      }
+    },
+    {
+      "model": "claude-opus-4_6",
+      "dataset": "dsad",
+      "sampleCount": 1000,
+      "result": {
+        "dataset": "dsad",
+        "model": "claude-opus-4_6",
+        "provider": "openrouter",
+        "temperature": 1,
+        "total_sampled": 1000,
+        "total_processed": 1000,
+        "skipped_technical": 0,
+        "parse_failures": 0,
+        "refusals": 0,
+        "run_cost_usd": 9.2704,
+        "exact_match_pct": 3.3000000000000003,
+        "exact_match_ci_low_pct": 2.1999999999999997,
+        "exact_match_ci_high_pct": 4.3999999999999995,
+        "micro_f1_pct": 35.8494031221304,
+        "micro_f1_ci_low_pct": 33.99005707972749,
+        "micro_f1_ci_high_pct": 37.64320785597381,
+        "website_entry": {
+          "exactMatch": {
+            "value": 3.3,
+            "ciLow": 2.2,
+            "ciHigh": 4.4
+          },
+          "microF1": {
+            "value": 35.8,
+            "ciLow": 34,
+            "ciHigh": 37.6
+          }
+        }
+      }
+    },
+    {
+      "model": "claude-opus-4_6",
+      "dataset": "cadis",
+      "sampleCount": 534,
+      "result": {
+        "board": "cadis",
+        "model": "claude-opus-4_6",
+        "slug": "anthropic/claude-opus-4.6",
+        "max_tokens": 4096,
+        "decision_rule": "multilabel",
+        "n": 534,
+        "n_obs_requested": 1000,
+        "parse_failures": 0,
+        "responses_at_cap": 0,
+        "cost_usd": 3.2728,
+        "website_entry": {
+          "exactMatch": {
+            "value": 7.87,
+            "ciLow": 5.62,
+            "ciHigh": 10.3
+          },
+          "microF1": {
+            "value": 81.3,
+            "ciLow": 80.49,
+            "ciHigh": 82.13
+          }
+        }
+      }
+    },
+    {
+      "model": "claude-opus-4_6",
+      "dataset": "endoscapes",
+      "sampleCount": 409,
+      "result": {
+        "board": "endoscapes",
+        "model": "claude-opus-4_6",
+        "slug": "anthropic/claude-opus-4.6",
+        "max_tokens": 4096,
+        "decision_rule": "multilabel",
+        "n": 409,
+        "n_obs_requested": 1000,
+        "parse_failures": 0,
+        "responses_at_cap": 0,
+        "cost_usd": 2.0005,
+        "website_entry": {
+          "exactMatch": {
+            "value": 15.65,
+            "ciLow": 12.22,
+            "ciHigh": 19.32
+          },
+          "microF1": {
+            "value": 75.53,
+            "ciLow": 73.99,
+            "ciHigh": 77.07
+          }
+        }
+      }
+    },
+    {
+      "model": "claude-opus-4_6",
+      "dataset": "pitvqa",
+      "sampleCount": 1000,
+      "result": {
+        "dataset": "pitvqa",
+        "model": "claude-opus-4_6",
+        "provider": "openrouter",
+        "temperature": 1,
+        "total_sampled": 1000,
+        "total_processed": 1000,
+        "skipped_technical": 0,
+        "parse_failures": 0,
+        "refusals": 0,
+        "run_cost_usd": 1.9934,
+        "exact_match_pct": 33,
+        "exact_match_ci_low_pct": 30.2,
+        "exact_match_ci_high_pct": 36,
+        "micro_f1_pct": 49.55,
+        "micro_f1_ci_low_pct": 46.949999999999996,
+        "micro_f1_ci_high_pct": 52.2,
+        "website_entry": {
+          "exactMatch": {
+            "value": 33,
+            "ciLow": 30.2,
+            "ciHigh": 36
+          },
+          "microF1": {
+            "value": 49.5,
+            "ciLow": 46.9,
+            "ciHigh": 52.2
+          }
+        }
+      }
+    },
+    {
+      "model": "claude-opus-4_6",
+      "dataset": "cholect50verbs",
+      "sampleCount": 1000,
+      "result": {
+        "dataset": "cholect50verbs",
+        "model": "claude-opus-4_6",
+        "provider": "openrouter",
+        "temperature": 1,
+        "total_sampled": 1000,
+        "total_processed": 1000,
+        "skipped_technical": 0,
+        "parse_failures": 0,
+        "refusals": 0,
+        "run_cost_usd": 4.7216,
+        "exact_match_pct": 36.5,
+        "exact_match_ci_low_pct": 33.5,
+        "exact_match_ci_high_pct": 39.4,
+        "micro_f1_pct": 62.39536381197682,
+        "micro_f1_ci_low_pct": 60.07089912987431,
+        "micro_f1_ci_high_pct": 64.5618556701031,
+        "website_entry": {
+          "exactMatch": {
+            "value": 36.5,
+            "ciLow": 33.5,
+            "ciHigh": 39.4
+          },
+          "microF1": {
+            "value": 62.4,
+            "ciLow": 60.1,
+            "ciHigh": 64.6
+          }
+        }
+      }
+    },
+    {
+      "model": "claude-opus-4_6",
+      "dataset": "pitvissteps",
+      "sampleCount": 1000,
+      "result": {
+        "board": "pitvissteps",
+        "model": "claude-opus-4_6",
+        "slug": "anthropic/claude-opus-4.6",
+        "max_tokens": 4096,
+        "decision_rule": "single_label",
+        "n": 1000,
+        "n_obs_requested": 1000,
+        "parse_failures": 0,
+        "responses_at_cap": 0,
+        "cost_usd": 7.7683,
+        "website_entry": {
+          "exactMatch": {
+            "value": 34.3,
+            "ciLow": 31.3,
+            "ciHigh": 37.2
+          },
+          "microF1": {
+            "value": 34.3,
+            "ciLow": 31.3,
+            "ciHigh": 37.2
+          }
+        }
+      }
+    },
+    {
+      "model": "claude-opus-4_6",
+      "dataset": "sarrarp50",
+      "sampleCount": 636,
+      "result": {
+        "dataset": "sarrarp50",
+        "model": "claude-opus-4_6",
+        "provider": "openrouter",
+        "temperature": 1,
+        "total_sampled": 636,
+        "total_processed": 636,
+        "skipped_technical": 0,
+        "parse_failures": 0,
+        "refusals": 0,
+        "run_cost_usd": 5.7379,
+        "exact_match_pct": 20.59748427672956,
+        "exact_match_ci_low_pct": 17.61006289308176,
+        "exact_match_ci_high_pct": 24.056603773584907,
+        "micro_f1_pct": 20.59748427672956,
+        "micro_f1_ci_low_pct": 17.61006289308176,
+        "micro_f1_ci_high_pct": 24.056603773584907,
+        "website_entry": {
+          "exactMatch": {
+            "value": 20.6,
+            "ciLow": 17.6,
+            "ciHigh": 24.1
+          },
+          "microF1": {
+            "value": 20.6,
+            "ciLow": 17.6,
+            "ciHigh": 24.1
+          }
+        }
+      }
+    },
+    {
+      "model": "qwen3-8-27b",
+      "dataset": "pitvis",
+      "sampleCount": 1000,
+      "result": {
+        "model": "qwen3-8-27b",
+        "dataset": "pitvis",
+        "n": 1000,
+        "website_entry": {
+          "exactMatch": {
+            "value": 47.7,
+            "ciLow": 44.8,
+            "ciHigh": 50.9
+          },
+          "microF1": {
+            "value": 36.22,
+            "ciLow": 33.09,
+            "ciHigh": 39.21
+          }
+        }
+      }
+    },
+    {
+      "model": "glm-5_3-flash",
+      "dataset": "cadis",
+      "sampleCount": 534,
+      "sourceRunId": "summary_gaps_delm_20260907/glm-5_3-flash/cadis",
+      "result": {
+        "n": 534,
+        "exact_match_pct": 4.49438202247191,
+        "exact_match_ci": [
+          2.8089887640449436,
+          6.367041198501873
+        ],
+        "micro_f1_pct": 70.82818294190358,
+        "micro_f1_ci": [
+          69.6411856474259,
+          71.89460476787954
+        ],
+        "website_entry": {
+          "exactMatch": {
+            "value": 4.49,
+            "ciLow": 2.81,
+            "ciHigh": 6.37
+          },
+          "microF1": {
+            "value": 70.83,
+            "ciLow": 69.64,
+            "ciHigh": 71.89
+          }
+        },
+        "parse_failures": 1,
+        "refusals": 0
+      },
+      "provenance": {
+        "prompt_sha256": "630ee289c556bc1fa9a42ecdd2cbce149c9d81f4e2cd1a98e302c5b4734c8254",
+        "schema_sha256": "c8c6ebc3bab109b31ed9023804579fc130185a0ba8e1a1b984af1eccf580aecf",
+        "sample_sha256": "3ca936fb537822393a1dc337e128f6fccf16d6f34c4d16f0be486907b09efb47",
+        "max_tokens_for_new_requests": 16384,
+        "versions": {
+          "delm": "1.2.0",
+          "openai": "1.109.1",
+          "pydantic": "2.13.5",
+          "instructor": "1.3.2",
+          "numpy": "2.5.2",
+          "pandas": "3.0.5"
+        },
+        "source_sha256": {
+          "runtime.py": "5092d5f6f43dd0dcf9a79a0ae60302de38d579a8f97dcc0d04a418f687edbf0a",
+          "monitor.py": "7d9e476d18f2a169f28672da67e65a237995bd454b39f3cc1e4b9e13a309e2c6",
+          "cli.py": "bfb17264ad6f64d0eab61aff6133c6ba3e233a754955435a53763955f9c32a32",
+          "__init__.py": "8804240b11e177bb9007f5a3b05e046e71bde8846bc7ed7269895191d590621f",
+          "contracts.py": "1f4902fb679ec4c6fddab877ad0fbc0f50cb80e0ccf918b295fd038349b39fe0",
+          "delm_adapter.py": "59bb69c48f07bee53753d7bd00a02c218ab0d8e795e541454cf33142aa2af68b",
+          "frozen/leaderboard_metrics.py": "e6e3d2f44eb1cfb05c04b37231db6745feca1137a2098d7f457c4c1c393315f8",
+          "frozen/s55_kimik3_openrouter_eval.py": "c266e7d56f3d229d468396956fd702347ac45f064b4c997502bbedc17d5d5013",
+          "frozen/s91_openrouter_eval.py": "17b0daee55d09bac0f1a345631212a8bef135944d1954c0410e5a585aef38419",
+          "frozen/__init__.py": "b383d027c60368ca2197fc042e6b3f833e24b9a9d35d1857999098ac9e8301e0",
+          "frozen/s93_vision_openrouter.py": "b38ed100e2dd1d1f07cca702c1566e36edb0d9f785ba4268eabab1a9ae5ee11a",
+          "frozen/vision_eval.py": "929aab12cbc6ecc9863ede3e1857126ff016a41baf88d58a7229320bd4d2520c"
+        },
+        "failure_policy": "Parse failures and refusals retained in denominator; no answer-repair retries"
+      }
+    },
+    {
+      "model": "glm-5_3-flash",
+      "dataset": "cholect50",
+      "sampleCount": 1000,
+      "sourceRunId": "summary_gaps_delm_20260907/glm-5_3-flash/cholect50",
+      "result": {
+        "n": 1000,
+        "exact_match_pct": 47.4,
+        "exact_match_ci": [
+          44.3,
+          50.4
+        ],
+        "micro_f1_pct": 64.33243555213544,
+        "micro_f1_ci": [
+          62.02629543696829,
+          66.81715575620768
+        ],
+        "website_entry": {
+          "exactMatch": {
+            "value": 47.4,
+            "ciLow": 44.3,
+            "ciHigh": 50.4
+          },
+          "microF1": {
+            "value": 64.33,
+            "ciLow": 62.03,
+            "ciHigh": 66.82
+          }
+        },
+        "parse_failures": 13,
+        "refusals": 0
+      },
+      "provenance": {
+        "prompt_sha256": "be8a266aa7af64bef4fa6f284f652aad92003506b2b22bd8a43fa7e9d4f2e941",
+        "schema_sha256": "6ca0938d4bb48d4922d27970d2d7903e6673355e7c0d4ea9807bf30259fb7332",
+        "sample_sha256": "4afe133cacd8c776673e5b3df9497aafc8c0e9dca619a70b89df5ff592aedeb7",
+        "max_tokens_for_new_requests": 16384,
+        "versions": {
+          "delm": "1.2.0",
+          "openai": "1.109.1",
+          "pydantic": "2.13.5",
+          "instructor": "1.3.2",
+          "numpy": "2.5.2",
+          "pandas": "3.0.5"
+        },
+        "source_sha256": {
+          "runtime.py": "5092d5f6f43dd0dcf9a79a0ae60302de38d579a8f97dcc0d04a418f687edbf0a",
+          "monitor.py": "7d9e476d18f2a169f28672da67e65a237995bd454b39f3cc1e4b9e13a309e2c6",
+          "cli.py": "bfb17264ad6f64d0eab61aff6133c6ba3e233a754955435a53763955f9c32a32",
+          "__init__.py": "8804240b11e177bb9007f5a3b05e046e71bde8846bc7ed7269895191d590621f",
+          "contracts.py": "1f4902fb679ec4c6fddab877ad0fbc0f50cb80e0ccf918b295fd038349b39fe0",
+          "delm_adapter.py": "59bb69c48f07bee53753d7bd00a02c218ab0d8e795e541454cf33142aa2af68b",
+          "frozen/leaderboard_metrics.py": "e6e3d2f44eb1cfb05c04b37231db6745feca1137a2098d7f457c4c1c393315f8",
+          "frozen/s55_kimik3_openrouter_eval.py": "c266e7d56f3d229d468396956fd702347ac45f064b4c997502bbedc17d5d5013",
+          "frozen/s91_openrouter_eval.py": "17b0daee55d09bac0f1a345631212a8bef135944d1954c0410e5a585aef38419",
+          "frozen/__init__.py": "b383d027c60368ca2197fc042e6b3f833e24b9a9d35d1857999098ac9e8301e0",
+          "frozen/s93_vision_openrouter.py": "b38ed100e2dd1d1f07cca702c1566e36edb0d9f785ba4268eabab1a9ae5ee11a",
+          "frozen/vision_eval.py": "929aab12cbc6ecc9863ede3e1857126ff016a41baf88d58a7229320bd4d2520c"
+        },
+        "failure_policy": "Parse failures and refusals retained in denominator; no answer-repair retries"
+      }
+    },
+    {
+      "model": "glm-5_3-flash",
+      "dataset": "cholect50verbs",
+      "sampleCount": 1000,
+      "sourceRunId": "summary_gaps_delm_20260907/glm-5_3-flash/cholect50verbs",
+      "result": {
+        "n": 1000,
+        "exact_match_pct": 29.599999999999998,
+        "exact_match_ci": [
+          26.900000000000002,
+          32.300000000000004
+        ],
+        "micro_f1_pct": 59.29260450160771,
+        "micro_f1_ci": [
+          57.16133204009053,
+          61.44927536231884
+        ],
+        "website_entry": {
+          "exactMatch": {
+            "value": 29.6,
+            "ciLow": 26.9,
+            "ciHigh": 32.3
+          },
+          "microF1": {
+            "value": 59.29,
+            "ciLow": 57.16,
+            "ciHigh": 61.45
+          }
+        },
+        "parse_failures": 13,
+        "refusals": 0
+      },
+      "provenance": {
+        "prompt_sha256": "ed01b2cacd99abc928874eeb7143c254aafa34ddb4280bb525bf6b70416421a7",
+        "schema_sha256": "3bf9089ab5dd1909af7ec2557f05edb610807939db6ed7567573452c83967d47",
+        "sample_sha256": "4afe133cacd8c776673e5b3df9497aafc8c0e9dca619a70b89df5ff592aedeb7",
+        "max_tokens_for_new_requests": 16384,
+        "versions": {
+          "delm": "1.2.0",
+          "openai": "1.109.1",
+          "pydantic": "2.13.5",
+          "instructor": "1.3.2",
+          "numpy": "2.5.2",
+          "pandas": "3.0.5"
+        },
+        "source_sha256": {
+          "runtime.py": "5092d5f6f43dd0dcf9a79a0ae60302de38d579a8f97dcc0d04a418f687edbf0a",
+          "monitor.py": "7d9e476d18f2a169f28672da67e65a237995bd454b39f3cc1e4b9e13a309e2c6",
+          "cli.py": "bfb17264ad6f64d0eab61aff6133c6ba3e233a754955435a53763955f9c32a32",
+          "__init__.py": "8804240b11e177bb9007f5a3b05e046e71bde8846bc7ed7269895191d590621f",
+          "contracts.py": "1f4902fb679ec4c6fddab877ad0fbc0f50cb80e0ccf918b295fd038349b39fe0",
+          "delm_adapter.py": "59bb69c48f07bee53753d7bd00a02c218ab0d8e795e541454cf33142aa2af68b",
+          "frozen/leaderboard_metrics.py": "e6e3d2f44eb1cfb05c04b37231db6745feca1137a2098d7f457c4c1c393315f8",
+          "frozen/s55_kimik3_openrouter_eval.py": "c266e7d56f3d229d468396956fd702347ac45f064b4c997502bbedc17d5d5013",
+          "frozen/s91_openrouter_eval.py": "17b0daee55d09bac0f1a345631212a8bef135944d1954c0410e5a585aef38419",
+          "frozen/__init__.py": "b383d027c60368ca2197fc042e6b3f833e24b9a9d35d1857999098ac9e8301e0",
+          "frozen/s93_vision_openrouter.py": "b38ed100e2dd1d1f07cca702c1566e36edb0d9f785ba4268eabab1a9ae5ee11a",
+          "frozen/vision_eval.py": "929aab12cbc6ecc9863ede3e1857126ff016a41baf88d58a7229320bd4d2520c"
+        },
+        "failure_policy": "Parse failures and refusals retained in denominator; no answer-repair retries"
+      }
+    },
+    {
+      "model": "glm-5_3-flash",
+      "dataset": "dsad",
+      "sampleCount": 1000,
+      "sourceRunId": "summary_gaps_delm_20260907/glm-5_3-flash/dsad",
+      "result": {
+        "n": 1000,
+        "exact_match_pct": 8.3,
+        "exact_match_ci": [
+          6.6000000000000005,
+          10.100000000000001
+        ],
+        "micro_f1_pct": 46.657694033198744,
+        "micro_f1_ci": [
+          44.57557875624149,
+          48.6449864498645
+        ],
+        "website_entry": {
+          "exactMatch": {
+            "value": 8.3,
+            "ciLow": 6.6,
+            "ciHigh": 10.1
+          },
+          "microF1": {
+            "value": 46.66,
+            "ciLow": 44.58,
+            "ciHigh": 48.64
+          }
+        },
+        "parse_failures": 4,
+        "refusals": 0
+      },
+      "provenance": {
+        "prompt_sha256": "64e9b7e2ea38d905c5105f0d06da45381b29c79654ae3842f14e5522893fd42c",
+        "schema_sha256": "99ca267bab012190a559e060e90d65098b77367fda7f5ae911ffb5d1644df866",
+        "sample_sha256": "d66aaacd126416492db2fa86a58f41dbe22cfc4c857105c708640366584f855a",
+        "max_tokens_for_new_requests": 16384,
+        "versions": {
+          "delm": "1.2.0",
+          "openai": "1.109.1",
+          "pydantic": "2.13.5",
+          "instructor": "1.3.2",
+          "numpy": "2.5.2",
+          "pandas": "3.0.5"
+        },
+        "source_sha256": {
+          "runtime.py": "5092d5f6f43dd0dcf9a79a0ae60302de38d579a8f97dcc0d04a418f687edbf0a",
+          "monitor.py": "7d9e476d18f2a169f28672da67e65a237995bd454b39f3cc1e4b9e13a309e2c6",
+          "cli.py": "bfb17264ad6f64d0eab61aff6133c6ba3e233a754955435a53763955f9c32a32",
+          "__init__.py": "8804240b11e177bb9007f5a3b05e046e71bde8846bc7ed7269895191d590621f",
+          "contracts.py": "1f4902fb679ec4c6fddab877ad0fbc0f50cb80e0ccf918b295fd038349b39fe0",
+          "delm_adapter.py": "59bb69c48f07bee53753d7bd00a02c218ab0d8e795e541454cf33142aa2af68b",
+          "frozen/leaderboard_metrics.py": "e6e3d2f44eb1cfb05c04b37231db6745feca1137a2098d7f457c4c1c393315f8",
+          "frozen/s55_kimik3_openrouter_eval.py": "c266e7d56f3d229d468396956fd702347ac45f064b4c997502bbedc17d5d5013",
+          "frozen/s91_openrouter_eval.py": "17b0daee55d09bac0f1a345631212a8bef135944d1954c0410e5a585aef38419",
+          "frozen/__init__.py": "b383d027c60368ca2197fc042e6b3f833e24b9a9d35d1857999098ac9e8301e0",
+          "frozen/s93_vision_openrouter.py": "b38ed100e2dd1d1f07cca702c1566e36edb0d9f785ba4268eabab1a9ae5ee11a",
+          "frozen/vision_eval.py": "929aab12cbc6ecc9863ede3e1857126ff016a41baf88d58a7229320bd4d2520c"
+        },
+        "failure_policy": "Parse failures and refusals retained in denominator; no answer-repair retries"
+      }
+    },
+    {
+      "model": "glm-5_3-flash",
+      "dataset": "endoscapes",
+      "sampleCount": 409,
+      "sourceRunId": "summary_gaps_delm_20260907/glm-5_3-flash/endoscapes",
+      "result": {
+        "n": 409,
+        "exact_match_pct": 23.96088019559902,
+        "exact_match_ci": [
+          19.80440097799511,
+          28.117359413202937
+        ],
+        "micro_f1_pct": 67.76145203111496,
+        "micro_f1_ci": [
+          66.14651061985263,
+          69.46004319654428
+        ],
+        "website_entry": {
+          "exactMatch": {
+            "value": 23.96,
+            "ciLow": 19.8,
+            "ciHigh": 28.12
+          },
+          "microF1": {
+            "value": 67.76,
+            "ciLow": 66.15,
+            "ciHigh": 69.46
+          }
+        },
+        "parse_failures": 3,
+        "refusals": 0
+      },
+      "provenance": {
+        "prompt_sha256": "4247e760fd8bb9aa25d112f0a22177bd877809c57d2e0759ba6f0044ba6b9089",
+        "schema_sha256": "3fc383eda11fe5128d6cf6bd5fdd22c3aa8c5d39a4626c49b78ccfc107253d79",
+        "sample_sha256": "317d4a1ad11112f129ea18b5f9bad1b6f00d9284917cb9c5cc6978e396407d15",
+        "max_tokens_for_new_requests": 16384,
+        "versions": {
+          "delm": "1.2.0",
+          "openai": "1.109.1",
+          "pydantic": "2.13.5",
+          "instructor": "1.3.2",
+          "numpy": "2.5.2",
+          "pandas": "3.0.5"
+        },
+        "source_sha256": {
+          "runtime.py": "5092d5f6f43dd0dcf9a79a0ae60302de38d579a8f97dcc0d04a418f687edbf0a",
+          "monitor.py": "7d9e476d18f2a169f28672da67e65a237995bd454b39f3cc1e4b9e13a309e2c6",
+          "cli.py": "bfb17264ad6f64d0eab61aff6133c6ba3e233a754955435a53763955f9c32a32",
+          "__init__.py": "8804240b11e177bb9007f5a3b05e046e71bde8846bc7ed7269895191d590621f",
+          "contracts.py": "1f4902fb679ec4c6fddab877ad0fbc0f50cb80e0ccf918b295fd038349b39fe0",
+          "delm_adapter.py": "59bb69c48f07bee53753d7bd00a02c218ab0d8e795e541454cf33142aa2af68b",
+          "frozen/leaderboard_metrics.py": "e6e3d2f44eb1cfb05c04b37231db6745feca1137a2098d7f457c4c1c393315f8",
+          "frozen/s55_kimik3_openrouter_eval.py": "c266e7d56f3d229d468396956fd702347ac45f064b4c997502bbedc17d5d5013",
+          "frozen/s91_openrouter_eval.py": "17b0daee55d09bac0f1a345631212a8bef135944d1954c0410e5a585aef38419",
+          "frozen/__init__.py": "b383d027c60368ca2197fc042e6b3f833e24b9a9d35d1857999098ac9e8301e0",
+          "frozen/s93_vision_openrouter.py": "b38ed100e2dd1d1f07cca702c1566e36edb0d9f785ba4268eabab1a9ae5ee11a",
+          "frozen/vision_eval.py": "929aab12cbc6ecc9863ede3e1857126ff016a41baf88d58a7229320bd4d2520c"
+        },
+        "failure_policy": "Parse failures and refusals retained in denominator; no answer-repair retries"
+      }
+    },
+    {
+      "model": "glm-5_3-flash",
+      "dataset": "pitvis",
+      "sampleCount": 1000,
+      "sourceRunId": "summary_gaps_delm_20260907/glm-5_3-flash/pitvis",
+      "result": {
+        "n": 1000,
+        "exact_match_pct": 48.8,
+        "exact_match_ci": [
+          45.800000000000004,
+          51.9
+        ],
+        "micro_f1_pct": 50.125,
+        "micro_f1_ci": [
+          47.165259348612786,
+          53.21673953778888
+        ],
+        "website_entry": {
+          "exactMatch": {
+            "value": 48.8,
+            "ciLow": 45.8,
+            "ciHigh": 51.9
+          },
+          "microF1": {
+            "value": 50.12,
+            "ciLow": 47.17,
+            "ciHigh": 53.22
+          }
+        },
+        "parse_failures": 0,
+        "refusals": 0
+      },
+      "provenance": {
+        "prompt_sha256": "32af30ef3b0bf6f7a862ec4fa5be96acac009a5868a16ef3177a4fc64095241b",
+        "schema_sha256": "6ca0938d4bb48d4922d27970d2d7903e6673355e7c0d4ea9807bf30259fb7332",
+        "sample_sha256": "834420f04c8c64ef9b7eb0aee1a2ffc4a156cbb47001c70954ae741c97da826a",
+        "max_tokens_for_new_requests": 16384,
+        "versions": {
+          "delm": "1.2.0",
+          "openai": "1.109.1",
+          "pydantic": "2.13.5",
+          "instructor": "1.3.2",
+          "numpy": "2.5.2",
+          "pandas": "3.0.5"
+        },
+        "source_sha256": {
+          "runtime.py": "5092d5f6f43dd0dcf9a79a0ae60302de38d579a8f97dcc0d04a418f687edbf0a",
+          "monitor.py": "7d9e476d18f2a169f28672da67e65a237995bd454b39f3cc1e4b9e13a309e2c6",
+          "cli.py": "bfb17264ad6f64d0eab61aff6133c6ba3e233a754955435a53763955f9c32a32",
+          "__init__.py": "8804240b11e177bb9007f5a3b05e046e71bde8846bc7ed7269895191d590621f",
+          "contracts.py": "1f4902fb679ec4c6fddab877ad0fbc0f50cb80e0ccf918b295fd038349b39fe0",
+          "delm_adapter.py": "59bb69c48f07bee53753d7bd00a02c218ab0d8e795e541454cf33142aa2af68b",
+          "frozen/leaderboard_metrics.py": "e6e3d2f44eb1cfb05c04b37231db6745feca1137a2098d7f457c4c1c393315f8",
+          "frozen/s55_kimik3_openrouter_eval.py": "c266e7d56f3d229d468396956fd702347ac45f064b4c997502bbedc17d5d5013",
+          "frozen/s91_openrouter_eval.py": "17b0daee55d09bac0f1a345631212a8bef135944d1954c0410e5a585aef38419",
+          "frozen/__init__.py": "b383d027c60368ca2197fc042e6b3f833e24b9a9d35d1857999098ac9e8301e0",
+          "frozen/s93_vision_openrouter.py": "b38ed100e2dd1d1f07cca702c1566e36edb0d9f785ba4268eabab1a9ae5ee11a",
+          "frozen/vision_eval.py": "929aab12cbc6ecc9863ede3e1857126ff016a41baf88d58a7229320bd4d2520c"
+        },
+        "failure_policy": "Parse failures and refusals retained in denominator; no answer-repair retries"
+      }
+    },
+    {
+      "model": "glm-5_3-flash",
+      "dataset": "pitvissteps",
+      "sampleCount": 1000,
+      "sourceRunId": "summary_gaps_delm_20260907/glm-5_3-flash/pitvissteps",
+      "result": {
+        "n": 1000,
+        "exact_match_pct": 30.5,
+        "exact_match_ci": [
+          27.700000000000003,
+          33.300000000000004
+        ],
+        "micro_f1_pct": 30.622489959839356,
+        "micro_f1_ci": [
+          27.783350050150453,
+          33.46733668341709
+        ],
+        "website_entry": {
+          "exactMatch": {
+            "value": 30.5,
+            "ciLow": 27.7,
+            "ciHigh": 33.3
+          },
+          "microF1": {
+            "value": 30.62,
+            "ciLow": 27.78,
+            "ciHigh": 33.47
+          }
+        },
+        "parse_failures": 8,
+        "refusals": 0
+      },
+      "provenance": {
+        "prompt_sha256": "afbb010b106ec8b25d6cfaea544603dd2c45e34ba13466797e3a082e63f53934",
+        "schema_sha256": "148894acb495ef3a7ee3bb7479fc8de1a71b350c8d27a01848862cfc504183eb",
+        "sample_sha256": "3aae2b4515b679a406a552e62c8e531e03ac9d2a56ebc50a818ac7a37b38d646",
+        "max_tokens_for_new_requests": 16384,
+        "versions": {
+          "delm": "1.2.0",
+          "openai": "1.109.1",
+          "pydantic": "2.13.5",
+          "instructor": "1.3.2",
+          "numpy": "2.5.2",
+          "pandas": "3.0.5"
+        },
+        "source_sha256": {
+          "runtime.py": "5092d5f6f43dd0dcf9a79a0ae60302de38d579a8f97dcc0d04a418f687edbf0a",
+          "monitor.py": "7d9e476d18f2a169f28672da67e65a237995bd454b39f3cc1e4b9e13a309e2c6",
+          "cli.py": "bfb17264ad6f64d0eab61aff6133c6ba3e233a754955435a53763955f9c32a32",
+          "__init__.py": "8804240b11e177bb9007f5a3b05e046e71bde8846bc7ed7269895191d590621f",
+          "contracts.py": "1f4902fb679ec4c6fddab877ad0fbc0f50cb80e0ccf918b295fd038349b39fe0",
+          "delm_adapter.py": "59bb69c48f07bee53753d7bd00a02c218ab0d8e795e541454cf33142aa2af68b",
+          "frozen/leaderboard_metrics.py": "e6e3d2f44eb1cfb05c04b37231db6745feca1137a2098d7f457c4c1c393315f8",
+          "frozen/s55_kimik3_openrouter_eval.py": "c266e7d56f3d229d468396956fd702347ac45f064b4c997502bbedc17d5d5013",
+          "frozen/s91_openrouter_eval.py": "17b0daee55d09bac0f1a345631212a8bef135944d1954c0410e5a585aef38419",
+          "frozen/__init__.py": "b383d027c60368ca2197fc042e6b3f833e24b9a9d35d1857999098ac9e8301e0",
+          "frozen/s93_vision_openrouter.py": "b38ed100e2dd1d1f07cca702c1566e36edb0d9f785ba4268eabab1a9ae5ee11a",
+          "frozen/vision_eval.py": "929aab12cbc6ecc9863ede3e1857126ff016a41baf88d58a7229320bd4d2520c"
+        },
+        "failure_policy": "Parse failures and refusals retained in denominator; no answer-repair retries"
+      }
+    },
+    {
+      "model": "glm-5_3-flash",
+      "dataset": "pitvqa",
+      "sampleCount": 1000,
+      "sourceRunId": "summary_gaps_delm_20260907/glm-5_3-flash/pitvqa",
+      "result": {
+        "n": 1000,
+        "exact_match_pct": 26.3,
+        "exact_match_ci": [
+          23.400000000000002,
+          29.2
+        ],
+        "micro_f1_pct": 38.033115905669845,
+        "micro_f1_ci": [
+          35.35911602209944,
+          40.772316950852556
+        ],
+        "website_entry": {
+          "exactMatch": {
+            "value": 26.3,
+            "ciLow": 23.4,
+            "ciHigh": 29.2
+          },
+          "microF1": {
+            "value": 38.03,
+            "ciLow": 35.36,
+            "ciHigh": 40.77
+          }
+        },
+        "parse_failures": 7,
+        "refusals": 0
+      },
+      "provenance": {
+        "prompt_sha256": "c644ed303b285c8b8725cc32b5d1f681cbe60e2265f46612164dcc43ce4674dc",
+        "schema_sha256": "94b930d0ccc1d6e1e184b776a4053c673d93c51d6d79c6ed829bda103203a7e3",
+        "sample_sha256": "258ab43113cde1462e75ff975742d3e796725e229f04a79af40cd28be6f5b430",
+        "max_tokens_for_new_requests": 16384,
+        "versions": {
+          "delm": "1.2.0",
+          "openai": "1.109.1",
+          "pydantic": "2.13.5",
+          "instructor": "1.3.2",
+          "numpy": "2.5.2",
+          "pandas": "3.0.5"
+        },
+        "source_sha256": {
+          "runtime.py": "5092d5f6f43dd0dcf9a79a0ae60302de38d579a8f97dcc0d04a418f687edbf0a",
+          "monitor.py": "7d9e476d18f2a169f28672da67e65a237995bd454b39f3cc1e4b9e13a309e2c6",
+          "cli.py": "bfb17264ad6f64d0eab61aff6133c6ba3e233a754955435a53763955f9c32a32",
+          "__init__.py": "8804240b11e177bb9007f5a3b05e046e71bde8846bc7ed7269895191d590621f",
+          "contracts.py": "1f4902fb679ec4c6fddab877ad0fbc0f50cb80e0ccf918b295fd038349b39fe0",
+          "delm_adapter.py": "59bb69c48f07bee53753d7bd00a02c218ab0d8e795e541454cf33142aa2af68b",
+          "frozen/leaderboard_metrics.py": "e6e3d2f44eb1cfb05c04b37231db6745feca1137a2098d7f457c4c1c393315f8",
+          "frozen/s55_kimik3_openrouter_eval.py": "c266e7d56f3d229d468396956fd702347ac45f064b4c997502bbedc17d5d5013",
+          "frozen/s91_openrouter_eval.py": "17b0daee55d09bac0f1a345631212a8bef135944d1954c0410e5a585aef38419",
+          "frozen/__init__.py": "b383d027c60368ca2197fc042e6b3f833e24b9a9d35d1857999098ac9e8301e0",
+          "frozen/s93_vision_openrouter.py": "b38ed100e2dd1d1f07cca702c1566e36edb0d9f785ba4268eabab1a9ae5ee11a",
+          "frozen/vision_eval.py": "929aab12cbc6ecc9863ede3e1857126ff016a41baf88d58a7229320bd4d2520c"
+        },
+        "failure_policy": "Parse failures and refusals retained in denominator; no answer-repair retries"
+      }
+    },
+    {
+      "model": "glm-5_3-flash",
+      "dataset": "sarrarp50",
+      "sampleCount": 636,
+      "sourceRunId": "summary_gaps_delm_20260907/glm-5_3-flash/sarrarp50",
+      "result": {
+        "n": 636,
+        "exact_match_pct": 21.540880503144656,
+        "exact_match_ci": [
+          18.553459119496853,
+          24.842767295597483
+        ],
+        "micro_f1_pct": 22.385620915032682,
+        "micro_f1_ci": [
+          19.328419328419326,
+          25.85924713584288
+        ],
+        "website_entry": {
+          "exactMatch": {
+            "value": 21.54,
+            "ciLow": 18.55,
+            "ciHigh": 24.84
+          },
+          "microF1": {
+            "value": 22.39,
+            "ciLow": 19.33,
+            "ciHigh": 25.86
+          }
+        },
+        "parse_failures": 48,
+        "refusals": 0
+      },
+      "provenance": {
+        "prompt_sha256": "963a610e32bc65dabe046353d046fc1032f3622abc8591fc5c16db9291f031c4",
+        "schema_sha256": "4e94bb317c136b8455320d3ef26b224f729eccfc62b6d602b9c4111bff47c9f7",
+        "sample_sha256": "a0ebde6cee24941a4b031e8d2399c52a71387fcdb36da7e97cad1b8136417bee",
+        "max_tokens_for_new_requests": 16384,
+        "versions": {
+          "delm": "1.2.0",
+          "openai": "1.109.1",
+          "pydantic": "2.13.5",
+          "instructor": "1.3.2",
+          "numpy": "2.5.2",
+          "pandas": "3.0.5"
+        },
+        "source_sha256": {
+          "runtime.py": "5092d5f6f43dd0dcf9a79a0ae60302de38d579a8f97dcc0d04a418f687edbf0a",
+          "monitor.py": "7d9e476d18f2a169f28672da67e65a237995bd454b39f3cc1e4b9e13a309e2c6",
+          "cli.py": "bfb17264ad6f64d0eab61aff6133c6ba3e233a754955435a53763955f9c32a32",
+          "__init__.py": "8804240b11e177bb9007f5a3b05e046e71bde8846bc7ed7269895191d590621f",
+          "contracts.py": "1f4902fb679ec4c6fddab877ad0fbc0f50cb80e0ccf918b295fd038349b39fe0",
+          "delm_adapter.py": "59bb69c48f07bee53753d7bd00a02c218ab0d8e795e541454cf33142aa2af68b",
+          "frozen/leaderboard_metrics.py": "e6e3d2f44eb1cfb05c04b37231db6745feca1137a2098d7f457c4c1c393315f8",
+          "frozen/s55_kimik3_openrouter_eval.py": "c266e7d56f3d229d468396956fd702347ac45f064b4c997502bbedc17d5d5013",
+          "frozen/s91_openrouter_eval.py": "17b0daee55d09bac0f1a345631212a8bef135944d1954c0410e5a585aef38419",
+          "frozen/__init__.py": "b383d027c60368ca2197fc042e6b3f833e24b9a9d35d1857999098ac9e8301e0",
+          "frozen/s93_vision_openrouter.py": "b38ed100e2dd1d1f07cca702c1566e36edb0d9f785ba4268eabab1a9ae5ee11a",
+          "frozen/vision_eval.py": "929aab12cbc6ecc9863ede3e1857126ff016a41baf88d58a7229320bd4d2520c"
+        },
+        "failure_policy": "Parse failures and refusals retained in denominator; no answer-repair retries"
+      }
+    },
+    {
+      "model": "grok-4_6",
+      "dataset": "endoscapes",
+      "sampleCount": 409,
+      "sourceRunId": "summary_gaps_delm_20260907/grok-4_6/endoscapes",
+      "result": {
+        "n": 409,
+        "exact_match_pct": 24.205378973105134,
+        "exact_match_ci": [
+          20.048899755501225,
+          28.361858190709043
+        ],
+        "micro_f1_pct": 70.09700548291859,
+        "micro_f1_ci": [
+          68.39422259983007,
+          71.83462532299741
+        ],
+        "website_entry": {
+          "exactMatch": {
+            "value": 24.21,
+            "ciLow": 20.05,
+            "ciHigh": 28.36
+          },
+          "microF1": {
+            "value": 70.1,
+            "ciLow": 68.39,
+            "ciHigh": 71.83
+          }
+        },
+        "parse_failures": 0,
+        "refusals": 0
+      },
+      "provenance": {
+        "prompt_sha256": "4247e760fd8bb9aa25d112f0a22177bd877809c57d2e0759ba6f0044ba6b9089",
+        "schema_sha256": "3fc383eda11fe5128d6cf6bd5fdd22c3aa8c5d39a4626c49b78ccfc107253d79",
+        "sample_sha256": "317d4a1ad11112f129ea18b5f9bad1b6f00d9284917cb9c5cc6978e396407d15",
+        "max_tokens_for_new_requests": 16384,
+        "versions": {
+          "delm": "1.2.0",
+          "openai": "1.109.1",
+          "pydantic": "2.13.5",
+          "instructor": "1.3.2",
+          "numpy": "2.5.2",
+          "pandas": "3.0.5"
+        },
+        "source_sha256": {
+          "runtime.py": "5092d5f6f43dd0dcf9a79a0ae60302de38d579a8f97dcc0d04a418f687edbf0a",
+          "monitor.py": "7d9e476d18f2a169f28672da67e65a237995bd454b39f3cc1e4b9e13a309e2c6",
+          "cli.py": "bfb17264ad6f64d0eab61aff6133c6ba3e233a754955435a53763955f9c32a32",
+          "__init__.py": "8804240b11e177bb9007f5a3b05e046e71bde8846bc7ed7269895191d590621f",
+          "contracts.py": "1f4902fb679ec4c6fddab877ad0fbc0f50cb80e0ccf918b295fd038349b39fe0",
+          "delm_adapter.py": "59bb69c48f07bee53753d7bd00a02c218ab0d8e795e541454cf33142aa2af68b",
+          "frozen/leaderboard_metrics.py": "e6e3d2f44eb1cfb05c04b37231db6745feca1137a2098d7f457c4c1c393315f8",
+          "frozen/s55_kimik3_openrouter_eval.py": "c266e7d56f3d229d468396956fd702347ac45f064b4c997502bbedc17d5d5013",
+          "frozen/s91_openrouter_eval.py": "17b0daee55d09bac0f1a345631212a8bef135944d1954c0410e5a585aef38419",
+          "frozen/__init__.py": "b383d027c60368ca2197fc042e6b3f833e24b9a9d35d1857999098ac9e8301e0",
+          "frozen/s93_vision_openrouter.py": "b38ed100e2dd1d1f07cca702c1566e36edb0d9f785ba4268eabab1a9ae5ee11a",
+          "frozen/vision_eval.py": "929aab12cbc6ecc9863ede3e1857126ff016a41baf88d58a7229320bd4d2520c"
+        },
+        "failure_policy": "Parse failures and refusals retained in denominator; no answer-repair retries"
+      }
+    },
+    {
+      "model": "qwen3-8-27b",
+      "dataset": "cholect50",
+      "sampleCount": 1000,
+      "sourceRunId": "summary_gaps_delm_20260907/qwen3-8-27b/cholect50",
+      "result": {
+        "n": 1000,
+        "exact_match_pct": 35.199999999999996,
+        "exact_match_ci": [
+          32.300000000000004,
+          38.3
+        ],
+        "micro_f1_pct": 56.58349328214971,
+        "micro_f1_ci": [
+          54.53149001536099,
+          58.73320537428023
+        ],
+        "website_entry": {
+          "exactMatch": {
+            "value": 35.2,
+            "ciLow": 32.3,
+            "ciHigh": 38.3
+          },
+          "microF1": {
+            "value": 56.58,
+            "ciLow": 54.53,
+            "ciHigh": 58.73
+          }
+        },
+        "parse_failures": 3,
+        "refusals": 0
+      },
+      "provenance": {
+        "prompt_sha256": "be8a266aa7af64bef4fa6f284f652aad92003506b2b22bd8a43fa7e9d4f2e941",
+        "schema_sha256": "6ca0938d4bb48d4922d27970d2d7903e6673355e7c0d4ea9807bf30259fb7332",
+        "sample_sha256": "4afe133cacd8c776673e5b3df9497aafc8c0e9dca619a70b89df5ff592aedeb7",
+        "max_tokens_for_new_requests": 16384,
+        "versions": {
+          "delm": "1.2.0",
+          "openai": "1.109.1",
+          "pydantic": "2.13.5",
+          "instructor": "1.3.2",
+          "numpy": "2.5.2",
+          "pandas": "3.0.5"
+        },
+        "source_sha256": {
+          "runtime.py": "5092d5f6f43dd0dcf9a79a0ae60302de38d579a8f97dcc0d04a418f687edbf0a",
+          "monitor.py": "7d9e476d18f2a169f28672da67e65a237995bd454b39f3cc1e4b9e13a309e2c6",
+          "cli.py": "bfb17264ad6f64d0eab61aff6133c6ba3e233a754955435a53763955f9c32a32",
+          "__init__.py": "8804240b11e177bb9007f5a3b05e046e71bde8846bc7ed7269895191d590621f",
+          "contracts.py": "1f4902fb679ec4c6fddab877ad0fbc0f50cb80e0ccf918b295fd038349b39fe0",
+          "delm_adapter.py": "59bb69c48f07bee53753d7bd00a02c218ab0d8e795e541454cf33142aa2af68b",
+          "frozen/leaderboard_metrics.py": "e6e3d2f44eb1cfb05c04b37231db6745feca1137a2098d7f457c4c1c393315f8",
+          "frozen/s55_kimik3_openrouter_eval.py": "c266e7d56f3d229d468396956fd702347ac45f064b4c997502bbedc17d5d5013",
+          "frozen/s91_openrouter_eval.py": "17b0daee55d09bac0f1a345631212a8bef135944d1954c0410e5a585aef38419",
+          "frozen/__init__.py": "b383d027c60368ca2197fc042e6b3f833e24b9a9d35d1857999098ac9e8301e0",
+          "frozen/s93_vision_openrouter.py": "b38ed100e2dd1d1f07cca702c1566e36edb0d9f785ba4268eabab1a9ae5ee11a",
+          "frozen/vision_eval.py": "929aab12cbc6ecc9863ede3e1857126ff016a41baf88d58a7229320bd4d2520c"
+        },
+        "failure_policy": "Parse failures and refusals retained in denominator; no answer-repair retries"
+      }
+    },
+    {
+      "model": "qwen3-8-27b",
+      "dataset": "surgvu",
+      "sampleCount": 1000,
+      "sourceRunId": "summary_gaps_delm_20260907/qwen3-8-27b/surgvu",
+      "result": {
+        "n": 1000,
+        "exact_match_pct": 18.2,
+        "exact_match_ci": [
+          15.9,
+          20.7
+        ],
+        "micro_f1_pct": 27.733625650863253,
+        "micro_f1_ci": [
+          25.71191595244678,
+          29.78134514254083
+        ],
+        "website_entry": {
+          "exactMatch": {
+            "value": 18.2,
+            "ciLow": 15.9,
+            "ciHigh": 20.7
+          },
+          "microF1": {
+            "value": 27.73,
+            "ciLow": 25.71,
+            "ciHigh": 29.78
+          }
+        },
+        "parse_failures": 11,
+        "refusals": 0
+      },
+      "provenance": {
+        "prompt_sha256": "e432ed7e3c94c58e6863180af74d3bcdcf71c00d54cffb0f88254ecb99ef85b8",
+        "schema_sha256": "6ca0938d4bb48d4922d27970d2d7903e6673355e7c0d4ea9807bf30259fb7332",
+        "sample_sha256": "455b741430840103440fa1251916725187c04ef1afbcf8e5150abcdde013d92e",
+        "max_tokens_for_new_requests": 16384,
+        "versions": {
+          "delm": "1.2.0",
+          "openai": "1.109.1",
+          "pydantic": "2.13.5",
+          "instructor": "1.3.2",
+          "numpy": "2.5.2",
+          "pandas": "3.0.5"
+        },
+        "source_sha256": {
+          "runtime.py": "5092d5f6f43dd0dcf9a79a0ae60302de38d579a8f97dcc0d04a418f687edbf0a",
+          "monitor.py": "7d9e476d18f2a169f28672da67e65a237995bd454b39f3cc1e4b9e13a309e2c6",
+          "cli.py": "bfb17264ad6f64d0eab61aff6133c6ba3e233a754955435a53763955f9c32a32",
+          "__init__.py": "8804240b11e177bb9007f5a3b05e046e71bde8846bc7ed7269895191d590621f",
+          "contracts.py": "1f4902fb679ec4c6fddab877ad0fbc0f50cb80e0ccf918b295fd038349b39fe0",
+          "delm_adapter.py": "59bb69c48f07bee53753d7bd00a02c218ab0d8e795e541454cf33142aa2af68b",
+          "frozen/leaderboard_metrics.py": "e6e3d2f44eb1cfb05c04b37231db6745feca1137a2098d7f457c4c1c393315f8",
+          "frozen/s55_kimik3_openrouter_eval.py": "c266e7d56f3d229d468396956fd702347ac45f064b4c997502bbedc17d5d5013",
+          "frozen/s91_openrouter_eval.py": "17b0daee55d09bac0f1a345631212a8bef135944d1954c0410e5a585aef38419",
+          "frozen/__init__.py": "b383d027c60368ca2197fc042e6b3f833e24b9a9d35d1857999098ac9e8301e0",
+          "frozen/s93_vision_openrouter.py": "b38ed100e2dd1d1f07cca702c1566e36edb0d9f785ba4268eabab1a9ae5ee11a",
+          "frozen/vision_eval.py": "929aab12cbc6ecc9863ede3e1857126ff016a41baf88d58a7229320bd4d2520c"
+        },
+        "failure_policy": "Parse failures and refusals retained in denominator; no answer-repair retries"
+      }
+    },
+    {
+      "model": "kimi-k3",
+      "dataset": "cadis",
+      "sampleCount": 534,
+      "sourceRunId": "summary_gaps_delm_20260907/kimi-k3/cadis",
+      "result": {
+        "n": 534,
+        "exact_match_pct": 15.168539325842698,
+        "exact_match_ci": [
+          12.172284644194757,
+          18.164794007490638
+        ],
+        "micro_f1_pct": 83.9029924833357,
+        "micro_f1_ci": [
+          82.84040577225318,
+          84.90245971162001
+        ],
+        "website_entry": {
+          "exactMatch": {
+            "value": 15.17,
+            "ciLow": 12.17,
+            "ciHigh": 18.16
+          },
+          "microF1": {
+            "value": 83.9,
+            "ciLow": 82.84,
+            "ciHigh": 84.9
+          }
+        },
+        "parse_failures": 9,
+        "refusals": 0
+      },
+      "provenance": {
+        "prompt_sha256": "630ee289c556bc1fa9a42ecdd2cbce149c9d81f4e2cd1a98e302c5b4734c8254",
+        "schema_sha256": "c8c6ebc3bab109b31ed9023804579fc130185a0ba8e1a1b984af1eccf580aecf",
+        "sample_sha256": "3ca936fb537822393a1dc337e128f6fccf16d6f34c4d16f0be486907b09efb47",
+        "max_tokens_for_new_requests": 16384,
+        "versions": {
+          "delm": "1.2.0",
+          "openai": "1.109.1",
+          "pydantic": "2.13.5",
+          "instructor": "1.3.2",
+          "numpy": "2.5.2",
+          "pandas": "3.0.5"
+        },
+        "source_sha256": {
+          "runtime.py": "deab125cf602e9d0134b90c9ae89448c287553555ecc01733ae227091f64cdb4",
+          "export_completed.py": "364bdd96779cf32f9e8beb306f0ac54a5e08163ce56e4f9384dbcd1232c7cb20",
+          "monitor.py": "7d9e476d18f2a169f28672da67e65a237995bd454b39f3cc1e4b9e13a309e2c6",
+          "cli.py": "0717bdb43b3e3e1fb2731bd05ea0a205f533a2cce67af5cf076f7470e914cfbe",
+          "__init__.py": "8804240b11e177bb9007f5a3b05e046e71bde8846bc7ed7269895191d590621f",
+          "contracts.py": "1f4902fb679ec4c6fddab877ad0fbc0f50cb80e0ccf918b295fd038349b39fe0",
+          "delm_adapter.py": "59bb69c48f07bee53753d7bd00a02c218ab0d8e795e541454cf33142aa2af68b",
+          "frozen/leaderboard_metrics.py": "e6e3d2f44eb1cfb05c04b37231db6745feca1137a2098d7f457c4c1c393315f8",
+          "frozen/s55_kimik3_openrouter_eval.py": "c266e7d56f3d229d468396956fd702347ac45f064b4c997502bbedc17d5d5013",
+          "frozen/s91_openrouter_eval.py": "17b0daee55d09bac0f1a345631212a8bef135944d1954c0410e5a585aef38419",
+          "frozen/__init__.py": "b383d027c60368ca2197fc042e6b3f833e24b9a9d35d1857999098ac9e8301e0",
+          "frozen/s93_vision_openrouter.py": "b38ed100e2dd1d1f07cca702c1566e36edb0d9f785ba4268eabab1a9ae5ee11a",
+          "frozen/vision_eval.py": "929aab12cbc6ecc9863ede3e1857126ff016a41baf88d58a7229320bd4d2520c"
+        },
+        "failure_policy": "Parse failures and refusals retained in denominator; no answer-repair retries"
+      }
+    },
+    {
+      "model": "gemini-3_7-flash",
+      "dataset": "surgvu",
+      "sampleCount": 1000,
+      "sourceRunId": "summary_gaps_20260907/gemini-3_7-flash/surgvu",
+      "result": {
+        "n": 1000,
+        "exact_match_pct": 19.2,
+        "exact_match_ci": [
+          16.8,
+          21.8
+        ],
+        "micro_f1_pct": 35.62932226832642,
+        "micro_f1_ci": [
+          33.46390598768886,
+          37.55434782608696
+        ],
+        "website_entry": {
+          "exactMatch": {
+            "value": 19.2,
+            "ciLow": 16.8,
+            "ciHigh": 21.8
+          },
+          "microF1": {
+            "value": 35.63,
+            "ciLow": 33.46,
+            "ciHigh": 37.55
+          }
+        },
+        "parse_failures": 0,
+        "refusals": 0
+      },
+      "provenance": {
+        "prompt_sha256": "e432ed7e3c94c58e6863180af74d3bcdcf71c00d54cffb0f88254ecb99ef85b8",
+        "schema_sha256": "6ca0938d4bb48d4922d27970d2d7903e6673355e7c0d4ea9807bf30259fb7332",
+        "sample_sha256": "455b741430840103440fa1251916725187c04ef1afbcf8e5150abcdde013d92e",
+        "legacy_contract_reconstructed": true,
+        "verification": "Complete frozen response cache; denominator and point estimates match saved result; CIs recomputed with canonical bootstrap",
+        "legacy_website_entry": {
+          "exactMatch": {
+            "value": 19.2,
+            "ciLow": 16.8,
+            "ciHigh": 21.8
+          },
+          "microF1": {
+            "value": 35.63,
+            "ciLow": 33.46,
+            "ciHigh": 37.55
+          }
+        },
+        "failure_policy": "Parse failures and refusals retained in denominator"
+      }
+    },
+    {
+      "model": "qwen3-8-max-0902",
+      "dataset": "endoscapes",
+      "sampleCount": 409,
+      "sourceRunId": "summary_gaps_20260907/qwen3-8-max-0902/endoscapes",
+      "result": {
+        "n": 409,
+        "exact_match_pct": 20.293398533007334,
+        "exact_match_ci": [
+          16.625916870415647,
+          24.449877750611247
+        ],
+        "micro_f1_pct": 78.0399274047187,
+        "micro_f1_ci": [
+          76.56423546834506,
+          79.4682422451994
+        ],
+        "website_entry": {
+          "exactMatch": {
+            "value": 20.29,
+            "ciLow": 16.63,
+            "ciHigh": 24.45
+          },
+          "microF1": {
+            "value": 78.04,
+            "ciLow": 76.56,
+            "ciHigh": 79.47
+          }
+        },
+        "parse_failures": 3,
+        "refusals": 0
+      },
+      "provenance": {
+        "prompt_sha256": "4247e760fd8bb9aa25d112f0a22177bd877809c57d2e0759ba6f0044ba6b9089",
+        "schema_sha256": "3fc383eda11fe5128d6cf6bd5fdd22c3aa8c5d39a4626c49b78ccfc107253d79",
+        "sample_sha256": "317d4a1ad11112f129ea18b5f9bad1b6f00d9284917cb9c5cc6978e396407d15",
+        "legacy_contract_reconstructed": true,
+        "verification": "Complete frozen response cache; denominator and point estimates match saved result; CIs recomputed with canonical bootstrap",
+        "legacy_website_entry": {
+          "exactMatch": {
+            "value": 20.29,
+            "ciLow": 16.63,
+            "ciHigh": 24.45
+          },
+          "microF1": {
+            "value": 78.04,
+            "ciLow": 76.63,
+            "ciHigh": 79.51
+          }
+        },
+        "failure_policy": "Parse failures and refusals retained in denominator"
+      }
+    },
+    {
+      "model": "glm-5_3-flash",
+      "dataset": "surgvu",
+      "sampleCount": 1000,
+      "sourceRunId": "summary_gaps_20260907/glm-5_3-flash/surgvu",
+      "result": {
+        "n": 1000,
+        "exact_match_pct": 19.8,
+        "exact_match_ci": [
+          17.5,
+          22.400000000000002
+        ],
+        "micro_f1_pct": 31.709377640101376,
+        "micro_f1_ci": [
+          29.577874818049494,
+          33.78378378378378
+        ],
+        "website_entry": {
+          "exactMatch": {
+            "value": 19.8,
+            "ciLow": 17.5,
+            "ciHigh": 22.4
+          },
+          "microF1": {
+            "value": 31.71,
+            "ciLow": 29.58,
+            "ciHigh": 33.78
+          }
+        },
+        "parse_failures": 1,
+        "refusals": 0
+      },
+      "provenance": {
+        "prompt_sha256": "e432ed7e3c94c58e6863180af74d3bcdcf71c00d54cffb0f88254ecb99ef85b8",
+        "schema_sha256": "6ca0938d4bb48d4922d27970d2d7903e6673355e7c0d4ea9807bf30259fb7332",
+        "sample_sha256": "455b741430840103440fa1251916725187c04ef1afbcf8e5150abcdde013d92e",
+        "legacy_contract_reconstructed": true,
+        "verification": "Complete frozen response cache; denominator and point estimates match saved result; CIs recomputed with canonical bootstrap",
+        "legacy_website_entry": {
+          "exactMatch": {
+            "value": 19.8,
+            "ciLow": 17.5,
+            "ciHigh": 22.4
+          },
+          "microF1": {
+            "value": 31.71,
+            "ciLow": 29.58,
+            "ciHigh": 33.78
+          }
+        },
+        "failure_policy": "Parse failures and refusals retained in denominator"
+      }
+    },
+    {
+      "model": "grok-4_6",
+      "dataset": "cadis",
+      "sampleCount": 534,
+      "sourceRunId": "summary_gaps_delm_20260907/grok-4_6/cadis",
+      "result": {
+        "n": 534,
+        "exact_match_pct": 7.677902621722846,
+        "exact_match_ci": [
+          5.430711610486892,
+          10.112359550561797
+        ],
+        "micro_f1_pct": 79.50440364233468,
+        "micro_f1_ci": [
+          78.34586466165413,
+          80.65185185185186
+        ],
+        "website_entry": {
+          "exactMatch": {
+            "value": 7.68,
+            "ciLow": 5.43,
+            "ciHigh": 10.11
+          },
+          "microF1": {
+            "value": 79.5,
+            "ciLow": 78.35,
+            "ciHigh": 80.65
+          }
+        },
+        "parse_failures": 3,
+        "refusals": 0
+      },
+      "provenance": {
+        "prompt_sha256": "630ee289c556bc1fa9a42ecdd2cbce149c9d81f4e2cd1a98e302c5b4734c8254",
+        "schema_sha256": "c8c6ebc3bab109b31ed9023804579fc130185a0ba8e1a1b984af1eccf580aecf",
+        "sample_sha256": "3ca936fb537822393a1dc337e128f6fccf16d6f34c4d16f0be486907b09efb47",
+        "max_tokens_for_new_requests": 16384,
+        "versions": {
+          "delm": "1.2.0",
+          "openai": "1.109.1",
+          "pydantic": "2.13.5",
+          "instructor": "1.3.2",
+          "numpy": "2.5.2",
+          "pandas": "3.0.5"
+        },
+        "source_sha256": {
+          "runtime.py": "18a8793eaf4c7e280aae06e6f470f867a11f204434c24f14d3d8c178a63630a2",
+          "export_completed.py": "3ed57c8dbe899fe41c7fc41ad7f25b7f4c757578a86ca54a4d024c430c0067c3",
+          "monitor.py": "7d9e476d18f2a169f28672da67e65a237995bd454b39f3cc1e4b9e13a309e2c6",
+          "cli.py": "86bc73843eb9ab8c5e52bf27fcac5a4fa25f28eb7f3ae0d9fa54982c8d1a48b2",
+          "__init__.py": "8804240b11e177bb9007f5a3b05e046e71bde8846bc7ed7269895191d590621f",
+          "contracts.py": "1f4902fb679ec4c6fddab877ad0fbc0f50cb80e0ccf918b295fd038349b39fe0",
+          "delm_adapter.py": "59bb69c48f07bee53753d7bd00a02c218ab0d8e795e541454cf33142aa2af68b",
+          "frozen/leaderboard_metrics.py": "e6e3d2f44eb1cfb05c04b37231db6745feca1137a2098d7f457c4c1c393315f8",
+          "frozen/s55_kimik3_openrouter_eval.py": "c266e7d56f3d229d468396956fd702347ac45f064b4c997502bbedc17d5d5013",
+          "frozen/s91_openrouter_eval.py": "17b0daee55d09bac0f1a345631212a8bef135944d1954c0410e5a585aef38419",
+          "frozen/__init__.py": "b383d027c60368ca2197fc042e6b3f833e24b9a9d35d1857999098ac9e8301e0",
+          "frozen/s93_vision_openrouter.py": "b38ed100e2dd1d1f07cca702c1566e36edb0d9f785ba4268eabab1a9ae5ee11a",
+          "frozen/vision_eval.py": "929aab12cbc6ecc9863ede3e1857126ff016a41baf88d58a7229320bd4d2520c"
+        },
+        "failure_policy": "Parse failures and refusals retained in denominator; no answer-repair retries"
+      }
+    },
+    {
+      "model": "grok-4_6",
+      "dataset": "cholect50",
+      "sampleCount": 1000,
+      "sourceRunId": "summary_gaps_delm_20260907/grok-4_6/cholect50",
+      "result": {
+        "n": 1000,
+        "exact_match_pct": 57.4,
+        "exact_match_ci": [
+          54.300000000000004,
+          60.5
+        ],
+        "micro_f1_pct": 73.37738048970074,
+        "micro_f1_ci": [
+          71.1281070745698,
+          75.52986512524085
+        ],
+        "website_entry": {
+          "exactMatch": {
+            "value": 57.4,
+            "ciLow": 54.3,
+            "ciHigh": 60.5
+          },
+          "microF1": {
+            "value": 73.38,
+            "ciLow": 71.13,
+            "ciHigh": 75.53
+          }
+        },
+        "parse_failures": 0,
+        "refusals": 0
+      },
+      "provenance": {
+        "prompt_sha256": "be8a266aa7af64bef4fa6f284f652aad92003506b2b22bd8a43fa7e9d4f2e941",
+        "schema_sha256": "6ca0938d4bb48d4922d27970d2d7903e6673355e7c0d4ea9807bf30259fb7332",
+        "sample_sha256": "4afe133cacd8c776673e5b3df9497aafc8c0e9dca619a70b89df5ff592aedeb7",
+        "max_tokens_for_new_requests": 16384,
+        "versions": {
+          "delm": "1.2.0",
+          "openai": "1.109.1",
+          "pydantic": "2.13.5",
+          "instructor": "1.3.2",
+          "numpy": "2.5.2",
+          "pandas": "3.0.5"
+        },
+        "source_sha256": {
+          "runtime.py": "5d4870857ed490dc3b57127ef61473e1e9238ac6933e14f464501eb9e3b5186b",
+          "export_completed.py": "3ed57c8dbe899fe41c7fc41ad7f25b7f4c757578a86ca54a4d024c430c0067c3",
+          "monitor.py": "7d9e476d18f2a169f28672da67e65a237995bd454b39f3cc1e4b9e13a309e2c6",
+          "cli.py": "6a3959cfc1dd69dbae28f187148147ae277ee228b2d2653267ed71fea6470858",
+          "__init__.py": "8804240b11e177bb9007f5a3b05e046e71bde8846bc7ed7269895191d590621f",
+          "contracts.py": "1f4902fb679ec4c6fddab877ad0fbc0f50cb80e0ccf918b295fd038349b39fe0",
+          "delm_adapter.py": "59bb69c48f07bee53753d7bd00a02c218ab0d8e795e541454cf33142aa2af68b",
+          "frozen/leaderboard_metrics.py": "e6e3d2f44eb1cfb05c04b37231db6745feca1137a2098d7f457c4c1c393315f8",
+          "frozen/s55_kimik3_openrouter_eval.py": "c266e7d56f3d229d468396956fd702347ac45f064b4c997502bbedc17d5d5013",
+          "frozen/s91_openrouter_eval.py": "17b0daee55d09bac0f1a345631212a8bef135944d1954c0410e5a585aef38419",
+          "frozen/__init__.py": "b383d027c60368ca2197fc042e6b3f833e24b9a9d35d1857999098ac9e8301e0",
+          "frozen/s93_vision_openrouter.py": "b38ed100e2dd1d1f07cca702c1566e36edb0d9f785ba4268eabab1a9ae5ee11a",
+          "frozen/vision_eval.py": "929aab12cbc6ecc9863ede3e1857126ff016a41baf88d58a7229320bd4d2520c"
+        },
+        "failure_policy": "Parse failures and refusals retained in denominator; no answer-repair retries"
+      }
+    },
+    {
+      "model": "grok-4_6",
+      "dataset": "cholect50verbs",
+      "sampleCount": 1000,
+      "sourceRunId": "summary_gaps_delm_20260907/grok-4_6/cholect50verbs",
+      "result": {
+        "n": 1000,
+        "exact_match_pct": 38,
+        "exact_match_ci": [
+          35.199999999999996,
+          40.9
+        ],
+        "micro_f1_pct": 61.931629605044805,
+        "micro_f1_ci": [
+          59.70449966420417,
+          64.13748378728924
+        ],
+        "website_entry": {
+          "exactMatch": {
+            "value": 38,
+            "ciLow": 35.2,
+            "ciHigh": 40.9
+          },
+          "microF1": {
+            "value": 61.93,
+            "ciLow": 59.7,
+            "ciHigh": 64.14
+          }
+        },
+        "parse_failures": 0,
+        "refusals": 0
+      },
+      "provenance": {
+        "prompt_sha256": "ed01b2cacd99abc928874eeb7143c254aafa34ddb4280bb525bf6b70416421a7",
+        "schema_sha256": "3bf9089ab5dd1909af7ec2557f05edb610807939db6ed7567573452c83967d47",
+        "sample_sha256": "4afe133cacd8c776673e5b3df9497aafc8c0e9dca619a70b89df5ff592aedeb7",
+        "max_tokens_for_new_requests": 16384,
+        "versions": {
+          "delm": "1.2.0",
+          "openai": "1.109.1",
+          "pydantic": "2.13.5",
+          "instructor": "1.3.2",
+          "numpy": "2.5.2",
+          "pandas": "3.0.5"
+        },
+        "source_sha256": {
+          "runtime.py": "5d4870857ed490dc3b57127ef61473e1e9238ac6933e14f464501eb9e3b5186b",
+          "export_completed.py": "3ed57c8dbe899fe41c7fc41ad7f25b7f4c757578a86ca54a4d024c430c0067c3",
+          "monitor.py": "7d9e476d18f2a169f28672da67e65a237995bd454b39f3cc1e4b9e13a309e2c6",
+          "cli.py": "6a3959cfc1dd69dbae28f187148147ae277ee228b2d2653267ed71fea6470858",
+          "__init__.py": "8804240b11e177bb9007f5a3b05e046e71bde8846bc7ed7269895191d590621f",
+          "contracts.py": "1f4902fb679ec4c6fddab877ad0fbc0f50cb80e0ccf918b295fd038349b39fe0",
+          "delm_adapter.py": "59bb69c48f07bee53753d7bd00a02c218ab0d8e795e541454cf33142aa2af68b",
+          "frozen/leaderboard_metrics.py": "e6e3d2f44eb1cfb05c04b37231db6745feca1137a2098d7f457c4c1c393315f8",
+          "frozen/s55_kimik3_openrouter_eval.py": "c266e7d56f3d229d468396956fd702347ac45f064b4c997502bbedc17d5d5013",
+          "frozen/s91_openrouter_eval.py": "17b0daee55d09bac0f1a345631212a8bef135944d1954c0410e5a585aef38419",
+          "frozen/__init__.py": "b383d027c60368ca2197fc042e6b3f833e24b9a9d35d1857999098ac9e8301e0",
+          "frozen/s93_vision_openrouter.py": "b38ed100e2dd1d1f07cca702c1566e36edb0d9f785ba4268eabab1a9ae5ee11a",
+          "frozen/vision_eval.py": "929aab12cbc6ecc9863ede3e1857126ff016a41baf88d58a7229320bd4d2520c"
+        },
+        "failure_policy": "Parse failures and refusals retained in denominator; no answer-repair retries"
+      }
+    },
+    {
+      "model": "grok-4_6",
+      "dataset": "dsad",
+      "sampleCount": 1000,
+      "sourceRunId": "summary_gaps_delm_20260907/grok-4_6/dsad",
+      "result": {
+        "n": 1000,
+        "exact_match_pct": 4.6,
+        "exact_match_ci": [
+          3.4000000000000004,
+          5.8999999999999995
+        ],
+        "micro_f1_pct": 36.69045730901401,
+        "micro_f1_ci": [
+          34.71598414795245,
+          38.83495145631068
+        ],
+        "website_entry": {
+          "exactMatch": {
+            "value": 4.6,
+            "ciLow": 3.4,
+            "ciHigh": 5.9
+          },
+          "microF1": {
+            "value": 36.69,
+            "ciLow": 34.72,
+            "ciHigh": 38.83
+          }
+        },
+        "parse_failures": 0,
+        "refusals": 0
+      },
+      "provenance": {
+        "prompt_sha256": "64e9b7e2ea38d905c5105f0d06da45381b29c79654ae3842f14e5522893fd42c",
+        "schema_sha256": "99ca267bab012190a559e060e90d65098b77367fda7f5ae911ffb5d1644df866",
+        "sample_sha256": "d66aaacd126416492db2fa86a58f41dbe22cfc4c857105c708640366584f855a",
+        "max_tokens_for_new_requests": 16384,
+        "versions": {
+          "delm": "1.2.0",
+          "openai": "1.109.1",
+          "pydantic": "2.13.5",
+          "instructor": "1.3.2",
+          "numpy": "2.5.2",
+          "pandas": "3.0.5"
+        },
+        "source_sha256": {
+          "runtime.py": "5d4870857ed490dc3b57127ef61473e1e9238ac6933e14f464501eb9e3b5186b",
+          "export_completed.py": "3ed57c8dbe899fe41c7fc41ad7f25b7f4c757578a86ca54a4d024c430c0067c3",
+          "monitor.py": "7d9e476d18f2a169f28672da67e65a237995bd454b39f3cc1e4b9e13a309e2c6",
+          "cli.py": "6a3959cfc1dd69dbae28f187148147ae277ee228b2d2653267ed71fea6470858",
+          "__init__.py": "8804240b11e177bb9007f5a3b05e046e71bde8846bc7ed7269895191d590621f",
+          "contracts.py": "1f4902fb679ec4c6fddab877ad0fbc0f50cb80e0ccf918b295fd038349b39fe0",
+          "delm_adapter.py": "59bb69c48f07bee53753d7bd00a02c218ab0d8e795e541454cf33142aa2af68b",
+          "frozen/leaderboard_metrics.py": "e6e3d2f44eb1cfb05c04b37231db6745feca1137a2098d7f457c4c1c393315f8",
+          "frozen/s55_kimik3_openrouter_eval.py": "c266e7d56f3d229d468396956fd702347ac45f064b4c997502bbedc17d5d5013",
+          "frozen/s91_openrouter_eval.py": "17b0daee55d09bac0f1a345631212a8bef135944d1954c0410e5a585aef38419",
+          "frozen/__init__.py": "b383d027c60368ca2197fc042e6b3f833e24b9a9d35d1857999098ac9e8301e0",
+          "frozen/s93_vision_openrouter.py": "b38ed100e2dd1d1f07cca702c1566e36edb0d9f785ba4268eabab1a9ae5ee11a",
+          "frozen/vision_eval.py": "929aab12cbc6ecc9863ede3e1857126ff016a41baf88d58a7229320bd4d2520c"
+        },
+        "failure_policy": "Parse failures and refusals retained in denominator; no answer-repair retries"
+      }
+    },
+    {
+      "model": "grok-4_6",
+      "dataset": "pitvis",
+      "sampleCount": 1000,
+      "sourceRunId": "summary_gaps_delm_20260907/grok-4_6/pitvis",
+      "result": {
+        "n": 1000,
+        "exact_match_pct": 53.1,
+        "exact_match_ci": [
+          50,
+          56.10000000000001
+        ],
+        "micro_f1_pct": 49.04109589041096,
+        "micro_f1_ci": [
+          45.951557093425606,
+          52.20293724966623
+        ],
+        "website_entry": {
+          "exactMatch": {
+            "value": 53.1,
+            "ciLow": 50,
+            "ciHigh": 56.1
+          },
+          "microF1": {
+            "value": 49.04,
+            "ciLow": 45.95,
+            "ciHigh": 52.2
+          }
+        },
+        "parse_failures": 0,
+        "refusals": 0
+      },
+      "provenance": {
+        "prompt_sha256": "32af30ef3b0bf6f7a862ec4fa5be96acac009a5868a16ef3177a4fc64095241b",
+        "schema_sha256": "6ca0938d4bb48d4922d27970d2d7903e6673355e7c0d4ea9807bf30259fb7332",
+        "sample_sha256": "834420f04c8c64ef9b7eb0aee1a2ffc4a156cbb47001c70954ae741c97da826a",
+        "max_tokens_for_new_requests": 16384,
+        "versions": {
+          "delm": "1.2.0",
+          "openai": "1.109.1",
+          "pydantic": "2.13.5",
+          "instructor": "1.3.2",
+          "numpy": "2.5.2",
+          "pandas": "3.0.5"
+        },
+        "source_sha256": {
+          "runtime.py": "18a8793eaf4c7e280aae06e6f470f867a11f204434c24f14d3d8c178a63630a2",
+          "export_completed.py": "3ed57c8dbe899fe41c7fc41ad7f25b7f4c757578a86ca54a4d024c430c0067c3",
+          "monitor.py": "7d9e476d18f2a169f28672da67e65a237995bd454b39f3cc1e4b9e13a309e2c6",
+          "cli.py": "86bc73843eb9ab8c5e52bf27fcac5a4fa25f28eb7f3ae0d9fa54982c8d1a48b2",
+          "__init__.py": "8804240b11e177bb9007f5a3b05e046e71bde8846bc7ed7269895191d590621f",
+          "contracts.py": "1f4902fb679ec4c6fddab877ad0fbc0f50cb80e0ccf918b295fd038349b39fe0",
+          "delm_adapter.py": "59bb69c48f07bee53753d7bd00a02c218ab0d8e795e541454cf33142aa2af68b",
+          "frozen/leaderboard_metrics.py": "e6e3d2f44eb1cfb05c04b37231db6745feca1137a2098d7f457c4c1c393315f8",
+          "frozen/s55_kimik3_openrouter_eval.py": "c266e7d56f3d229d468396956fd702347ac45f064b4c997502bbedc17d5d5013",
+          "frozen/s91_openrouter_eval.py": "17b0daee55d09bac0f1a345631212a8bef135944d1954c0410e5a585aef38419",
+          "frozen/__init__.py": "b383d027c60368ca2197fc042e6b3f833e24b9a9d35d1857999098ac9e8301e0",
+          "frozen/s93_vision_openrouter.py": "b38ed100e2dd1d1f07cca702c1566e36edb0d9f785ba4268eabab1a9ae5ee11a",
+          "frozen/vision_eval.py": "929aab12cbc6ecc9863ede3e1857126ff016a41baf88d58a7229320bd4d2520c"
+        },
+        "failure_policy": "Parse failures and refusals retained in denominator; no answer-repair retries"
+      }
+    },
+    {
+      "model": "grok-4_6",
+      "dataset": "pitvissteps",
+      "sampleCount": 1000,
+      "sourceRunId": "summary_gaps_delm_20260907/grok-4_6/pitvissteps",
+      "result": {
+        "n": 1000,
+        "exact_match_pct": 37.2,
+        "exact_match_ci": [
+          34.300000000000004,
+          40.2
+        ],
+        "micro_f1_pct": 37.23723723723724,
+        "micro_f1_ci": [
+          34.33433433433433,
+          40.24024024024024
+        ],
+        "website_entry": {
+          "exactMatch": {
+            "value": 37.2,
+            "ciLow": 34.3,
+            "ciHigh": 40.2
+          },
+          "microF1": {
+            "value": 37.24,
+            "ciLow": 34.33,
+            "ciHigh": 40.24
+          }
+        },
+        "parse_failures": 2,
+        "refusals": 0
+      },
+      "provenance": {
+        "prompt_sha256": "afbb010b106ec8b25d6cfaea544603dd2c45e34ba13466797e3a082e63f53934",
+        "schema_sha256": "148894acb495ef3a7ee3bb7479fc8de1a71b350c8d27a01848862cfc504183eb",
+        "sample_sha256": "3aae2b4515b679a406a552e62c8e531e03ac9d2a56ebc50a818ac7a37b38d646",
+        "max_tokens_for_new_requests": 16384,
+        "versions": {
+          "delm": "1.2.0",
+          "openai": "1.109.1",
+          "pydantic": "2.13.5",
+          "instructor": "1.3.2",
+          "numpy": "2.5.2",
+          "pandas": "3.0.5"
+        },
+        "source_sha256": {
+          "runtime.py": "5d4870857ed490dc3b57127ef61473e1e9238ac6933e14f464501eb9e3b5186b",
+          "export_completed.py": "3ed57c8dbe899fe41c7fc41ad7f25b7f4c757578a86ca54a4d024c430c0067c3",
+          "monitor.py": "7d9e476d18f2a169f28672da67e65a237995bd454b39f3cc1e4b9e13a309e2c6",
+          "cli.py": "6a3959cfc1dd69dbae28f187148147ae277ee228b2d2653267ed71fea6470858",
+          "__init__.py": "8804240b11e177bb9007f5a3b05e046e71bde8846bc7ed7269895191d590621f",
+          "contracts.py": "1f4902fb679ec4c6fddab877ad0fbc0f50cb80e0ccf918b295fd038349b39fe0",
+          "delm_adapter.py": "59bb69c48f07bee53753d7bd00a02c218ab0d8e795e541454cf33142aa2af68b",
+          "frozen/leaderboard_metrics.py": "e6e3d2f44eb1cfb05c04b37231db6745feca1137a2098d7f457c4c1c393315f8",
+          "frozen/s55_kimik3_openrouter_eval.py": "c266e7d56f3d229d468396956fd702347ac45f064b4c997502bbedc17d5d5013",
+          "frozen/s91_openrouter_eval.py": "17b0daee55d09bac0f1a345631212a8bef135944d1954c0410e5a585aef38419",
+          "frozen/__init__.py": "b383d027c60368ca2197fc042e6b3f833e24b9a9d35d1857999098ac9e8301e0",
+          "frozen/s93_vision_openrouter.py": "b38ed100e2dd1d1f07cca702c1566e36edb0d9f785ba4268eabab1a9ae5ee11a",
+          "frozen/vision_eval.py": "929aab12cbc6ecc9863ede3e1857126ff016a41baf88d58a7229320bd4d2520c"
+        },
+        "failure_policy": "Parse failures and refusals retained in denominator; no answer-repair retries"
+      }
+    },
+    {
+      "model": "grok-4_6",
+      "dataset": "pitvqa",
+      "sampleCount": 1000,
+      "sourceRunId": "summary_gaps_delm_20260907/grok-4_6/pitvqa",
+      "result": {
+        "n": 1000,
+        "exact_match_pct": 30.7,
+        "exact_match_ci": [
+          28.1,
+          33.7
+        ],
+        "micro_f1_pct": 43.1,
+        "micro_f1_ci": [
+          40.550000000000004,
+          45.800000000000004
+        ],
+        "website_entry": {
+          "exactMatch": {
+            "value": 30.7,
+            "ciLow": 28.1,
+            "ciHigh": 33.7
+          },
+          "microF1": {
+            "value": 43.1,
+            "ciLow": 40.55,
+            "ciHigh": 45.8
+          }
+        },
+        "parse_failures": 0,
+        "refusals": 0
+      },
+      "provenance": {
+        "prompt_sha256": "c644ed303b285c8b8725cc32b5d1f681cbe60e2265f46612164dcc43ce4674dc",
+        "schema_sha256": "94b930d0ccc1d6e1e184b776a4053c673d93c51d6d79c6ed829bda103203a7e3",
+        "sample_sha256": "258ab43113cde1462e75ff975742d3e796725e229f04a79af40cd28be6f5b430",
+        "max_tokens_for_new_requests": 16384,
+        "versions": {
+          "delm": "1.2.0",
+          "openai": "1.109.1",
+          "pydantic": "2.13.5",
+          "instructor": "1.3.2",
+          "numpy": "2.5.2",
+          "pandas": "3.0.5"
+        },
+        "source_sha256": {
+          "runtime.py": "5d4870857ed490dc3b57127ef61473e1e9238ac6933e14f464501eb9e3b5186b",
+          "export_completed.py": "3ed57c8dbe899fe41c7fc41ad7f25b7f4c757578a86ca54a4d024c430c0067c3",
+          "monitor.py": "7d9e476d18f2a169f28672da67e65a237995bd454b39f3cc1e4b9e13a309e2c6",
+          "cli.py": "6a3959cfc1dd69dbae28f187148147ae277ee228b2d2653267ed71fea6470858",
+          "__init__.py": "8804240b11e177bb9007f5a3b05e046e71bde8846bc7ed7269895191d590621f",
+          "contracts.py": "1f4902fb679ec4c6fddab877ad0fbc0f50cb80e0ccf918b295fd038349b39fe0",
+          "delm_adapter.py": "59bb69c48f07bee53753d7bd00a02c218ab0d8e795e541454cf33142aa2af68b",
+          "frozen/leaderboard_metrics.py": "e6e3d2f44eb1cfb05c04b37231db6745feca1137a2098d7f457c4c1c393315f8",
+          "frozen/s55_kimik3_openrouter_eval.py": "c266e7d56f3d229d468396956fd702347ac45f064b4c997502bbedc17d5d5013",
+          "frozen/s91_openrouter_eval.py": "17b0daee55d09bac0f1a345631212a8bef135944d1954c0410e5a585aef38419",
+          "frozen/__init__.py": "b383d027c60368ca2197fc042e6b3f833e24b9a9d35d1857999098ac9e8301e0",
+          "frozen/s93_vision_openrouter.py": "b38ed100e2dd1d1f07cca702c1566e36edb0d9f785ba4268eabab1a9ae5ee11a",
+          "frozen/vision_eval.py": "929aab12cbc6ecc9863ede3e1857126ff016a41baf88d58a7229320bd4d2520c"
+        },
+        "failure_policy": "Parse failures and refusals retained in denominator; no answer-repair retries"
+      }
+    },
+    {
+      "model": "grok-4_6",
+      "dataset": "sarrarp50",
+      "sampleCount": 636,
+      "sourceRunId": "summary_gaps_delm_20260907/grok-4_6/sarrarp50",
+      "result": {
+        "n": 636,
+        "exact_match_pct": 25.471698113207548,
+        "exact_match_ci": [
+          22.32704402515723,
+          29.245283018867923
+        ],
+        "micro_f1_pct": 25.471698113207548,
+        "micro_f1_ci": [
+          22.32704402515723,
+          29.245283018867923
+        ],
+        "website_entry": {
+          "exactMatch": {
+            "value": 25.47,
+            "ciLow": 22.33,
+            "ciHigh": 29.25
+          },
+          "microF1": {
+            "value": 25.47,
+            "ciLow": 22.33,
+            "ciHigh": 29.25
+          }
+        },
+        "parse_failures": 0,
+        "refusals": 0
+      },
+      "provenance": {
+        "prompt_sha256": "963a610e32bc65dabe046353d046fc1032f3622abc8591fc5c16db9291f031c4",
+        "schema_sha256": "4e94bb317c136b8455320d3ef26b224f729eccfc62b6d602b9c4111bff47c9f7",
+        "sample_sha256": "a0ebde6cee24941a4b031e8d2399c52a71387fcdb36da7e97cad1b8136417bee",
+        "max_tokens_for_new_requests": 16384,
+        "versions": {
+          "delm": "1.2.0",
+          "openai": "1.109.1",
+          "pydantic": "2.13.5",
+          "instructor": "1.3.2",
+          "numpy": "2.5.2",
+          "pandas": "3.0.5"
+        },
+        "source_sha256": {
+          "runtime.py": "5d4870857ed490dc3b57127ef61473e1e9238ac6933e14f464501eb9e3b5186b",
+          "export_completed.py": "3ed57c8dbe899fe41c7fc41ad7f25b7f4c757578a86ca54a4d024c430c0067c3",
+          "monitor.py": "7d9e476d18f2a169f28672da67e65a237995bd454b39f3cc1e4b9e13a309e2c6",
+          "cli.py": "6a3959cfc1dd69dbae28f187148147ae277ee228b2d2653267ed71fea6470858",
+          "__init__.py": "8804240b11e177bb9007f5a3b05e046e71bde8846bc7ed7269895191d590621f",
+          "contracts.py": "1f4902fb679ec4c6fddab877ad0fbc0f50cb80e0ccf918b295fd038349b39fe0",
+          "delm_adapter.py": "59bb69c48f07bee53753d7bd00a02c218ab0d8e795e541454cf33142aa2af68b",
+          "frozen/leaderboard_metrics.py": "e6e3d2f44eb1cfb05c04b37231db6745feca1137a2098d7f457c4c1c393315f8",
+          "frozen/s55_kimik3_openrouter_eval.py": "c266e7d56f3d229d468396956fd702347ac45f064b4c997502bbedc17d5d5013",
+          "frozen/s91_openrouter_eval.py": "17b0daee55d09bac0f1a345631212a8bef135944d1954c0410e5a585aef38419",
+          "frozen/__init__.py": "b383d027c60368ca2197fc042e6b3f833e24b9a9d35d1857999098ac9e8301e0",
+          "frozen/s93_vision_openrouter.py": "b38ed100e2dd1d1f07cca702c1566e36edb0d9f785ba4268eabab1a9ae5ee11a",
+          "frozen/vision_eval.py": "929aab12cbc6ecc9863ede3e1857126ff016a41baf88d58a7229320bd4d2520c"
+        },
+        "failure_policy": "Parse failures and refusals retained in denominator; no answer-repair retries"
+      }
+    },
+    {
+      "model": "grok-4_6",
+      "dataset": "surgvu",
+      "sampleCount": 1000,
+      "sourceRunId": "summary_gaps_delm_20260907/grok-4_6/surgvu",
+      "result": {
+        "n": 1000,
+        "exact_match_pct": 19.2,
+        "exact_match_ci": [
+          16.900000000000002,
+          21.7
+        ],
+        "micro_f1_pct": 33.56948228882834,
+        "micro_f1_ci": [
+          31.48509334076344,
+          35.51554828150573
+        ],
+        "website_entry": {
+          "exactMatch": {
+            "value": 19.2,
+            "ciLow": 16.9,
+            "ciHigh": 21.7
+          },
+          "microF1": {
+            "value": 33.57,
+            "ciLow": 31.49,
+            "ciHigh": 35.52
+          }
+        },
+        "parse_failures": 0,
+        "refusals": 0
+      },
+      "provenance": {
+        "prompt_sha256": "e432ed7e3c94c58e6863180af74d3bcdcf71c00d54cffb0f88254ecb99ef85b8",
+        "schema_sha256": "6ca0938d4bb48d4922d27970d2d7903e6673355e7c0d4ea9807bf30259fb7332",
+        "sample_sha256": "455b741430840103440fa1251916725187c04ef1afbcf8e5150abcdde013d92e",
+        "max_tokens_for_new_requests": 16384,
+        "versions": {
+          "delm": "1.2.0",
+          "openai": "1.109.1",
+          "pydantic": "2.13.5",
+          "instructor": "1.3.2",
+          "numpy": "2.5.2",
+          "pandas": "3.0.5"
+        },
+        "source_sha256": {
+          "runtime.py": "5d4870857ed490dc3b57127ef61473e1e9238ac6933e14f464501eb9e3b5186b",
+          "export_completed.py": "3ed57c8dbe899fe41c7fc41ad7f25b7f4c757578a86ca54a4d024c430c0067c3",
+          "monitor.py": "7d9e476d18f2a169f28672da67e65a237995bd454b39f3cc1e4b9e13a309e2c6",
+          "cli.py": "6a3959cfc1dd69dbae28f187148147ae277ee228b2d2653267ed71fea6470858",
+          "__init__.py": "8804240b11e177bb9007f5a3b05e046e71bde8846bc7ed7269895191d590621f",
+          "contracts.py": "1f4902fb679ec4c6fddab877ad0fbc0f50cb80e0ccf918b295fd038349b39fe0",
+          "delm_adapter.py": "59bb69c48f07bee53753d7bd00a02c218ab0d8e795e541454cf33142aa2af68b",
+          "frozen/leaderboard_metrics.py": "e6e3d2f44eb1cfb05c04b37231db6745feca1137a2098d7f457c4c1c393315f8",
+          "frozen/s55_kimik3_openrouter_eval.py": "c266e7d56f3d229d468396956fd702347ac45f064b4c997502bbedc17d5d5013",
+          "frozen/s91_openrouter_eval.py": "17b0daee55d09bac0f1a345631212a8bef135944d1954c0410e5a585aef38419",
+          "frozen/__init__.py": "b383d027c60368ca2197fc042e6b3f833e24b9a9d35d1857999098ac9e8301e0",
+          "frozen/s93_vision_openrouter.py": "b38ed100e2dd1d1f07cca702c1566e36edb0d9f785ba4268eabab1a9ae5ee11a",
+          "frozen/vision_eval.py": "929aab12cbc6ecc9863ede3e1857126ff016a41baf88d58a7229320bd4d2520c"
+        },
+        "failure_policy": "Parse failures and refusals retained in denominator; no answer-repair retries"
+      }
+    },
+    {
+      "model": "qwen3-8-max-0902",
+      "dataset": "cadis",
+      "sampleCount": 534,
+      "sourceRunId": "summary_gaps_delm_20260907/qwen3-8-max-0902/cadis",
+      "result": {
+        "n": 534,
+        "exact_match_pct": 11.423220973782772,
+        "exact_match_ci": [
+          8.801498127340825,
+          14.04494382022472
+        ],
+        "micro_f1_pct": 81.77267373380448,
+        "micro_f1_ci": [
+          80.55188610010275,
+          82.94413242684008
+        ],
+        "website_entry": {
+          "exactMatch": {
+            "value": 11.42,
+            "ciLow": 8.8,
+            "ciHigh": 14.04
+          },
+          "microF1": {
+            "value": 81.77,
+            "ciLow": 80.55,
+            "ciHigh": 82.94
+          }
+        },
+        "parse_failures": 10,
+        "refusals": 0
+      },
+      "provenance": {
+        "prompt_sha256": "630ee289c556bc1fa9a42ecdd2cbce149c9d81f4e2cd1a98e302c5b4734c8254",
+        "schema_sha256": "c8c6ebc3bab109b31ed9023804579fc130185a0ba8e1a1b984af1eccf580aecf",
+        "sample_sha256": "3ca936fb537822393a1dc337e128f6fccf16d6f34c4d16f0be486907b09efb47",
+        "max_tokens_for_new_requests": 16384,
+        "versions": {
+          "delm": "1.2.0",
+          "openai": "1.109.1",
+          "pydantic": "2.13.5",
+          "instructor": "1.3.2",
+          "numpy": "2.5.2",
+          "pandas": "3.0.5"
+        },
+        "source_sha256": {
+          "runtime.py": "18a8793eaf4c7e280aae06e6f470f867a11f204434c24f14d3d8c178a63630a2",
+          "export_completed.py": "3ed57c8dbe899fe41c7fc41ad7f25b7f4c757578a86ca54a4d024c430c0067c3",
+          "monitor.py": "7d9e476d18f2a169f28672da67e65a237995bd454b39f3cc1e4b9e13a309e2c6",
+          "cli.py": "86bc73843eb9ab8c5e52bf27fcac5a4fa25f28eb7f3ae0d9fa54982c8d1a48b2",
+          "__init__.py": "8804240b11e177bb9007f5a3b05e046e71bde8846bc7ed7269895191d590621f",
+          "contracts.py": "1f4902fb679ec4c6fddab877ad0fbc0f50cb80e0ccf918b295fd038349b39fe0",
+          "delm_adapter.py": "59bb69c48f07bee53753d7bd00a02c218ab0d8e795e541454cf33142aa2af68b",
+          "frozen/leaderboard_metrics.py": "e6e3d2f44eb1cfb05c04b37231db6745feca1137a2098d7f457c4c1c393315f8",
+          "frozen/s55_kimik3_openrouter_eval.py": "c266e7d56f3d229d468396956fd702347ac45f064b4c997502bbedc17d5d5013",
+          "frozen/s91_openrouter_eval.py": "17b0daee55d09bac0f1a345631212a8bef135944d1954c0410e5a585aef38419",
+          "frozen/__init__.py": "b383d027c60368ca2197fc042e6b3f833e24b9a9d35d1857999098ac9e8301e0",
+          "frozen/s93_vision_openrouter.py": "b38ed100e2dd1d1f07cca702c1566e36edb0d9f785ba4268eabab1a9ae5ee11a",
+          "frozen/vision_eval.py": "929aab12cbc6ecc9863ede3e1857126ff016a41baf88d58a7229320bd4d2520c"
+        },
+        "failure_policy": "Parse failures and refusals retained in denominator; no answer-repair retries"
+      }
+    },
+    {
+      "model": "qwen3-8-max-0902",
+      "dataset": "cholect50verbs",
+      "sampleCount": 1000,
+      "sourceRunId": "summary_gaps_delm_20260907/qwen3-8-max-0902/cholect50verbs",
+      "result": {
+        "n": 1000,
+        "exact_match_pct": 19.2,
+        "exact_match_ci": [
+          16.7,
+          21.6
+        ],
+        "micro_f1_pct": 64.13043478260869,
+        "micro_f1_ci": [
+          62.37650200267023,
+          65.78876646062886
+        ],
+        "website_entry": {
+          "exactMatch": {
+            "value": 19.2,
+            "ciLow": 16.7,
+            "ciHigh": 21.6
+          },
+          "microF1": {
+            "value": 64.13,
+            "ciLow": 62.38,
+            "ciHigh": 65.79
+          }
+        },
+        "parse_failures": 2,
+        "refusals": 0
+      },
+      "provenance": {
+        "prompt_sha256": "ed01b2cacd99abc928874eeb7143c254aafa34ddb4280bb525bf6b70416421a7",
+        "schema_sha256": "3bf9089ab5dd1909af7ec2557f05edb610807939db6ed7567573452c83967d47",
+        "sample_sha256": "4afe133cacd8c776673e5b3df9497aafc8c0e9dca619a70b89df5ff592aedeb7",
+        "max_tokens_for_new_requests": 16384,
+        "versions": {
+          "delm": "1.2.0",
+          "openai": "1.109.1",
+          "pydantic": "2.13.5",
+          "instructor": "1.3.2",
+          "numpy": "2.5.2",
+          "pandas": "3.0.5"
+        },
+        "source_sha256": {
+          "runtime.py": "5d4870857ed490dc3b57127ef61473e1e9238ac6933e14f464501eb9e3b5186b",
+          "export_completed.py": "3ed57c8dbe899fe41c7fc41ad7f25b7f4c757578a86ca54a4d024c430c0067c3",
+          "monitor.py": "7d9e476d18f2a169f28672da67e65a237995bd454b39f3cc1e4b9e13a309e2c6",
+          "cli.py": "6a3959cfc1dd69dbae28f187148147ae277ee228b2d2653267ed71fea6470858",
+          "__init__.py": "8804240b11e177bb9007f5a3b05e046e71bde8846bc7ed7269895191d590621f",
+          "contracts.py": "1f4902fb679ec4c6fddab877ad0fbc0f50cb80e0ccf918b295fd038349b39fe0",
+          "delm_adapter.py": "59bb69c48f07bee53753d7bd00a02c218ab0d8e795e541454cf33142aa2af68b",
+          "frozen/leaderboard_metrics.py": "e6e3d2f44eb1cfb05c04b37231db6745feca1137a2098d7f457c4c1c393315f8",
+          "frozen/s55_kimik3_openrouter_eval.py": "c266e7d56f3d229d468396956fd702347ac45f064b4c997502bbedc17d5d5013",
+          "frozen/s91_openrouter_eval.py": "17b0daee55d09bac0f1a345631212a8bef135944d1954c0410e5a585aef38419",
+          "frozen/__init__.py": "b383d027c60368ca2197fc042e6b3f833e24b9a9d35d1857999098ac9e8301e0",
+          "frozen/s93_vision_openrouter.py": "b38ed100e2dd1d1f07cca702c1566e36edb0d9f785ba4268eabab1a9ae5ee11a",
+          "frozen/vision_eval.py": "929aab12cbc6ecc9863ede3e1857126ff016a41baf88d58a7229320bd4d2520c"
+        },
+        "failure_policy": "Parse failures and refusals retained in denominator; no answer-repair retries"
+      }
+    },
+    {
+      "model": "qwen3-8-max-0902",
+      "dataset": "dsad",
+      "sampleCount": 1000,
+      "sourceRunId": "summary_gaps_delm_20260907/qwen3-8-max-0902/dsad",
+      "result": {
+        "n": 1000,
+        "exact_match_pct": 6.9,
+        "exact_match_ci": [
+          5.4,
+          8.5
+        ],
+        "micro_f1_pct": 48.97188417960554,
+        "micro_f1_ci": [
+          47.16505669886602,
+          50.81761006289308
+        ],
+        "website_entry": {
+          "exactMatch": {
+            "value": 6.9,
+            "ciLow": 5.4,
+            "ciHigh": 8.5
+          },
+          "microF1": {
+            "value": 48.97,
+            "ciLow": 47.17,
+            "ciHigh": 50.82
+          }
+        },
+        "parse_failures": 45,
+        "refusals": 1
+      },
+      "provenance": {
+        "prompt_sha256": "64e9b7e2ea38d905c5105f0d06da45381b29c79654ae3842f14e5522893fd42c",
+        "schema_sha256": "99ca267bab012190a559e060e90d65098b77367fda7f5ae911ffb5d1644df866",
+        "sample_sha256": "d66aaacd126416492db2fa86a58f41dbe22cfc4c857105c708640366584f855a",
+        "max_tokens_for_new_requests": 16384,
+        "versions": {
+          "delm": "1.2.0",
+          "openai": "1.109.1",
+          "pydantic": "2.13.5",
+          "instructor": "1.3.2",
+          "numpy": "2.5.2",
+          "pandas": "3.0.5"
+        },
+        "source_sha256": {
+          "runtime.py": "5d4870857ed490dc3b57127ef61473e1e9238ac6933e14f464501eb9e3b5186b",
+          "export_completed.py": "3ed57c8dbe899fe41c7fc41ad7f25b7f4c757578a86ca54a4d024c430c0067c3",
+          "monitor.py": "7d9e476d18f2a169f28672da67e65a237995bd454b39f3cc1e4b9e13a309e2c6",
+          "cli.py": "6a3959cfc1dd69dbae28f187148147ae277ee228b2d2653267ed71fea6470858",
+          "__init__.py": "8804240b11e177bb9007f5a3b05e046e71bde8846bc7ed7269895191d590621f",
+          "contracts.py": "1f4902fb679ec4c6fddab877ad0fbc0f50cb80e0ccf918b295fd038349b39fe0",
+          "delm_adapter.py": "59bb69c48f07bee53753d7bd00a02c218ab0d8e795e541454cf33142aa2af68b",
+          "frozen/leaderboard_metrics.py": "e6e3d2f44eb1cfb05c04b37231db6745feca1137a2098d7f457c4c1c393315f8",
+          "frozen/s55_kimik3_openrouter_eval.py": "c266e7d56f3d229d468396956fd702347ac45f064b4c997502bbedc17d5d5013",
+          "frozen/s91_openrouter_eval.py": "17b0daee55d09bac0f1a345631212a8bef135944d1954c0410e5a585aef38419",
+          "frozen/__init__.py": "b383d027c60368ca2197fc042e6b3f833e24b9a9d35d1857999098ac9e8301e0",
+          "frozen/s93_vision_openrouter.py": "b38ed100e2dd1d1f07cca702c1566e36edb0d9f785ba4268eabab1a9ae5ee11a",
+          "frozen/vision_eval.py": "929aab12cbc6ecc9863ede3e1857126ff016a41baf88d58a7229320bd4d2520c"
+        },
+        "failure_policy": "Parse failures and refusals retained in denominator; no answer-repair retries"
+      }
+    },
+    {
+      "model": "qwen3-8-max-0902",
+      "dataset": "pitvissteps",
+      "sampleCount": 1000,
+      "sourceRunId": "summary_gaps_delm_20260907/qwen3-8-max-0902/pitvissteps",
+      "result": {
+        "n": 1000,
+        "exact_match_pct": 46,
+        "exact_match_ci": [
+          42.8,
+          49.2
+        ],
+        "micro_f1_pct": 46.7005076142132,
+        "micro_f1_ci": [
+          43.41637010676156,
+          49.873545776428934
+        ],
+        "website_entry": {
+          "exactMatch": {
+            "value": 46,
+            "ciLow": 42.8,
+            "ciHigh": 49.2
+          },
+          "microF1": {
+            "value": 46.7,
+            "ciLow": 43.42,
+            "ciHigh": 49.87
+          }
+        },
+        "parse_failures": 7,
+        "refusals": 23
+      },
+      "provenance": {
+        "prompt_sha256": "afbb010b106ec8b25d6cfaea544603dd2c45e34ba13466797e3a082e63f53934",
+        "schema_sha256": "148894acb495ef3a7ee3bb7479fc8de1a71b350c8d27a01848862cfc504183eb",
+        "sample_sha256": "3aae2b4515b679a406a552e62c8e531e03ac9d2a56ebc50a818ac7a37b38d646",
+        "max_tokens_for_new_requests": 16384,
+        "versions": {
+          "delm": "1.2.0",
+          "openai": "1.109.1",
+          "pydantic": "2.13.5",
+          "instructor": "1.3.2",
+          "numpy": "2.5.2",
+          "pandas": "3.0.5"
+        },
+        "source_sha256": {
+          "runtime.py": "5d4870857ed490dc3b57127ef61473e1e9238ac6933e14f464501eb9e3b5186b",
+          "export_completed.py": "3ed57c8dbe899fe41c7fc41ad7f25b7f4c757578a86ca54a4d024c430c0067c3",
+          "monitor.py": "7d9e476d18f2a169f28672da67e65a237995bd454b39f3cc1e4b9e13a309e2c6",
+          "cli.py": "6a3959cfc1dd69dbae28f187148147ae277ee228b2d2653267ed71fea6470858",
+          "__init__.py": "8804240b11e177bb9007f5a3b05e046e71bde8846bc7ed7269895191d590621f",
+          "contracts.py": "1f4902fb679ec4c6fddab877ad0fbc0f50cb80e0ccf918b295fd038349b39fe0",
+          "delm_adapter.py": "59bb69c48f07bee53753d7bd00a02c218ab0d8e795e541454cf33142aa2af68b",
+          "frozen/leaderboard_metrics.py": "e6e3d2f44eb1cfb05c04b37231db6745feca1137a2098d7f457c4c1c393315f8",
+          "frozen/s55_kimik3_openrouter_eval.py": "c266e7d56f3d229d468396956fd702347ac45f064b4c997502bbedc17d5d5013",
+          "frozen/s91_openrouter_eval.py": "17b0daee55d09bac0f1a345631212a8bef135944d1954c0410e5a585aef38419",
+          "frozen/__init__.py": "b383d027c60368ca2197fc042e6b3f833e24b9a9d35d1857999098ac9e8301e0",
+          "frozen/s93_vision_openrouter.py": "b38ed100e2dd1d1f07cca702c1566e36edb0d9f785ba4268eabab1a9ae5ee11a",
+          "frozen/vision_eval.py": "929aab12cbc6ecc9863ede3e1857126ff016a41baf88d58a7229320bd4d2520c"
+        },
+        "failure_policy": "Parse failures and refusals retained in denominator; no answer-repair retries"
+      }
+    },
+    {
+      "model": "qwen3-8-max-0902",
+      "dataset": "pitvqa",
+      "sampleCount": 1000,
+      "sourceRunId": "summary_gaps_delm_20260907/qwen3-8-max-0902/pitvqa",
+      "result": {
+        "n": 1000,
+        "exact_match_pct": 38.2,
+        "exact_match_ci": [
+          34.9,
+          41.199999999999996
+        ],
+        "micro_f1_pct": 53.648716658278815,
+        "micro_f1_ci": [
+          51.13579000504795,
+          56.209150326797385
+        ],
+        "website_entry": {
+          "exactMatch": {
+            "value": 38.2,
+            "ciLow": 34.9,
+            "ciHigh": 41.2
+          },
+          "microF1": {
+            "value": 53.65,
+            "ciLow": 51.14,
+            "ciHigh": 56.21
+          }
+        },
+        "parse_failures": 13,
+        "refusals": 0
+      },
+      "provenance": {
+        "prompt_sha256": "c644ed303b285c8b8725cc32b5d1f681cbe60e2265f46612164dcc43ce4674dc",
+        "schema_sha256": "94b930d0ccc1d6e1e184b776a4053c673d93c51d6d79c6ed829bda103203a7e3",
+        "sample_sha256": "258ab43113cde1462e75ff975742d3e796725e229f04a79af40cd28be6f5b430",
+        "max_tokens_for_new_requests": 16384,
+        "versions": {
+          "delm": "1.2.0",
+          "openai": "1.109.1",
+          "pydantic": "2.13.5",
+          "instructor": "1.3.2",
+          "numpy": "2.5.2",
+          "pandas": "3.0.5"
+        },
+        "source_sha256": {
+          "runtime.py": "5d4870857ed490dc3b57127ef61473e1e9238ac6933e14f464501eb9e3b5186b",
+          "export_completed.py": "3ed57c8dbe899fe41c7fc41ad7f25b7f4c757578a86ca54a4d024c430c0067c3",
+          "monitor.py": "7d9e476d18f2a169f28672da67e65a237995bd454b39f3cc1e4b9e13a309e2c6",
+          "cli.py": "6a3959cfc1dd69dbae28f187148147ae277ee228b2d2653267ed71fea6470858",
+          "__init__.py": "8804240b11e177bb9007f5a3b05e046e71bde8846bc7ed7269895191d590621f",
+          "contracts.py": "1f4902fb679ec4c6fddab877ad0fbc0f50cb80e0ccf918b295fd038349b39fe0",
+          "delm_adapter.py": "59bb69c48f07bee53753d7bd00a02c218ab0d8e795e541454cf33142aa2af68b",
+          "frozen/leaderboard_metrics.py": "e6e3d2f44eb1cfb05c04b37231db6745feca1137a2098d7f457c4c1c393315f8",
+          "frozen/s55_kimik3_openrouter_eval.py": "c266e7d56f3d229d468396956fd702347ac45f064b4c997502bbedc17d5d5013",
+          "frozen/s91_openrouter_eval.py": "17b0daee55d09bac0f1a345631212a8bef135944d1954c0410e5a585aef38419",
+          "frozen/__init__.py": "b383d027c60368ca2197fc042e6b3f833e24b9a9d35d1857999098ac9e8301e0",
+          "frozen/s93_vision_openrouter.py": "b38ed100e2dd1d1f07cca702c1566e36edb0d9f785ba4268eabab1a9ae5ee11a",
+          "frozen/vision_eval.py": "929aab12cbc6ecc9863ede3e1857126ff016a41baf88d58a7229320bd4d2520c"
+        },
+        "failure_policy": "Parse failures and refusals retained in denominator; no answer-repair retries"
+      }
+    },
+    {
+      "model": "qwen3-8-max-0902",
+      "dataset": "sarrarp50",
+      "sampleCount": 636,
+      "sourceRunId": "summary_gaps_delm_20260907/qwen3-8-max-0902/sarrarp50",
+      "result": {
+        "n": 636,
+        "exact_match_pct": 22.955974842767297,
+        "exact_match_ci": [
+          19.49685534591195,
+          26.10062893081761
+        ],
+        "micro_f1_pct": 25.12908777969019,
+        "micro_f1_ci": [
+          21.409921671018274,
+          28.547008547008545
+        ],
+        "website_entry": {
+          "exactMatch": {
+            "value": 22.96,
+            "ciLow": 19.5,
+            "ciHigh": 26.1
+          },
+          "microF1": {
+            "value": 25.13,
+            "ciLow": 21.41,
+            "ciHigh": 28.55
+          }
+        },
+        "parse_failures": 110,
+        "refusals": 0
+      },
+      "provenance": {
+        "prompt_sha256": "963a610e32bc65dabe046353d046fc1032f3622abc8591fc5c16db9291f031c4",
+        "schema_sha256": "4e94bb317c136b8455320d3ef26b224f729eccfc62b6d602b9c4111bff47c9f7",
+        "sample_sha256": "a0ebde6cee24941a4b031e8d2399c52a71387fcdb36da7e97cad1b8136417bee",
+        "max_tokens_for_new_requests": 16384,
+        "versions": {
+          "delm": "1.2.0",
+          "openai": "1.109.1",
+          "pydantic": "2.13.5",
+          "instructor": "1.3.2",
+          "numpy": "2.5.2",
+          "pandas": "3.0.5"
+        },
+        "source_sha256": {
+          "runtime.py": "5d4870857ed490dc3b57127ef61473e1e9238ac6933e14f464501eb9e3b5186b",
+          "export_completed.py": "3ed57c8dbe899fe41c7fc41ad7f25b7f4c757578a86ca54a4d024c430c0067c3",
+          "monitor.py": "7d9e476d18f2a169f28672da67e65a237995bd454b39f3cc1e4b9e13a309e2c6",
+          "cli.py": "6a3959cfc1dd69dbae28f187148147ae277ee228b2d2653267ed71fea6470858",
+          "__init__.py": "8804240b11e177bb9007f5a3b05e046e71bde8846bc7ed7269895191d590621f",
+          "contracts.py": "1f4902fb679ec4c6fddab877ad0fbc0f50cb80e0ccf918b295fd038349b39fe0",
+          "delm_adapter.py": "59bb69c48f07bee53753d7bd00a02c218ab0d8e795e541454cf33142aa2af68b",
+          "frozen/leaderboard_metrics.py": "e6e3d2f44eb1cfb05c04b37231db6745feca1137a2098d7f457c4c1c393315f8",
+          "frozen/s55_kimik3_openrouter_eval.py": "c266e7d56f3d229d468396956fd702347ac45f064b4c997502bbedc17d5d5013",
+          "frozen/s91_openrouter_eval.py": "17b0daee55d09bac0f1a345631212a8bef135944d1954c0410e5a585aef38419",
+          "frozen/__init__.py": "b383d027c60368ca2197fc042e6b3f833e24b9a9d35d1857999098ac9e8301e0",
+          "frozen/s93_vision_openrouter.py": "b38ed100e2dd1d1f07cca702c1566e36edb0d9f785ba4268eabab1a9ae5ee11a",
+          "frozen/vision_eval.py": "929aab12cbc6ecc9863ede3e1857126ff016a41baf88d58a7229320bd4d2520c"
+        },
+        "failure_policy": "Parse failures and refusals retained in denominator; no answer-repair retries"
+      }
+    },
+    {
+      "model": "qwen3-8-max-0902",
+      "dataset": "cholect50",
+      "sampleCount": 1000,
+      "sourceRunId": "summary_gaps_delm_20260907/qwen3-8-max-0902/cholect50",
+      "result": {
+        "n": 1000,
+        "exact_match_pct": 69.5,
+        "exact_match_ci": [
+          66.5,
+          72.2
+        ],
+        "micro_f1_pct": 83.80462724935732,
+        "micro_f1_ci": [
+          82.00371057513914,
+          85.49892318736539
+        ],
+        "website_entry": {
+          "exactMatch": {
+            "value": 69.5,
+            "ciLow": 66.5,
+            "ciHigh": 72.2
+          },
+          "microF1": {
+            "value": 83.8,
+            "ciLow": 82,
+            "ciHigh": 85.5
+          }
+        },
+        "parse_failures": 2,
+        "refusals": 0
+      },
+      "provenance": {
+        "prompt_sha256": "be8a266aa7af64bef4fa6f284f652aad92003506b2b22bd8a43fa7e9d4f2e941",
+        "schema_sha256": "6ca0938d4bb48d4922d27970d2d7903e6673355e7c0d4ea9807bf30259fb7332",
+        "sample_sha256": "4afe133cacd8c776673e5b3df9497aafc8c0e9dca619a70b89df5ff592aedeb7",
+        "max_tokens_for_new_requests": 16384,
+        "versions": {
+          "delm": "1.2.0",
+          "openai": "1.109.1",
+          "pydantic": "2.13.5",
+          "instructor": "1.3.2",
+          "numpy": "2.5.2",
+          "pandas": "3.0.5"
+        },
+        "source_sha256": {
+          "runtime.py": "5d4870857ed490dc3b57127ef61473e1e9238ac6933e14f464501eb9e3b5186b",
+          "export_completed.py": "3ed57c8dbe899fe41c7fc41ad7f25b7f4c757578a86ca54a4d024c430c0067c3",
+          "monitor.py": "7d9e476d18f2a169f28672da67e65a237995bd454b39f3cc1e4b9e13a309e2c6",
+          "cli.py": "e4b6798b2b4c1172fa7534399f58acefc9b6e817b2d4573918920aaa197c7678",
+          "__init__.py": "8804240b11e177bb9007f5a3b05e046e71bde8846bc7ed7269895191d590621f",
+          "contracts.py": "1f4902fb679ec4c6fddab877ad0fbc0f50cb80e0ccf918b295fd038349b39fe0",
+          "delm_adapter.py": "59bb69c48f07bee53753d7bd00a02c218ab0d8e795e541454cf33142aa2af68b",
+          "frozen/leaderboard_metrics.py": "e6e3d2f44eb1cfb05c04b37231db6745feca1137a2098d7f457c4c1c393315f8",
+          "frozen/s55_kimik3_openrouter_eval.py": "c266e7d56f3d229d468396956fd702347ac45f064b4c997502bbedc17d5d5013",
+          "frozen/s91_openrouter_eval.py": "17b0daee55d09bac0f1a345631212a8bef135944d1954c0410e5a585aef38419",
+          "frozen/__init__.py": "b383d027c60368ca2197fc042e6b3f833e24b9a9d35d1857999098ac9e8301e0",
+          "frozen/s93_vision_openrouter.py": "b38ed100e2dd1d1f07cca702c1566e36edb0d9f785ba4268eabab1a9ae5ee11a",
+          "frozen/vision_eval.py": "929aab12cbc6ecc9863ede3e1857126ff016a41baf88d58a7229320bd4d2520c"
+        },
+        "failure_policy": "Parse failures and refusals retained in denominator; no answer-repair retries"
+      }
+    },
+    {
+      "model": "qwen3-8-max-0902",
+      "dataset": "pitvis",
+      "sampleCount": 1000,
+      "sourceRunId": "summary_gaps_delm_20260907/qwen3-8-max-0902/pitvis",
+      "result": {
+        "n": 1000,
+        "exact_match_pct": 51.5,
+        "exact_match_ci": [
+          48.4,
+          54.7
+        ],
+        "micro_f1_pct": 49.50146627565982,
+        "micro_f1_ci": [
+          46.244825547013605,
+          52.77449822904369
+        ],
+        "website_entry": {
+          "exactMatch": {
+            "value": 51.5,
+            "ciLow": 48.4,
+            "ciHigh": 54.7
+          },
+          "microF1": {
+            "value": 49.5,
+            "ciLow": 46.24,
+            "ciHigh": 52.77
+          }
+        },
+        "parse_failures": 3,
+        "refusals": 15
+      },
+      "provenance": {
+        "prompt_sha256": "32af30ef3b0bf6f7a862ec4fa5be96acac009a5868a16ef3177a4fc64095241b",
+        "schema_sha256": "6ca0938d4bb48d4922d27970d2d7903e6673355e7c0d4ea9807bf30259fb7332",
+        "sample_sha256": "834420f04c8c64ef9b7eb0aee1a2ffc4a156cbb47001c70954ae741c97da826a",
+        "max_tokens_for_new_requests": 16384,
+        "versions": {
+          "delm": "1.2.0",
+          "openai": "1.109.1",
+          "pydantic": "2.13.5",
+          "instructor": "1.3.2",
+          "numpy": "2.5.2",
+          "pandas": "3.0.5"
+        },
+        "source_sha256": {
+          "runtime.py": "5d4870857ed490dc3b57127ef61473e1e9238ac6933e14f464501eb9e3b5186b",
+          "export_completed.py": "3ed57c8dbe899fe41c7fc41ad7f25b7f4c757578a86ca54a4d024c430c0067c3",
+          "monitor.py": "7d9e476d18f2a169f28672da67e65a237995bd454b39f3cc1e4b9e13a309e2c6",
+          "cli.py": "e4b6798b2b4c1172fa7534399f58acefc9b6e817b2d4573918920aaa197c7678",
+          "__init__.py": "8804240b11e177bb9007f5a3b05e046e71bde8846bc7ed7269895191d590621f",
+          "contracts.py": "1f4902fb679ec4c6fddab877ad0fbc0f50cb80e0ccf918b295fd038349b39fe0",
+          "delm_adapter.py": "59bb69c48f07bee53753d7bd00a02c218ab0d8e795e541454cf33142aa2af68b",
+          "frozen/leaderboard_metrics.py": "e6e3d2f44eb1cfb05c04b37231db6745feca1137a2098d7f457c4c1c393315f8",
+          "frozen/s55_kimik3_openrouter_eval.py": "c266e7d56f3d229d468396956fd702347ac45f064b4c997502bbedc17d5d5013",
+          "frozen/s91_openrouter_eval.py": "17b0daee55d09bac0f1a345631212a8bef135944d1954c0410e5a585aef38419",
+          "frozen/__init__.py": "b383d027c60368ca2197fc042e6b3f833e24b9a9d35d1857999098ac9e8301e0",
+          "frozen/s93_vision_openrouter.py": "b38ed100e2dd1d1f07cca702c1566e36edb0d9f785ba4268eabab1a9ae5ee11a",
+          "frozen/vision_eval.py": "929aab12cbc6ecc9863ede3e1857126ff016a41baf88d58a7229320bd4d2520c"
+        },
+        "failure_policy": "Parse failures and refusals retained in denominator; no answer-repair retries"
+      }
+    },
+    {
+      "model": "qwen3-8-max-0902",
+      "dataset": "surgvu",
+      "sampleCount": 1000,
+      "sourceRunId": "summary_gaps_delm_20260907/qwen3-8-max-0902/surgvu",
+      "result": {
+        "n": 1000,
+        "exact_match_pct": 16.900000000000002,
+        "exact_match_ci": [
+          14.7,
+          19.3
+        ],
+        "micro_f1_pct": 31.484593837535012,
+        "micro_f1_ci": [
+          29.73744292237443,
+          33.11888111888112
+        ],
+        "website_entry": {
+          "exactMatch": {
+            "value": 16.9,
+            "ciLow": 14.7,
+            "ciHigh": 19.3
+          },
+          "microF1": {
+            "value": 31.48,
+            "ciLow": 29.74,
+            "ciHigh": 33.12
+          }
+        },
+        "parse_failures": 37,
+        "refusals": 0
+      },
+      "provenance": {
+        "prompt_sha256": "e432ed7e3c94c58e6863180af74d3bcdcf71c00d54cffb0f88254ecb99ef85b8",
+        "schema_sha256": "6ca0938d4bb48d4922d27970d2d7903e6673355e7c0d4ea9807bf30259fb7332",
+        "sample_sha256": "455b741430840103440fa1251916725187c04ef1afbcf8e5150abcdde013d92e",
+        "max_tokens_for_new_requests": 16384,
+        "versions": {
+          "delm": "1.2.0",
+          "openai": "1.109.1",
+          "pydantic": "2.13.5",
+          "instructor": "1.3.2",
+          "numpy": "2.5.2",
+          "pandas": "3.0.5"
+        },
+        "source_sha256": {
+          "runtime.py": "5d4870857ed490dc3b57127ef61473e1e9238ac6933e14f464501eb9e3b5186b",
+          "export_completed.py": "3ed57c8dbe899fe41c7fc41ad7f25b7f4c757578a86ca54a4d024c430c0067c3",
+          "monitor.py": "7d9e476d18f2a169f28672da67e65a237995bd454b39f3cc1e4b9e13a309e2c6",
+          "cli.py": "e4b6798b2b4c1172fa7534399f58acefc9b6e817b2d4573918920aaa197c7678",
+          "__init__.py": "8804240b11e177bb9007f5a3b05e046e71bde8846bc7ed7269895191d590621f",
+          "contracts.py": "1f4902fb679ec4c6fddab877ad0fbc0f50cb80e0ccf918b295fd038349b39fe0",
+          "delm_adapter.py": "59bb69c48f07bee53753d7bd00a02c218ab0d8e795e541454cf33142aa2af68b",
+          "frozen/leaderboard_metrics.py": "e6e3d2f44eb1cfb05c04b37231db6745feca1137a2098d7f457c4c1c393315f8",
+          "frozen/s55_kimik3_openrouter_eval.py": "c266e7d56f3d229d468396956fd702347ac45f064b4c997502bbedc17d5d5013",
+          "frozen/s91_openrouter_eval.py": "17b0daee55d09bac0f1a345631212a8bef135944d1954c0410e5a585aef38419",
+          "frozen/__init__.py": "b383d027c60368ca2197fc042e6b3f833e24b9a9d35d1857999098ac9e8301e0",
+          "frozen/s93_vision_openrouter.py": "b38ed100e2dd1d1f07cca702c1566e36edb0d9f785ba4268eabab1a9ae5ee11a",
+          "frozen/vision_eval.py": "929aab12cbc6ecc9863ede3e1857126ff016a41baf88d58a7229320bd4d2520c"
+        },
+        "failure_policy": "Parse failures and refusals retained in denominator; no answer-repair retries"
+      }
+    }
+  ],
+  "runs": [
+    "summary_gaps_20260907",
+    "summary_gaps_delm_20260907"
+  ]
+}
