@@ -3,6 +3,8 @@ import { readFileSync } from "node:fs";
 import { test } from "node:test";
 import { isNewModel, MODEL_PUBLISHED_ON, NEW_BADGE_DAYS } from "../src/data/leaderboard.ts";
 import { MODEL_RELEASES } from "../src/data/modelReleases.ts";
+import rawGestureResults from "../src/data/gestureResults.json" with { type: "json" };
+import { parseGestureResultsFile } from "../src/data/gestureResultsSchema.ts";
 
 test("New badges use the historical plot's release dates, not leaderboard addition dates", () => {
   assert.equal(NEW_BADGE_DAYS, 14);
@@ -37,6 +39,16 @@ test("Qwen Max 0902 is new, while older Qwen and unknown or composite releases a
   assert.equal(isNewModel("qwen3-8-max-0902", new Date(NaN)), false);
 });
 
+test("the two new Actions results use release-aware badge ids", () => {
+  const actions = parseGestureResultsFile(rawGestureResults).benchmark.results;
+  const added = actions.filter(({ id }) => id === "claude-fable-5_1" || id === "gpt-6-astra");
+
+  assert.deepEqual(added.map(({ id }) => id).sort(), ["claude-fable-5_1", "gpt-6-astra"]);
+  for (const result of added) {
+    assert.equal(isNewModel(result.id, new Date("2026-09-11T18:41:02Z")), true, result.model);
+  }
+});
+
 test("prerendered tables never bake in New badges that could outlive their release window", () => {
   for (const route of ["", "instruments/", "anatomy/"]) {
     const html = readFileSync(`dist/${route}index.html`, "utf8");
@@ -51,4 +63,9 @@ test("summary model titles reserve an inline badge slot without creating a separ
   assert.match(css, /\.summary-model-title\s*\{[^}]*display: inline-flex;[^}]*flex-wrap: nowrap;[^}]*white-space: nowrap;/);
   assert.match(css, /\.summary-model-title > \.badge-new\s*\{[^}]*flex: none;[^}]*margin-left: 0;/);
   assert.match(css, /@media \(max-width: 650px\)\s*\{[\s\S]*?\.summary-model-title\s*\{\s*white-space: normal;/, "Phone names can still wrap beside the badge within the sticky column");
+});
+
+test("phone-width charts retain New badges beside model names", () => {
+  const source = readFileSync("src/components/StackedBars.tsx", "utf8");
+  assert.match(source, /badgeDate && isNewModel\(row\.id, badgeDate\) \? <span className="badge-new">New<\/span>/);
 });
