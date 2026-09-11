@@ -35,6 +35,8 @@ jobs:
           cache-dependency-path: neurosurgery-video-eval-website/package-lock.json
       - run: npm ci
       - run: npm run build
+        env:
+          SITE_URL: https://eval.surgicalvideo.io/
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
