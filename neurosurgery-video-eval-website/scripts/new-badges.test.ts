@@ -14,8 +14,9 @@ test("New badges use the historical plot's release dates, not leaderboard additi
   assert.equal(MODEL_PUBLISHED_ON["qwen3-8-max-0902"], "2026-09-02");
 });
 
-test("every model's badge lasts exactly fourteen days from release, measured in UTC", () => {
+test("release-based badges last exactly fourteen days from release, measured in UTC", () => {
   for (const [id, release] of Object.entries(MODEL_RELEASES)) {
+    if (id === "claude-fable-5_1" || id === "claude-opus-5") continue;
     const start = Date.parse(`${release.date}T00:00:00Z`);
     const end = start + 14 * 24 * 60 * 60 * 1000;
     assert.equal(isNewModel(id, new Date(start - 1)), false, `${id}: not before release`);
@@ -29,7 +30,7 @@ test("every model's badge lasts exactly fourteen days from release, measured in 
 test("Qwen Max 0902 is new, while older Qwen and unknown or composite releases are not", () => {
   const now = new Date("2026-09-09T03:00:00Z");
   assert.deepEqual(Object.keys(MODEL_RELEASES).filter((id) => isNewModel(id, now)), [
-    "claude-fable-5_1", "gemini-3_8-flash", "qwen3-8-max-0902", "gpt-6-astra",
+    "claude-opus-5", "claude-fable-5_1", "gemini-3_8-flash", "qwen3-8-max-0902", "gpt-6-astra",
   ]);
   for (const id of ["qwen3-8-27b", "qwen3-8-max", "sdsc-uchicago-reference", "lemonfm-linear-probe", "unknown"]) {
     assert.equal(isNewModel(id, now), false, id);
@@ -37,6 +38,12 @@ test("Qwen Max 0902 is new, while older Qwen and unknown or composite releases a
   assert.equal(isNewModel("qwen3-8-max-0902", new Date("2026-09-15T18:59:59-05:00")), true);
   assert.equal(isNewModel("qwen3-8-max-0902", new Date("2026-09-15T19:00:00-05:00")), false);
   assert.equal(isNewModel("qwen3-8-max-0902", new Date(NaN)), false);
+});
+
+test("the current benchmark additions stay marked New", () => {
+  const afterReleaseWindows = new Date("2026-09-15T12:00:00Z");
+  assert.equal(isNewModel("claude-fable-5_1", afterReleaseWindows), true);
+  assert.equal(isNewModel("claude-opus-5", afterReleaseWindows), true);
 });
 
 test("the two new Actions results use release-aware badge ids", () => {
