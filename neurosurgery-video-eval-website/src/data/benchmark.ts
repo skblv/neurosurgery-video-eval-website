@@ -223,7 +223,7 @@ export const GESTURE_MODEL_CITATIONS: ModelCitation[] = [
     year: 2026,
   },
   {
-    modelId: "lemon",
+    modelId: "lemonfm-linear-probe",
     authorsShort: "Che, C., Wang, C., Vercauteren, T., et al.",
     title:
       "LEMON: A Large Endoscopic MONocular Dataset and Foundation Model for Perception in Surgical Settings",

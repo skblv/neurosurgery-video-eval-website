@@ -47,8 +47,8 @@
         }
       },
       {
-        "id": "lemon",
-        "model": "LEMON",
+        "id": "lemonfm-linear-probe",
+        "model": "LemonFM (linear probe)",
         "provider": "visurg",
         "sourceRunId": "98f692ab-b778-4f5e-8dc0-91ed82dddc39_lemon_evaluation",
         "metrics": {
