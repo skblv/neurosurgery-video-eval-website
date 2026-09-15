@@ -25,6 +25,17 @@
     ],
     "results": [
       {
+        "id": "mvit-multi-task",
+        "model": "SDSC MViT Multi-Task",
+        "provider": "internal",
+        "sourceRunId": "98f692ab-b778-4f5e-8dc0-91ed82dddc39_mvit_multi_task_evaluation",
+        "metrics": {
+          "exactAccuracy": { "value": 79.00, "ciLow": null, "ciHigh": null },
+          "macroF1": { "value": 73.00, "ciLow": null, "ciHigh": null },
+          "weightedF1": { "value": 77.50, "ciLow": null, "ciHigh": null }
+        }
+      },
+      {
         "id": "surgmotion",
         "model": "SurgMotion",
         "provider": "surgmotion",

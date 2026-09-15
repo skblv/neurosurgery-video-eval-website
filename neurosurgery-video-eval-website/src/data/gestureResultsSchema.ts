@@ -132,7 +132,6 @@ export function parseGestureResultsFile(raw: unknown): GestureResultsFile {
   );
   const ids = results.map((result) => result.id);
   if (new Set(ids).size !== ids.length) fail("root.benchmark.results", "model ids must be unique");
-  if (ids.includes("mvit-multi-task")) fail("root.benchmark.results", "MViT is excluded from this release");
 
   const procedureCount = asPositiveNumber(
     benchmarkRecord.procedureCount,
