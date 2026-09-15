@@ -22,14 +22,14 @@ export const SUMMARY_MODALITIES: (SummaryModality & { id: DomainRoute })[] = DOM
     : domain.id === "gestures"
       // Provisional uniform-class baseline: the Action pilot has 10 gesture classes.
       // Keep this local until the permutation baseline is added to chanceBaselines.json.
-      ? [{ ...dataset(GESTURE_BENCHMARK, "exactAccuracy", "surgmotion"), chance: 10 }]
+      ? [{ ...dataset(GESTURE_BENCHMARK, "exactAccuracy", "mvit-multi-task"), chance: 10 }]
       : DOMAIN_PAGES[domain.id as keyof typeof DOMAIN_PAGES].datasetIds.map((id) => dataset(DOMAIN_DATASETS[id], id === "sarrarp50" ? "exactMatch" : "microF1", "resnet50"));
   return { id: domain.id, label: domain.shortLabel, datasets };
 });
 
 const EXCLUDED_SUMMARY_IDS = new Set([
   "yolov12m", "resnet50", "surgmotion", "lemon", "lemonfm-linear-probe",
-  "gemma3-27b-lora-json", "gemma3-27b-lora",
+  "gemma3-27b-lora-json", "gemma3-27b-lora", "mvit-multi-task",
 ]);
 const providers = new Map(
   [...DATASETS, GESTURE_BENCHMARK, ...Object.values(DOMAIN_DATASETS)]
