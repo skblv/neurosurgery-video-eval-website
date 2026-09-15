@@ -178,6 +178,8 @@ export interface ModelCitation {
   venue: string;
   linkLabel: string;
   url: string;
+  additionalLinkLabel?: string;
+  additionalUrl?: string;
   year: number;
 }
 
@@ -199,6 +201,17 @@ export const MODEL_CITATIONS: ModelCitation[] = [
  * so the numbering runs through the whole site.
  */
 export const GESTURE_MODEL_CITATIONS: ModelCitation[] = [
+  {
+    modelId: "mvit-multi-task",
+    authorsShort: "Fan, H., Xiong, B., Mangalam, K., et al.",
+    title: "Multiscale Vision Transformers",
+    venue: "Proceedings of ICCV 2021",
+    linkLabel: "PyTorch Video MViT documentation",
+    url: "https://docs.pytorch.org/vision/stable/models/video_mvit.html",
+    additionalLinkLabel: "arXiv:2112.01526",
+    additionalUrl: "https://arxiv.org/pdf/2112.01526",
+    year: 2021,
+  },
   {
     modelId: "surgmotion",
     authorsShort: "Wu, J., Holm, F., Chen, C., et al.",
