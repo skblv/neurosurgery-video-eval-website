@@ -20,7 +20,9 @@ export const SUMMARY_MODALITIES: (SummaryModality & { id: DomainRoute })[] = DOM
   const datasets = domain.id === "instruments"
     ? DATASETS.map((item) => dataset(item, "microF1", "yolov12m"))
     : domain.id === "gestures"
-      ? [dataset(GESTURE_BENCHMARK, "exactAccuracy", "surgmotion")]
+      // Provisional uniform-class baseline: the Action pilot has 10 gesture classes.
+      // Keep this local until the permutation baseline is added to chanceBaselines.json.
+      ? [{ ...dataset(GESTURE_BENCHMARK, "exactAccuracy", "surgmotion"), chance: 10 }]
       : DOMAIN_PAGES[domain.id as keyof typeof DOMAIN_PAGES].datasetIds.map((id) => dataset(DOMAIN_DATASETS[id], id === "sarrarp50" ? "exactMatch" : "microF1", "resnet50"));
   return { id: domain.id, label: domain.shortLabel, datasets };
 });

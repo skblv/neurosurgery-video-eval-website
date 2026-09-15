@@ -18,8 +18,7 @@ const RADAR_LAYOUTS = [
   { width: 360, centerY: 160, radius: 95, chartHeight: 320, columns: 1, rowHeight: 30 },
 ] as const;
 const format = (value: number | null) => value === null ? "NA" : value.toFixed(3);
-// Action remains hidden in the table; its adjusted score is NA until a baseline is verified.
-const TABLE_MODALITIES = SUMMARY_MODALITIES.flatMap((modality, index) => modality.id === "gestures" ? [] : [{ ...modality, index }]);
+const TABLE_MODALITIES = SUMMARY_MODALITIES.map((modality, index) => ({ ...modality, index }));
 
 function ModalityPlot() {
   const [selected, setSelected] = useState<string[]>(["gpt-6-astra", "claude-fable-5_1", "gemini-3_8-flash"]);
