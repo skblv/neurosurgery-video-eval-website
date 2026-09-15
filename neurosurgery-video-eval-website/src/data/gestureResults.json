@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-11T18:41:02Z",
+  "generatedAt": "2026-09-15T20:08:34Z",
   "benchmark": {
     "id": "continuous-obgyn-case-001",
     "name": "Continuous operation",
@@ -94,11 +94,11 @@
         "id": "claude-opus-5",
         "model": "Claude Opus 5",
         "provider": "anthropic",
-        "sourceRunId": "98f692ab-b778-4f5e-8dc0-91ed82dddc39_opus5_3s_evaluation",
+        "sourceRunId": "98f692ab-b778-4f5e-8dc0-91ed82dddc39_opus5_matched_v2_evaluation",
         "metrics": {
-          "exactAccuracy": { "value": 45.76, "ciLow": null, "ciHigh": null },
-          "macroF1": { "value": 32.96, "ciLow": null, "ciHigh": null },
-          "weightedF1": { "value": 46.26, "ciLow": null, "ciHigh": null }
+          "exactAccuracy": { "value": 61.64, "ciLow": null, "ciHigh": null },
+          "macroF1": { "value": 46.08, "ciLow": null, "ciHigh": null },
+          "weightedF1": { "value": 60.60, "ciLow": null, "ciHigh": null }
         }
       }
     ]

@@ -49,6 +49,18 @@ test("the two new Actions results use release-aware badge ids", () => {
   }
 });
 
+test("the Actions data uses the matched Opus 5 primary-gesture evaluation", () => {
+  const opus = parseGestureResultsFile(rawGestureResults).benchmark.results.find(
+    ({ id }) => id === "claude-opus-5",
+  );
+
+  assert(opus);
+  assert.deepEqual(
+    Object.fromEntries(Object.entries(opus.metrics).map(([metric, result]) => [metric, result.value])),
+    { exactAccuracy: 61.64, macroF1: 46.08, weightedF1: 60.60 },
+  );
+});
+
 test("prerendered tables never bake in New badges that could outlive their release window", () => {
   for (const route of ["", "instruments/", "anatomy/"]) {
     const html = readFileSync(`dist/${route}index.html`, "utf8");
