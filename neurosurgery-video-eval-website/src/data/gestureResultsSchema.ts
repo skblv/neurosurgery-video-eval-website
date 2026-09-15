@@ -132,6 +132,8 @@ export function parseGestureResultsFile(raw: unknown): GestureResultsFile {
   );
   const ids = results.map((result) => result.id);
   if (new Set(ids).size !== ids.length) fail("root.benchmark.results", "model ids must be unique");
+  // MViT is intentionally published in this release as the SDSC/UChicago
+  // specialist reference for the Actions modality.
 
   const procedureCount = asPositiveNumber(
     benchmarkRecord.procedureCount,

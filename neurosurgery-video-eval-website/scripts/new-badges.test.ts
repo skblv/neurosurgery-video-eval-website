@@ -68,6 +68,20 @@ test("the Actions data uses the matched Opus 5 primary-gesture evaluation", () =
   );
 });
 
+test("the Actions data publishes MViT as the specialist reference result", () => {
+  const mvit = parseGestureResultsFile(rawGestureResults).benchmark.results.find(
+    ({ id }) => id === "mvit-multi-task",
+  );
+
+  assert(mvit);
+  assert.equal(mvit.model, "SDSC MViT Multi-Task");
+  assert.equal(mvit.provider, "internal");
+  assert.deepEqual(
+    Object.fromEntries(Object.entries(mvit.metrics).map(([metric, result]) => [metric, result.value])),
+    { exactAccuracy: 79.00, macroF1: 73.00, weightedF1: 77.50 },
+  );
+});
+
 test("the original Actions row remains Claude Opus 4.8", () => {
   const actions = parseGestureResultsFile(rawGestureResults).benchmark.results;
   const opus48 = actions.find(({ id }) => id === "claude-opus-4_8");
