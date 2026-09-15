@@ -144,19 +144,22 @@ test("spider legend matches the plotted models and colors and its scale tops out
   assert(html.includes('class="summary-radar" viewBox="0 0 560 494"'), "Legend fits inside the copied SVG viewport");
 });
 
-test("Eric follows NaNa in the maintainers with a local portrait and verified links", () => {
+test("Eric and Sandeep follow NaNa in the maintainers with local portraits and verified links", () => {
   const css = readFileSync("src/index.css", "utf8");
-  assert.match(css, /\.maintainers\s*\{[^}]*grid-template-columns:\s*repeat\(3, minmax\(0, 1fr\)\)/);
+  assert.match(css, /\.maintainers\s*\{[^}]*grid-template-columns:\s*repeat\(4, minmax\(0, 1fr\)\)/);
   assert.match(css, /\.maintainer__body\s*\{[^}]*flex:\s*1;/);
-  assert(!/\.maintainers\s*\{[^}]*repeat\(2,/.test(css), "Keep all three cards in one equally shared row before stacking on mobile");
+  assert.match(css, /@media \(max-width: 900px\)\s*\{[\s\S]*?\.maintainers\s*\{\s*grid-template-columns:\s*repeat\(2, minmax\(0, 1fr\)\)/);
   for (const route of ROUTES) {
     const html = readFileSync(resolve("dist", route === "summary" ? "" : route, "index.html"), "utf8");
     const maintainers = html.match(/<ul class="maintainers">([\s\S]*?)<\/ul>/)![1];
     const names = Array.from(maintainers.matchAll(/<p class="maintainer__name">([^<]+)<\/p>/g), (match) => match[1]);
-    assert.deepEqual(names, ["Kirill Skobelev", "Zhuang-Fang (NaNa) Yi, PhD", "Eric Fithian"]);
+    assert.deepEqual(names, ["Kirill Skobelev", "Zhuang-Fang (NaNa) Yi, PhD", "Eric Fithian", "Sandeep Angara"]);
     assert.match(maintainers, /src="[^"]*eric-fithian[^"]*\.jpg"/);
+    assert.match(maintainers, /src="[^"]*sandeep-angara[^"]*\.jpg"/);
     assert(maintainers.includes('href="https://ericfithian.com/"'));
     assert(maintainers.includes('href="https://www.linkedin.com/in/ericbfithian"'));
+    assert(maintainers.includes("Senior Machine Learning Engineer at SDSC"));
+    assert(maintainers.includes('href="https://www.linkedin.com/in/sandeepangara/"'));
   }
 });
 
