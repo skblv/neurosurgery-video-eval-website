@@ -1,5 +1,6 @@
 import { BAR_COLOR } from "../data/benchmark";
-import type { FootnoteLookup, LeaderboardMetric } from "../data/leaderboard";
+import { isNewModel, type FootnoteLookup, type LeaderboardMetric } from "../data/leaderboard";
+import { useBadgeDate } from "../hooks/useBadgeDate";
 import { ModelIcon } from "./ModelIcon";
 import type { ChartRow } from "./chartRow";
 
@@ -28,6 +29,8 @@ export function StackedBars({
   metric: LeaderboardMetric;
   footnoteFor: FootnoteLookup;
 }) {
+  const badgeDate = useBadgeDate();
+
   return (
     <div className="stack">
       <ol className="stack__rows">
@@ -37,6 +40,7 @@ export function StackedBars({
               <ModelIcon provider={row.provider} size={14} />
               <span className="stack__name">
                 {row.model}
+                {badgeDate && isNewModel(row.id, badgeDate) ? <span className="badge-new">New</span> : null}
                 {footnoteFor(row.id) === null ? null : (
                   <sup className="footnote-ref">{footnoteFor(row.id)}</sup>
                 )}

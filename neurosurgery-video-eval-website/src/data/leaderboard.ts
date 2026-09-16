@@ -38,6 +38,9 @@ export type FootnoteLookup = (modelId: string) => number | null;
 /** How long a freshly published model keeps its "New" badge. */
 export const NEW_BADGE_DAYS = 14;
 
+/** Models explicitly highlighted as new by the current benchmark release. */
+export const MANUALLY_BADGED_MODEL_IDS = new Set(["claude-fable-5_1", "claude-opus-5"]);
+
 /**
  * Release dates shared with the historical plot, as `YYYY-MM-DD`.
  *
@@ -61,6 +64,8 @@ const MS_PER_DAY = 24 * 60 * 60 * 1000;
  * @returns True while the model is inside its badge window.
  */
 export function isNewModel(modelId: string, now: Date = new Date()): boolean {
+  if (MANUALLY_BADGED_MODEL_IDS.has(modelId)) return true;
+
   const publishedOn = MODEL_PUBLISHED_ON[modelId];
   if (publishedOn === undefined) return false;
 

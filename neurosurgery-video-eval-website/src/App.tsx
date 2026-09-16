@@ -92,6 +92,14 @@ function GestureSources() {
           <a href={ref.url} target="_blank" rel="noreferrer">
             {ref.linkLabel}
           </a>{" "}
+          {ref.additionalUrl ? (
+            <>
+              and{" "}
+              <a href={ref.additionalUrl} target="_blank" rel="noreferrer">
+                {ref.additionalLinkLabel}
+              </a>{" "}
+            </>
+          ) : null}
           ({ref.year}).
         </li>
       ))}

@@ -10,7 +10,7 @@ test("summary starts with the complete leaderboard, then history, then modality 
   assert.equal([...table.matchAll(/class="summary-sort"/g)].length, 7, "Every column is sortable");
   assert.match(table, /<th scope="col" aria-sort="descending"><button[^>]*aria-label="Sort by Total"/);
   assert.equal([...table.matchAll(/aria-sort=/g)].length, 1);
-  assert.equal(Array.from(table.matchAll(/<td class="summary-total">/g)).length, 23);
+  assert.equal(Array.from(table.matchAll(/<td class="summary-total">/g)).length, 24);
   assert(main.indexOf('class="index-explorer"') > main.indexOf(table) + table.length);
   const figures = [...main.matchAll(/<figure class="(release-plot|summary-web)"[^>]*>/g)];
   assert.deepEqual(figures.map((figure) => figure[1]), ["release-plot", "summary-web"]);
@@ -62,5 +62,5 @@ test("compact supporting sections retain all people and an expanded methodology"
   assert.match(css, /\.summary-selectors\s*\{[^}]*grid-template-columns:\s*repeat\(auto-fit, minmax\(14rem, 1fr\)\);[^}]*grid-auto-rows:\s*1fr/);
   assert.match(css, /\.summary-table\s*\{[^}]*font-size:\s*0\.875rem/);
   assert.match(css, /\.summary-table th, \.summary-table td\s*\{[^}]*padding:\s*0\.45rem/);
-  assert.match(css, /\.maintainers\s*\{[^}]*grid-template-columns:\s*repeat\(3, minmax\(0, 1fr\)\)/);
+  assert.match(css, /\.maintainers\s*\{[^}]*grid-template-columns:\s*repeat\(4, minmax\(0, 1fr\)\)/);
 });
