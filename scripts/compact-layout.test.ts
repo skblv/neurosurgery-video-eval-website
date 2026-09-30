@@ -62,5 +62,5 @@ test("compact supporting sections retain all people and an expanded methodology"
   assert.match(css, /\.summary-selectors\s*\{[^}]*grid-template-columns:\s*repeat\(auto-fit, minmax\(14rem, 1fr\)\);[^}]*grid-auto-rows:\s*1fr/);
   assert.match(css, /\.summary-table\s*\{[^}]*font-size:\s*0\.875rem/);
   assert.match(css, /\.summary-table th, \.summary-table td\s*\{[^}]*padding:\s*0\.45rem/);
-  assert.match(css, /\.maintainers\s*\{[^}]*grid-template-columns:\s*repeat\(3, minmax\(0, 1fr\)\)/);
+  assert.match(css, /\.maintainers\s*\{[^}]*grid-template-columns:\s*repeat\(4, minmax\(0, 1fr\)\)/);
 });

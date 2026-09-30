@@ -17,6 +17,12 @@ test("every public route ships readable HTML, scores, metadata, real links, and 
     assert(html.includes(PAGE_SEO[route].title));
     assert(html.includes(`rel="canonical" href="${new URL(routePath(route, SITE_BASE), SITE_URL).href}"`));
     assert(html.includes('name="robots" content="index, follow'));
+    const previewUrl = new URL("social-preview-v2.png", SITE_URL).href;
+    assert(html.includes(`property="og:image" content="${previewUrl}"`));
+    assert(html.includes(`name="twitter:image" content="${previewUrl}"`));
+    assert(html.includes('property="og:image:width" content="1200"'));
+    assert(html.includes('property="og:image:height" content="630"'));
+    assert(html.includes('property="og:image:alt" content="Surgical Intelligence Leaderboard'));
     assert(!html.includes('href="#/'));
     assert(!html.includes('<!--seo-head-->'));
     const showsGrok = route !== "gestures";
@@ -34,6 +40,10 @@ test("every public route ships readable HTML, scores, metadata, real links, and 
     titles.add(PAGE_SEO[route].title);
   }
   assert.equal(titles.size, ROUTES.length, "Route titles must be distinct");
+  const preview = readFileSync("dist/social-preview-v2.png");
+  assert.equal(preview.subarray(1, 4).toString(), "PNG");
+  assert.equal(preview.readUInt32BE(16), 1200);
+  assert.equal(preview.readUInt32BE(20), 630);
   assert(readFileSync("dist/index.html", "utf8").includes("Qwen3.8 27B"), "Completed Qwen 27B remains visible");
 });
 
@@ -144,19 +154,22 @@ test("spider legend matches the plotted models and colors and its scale tops out
   assert(html.includes('class="summary-radar" viewBox="0 0 560 494"'), "Legend fits inside the copied SVG viewport");
 });
 
-test("Eric follows NaNa in the maintainers with a local portrait and verified links", () => {
+test("all four maintainers have local portraits and verified links", () => {
   const css = readFileSync("src/index.css", "utf8");
-  assert.match(css, /\.maintainers\s*\{[^}]*grid-template-columns:\s*repeat\(3, minmax\(0, 1fr\)\)/);
+  assert.match(css, /\.maintainers\s*\{[^}]*grid-template-columns:\s*repeat\(4, minmax\(0, 1fr\)\)/);
   assert.match(css, /\.maintainer__body\s*\{[^}]*flex:\s*1;/);
-  assert(!/\.maintainers\s*\{[^}]*repeat\(2,/.test(css), "Keep all three cards in one equally shared row before stacking on mobile");
+  assert.match(css, /@media\s*\(max-width:\s*1100px\)\s*\{\s*\.maintainers\s*\{[^}]*repeat\(2,/);
   for (const route of ROUTES) {
     const html = readFileSync(resolve("dist", route === "summary" ? "" : route, "index.html"), "utf8");
     const maintainers = html.match(/<ul class="maintainers">([\s\S]*?)<\/ul>/)![1];
     const names = Array.from(maintainers.matchAll(/<p class="maintainer__name">([^<]+)<\/p>/g), (match) => match[1]);
-    assert.deepEqual(names, ["Kirill Skobelev", "Zhuang-Fang (NaNa) Yi, PhD", "Eric Fithian"]);
+    assert.deepEqual(names, ["Kirill Skobelev", "Zhuang-Fang (NaNa) Yi, PhD", "Eric Fithian", "Sandeep Angara"]);
     assert.match(maintainers, /src="[^"]*eric-fithian[^"]*\.jpg"/);
+    assert.match(maintainers, /src="[^"]*sandeep-angara[^"]*\.jpg"/);
     assert(maintainers.includes('href="https://ericfithian.com/"'));
     assert(maintainers.includes('href="https://www.linkedin.com/in/ericbfithian"'));
+    assert(maintainers.includes('href="https://www.linkedin.com/in/sandeepangara/"'));
+    assert(maintainers.includes("Senior Machine Learning Engineer at SDSC"));
   }
 });
 

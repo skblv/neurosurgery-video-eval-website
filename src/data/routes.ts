@@ -2,8 +2,8 @@ import { ROUTES, type DomainRoute } from "./domains.ts";
 
 export const PAGE_SEO: Record<DomainRoute, { title: string; description: string }> = {
   summary: {
-    title: "Surgical Intelligence Leaderboard | SDSC × UChicago",
-    description: "Compare visual language models with specialised surgical models across six modalities. Explore modality-balanced scores, dataset results, and reproducible benchmarks.",
+    title: "Surgical Intelligence Leaderboard",
+    description: "Compare vision-language models across surgical tasks, datasets, and specialist benchmarks.",
   },
   instruments: {
     title: "Surgical Instrument Recognition Benchmarks | SDSC × UChicago",

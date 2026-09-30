@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import kirillPhoto from "../assets/portraits/kirill-skobelev.jpg";
 import nanaPhoto from "../assets/portraits/zhuang-fang-yi.jpg";
 import ericPhoto from "../assets/portraits/eric-fithian.jpg";
+import sandeepPhoto from "../assets/portraits/sandeep-angara.jpg";
 import { PAPER } from "../data/benchmark";
 import { CopyIcon } from "./CopyIcon";
 
@@ -44,6 +45,15 @@ const MAINTAINERS = [
     links: [
       { href: "https://ericfithian.com/", label: "ericfithian.com" },
       { href: "https://www.linkedin.com/in/ericbfithian", label: "LinkedIn" },
+    ],
+  },
+  {
+    id: "sandeep-angara",
+    name: "Sandeep Angara",
+    role: "Senior Machine Learning Engineer at SDSC",
+    photo: sandeepPhoto,
+    links: [
+      { href: "https://www.linkedin.com/in/sandeepangara/", label: "LinkedIn" },
     ],
   },
 ] as const;
@@ -115,13 +125,15 @@ export function AboutUs() {
       <ul className="maintainers">
         {MAINTAINERS.map((person) => (
           <li key={person.id} className="maintainer">
-            <img
-              className="maintainer__photo"
-              src={person.photo}
-              alt=""
-              width={80}
-              height={80}
-            />
+            <span className="maintainer__photo-frame">
+              <img
+                className={`maintainer__photo${person.id === "sandeep-angara" ? " maintainer__photo--sandeep" : ""}`}
+                src={person.photo}
+                alt=""
+                width={64}
+                height={64}
+              />
+            </span>
             <div className="maintainer__body">
               <p className="maintainer__name">{person.name}</p>
               <p className="maintainer__role">{person.role}</p>
