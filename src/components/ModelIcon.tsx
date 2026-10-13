@@ -1,3 +1,4 @@
+import { evaluationLogoExtension } from "../data/evaluationLogos";
 import { boothShield, sdscMark } from "../assets/logos";
 import { providerLabel, type Provider } from "../data/benchmark";
 import { PROVIDER_ICONS } from "../data/providerIcons";
@@ -20,7 +21,7 @@ function JointMark({ size }: { size: number }) {
  */
 function UploadedMark({ provider, size }: { provider: Provider; size: number }) {
   const label = providerLabel(provider);
-  const candidates = ["png", "svg", "jpg", "jpeg", "webp"].map(
+  const candidates = [...new Set([evaluationLogoExtension(provider), "png", "svg", "jpg", "jpeg", "webp"])].map(
     (ext) => `${import.meta.env.BASE_URL}provider-logos/${provider}.${ext}`,
   );
 
@@ -55,7 +56,7 @@ export function ModelIcon({ provider, size = 15 }: { provider: Provider; size?: 
     );
   }
 
-  const icon = PROVIDER_ICONS[provider];
+  const icon = (Object.hasOwn(PROVIDER_ICONS, provider) ? PROVIDER_ICONS[provider] : undefined);
   if (!icon) {
     return <UploadedMark provider={provider} size={size} />;
   }

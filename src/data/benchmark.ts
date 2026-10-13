@@ -15,6 +15,7 @@ export { DATASET_ORDER, METRIC_ORDER };
 export type { DatasetId, MetricId, MetricValue, ModelResult, Provider };
 
 const KNOWN_PROVIDER_LABELS: Record<string, string> = {
+  ...{"gemini":"Gemini"},
   internal: "Surgical Data Science Collective × Chicago Booth",
   openai: "OpenAI",
   anthropic: "Anthropic",

@@ -1,3 +1,4 @@
+import { evaluationLogoExtension } from "../data/evaluationLogos";
 import { useRef, useState, type MouseEvent } from "react";
 import qwenLogo from "../assets/logos/qwen.svg?no-inline";
 import { SUMMARY_MODALITIES, SUMMARY_ROWS, SUMMARY_TABLE_ROWS } from "../data/summary";
@@ -24,14 +25,14 @@ const tickFormat = new Intl.DateTimeFormat("en-US", { month: "short", year: "num
 const monthFormat = new Intl.DateTimeFormat("en-US", { month: "short", timeZone: "UTC" });
 
 function ReleaseModelLogo({ provider, x, y }: { provider: string; x: number; y: number }) {
-  const icon = PROVIDER_ICONS[provider];
+  const icon = (Object.hasOwn(PROVIDER_ICONS, provider) ? PROVIDER_ICONS[provider] : undefined);
   const size = 18;
   const [minX, minY, width, height] = icon?.viewBox.split(" ").map(Number) ?? [0, 0, size, size];
   const scale = size / Math.max(width, height);
   return <g className="release-model-logo" data-provider={provider} aria-hidden="true">
     {icon ? <path d={icon.path} fill={icon.hex}
       transform={`translate(${x - (minX + width / 2) * scale} ${y - (minY + height / 2) * scale}) scale(${scale})`} />
-      : <image href={provider === "qwen" ? qwenLogo : `${import.meta.env.BASE_URL}provider-logos/${provider}.png`} x={x - size / 2} y={y - size / 2} width={size} height={size} />}
+      : <image href={provider === "qwen" ? qwenLogo : `${import.meta.env.BASE_URL}provider-logos/${provider}.${evaluationLogoExtension(provider)}`} x={x - size / 2} y={y - size / 2} width={size} height={size} />}
   </g>;
 }
 

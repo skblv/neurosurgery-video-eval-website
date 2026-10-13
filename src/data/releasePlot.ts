@@ -31,6 +31,7 @@ export function releasePoints(rows: readonly ScoreRow[], releases = MODEL_RELEAS
 export interface PositionedPoint extends ReleasePoint { x: number; y: number }
 
 const FAMILY_LABELS: Readonly<Record<string, string>> = {
+  ...{"gemini":"Gemini"},
   openai: "GPT", anthropic: "Claude", gemini: "Gemini", google: "Gemma",
   qwen: "Qwen", moonshot: "Kimi", zai: "GLM", xai: "Grok",
 };

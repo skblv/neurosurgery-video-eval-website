@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-09-09T01:13:29.955331+00:00",
+  "generatedAt": "2026-10-13T21:58:34.966Z",
   "datasets": {
     "cholect50": {
       "majorityBaseline": {
@@ -455,6 +455,24 @@
               "value": 83.8,
               "ciLow": 82,
               "ciHigh": 85.5
+            }
+          }
+        },
+        {
+          "id": "evaluation-eval-mv6xayrw-ca09f072-27c8-4e42-90d6-39bbe4e2cb2b",
+          "model": "Gemini 4 Argon",
+          "provider": "gemini",
+          "sourceRunId": "evaluation/eval-mv6xayrw-ca09f072-27c8-4e42-90d6-39bbe4e2cb2b/cholect50",
+          "metrics": {
+            "exactMatch": {
+              "value": 81.2,
+              "ciLow": 78.8,
+              "ciHigh": 83.6
+            },
+            "microF1": {
+              "value": 91.31437355880092,
+              "ciLow": 90.10292953285828,
+              "ciHigh": 92.53956292388847
             }
           }
         }
@@ -915,6 +933,24 @@
               "ciHigh": 52.77
             }
           }
+        },
+        {
+          "id": "evaluation-eval-mv6xayrw-ca09f072-27c8-4e42-90d6-39bbe4e2cb2b",
+          "model": "Gemini 4 Argon",
+          "provider": "gemini",
+          "sourceRunId": "evaluation/eval-mv6xayrw-ca09f072-27c8-4e42-90d6-39bbe4e2cb2b/pitvis",
+          "metrics": {
+            "exactMatch": {
+              "value": 66.5,
+              "ciLow": 63.6,
+              "ciHigh": 69.1
+            },
+            "microF1": {
+              "value": 57.49674054758801,
+              "ciLow": 54.19354838709678,
+              "ciHigh": 60.806345009914075
+            }
+          }
         }
       ]
     },
@@ -1371,6 +1407,24 @@
               "value": 31.48,
               "ciLow": 29.74,
               "ciHigh": 33.12
+            }
+          }
+        },
+        {
+          "id": "evaluation-eval-mv6xayrw-ca09f072-27c8-4e42-90d6-39bbe4e2cb2b",
+          "model": "Gemini 4 Argon",
+          "provider": "gemini",
+          "sourceRunId": "evaluation/eval-mv6xayrw-ca09f072-27c8-4e42-90d6-39bbe4e2cb2b/surgvu",
+          "metrics": {
+            "exactMatch": {
+              "value": 22.5,
+              "ciLow": 20.1,
+              "ciHigh": 25.2
+            },
+            "microF1": {
+              "value": 52.49020705092333,
+              "ciLow": 50.2930505163271,
+              "ciHigh": 54.505853525728284
             }
           }
         }

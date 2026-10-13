@@ -1,3 +1,4 @@
+import { evaluationLogoExtension } from "../data/evaluationLogos";
 import {
   Bar,
   BarChart,
@@ -96,11 +97,11 @@ function AxisIcon({ provider, x, y }: { provider: string; x: number; y: number }
     );
   }
 
-  const icon = PROVIDER_ICONS[provider];
+  const icon = (Object.hasOwn(PROVIDER_ICONS, provider) ? PROVIDER_ICONS[provider] : undefined);
   if (!icon) {
     return (
       <image
-        href={`${import.meta.env.BASE_URL}provider-logos/${provider}.png`}
+        href={`${import.meta.env.BASE_URL}provider-logos/${provider}.${evaluationLogoExtension(provider)}`}
         x={x}
         y={y}
         height={ICON_SIZE}
