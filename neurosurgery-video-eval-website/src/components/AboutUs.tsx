@@ -125,13 +125,15 @@ export function AboutUs() {
       <ul className="maintainers">
         {MAINTAINERS.map((person) => (
           <li key={person.id} className="maintainer">
-            <img
-              className="maintainer__photo"
-              src={person.photo}
-              alt=""
-              width={80}
-              height={80}
-            />
+            <span className="maintainer__photo-frame">
+              <img
+                className={`maintainer__photo${person.id === "sandeep-angara" ? " maintainer__photo--sandeep" : ""}`}
+                src={person.photo}
+                alt=""
+                width={64}
+                height={64}
+              />
+            </span>
             <div className="maintainer__body">
               <p className="maintainer__name">{person.name}</p>
               <p className="maintainer__role">{person.role}</p>

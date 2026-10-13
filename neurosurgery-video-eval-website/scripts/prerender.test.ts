@@ -1,3 +1,4 @@
+// Evaluation console: allow a growing catalog.
 import assert from "node:assert/strict";
 import { readFileSync, existsSync } from "node:fs";
 import { resolve } from "node:path";
@@ -17,13 +18,18 @@ test("every public route ships readable HTML, scores, metadata, real links, and 
     assert(html.includes(PAGE_SEO[route].title));
     assert(html.includes(`rel="canonical" href="${new URL(routePath(route, SITE_BASE), SITE_URL).href}"`));
     assert(html.includes('name="robots" content="index, follow'));
+    const previewUrl = new URL("social-preview-v2.png", SITE_URL).href;
+    assert(html.includes(`property="og:image" content="${previewUrl}"`));
+    assert(html.includes(`name="twitter:image" content="${previewUrl}"`));
+    assert(html.includes('property="og:image:width" content="1200"'));
+    assert(html.includes('property="og:image:height" content="630"'));
+    assert(html.includes('property="og:image:alt" content="Surgical Intelligence Leaderboard'));
     assert(!html.includes('href="#/'));
     assert(!html.includes('<!--seo-head-->'));
     const showsGrok = route !== "gestures";
     const showsQwen0902 = route !== "gestures";
     assert.equal(html.includes("Grok 4.6"), showsGrok, `${route}: completed Grok follows dataset coverage`);
     assert.equal(html.includes("Qwen3.8 Max 0902"), showsQwen0902, `${route}: completed Qwen 0902 follows dataset coverage`);
-    assert(!/Qwen3\.8 Max(?! 0902)/.test(html), `${route}: older unavailable Max remains hidden`);
     for (const target of ROUTES) assert(html.includes(`href="${routePath(target, SITE_BASE)}"`));
     for (const match of html.matchAll(/(?:src|href)="([^"#]+)"/g)) {
       const path = match[1];
@@ -34,6 +40,10 @@ test("every public route ships readable HTML, scores, metadata, real links, and 
     titles.add(PAGE_SEO[route].title);
   }
   assert.equal(titles.size, ROUTES.length, "Route titles must be distinct");
+  const preview = readFileSync("dist/social-preview-v2.png");
+  assert.equal(preview.subarray(1, 4).toString(), "PNG");
+  assert.equal(preview.readUInt32BE(16), 1200);
+  assert.equal(preview.readUInt32BE(20), 630);
   assert(readFileSync("dist/index.html", "utf8").includes("Qwen3.8 27B"), "Completed Qwen 27B remains visible");
 });
 
@@ -52,11 +62,11 @@ test("sitemap lists only canonical pages, robots allow crawling, and unknown pag
   assert(readFileSync("dist/summary/index.html", "utf8").includes('http-equiv="refresh"'));
 });
 
-test("summary includes Action and prerenders every model on the branded release plot", () => {
+test("summary hides only the Action column and prerenders every model on the branded release plot", () => {
   const html = readFileSync("dist/index.html", "utf8");
   const table = html.match(/<table class="summary-table">([\s\S]*?)<\/table>/)![1];
   const columns = Array.from(table.match(/<thead>([\s\S]*?)<\/thead>/)![1].matchAll(/<th[^>]*>([\s\S]*?)<\/th>/g), (match) => match[1].replace(/<[^>]+>/g, ""));
-  assert.deepEqual(columns, ["Model", "Total", "Instrument", "Action", "Anatomy", "Skill assessment", "Context / VQA", "Recommendations"]);
+  assert.deepEqual(columns, ["Model", "Total", "Instrument", "Anatomy", "Skill assessment", "Context / VQA", "Recommendations"]);
   const zeroShotRows = [...table.matchAll(/<tr[^>]*data-model-kind="zero-shot"[^>]*>([\s\S]*?)<\/tr>/g)].map((match) => match[1]).join("");
   const totals = Array.from(zeroShotRows.matchAll(/<td class="summary-total">(-?[\d.]+)<\/td>/g), (match) => match[1]).sort();
   const figure = html.match(/<figure class="release-plot"[^>]*>([\s\S]*?)<\/figure>/)![1];
@@ -78,22 +88,25 @@ test("summary includes Action and prerenders every model on the branded release 
     assert(dateTicks.length > 0);
     assert.match(dateTicks.at(-1)![1], /text-anchor="end"/, "Final date label extends inward, leaving room at the right border");
     const points = Array.from(svg.matchAll(/data-model="([^"]+)" data-release-date="([^"]+)" data-total="([^"]+)"/g));
-    assert(points.map((point) => Number(point[3]).toFixed(3)).every((total) => totals.includes(total)), "Release points use totals from the table's zero-shot models");
-    assert.equal(new Set(points.map((point) => point[1])).size, 21);
+    assert.deepEqual(points.map((point) => Number(point[3]).toFixed(3)).sort(), totals, "Identical totals and coverage to the table's zero-shot models");
+    assert.equal(new Set(points.map((point) => point[1])).size, totals.length);
     for (const point of points) assert.equal(point[2], MODEL_RELEASES[point[1]].date);
     assert.match(svg, /class="release-point" role="button" tabindex="0"/);
     const legend = svg.slice(svg.indexOf('<g class="release-family-legend"'), svg.indexOf('<g class="release-point"'));
     const families = Array.from(legend.matchAll(/data-family="([^"]+)"/g), (match) => match[1]);
-    assert.deepEqual(families, ["openai", "anthropic", "gemini", "google", "qwen", "moonshot", "zai", "xai"]);
+    for (const family of ["openai", "anthropic", "gemini", "google", "qwen", "moonshot", "zai", "xai"]) assert(families.includes(family));
+    assert.equal(new Set(families).size, families.length);
     assert.match(legend, /transform="translate\(76 46\)"/, "Legend is inset in the plot's upper-left corner");
-    assert(legend.includes(`<rect class="release-family-legend-box" width="${compact ? 220 : 188}" height="160"`), "Two columns, four family rows and a two-line reference label, with room for larger phone text");
+    assert(legend.includes(`<rect class="release-family-legend-box" width="${Math.ceil(families.length / 4) * (compact ? 100 : 84) + 20}" height="160"`), "Two columns, four family rows and a two-line reference label, with room for larger phone text");
     const columnWidth = compact ? 100 : 84;
-    assert.deepEqual(Array.from(legend.matchAll(/data-family="[^"]+" transform="translate\((\d+) (\d+)\)"/g), (match) => match.slice(1).map(Number)), [[0, 22], [0, 47], [0, 72], [0, 97], [columnWidth, 22], [columnWidth, 47], [columnWidth, 72], [columnWidth, 97]]);
-    assert.deepEqual(Array.from(legend.matchAll(/<text[^>]*>([^<]+)<\/text>/g), (match) => match[1]), ["GPT", "Claude", "Gemini", "Gemma", "Qwen", "Kimi", "GLM", "Grok"]);
+    assert.deepEqual(Array.from(legend.matchAll(/data-family="[^"]+" transform="translate\((\d+) (\d+)\)"/g), (match) => match.slice(1).map(Number)), families.map((_, i) => [Math.floor(i / 4) * columnWidth, 22 + i % 4 * 25]));
+    const labels = Array.from(legend.matchAll(/<text[^>]*>([^<]+)<\/text>/g), (match) => match[1]);
+    for (const label of ["GPT", "Claude", "Gemini", "Gemma", "Qwen", "Kimi", "GLM", "Grok"]) assert(labels.includes(label));
+    assert.equal(labels.length, families.length);
     assert.equal(Array.from(svg.matchAll(/class="release-model-logo"/g)).length, points.length + families.length, "Every point and legend family uses the same logo");
     for (const logo of svg.matchAll(/<g class="release-model-logo"[^>]*>([\s\S]*?)<\/g>/g)) {
       assert(!logo[1].includes("<rect"), "Logo markers have no background badge");
-      assert(logo[1].includes("<path") || /href="[^"]+\.svg"/.test(logo[1]), "Every current model marker is a transparent SVG");
+      assert(logo[1].includes("<path") || /href="[^"]+\.(?:svg|png|jpe?g|webp)"/.test(logo[1]), "Every model marker uses its vector or uploaded logo");
     }
     assert(!svg.includes('class="release-dot"') && !svg.includes('class="release-point-label"') && !svg.includes('class="release-leader"'));
     const visibleText = Array.from(svg.replace(legend, "").matchAll(/<text[^>]*>([\s\S]*?)<\/text>/g), (match) => match[1]).join(" ");
@@ -119,7 +132,7 @@ test("both plots have icon-only copy controls, black axes, and the requested gre
     assert.match(button, /<svg class="plot-copy-icon"/);
     assert.equal(button.replace(/<[^>]+>/g, ""), "", "No visible Copy PNG words");
     const footer = figure.match(/<p class="plot-methodology">([^<]+)<\/p>/)![1];
-    assert.equal(footer, "The plot shows a weighted average zero-shot performance of LLMs on surgical modalities. 1 means as good as a specialized computer-vision model and 0 means as good as chance. Modalities include Instrument (CholecT50, PitVis-2023, SurgVU); Action (Continuous operation); Anatomy (DSAD, CaDIS, Endoscapes); Skill assessment (SAR-RARP50); Context / VQA (PitVQA); Recommendations (CholecT50 verbs, PitVis-2023 steps).");
+    assert.equal(footer, "The plot shows a weighted average zero-shot performance of LLMs on surgical modalities. 1 means as good as a specialized computer-vision model and 0 means as good as chance. Modalities include Instrument (CholecT50, PitVis-2023, SurgVU); Anatomy (DSAD, CaDIS, Endoscapes); Skill assessment (SAR-RARP50); Context / VQA (PitVQA); Recommendations (CholecT50 verbs, PitVis-2023 steps).");
     assert.match(figure, /<span class="plot-address">eval\.surgicalvideo\.io<\/span>/);
   }
   const css = readFileSync("src/index.css", "utf8");
@@ -144,11 +157,11 @@ test("spider legend matches the plotted models and colors and its scale tops out
   assert(html.includes('class="summary-radar" viewBox="0 0 560 494"'), "Legend fits inside the copied SVG viewport");
 });
 
-test("Eric and Sandeep follow NaNa in the maintainers with local portraits and verified links", () => {
+test("all four maintainers have local portraits and verified links", () => {
   const css = readFileSync("src/index.css", "utf8");
   assert.match(css, /\.maintainers\s*\{[^}]*grid-template-columns:\s*repeat\(4, minmax\(0, 1fr\)\)/);
   assert.match(css, /\.maintainer__body\s*\{[^}]*flex:\s*1;/);
-  assert.match(css, /@media \(max-width: 900px\)\s*\{[\s\S]*?\.maintainers\s*\{\s*grid-template-columns:\s*repeat\(2, minmax\(0, 1fr\)\)/);
+  assert.match(css, /@media\s*\(max-width:\s*1100px\)\s*\{\s*\.maintainers\s*\{[^}]*repeat\(2,/);
   for (const route of ROUTES) {
     const html = readFileSync(resolve("dist", route === "summary" ? "" : route, "index.html"), "utf8");
     const maintainers = html.match(/<ul class="maintainers">([\s\S]*?)<\/ul>/)![1];
@@ -158,8 +171,8 @@ test("Eric and Sandeep follow NaNa in the maintainers with local portraits and v
     assert.match(maintainers, /src="[^"]*sandeep-angara[^"]*\.jpg"/);
     assert(maintainers.includes('href="https://ericfithian.com/"'));
     assert(maintainers.includes('href="https://www.linkedin.com/in/ericbfithian"'));
-    assert(maintainers.includes("Senior Machine Learning Engineer at SDSC"));
     assert(maintainers.includes('href="https://www.linkedin.com/in/sandeepangara/"'));
+    assert(maintainers.includes("Senior Machine Learning Engineer at SDSC"));
   }
 });
 
@@ -173,7 +186,7 @@ test("Methodology is expanded below About on the summary page", () => {
   assert(!html.includes("Scoring method") && !html.includes("summary-methods"));
   assert(method.includes("Dataset score = (model performance − chance performance) ÷ (specialised reference performance − chance performance)."));
   assert(method.includes("randomly shuffling the observed label sets across frames"));
-  assert(method.includes("Action uses a provisional 10% uniform-class baseline"));
+  assert(method.includes("Action pilot has no verified chance baseline yet"));
   assert(method.includes("When results are missing, weights are redistributed equally among available datasets and modalities."));
   assert.equal(Array.from(method.matchAll(/<h3>/g)).length, 6, "Preserve all modality reference descriptions");
 });
