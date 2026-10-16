@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-09-09T01:13:29.955331+00:00",
+  "generatedAt": "2026-10-13T21:58:34.966Z",
   "datasets": {
     "dsad": {
       "majorityBaseline": {
@@ -437,6 +437,24 @@
               "value": 48.97,
               "ciLow": 47.17,
               "ciHigh": 50.82
+            }
+          }
+        },
+        {
+          "id": "evaluation-eval-mv6xayrw-ca09f072-27c8-4e42-90d6-39bbe4e2cb2b",
+          "model": "Gemini 4 Argon",
+          "provider": "gemini",
+          "sourceRunId": "evaluation/eval-mv6xayrw-ca09f072-27c8-4e42-90d6-39bbe4e2cb2b/dsad",
+          "metrics": {
+            "exactMatch": {
+              "value": 27.6,
+              "ciLow": 24.7,
+              "ciHigh": 30.4
+            },
+            "microF1": {
+              "value": 59.5659765527563,
+              "ciLow": 57.3820395738204,
+              "ciHigh": 61.8469918296608
             }
           }
         }
@@ -879,6 +897,24 @@
               "ciHigh": 82.94
             }
           }
+        },
+        {
+          "id": "evaluation-eval-mv6xayrw-ca09f072-27c8-4e42-90d6-39bbe4e2cb2b",
+          "model": "Gemini 4 Argon",
+          "provider": "gemini",
+          "sourceRunId": "evaluation/eval-mv6xayrw-ca09f072-27c8-4e42-90d6-39bbe4e2cb2b/cadis",
+          "metrics": {
+            "exactMatch": {
+              "value": 49.62546816479401,
+              "ciLow": 45.31835205992509,
+              "ciHigh": 53.745318352059925
+            },
+            "microF1": {
+              "value": 93.32079021636876,
+              "ciLow": 92.57465698143665,
+              "ciHigh": 93.99946423787839
+            }
+          }
         }
       ]
     },
@@ -1319,6 +1355,24 @@
               "ciHigh": 79.47
             }
           }
+        },
+        {
+          "id": "evaluation-eval-mv6xayrw-ca09f072-27c8-4e42-90d6-39bbe4e2cb2b",
+          "model": "Gemini 4 Argon",
+          "provider": "gemini",
+          "sourceRunId": "evaluation/eval-mv6xayrw-ca09f072-27c8-4e42-90d6-39bbe4e2cb2b/endoscapes",
+          "metrics": {
+            "exactMatch": {
+              "value": 29.82885085574572,
+              "ciLow": 25.67237163814181,
+              "ciHigh": 33.98533007334964
+            },
+            "microF1": {
+              "value": 81.96948682385575,
+              "ciLow": 80.26030368763557,
+              "ciHigh": 83.48432055749129
+            }
+          }
         }
       ]
     },
@@ -1757,6 +1811,24 @@
               "value": 53.65,
               "ciLow": 51.14,
               "ciHigh": 56.21
+            }
+          }
+        },
+        {
+          "id": "evaluation-eval-mv6xayrw-ca09f072-27c8-4e42-90d6-39bbe4e2cb2b",
+          "model": "Gemini 4 Argon",
+          "provider": "gemini",
+          "sourceRunId": "evaluation/eval-mv6xayrw-ca09f072-27c8-4e42-90d6-39bbe4e2cb2b/pitvqa",
+          "metrics": {
+            "exactMatch": {
+              "value": 42.6,
+              "ciLow": 39.800000000000004,
+              "ciHigh": 45.9
+            },
+            "microF1": {
+              "value": 57.15,
+              "ciLow": 54.65,
+              "ciHigh": 59.8
             }
           }
         }
@@ -2217,6 +2289,24 @@
               "ciHigh": 65.79
             }
           }
+        },
+        {
+          "id": "evaluation-eval-mv6xayrw-ca09f072-27c8-4e42-90d6-39bbe4e2cb2b",
+          "model": "Gemini 4 Argon",
+          "provider": "gemini",
+          "sourceRunId": "evaluation/eval-mv6xayrw-ca09f072-27c8-4e42-90d6-39bbe4e2cb2b/cholect50verbs",
+          "metrics": {
+            "exactMatch": {
+              "value": 63.2,
+              "ciLow": 60,
+              "ciHigh": 66.2
+            },
+            "microF1": {
+              "value": 77.80898876404494,
+              "ciLow": 75.68141592920354,
+              "ciHigh": 79.86062717770035
+            }
+          }
         }
       ]
     },
@@ -2657,6 +2747,24 @@
               "ciHigh": 49.87
             }
           }
+        },
+        {
+          "id": "evaluation-eval-mv6xayrw-ca09f072-27c8-4e42-90d6-39bbe4e2cb2b",
+          "model": "Gemini 4 Argon",
+          "provider": "gemini",
+          "sourceRunId": "evaluation/eval-mv6xayrw-ca09f072-27c8-4e42-90d6-39bbe4e2cb2b/pitvissteps",
+          "metrics": {
+            "exactMatch": {
+              "value": 50,
+              "ciLow": 46.800000000000004,
+              "ciHigh": 53.2
+            },
+            "microF1": {
+              "value": 50,
+              "ciLow": 46.800000000000004,
+              "ciHigh": 53.2
+            }
+          }
         }
       ]
     },
@@ -3095,6 +3203,24 @@
               "value": 25.13,
               "ciLow": 21.41,
               "ciHigh": 28.55
+            }
+          }
+        },
+        {
+          "id": "evaluation-eval-mv6xayrw-ca09f072-27c8-4e42-90d6-39bbe4e2cb2b",
+          "model": "Gemini 4 Argon",
+          "provider": "gemini",
+          "sourceRunId": "evaluation/eval-mv6xayrw-ca09f072-27c8-4e42-90d6-39bbe4e2cb2b/sarrarp50",
+          "metrics": {
+            "exactMatch": {
+              "value": 33.17610062893082,
+              "ciLow": 29.559748427672954,
+              "ciHigh": 36.79245283018868
+            },
+            "microF1": {
+              "value": 33.202202989771834,
+              "ciLow": 29.559748427672954,
+              "ciHigh": 36.821400472069236
             }
           }
         }

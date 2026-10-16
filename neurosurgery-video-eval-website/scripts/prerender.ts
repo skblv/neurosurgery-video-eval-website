@@ -17,7 +17,7 @@ function escapeHtml(value: string): string {
 }
 
 function documentHtml(title: string, description: string, canonical: string | null, html: string): string {
-  const image = new URL("og.png", SITE_URL).href;
+  const image = new URL("social-preview-v2.png", SITE_URL).href;
   const head = [
     `<meta name="description" content="${escapeHtml(description)}" />`,
     `<meta name="robots" content="${canonical ? "index, follow, max-image-preview:large" : "noindex, follow"}" />`,
@@ -27,10 +27,15 @@ function documentHtml(title: string, description: string, canonical: string | nu
     `<meta property="og:title" content="${escapeHtml(title)}" />`,
     `<meta property="og:description" content="${escapeHtml(description)}" />`,
     `<meta property="og:image" content="${escapeHtml(image)}" />`,
+    `<meta property="og:image:type" content="image/png" />`,
+    `<meta property="og:image:width" content="1200" />`,
+    `<meta property="og:image:height" content="630" />`,
+    `<meta property="og:image:alt" content="Surgical Intelligence Leaderboard — compare vision-language models on surgical tasks. SDSC and Chicago Booth." />`,
     `<meta name="twitter:card" content="summary_large_image" />`,
     `<meta name="twitter:title" content="${escapeHtml(title)}" />`,
     `<meta name="twitter:description" content="${escapeHtml(description)}" />`,
     `<meta name="twitter:image" content="${escapeHtml(image)}" />`,
+    `<meta name="twitter:image:alt" content="Surgical Intelligence Leaderboard — compare vision-language models on surgical tasks. SDSC and Chicago Booth." />`,
     `<link rel="sitemap" type="application/xml" href="${escapeHtml(new URL("sitemap.xml", SITE_URL).href)}" />`,
   ].join("\n    ");
   return template

@@ -11,6 +11,7 @@ export interface ModelRelease {
  * Primary sources checked 2026-09-09. Keep unknown dates absent, never impute them.
  */
 export const MODEL_RELEASES: Readonly<Record<string, ModelRelease>> = {
+  ...{"evaluation-eval-mv6xayrw-ca09f072-27c8-4e42-90d6-39bbe4e2cb2b":{"date":"2026-10-13","source":"https://openrouter.ai/google/gemini-4-argon","note":"User-entered release date, defaulting to evaluation submission date."}},
   "gemma3-27b-it": {
     date: "2025-03-12",
     source: "https://developers.googleblog.com/en/introducing-gemma3/",
