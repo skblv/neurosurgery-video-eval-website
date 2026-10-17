@@ -82,16 +82,10 @@ test("the Actions data publishes MViT as the specialist reference result", () =>
   );
 });
 
-test("the original Actions row remains Claude Opus 4.8", () => {
+test("the Actions data no longer publishes Claude Opus 4.8", () => {
   const actions = parseGestureResultsFile(rawGestureResults).benchmark.results;
-  const opus48 = actions.find(({ id }) => id === "claude-opus-4_8");
 
-  assert(opus48);
-  assert.equal(opus48.model, "Claude Opus 4.8");
-  assert.deepEqual(
-    Object.fromEntries(Object.entries(opus48.metrics).map(([metric, result]) => [metric, result.value])),
-    { exactAccuracy: 45.76, macroF1: 32.96, weightedF1: 46.26 },
-  );
+  assert(!actions.some(({ id, model }) => id === "claude-opus-4_8" || model === "Claude Opus 4.8"));
 });
 
 test("prerendered tables never bake in New badges that could outlive their release window", () => {
@@ -103,7 +97,7 @@ test("prerendered tables never bake in New badges that could outlive their relea
 
 test("summary model titles reserve an inline badge slot without creating a separate badge line", () => {
   const html = readFileSync("dist/index.html", "utf8");
-  assert.equal([...html.matchAll(/class="summary-model-title"><span>/g)].length, 25);
+  assert.equal([...html.matchAll(/class="summary-model-title"><span>/g)].length, 24);
   const css = readFileSync("src/index.css", "utf8");
   assert.match(css, /\.summary-model-title\s*\{[^}]*display: inline-flex;[^}]*flex-wrap: nowrap;[^}]*white-space: nowrap;/);
   assert.match(css, /\.summary-model-title > \.badge-new\s*\{[^}]*flex: none;[^}]*margin-left: 0;/);
