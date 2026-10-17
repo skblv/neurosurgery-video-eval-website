@@ -94,15 +94,13 @@ test("summary hides only the Action column and prerenders every model on the bra
     assert.match(svg, /class="release-point" role="button" tabindex="0"/);
     const legend = svg.slice(svg.indexOf('<g class="release-family-legend"'), svg.indexOf('<g class="release-point"'));
     const families = Array.from(legend.matchAll(/data-family="([^"]+)"/g), (match) => match[1]);
-    for (const family of ["openai", "anthropic", "gemini", "google", "qwen", "moonshot", "zai", "xai"]) assert(families.includes(family));
-    assert.equal(new Set(families).size, families.length);
+    assert.deepEqual(families, ["openai", "anthropic", "gemini", "google", "qwen", "moonshot", "zai", "xai"]);
     assert.match(legend, /transform="translate\(76 46\)"/, "Legend is inset in the plot's upper-left corner");
     assert(legend.includes(`<rect class="release-family-legend-box" width="${Math.ceil(families.length / 4) * (compact ? 100 : 84) + 20}" height="160"`), "Two columns, four family rows and a two-line reference label, with room for larger phone text");
     const columnWidth = compact ? 100 : 84;
     assert.deepEqual(Array.from(legend.matchAll(/data-family="[^"]+" transform="translate\((\d+) (\d+)\)"/g), (match) => match.slice(1).map(Number)), families.map((_, i) => [Math.floor(i / 4) * columnWidth, 22 + i % 4 * 25]));
     const labels = Array.from(legend.matchAll(/<text[^>]*>([^<]+)<\/text>/g), (match) => match[1]);
-    for (const label of ["GPT", "Claude", "Gemini", "Gemma", "Qwen", "Kimi", "GLM", "Grok"]) assert(labels.includes(label));
-    assert.equal(labels.length, families.length);
+    assert.deepEqual(labels, ["GPT", "Claude", "Gemini", "Gemma", "Qwen", "Kimi", "GLM", "Grok"]);
     assert.equal(Array.from(svg.matchAll(/class="release-model-logo"/g)).length, points.length + families.length, "Every point and legend family uses the same logo");
     for (const logo of svg.matchAll(/<g class="release-model-logo"[^>]*>([\s\S]*?)<\/g>/g)) {
       assert(!logo[1].includes("<rect"), "Logo markers have no background badge");
