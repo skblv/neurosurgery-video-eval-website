@@ -43,12 +43,12 @@ test("summary shows only the requested extra rows, using measured LemonFM scores
   const html = readFileSync("dist/index.html", "utf8");
   const table = html.match(/<table class="summary-table">([\s\S]*?)<\/table>/)![1];
   const rows = [...table.matchAll(/<tr data-model-id="([^"]+)" data-model-kind="([^"]+)">([\s\S]*?)<\/tr>/g)];
-  assert.equal(rows.length, 24);
-  assert.equal(rows.filter((row) => row[2] === "zero-shot").length, 22);
+  assert.equal(rows.length, 25);
+  assert.equal(rows.filter((row) => row[2] === "zero-shot").length, 23);
   assert.deepEqual(rows.filter((row) => row[2] !== "zero-shot").map((row) => row[1]), [SPECIALIST_REFERENCE_ID, "lemonfm-linear-probe"]);
   const reference = rows.find((row) => row[1] === SPECIALIST_REFERENCE_ID)![3];
   const cells = (row: string) => [...row.matchAll(/<td[^>]*>([^<]*)<\/td>/g)].map((match) => match[1]);
-  assert.deepEqual(cells(reference), Array(6).fill("1.000"));
+  assert.deepEqual(cells(reference), Array(7).fill("1.000"));
   assert(reference.includes("<small>SDSC/UChicago specialist model</small>") && reference.includes('class="joint-mark"'));
 
   type Results = { datasets: Record<string, { results: { id: string; metrics: Record<string, { value: number | null }> }[] }> };
@@ -65,6 +65,10 @@ test("summary shows only the requested extra rows, using measured LemonFM scores
     const baseline = chance.datasets[id].metrics[metric];
     return (observed - baseline) / (specialist - baseline);
   })));
+  const gestures: { benchmark: { results: { id: string; metrics: { exactAccuracy: { value: number } } }[] } } = JSON.parse(readFileSync("src/data/gestureResults.json", "utf8"));
+  const accuracy = (id: string) => gestures.benchmark.results.find((row) => row.id === id)!.metrics.exactAccuracy.value;
+  // Action uses the provisional 10% uniform-class baseline from summary.ts.
+  scores.splice(1, 0, (accuracy("lemonfm-linear-probe") - 10) / (accuracy("mvit-multi-task") - 10));
   const lemon = rows.find((row) => row[1] === "lemonfm-linear-probe")![3];
   assert.deepEqual(cells(lemon), [mean(scores), ...scores].map((value) => value.toFixed(3)));
   assert(lemon.includes("LemonFM (linear probe)") && lemon.includes("provider-logos/visurg.png"));
@@ -106,15 +110,15 @@ test("spider options and profiles share the table's specialist and LemonFM rows"
   const rows = [...html.matchAll(/<tr data-model-id="([^"]+)" data-model-kind="([^"]+)">([\s\S]*?)<\/tr>/g)].map((match) => {
     const model = match[3].match(/class="summary-model-title"><span>([^<]+)<\/span>/)![1];
     const cells = [...match[3].matchAll(/<td[^>]*>([^<]*)<\/td>/g)].map((cell) => cell[1] === "NA" ? null : Number(cell[1]));
-    return { id: match[1], model, total: cells[0], scores: [cells[1], null, ...cells.slice(2)] };
+    return { id: match[1], model, total: cells[0], scores: cells.slice(1) };
   });
   assert.deepEqual(rows.filter((row) => matchesModelSearch(row.model, "sdsc")).map((row) => row.id), [SPECIALIST_REFERENCE_ID]);
   assert.deepEqual(rows.filter((row) => matchesModelSearch(row.model, "LEMON")).map((row) => row.id), ["lemonfm-linear-probe"]);
   const selection = ["gpt-6-astra", SPECIALIST_REFERENCE_ID, "lemonfm-linear-probe"];
   const profiles = radarProfiles(selection, rows);
   assert.deepEqual(profiles.map((row) => row.id), selection);
-  assert.deepEqual(profiles[1].scores, [1, null, 1, 1, 1, 1]);
-  assert.deepEqual(profiles[2].scores, [0.813, null, 0.752, 0.691, 0.980, 1.079]);
+  assert.deepEqual(profiles[1].scores, [1, 1, 1, 1, 1, 1]);
+  assert.deepEqual(profiles[2].scores, [0.813, 0.858, 0.752, 0.691, 0.980, 1.079]);
   assert.equal(radarScale(profiles.flatMap((row) => row.scores)).ceiling, 1);
   assert.equal(radarProfiles(selection.slice(1), rows).length, 2);
 });
