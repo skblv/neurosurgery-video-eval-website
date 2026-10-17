@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { test } from "node:test";
-import { isNewModel, MODEL_PUBLISHED_ON, NEW_BADGE_DAYS } from "../src/data/leaderboard.ts";
+import { isNewModel, MODEL_PUBLISHED_ON, NEW_BADGE_DAYS, MANUALLY_BADGED_MODEL_IDS } from "../src/data/leaderboard.ts";
 import { MODEL_RELEASES } from "../src/data/modelReleases.ts";
 import rawGestureResults from "../src/data/gestureResults.json" with { type: "json" };
 import { parseGestureResultsFile } from "../src/data/gestureResultsSchema.ts";
@@ -16,7 +16,7 @@ test("New badges use the historical plot's release dates, not leaderboard additi
 
 test("release-based badges last exactly fourteen days from release, measured in UTC", () => {
   for (const [id, release] of Object.entries(MODEL_RELEASES)) {
-    if (id === "claude-fable-5_1" || id === "claude-opus-5") continue;
+    if (id === "gemini-4-argon") continue;
     const start = Date.parse(`${release.date}T00:00:00Z`);
     const end = start + 14 * 24 * 60 * 60 * 1000;
     assert.equal(isNewModel(id, new Date(start - 1)), false, `${id}: not before release`);
@@ -30,7 +30,7 @@ test("release-based badges last exactly fourteen days from release, measured in 
 test("Qwen Max 0902 is new, while older Qwen and unknown or composite releases are not", () => {
   const now = new Date("2026-09-09T03:00:00Z");
   assert.deepEqual(Object.keys(MODEL_RELEASES).filter((id) => isNewModel(id, now)), [
-    "claude-opus-5", "claude-fable-5_1", "gemini-3_8-flash", "qwen3-8-max-0902", "gpt-6-astra",
+    "claude-fable-5_1", "gemini-3_8-flash", "qwen3-8-max-0902", "gpt-6-astra", "gemini-4-argon",
   ]);
   for (const id of ["qwen3-8-27b", "qwen3-8-max", "sdsc-uchicago-reference", "lemonfm-linear-probe", "unknown"]) {
     assert.equal(isNewModel(id, now), false, id);
@@ -40,10 +40,13 @@ test("Qwen Max 0902 is new, while older Qwen and unknown or composite releases a
   assert.equal(isNewModel("qwen3-8-max-0902", new Date(NaN)), false);
 });
 
-test("the current benchmark additions stay marked New", () => {
-  const afterReleaseWindows = new Date("2026-09-15T12:00:00Z");
-  assert.equal(isNewModel("claude-fable-5_1", afterReleaseWindows), true);
-  assert.equal(isNewModel("claude-opus-5", afterReleaseWindows), true);
+test("Gemini 4 Argon is the only model pinned as New", () => {
+  assert.deepEqual([...MANUALLY_BADGED_MODEL_IDS], ["gemini-4-argon"]);
+  assert.equal(MODEL_PUBLISHED_ON["gemini-4-argon"], "2026-09-30");
+  const afterReleaseWindows = new Date("2026-12-31T12:00:00Z");
+  assert.deepEqual(Object.keys(MODEL_RELEASES).filter((id) => isNewModel(id, afterReleaseWindows)), ["gemini-4-argon"]);
+  assert.equal(isNewModel("claude-fable-5_1", afterReleaseWindows), false);
+  assert.equal(isNewModel("claude-opus-5", afterReleaseWindows), false);
 });
 
 test("the two new Actions results use release-aware badge ids", () => {
