@@ -7,10 +7,10 @@ test("summary starts with the complete leaderboard, then history, then modality 
   assert(main.startsWith('<section class="section summary-results"'));
   assert(!main.includes("summary-hero"));
   const table = main.match(/<table class="summary-table">([\s\S]*?)<\/table>/)![1];
-  assert.equal([...table.matchAll(/class="summary-sort"/g)].length, 7, "Every column is sortable");
+  assert.equal([...table.matchAll(/class="summary-sort"/g)].length, 8, "Every column is sortable");
   assert.match(table, /<th scope="col" aria-sort="descending"><button[^>]*aria-label="Sort by Total"/);
   assert.equal([...table.matchAll(/aria-sort=/g)].length, 1);
-  assert.equal(Array.from(table.matchAll(/<td class="summary-total">/g)).length, 24);
+  assert.equal(Array.from(table.matchAll(/<td class="summary-total">/g)).length, 25);
   assert(main.indexOf('class="index-explorer"') > main.indexOf(table) + table.length);
   const figures = [...main.matchAll(/<figure class="(release-plot|summary-web)"[^>]*>/g)];
   assert.deepEqual(figures.map((figure) => figure[1]), ["release-plot", "summary-web"]);

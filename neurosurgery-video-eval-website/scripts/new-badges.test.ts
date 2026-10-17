@@ -103,7 +103,7 @@ test("prerendered tables never bake in New badges that could outlive their relea
 
 test("summary model titles reserve an inline badge slot without creating a separate badge line", () => {
   const html = readFileSync("dist/index.html", "utf8");
-  assert.equal([...html.matchAll(/class="summary-model-title"><span>/g)].length, 24);
+  assert.equal([...html.matchAll(/class="summary-model-title"><span>/g)].length, 25);
   const css = readFileSync("src/index.css", "utf8");
   assert.match(css, /\.summary-model-title\s*\{[^}]*display: inline-flex;[^}]*flex-wrap: nowrap;[^}]*white-space: nowrap;/);
   assert.match(css, /\.summary-model-title > \.badge-new\s*\{[^}]*flex: none;[^}]*margin-left: 0;/);
