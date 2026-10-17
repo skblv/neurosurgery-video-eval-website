@@ -102,17 +102,6 @@
         }
       },
       {
-        "id": "claude-opus-4_8",
-        "model": "Claude Opus 4.8",
-        "provider": "anthropic",
-        "sourceRunId": "98f692ab-b778-4f5e-8dc0-91ed82dddc39_opus5_3s_evaluation",
-        "metrics": {
-          "exactAccuracy": { "value": 45.76, "ciLow": null, "ciHigh": null },
-          "macroF1": { "value": 32.96, "ciLow": null, "ciHigh": null },
-          "weightedF1": { "value": 46.26, "ciLow": null, "ciHigh": null }
-        }
-      },
-      {
         "id": "claude-opus-5",
         "model": "Claude Opus 5",
         "provider": "anthropic",
