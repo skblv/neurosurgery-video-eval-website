@@ -18,8 +18,8 @@ const RADAR_LAYOUTS = [
   { width: 360, centerY: 160, radius: 95, chartHeight: 320, columns: 1, rowHeight: 30 },
 ] as const;
 const format = (value: number | null) => value === null ? "NA" : value.toFixed(3);
-// Action is hidden as a table column only; it still counts toward Total and keeps its axis on the modality plot.
-const TABLE_MODALITIES = SUMMARY_MODALITIES.flatMap((modality, index) => modality.id === "gestures" ? [] : [{ ...modality, index }]);
+// Keep every published modality, including the Actions pilot, in the summary table.
+const TABLE_MODALITIES = SUMMARY_MODALITIES.map((modality, index) => ({ ...modality, index }));
 
 function ModalityPlot() {
   const [selected, setSelected] = useState<string[]>(["gpt-6-astra", "claude-fable-5_1", "gemini-3_8-flash"]);
