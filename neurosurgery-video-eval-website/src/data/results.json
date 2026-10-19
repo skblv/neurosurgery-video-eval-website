@@ -459,7 +459,7 @@
           }
         },
         {
-          "id": "evaluation-eval-mv6xayrw-ca09f072-27c8-4e42-90d6-39bbe4e2cb2b",
+          "id": "gemini-4-argon",
           "model": "Gemini 4 Argon",
           "provider": "gemini",
           "sourceRunId": "evaluation/eval-mv6xayrw-ca09f072-27c8-4e42-90d6-39bbe4e2cb2b/cholect50",
@@ -935,7 +935,7 @@
           }
         },
         {
-          "id": "evaluation-eval-mv6xayrw-ca09f072-27c8-4e42-90d6-39bbe4e2cb2b",
+          "id": "gemini-4-argon",
           "model": "Gemini 4 Argon",
           "provider": "gemini",
           "sourceRunId": "evaluation/eval-mv6xayrw-ca09f072-27c8-4e42-90d6-39bbe4e2cb2b/pitvis",
@@ -1411,7 +1411,7 @@
           }
         },
         {
-          "id": "evaluation-eval-mv6xayrw-ca09f072-27c8-4e42-90d6-39bbe4e2cb2b",
+          "id": "gemini-4-argon",
           "model": "Gemini 4 Argon",
           "provider": "gemini",
           "sourceRunId": "evaluation/eval-mv6xayrw-ca09f072-27c8-4e42-90d6-39bbe4e2cb2b/surgvu",

@@ -18,6 +18,7 @@ const RADAR_LAYOUTS = [
   { width: 360, centerY: 160, radius: 95, chartHeight: 320, columns: 1, rowHeight: 30 },
 ] as const;
 const format = (value: number | null) => value === null ? "NA" : value.toFixed(3);
+// Keep every published modality, including the Actions pilot, in the summary table.
 const TABLE_MODALITIES = SUMMARY_MODALITIES.map((modality, index) => ({ ...modality, index }));
 
 function ModalityPlot() {

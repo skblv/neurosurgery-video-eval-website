@@ -65,8 +65,12 @@ test("summary shows only the requested extra rows, using measured LemonFM scores
     const baseline = chance.datasets[id].metrics[metric];
     return (observed - baseline) / (specialist - baseline);
   })));
+  const gestures: { benchmark: { results: { id: string; metrics: { exactAccuracy: { value: number } } }[] } } = JSON.parse(readFileSync("src/data/gestureResults.json", "utf8"));
+  const accuracy = (id: string) => gestures.benchmark.results.find((row) => row.id === id)!.metrics.exactAccuracy.value;
+  // Action uses the provisional 10% uniform-class baseline from summary.ts; it counts toward Total but has no table column.
+  const action = (accuracy("lemonfm-linear-probe") - 10) / (accuracy("mvit-multi-task") - 10);
   const lemon = rows.find((row) => row[1] === "lemonfm-linear-probe")![3];
-  assert.deepEqual(cells(lemon), [mean(scores), ...scores].map((value) => value.toFixed(3)));
+  assert.deepEqual(cells(lemon), [mean([scores[0], action, ...scores.slice(1)]), ...scores].map((value) => value.toFixed(3)));
   assert(lemon.includes("LemonFM (linear probe)") && lemon.includes("provider-logos/visurg.png"));
   assert(html.includes("LemonFM uses task-trained linear probes.") && html.includes("it is not one model."));
   assert(!html.includes(`data-model="${SPECIALIST_REFERENCE_ID}"`) && !html.includes('data-model="lemonfm-linear-probe"'), "No invented release dates or changes to the zero-shot historical plot");

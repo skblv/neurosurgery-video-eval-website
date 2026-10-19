@@ -441,7 +441,7 @@
           }
         },
         {
-          "id": "evaluation-eval-mv6xayrw-ca09f072-27c8-4e42-90d6-39bbe4e2cb2b",
+          "id": "gemini-4-argon",
           "model": "Gemini 4 Argon",
           "provider": "gemini",
           "sourceRunId": "evaluation/eval-mv6xayrw-ca09f072-27c8-4e42-90d6-39bbe4e2cb2b/dsad",
@@ -899,7 +899,7 @@
           }
         },
         {
-          "id": "evaluation-eval-mv6xayrw-ca09f072-27c8-4e42-90d6-39bbe4e2cb2b",
+          "id": "gemini-4-argon",
           "model": "Gemini 4 Argon",
           "provider": "gemini",
           "sourceRunId": "evaluation/eval-mv6xayrw-ca09f072-27c8-4e42-90d6-39bbe4e2cb2b/cadis",
@@ -1357,7 +1357,7 @@
           }
         },
         {
-          "id": "evaluation-eval-mv6xayrw-ca09f072-27c8-4e42-90d6-39bbe4e2cb2b",
+          "id": "gemini-4-argon",
           "model": "Gemini 4 Argon",
           "provider": "gemini",
           "sourceRunId": "evaluation/eval-mv6xayrw-ca09f072-27c8-4e42-90d6-39bbe4e2cb2b/endoscapes",
@@ -1815,7 +1815,7 @@
           }
         },
         {
-          "id": "evaluation-eval-mv6xayrw-ca09f072-27c8-4e42-90d6-39bbe4e2cb2b",
+          "id": "gemini-4-argon",
           "model": "Gemini 4 Argon",
           "provider": "gemini",
           "sourceRunId": "evaluation/eval-mv6xayrw-ca09f072-27c8-4e42-90d6-39bbe4e2cb2b/pitvqa",
@@ -2291,7 +2291,7 @@
           }
         },
         {
-          "id": "evaluation-eval-mv6xayrw-ca09f072-27c8-4e42-90d6-39bbe4e2cb2b",
+          "id": "gemini-4-argon",
           "model": "Gemini 4 Argon",
           "provider": "gemini",
           "sourceRunId": "evaluation/eval-mv6xayrw-ca09f072-27c8-4e42-90d6-39bbe4e2cb2b/cholect50verbs",
@@ -2749,7 +2749,7 @@
           }
         },
         {
-          "id": "evaluation-eval-mv6xayrw-ca09f072-27c8-4e42-90d6-39bbe4e2cb2b",
+          "id": "gemini-4-argon",
           "model": "Gemini 4 Argon",
           "provider": "gemini",
           "sourceRunId": "evaluation/eval-mv6xayrw-ca09f072-27c8-4e42-90d6-39bbe4e2cb2b/pitvissteps",
@@ -3207,7 +3207,7 @@
           }
         },
         {
-          "id": "evaluation-eval-mv6xayrw-ca09f072-27c8-4e42-90d6-39bbe4e2cb2b",
+          "id": "gemini-4-argon",
           "model": "Gemini 4 Argon",
           "provider": "gemini",
           "sourceRunId": "evaluation/eval-mv6xayrw-ca09f072-27c8-4e42-90d6-39bbe4e2cb2b/sarrarp50",

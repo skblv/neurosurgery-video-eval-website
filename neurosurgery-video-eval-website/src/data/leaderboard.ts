@@ -39,7 +39,7 @@ export type FootnoteLookup = (modelId: string) => number | null;
 export const NEW_BADGE_DAYS = 14;
 
 /** Models explicitly highlighted as new by the current benchmark release. */
-export const MANUALLY_BADGED_MODEL_IDS = new Set(["claude-fable-5_1", "claude-opus-5"]);
+export const MANUALLY_BADGED_MODEL_IDS = new Set(["gemini-4-argon"]);
 
 /**
  * Release dates shared with the historical plot, as `YYYY-MM-DD`.
