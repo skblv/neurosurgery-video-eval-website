@@ -998,10 +998,6 @@ h3 {
   object-fit: cover;
 }
 
-.maintainer__photo--sandeep {
-  transform: translate(-3px, -7px) scale(1.25);
-}
-
 .maintainer__body {
   flex: 1;
   min-width: 0;
