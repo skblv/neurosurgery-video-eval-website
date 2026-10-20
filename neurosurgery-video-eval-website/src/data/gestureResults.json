@@ -36,6 +36,17 @@
         }
       },
       {
+        "id": "gemini-3_8-flash",
+        "model": "Gemini 3.8 Flash",
+        "provider": "gemini",
+        "sourceRunId": "gemini_3_8_flash_action",
+        "metrics": {
+          "exactAccuracy": { "value": 66.40, "ciLow": null, "ciHigh": null },
+          "macroF1": { "value": 44.60, "ciLow": null, "ciHigh": null },
+          "weightedF1": { "value": 62.80, "ciLow": null, "ciHigh": null }
+        }
+      },
+      {
         "id": "surgmotion",
         "model": "SurgMotion",
         "provider": "surgmotion",

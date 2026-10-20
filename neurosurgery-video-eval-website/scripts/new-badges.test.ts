@@ -85,6 +85,20 @@ test("the Actions data publishes MViT as the specialist reference result", () =>
   );
 });
 
+test("the Actions data publishes Gemini 3.8 Flash", () => {
+  const gemini = parseGestureResultsFile(rawGestureResults).benchmark.results.find(
+    ({ id }) => id === "gemini-3_8-flash",
+  );
+
+  assert(gemini);
+  assert.equal(gemini.model, "Gemini 3.8 Flash");
+  assert.equal(gemini.provider, "gemini");
+  assert.deepEqual(
+    Object.fromEntries(Object.entries(gemini.metrics).map(([metric, result]) => [metric, result.value])),
+    { exactAccuracy: 66.40, macroF1: 44.60, weightedF1: 62.80 },
+  );
+});
+
 test("the Actions data no longer publishes Claude Opus 4.8", () => {
   const actions = parseGestureResultsFile(rawGestureResults).benchmark.results;
 
