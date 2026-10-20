@@ -77,7 +77,7 @@ test("the Actions data publishes MViT as the specialist reference result", () =>
   );
 
   assert(mvit);
-  assert.equal(mvit.model, "SDSC MViT Multi-Task v1.5.3");
+  assert.equal(mvit.model, "SDSC MViT Multi-Task");
   assert.equal(mvit.provider, "internal");
   assert.deepEqual(
     Object.fromEntries(Object.entries(mvit.metrics).map(([metric, result]) => [metric, result.value])),
