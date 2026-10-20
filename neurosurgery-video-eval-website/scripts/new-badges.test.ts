@@ -77,11 +77,11 @@ test("the Actions data publishes MViT as the specialist reference result", () =>
   );
 
   assert(mvit);
-  assert.equal(mvit.model, "SDSC MViT Multi-Task");
+  assert.equal(mvit.model, "SDSC MViT Multi-Task v1.5.3");
   assert.equal(mvit.provider, "internal");
   assert.deepEqual(
     Object.fromEntries(Object.entries(mvit.metrics).map(([metric, result]) => [metric, result.value])),
-    { exactAccuracy: 79.00, macroF1: 73.00, weightedF1: 77.50 },
+    { exactAccuracy: 85.50, macroF1: 82.10, weightedF1: 83.50 },
   );
 });
 
