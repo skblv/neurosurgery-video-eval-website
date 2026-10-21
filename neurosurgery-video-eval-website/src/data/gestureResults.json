@@ -168,6 +168,17 @@
         }
       },
       {
+        "id": "claude-fable-5",
+        "model": "Claude Fable 5",
+        "provider": "anthropic",
+        "sourceRunId": "claude_fable_5_action",
+        "metrics": {
+          "exactAccuracy": { "value": 61.70, "ciLow": null, "ciHigh": null },
+          "macroF1": { "value": 43.60, "ciLow": null, "ciHigh": null },
+          "weightedF1": { "value": 61.20, "ciLow": null, "ciHigh": null }
+        }
+      },
+      {
         "id": "gpt-5-6-sol",
         "model": "GPT-5.6 Sol",
         "provider": "openai",
