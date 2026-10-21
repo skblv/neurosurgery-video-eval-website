@@ -113,6 +113,17 @@
         }
       },
       {
+        "id": "claude-sonnet-4_6",
+        "model": "Claude Sonnet 4.6",
+        "provider": "anthropic",
+        "sourceRunId": "claude_sonnet_4_6_action",
+        "metrics": {
+          "exactAccuracy": { "value": 47.00, "ciLow": null, "ciHigh": null },
+          "macroF1": { "value": 34.30, "ciLow": null, "ciHigh": null },
+          "weightedF1": { "value": 51.10, "ciLow": null, "ciHigh": null }
+        }
+      },
+      {
         "id": "surgmotion",
         "model": "SurgMotion",
         "provider": "surgmotion",

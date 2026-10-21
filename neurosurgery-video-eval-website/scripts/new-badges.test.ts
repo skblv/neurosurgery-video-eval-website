@@ -146,6 +146,16 @@ test("the Actions data publishes Gemini 3.1 Pro Preview and Claude Sonnet 5", ()
   }
 });
 
+test("the Actions data publishes Claude Sonnet 4.6", () => {
+  const result = parseGestureResultsFile(rawGestureResults).benchmark.results.find(
+    ({ id }) => id === "claude-sonnet-4_6",
+  );
+
+  assert(result);
+  assert.equal(result.model, "Claude Sonnet 4.6");
+  assert.deepEqual(Object.values(result.metrics).map((metric) => metric.value), [47.00, 34.30, 51.10]);
+});
+
 test("the Actions data no longer publishes Claude Opus 4.8", () => {
   const actions = parseGestureResultsFile(rawGestureResults).benchmark.results;
 
