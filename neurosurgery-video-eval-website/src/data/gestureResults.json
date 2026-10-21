@@ -91,6 +91,28 @@
         }
       },
       {
+        "id": "gemini-3_1-pro",
+        "model": "Gemini 3.1 Pro Preview",
+        "provider": "gemini",
+        "sourceRunId": "gemini_3_1_pro_preview_action",
+        "metrics": {
+          "exactAccuracy": { "value": 58.50, "ciLow": null, "ciHigh": null },
+          "macroF1": { "value": 41.80, "ciLow": null, "ciHigh": null },
+          "weightedF1": { "value": 58.80, "ciLow": null, "ciHigh": null }
+        }
+      },
+      {
+        "id": "claude-sonnet-5",
+        "model": "Claude Sonnet 5",
+        "provider": "anthropic",
+        "sourceRunId": "claude_sonnet_5_action",
+        "metrics": {
+          "exactAccuracy": { "value": 50.40, "ciLow": null, "ciHigh": null },
+          "macroF1": { "value": 35.10, "ciLow": null, "ciHigh": null },
+          "weightedF1": { "value": 53.10, "ciLow": null, "ciHigh": null }
+        }
+      },
+      {
         "id": "surgmotion",
         "model": "SurgMotion",
         "provider": "surgmotion",

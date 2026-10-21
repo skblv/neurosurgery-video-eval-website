@@ -132,6 +132,20 @@ test("the Actions data publishes the additional models from the latest results",
   }
 });
 
+test("the Actions data publishes Gemini 3.1 Pro Preview and Claude Sonnet 5", () => {
+  const actions = parseGestureResultsFile(rawGestureResults).benchmark.results;
+  const expected = {
+    "gemini-3_1-pro": [58.50, 41.80, 58.80],
+    "claude-sonnet-5": [50.40, 35.10, 53.10],
+  } as const;
+
+  for (const [id, values] of Object.entries(expected)) {
+    const result = actions.find((row) => row.id === id);
+    assert(result, id);
+    assert.deepEqual(Object.values(result.metrics).map((metric) => metric.value), values, id);
+  }
+});
+
 test("the Actions data no longer publishes Claude Opus 4.8", () => {
   const actions = parseGestureResultsFile(rawGestureResults).benchmark.results;
 
