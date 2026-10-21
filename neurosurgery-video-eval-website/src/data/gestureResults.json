@@ -47,6 +47,17 @@
         }
       },
       {
+        "id": "gemini-4-argon",
+        "model": "Gemini 4 Argon",
+        "provider": "gemini",
+        "sourceRunId": "gemini_4_argon_action",
+        "metrics": {
+          "exactAccuracy": { "value": 63.90, "ciLow": null, "ciHigh": null },
+          "macroF1": { "value": 47.80, "ciLow": null, "ciHigh": null },
+          "weightedF1": { "value": 62.60, "ciLow": null, "ciHigh": null }
+        }
+      },
+      {
         "id": "surgmotion",
         "model": "SurgMotion",
         "provider": "surgmotion",

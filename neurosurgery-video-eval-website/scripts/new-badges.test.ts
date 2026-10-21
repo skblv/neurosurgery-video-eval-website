@@ -99,6 +99,20 @@ test("the Actions data publishes Gemini 3.8 Flash", () => {
   );
 });
 
+test("the Actions data publishes Gemini 4 Argon", () => {
+  const argon = parseGestureResultsFile(rawGestureResults).benchmark.results.find(
+    ({ id }) => id === "gemini-4-argon",
+  );
+
+  assert(argon);
+  assert.equal(argon.model, "Gemini 4 Argon");
+  assert.equal(argon.provider, "gemini");
+  assert.deepEqual(
+    Object.fromEntries(Object.entries(argon.metrics).map(([metric, result]) => [metric, result.value])),
+    { exactAccuracy: 63.90, macroF1: 47.80, weightedF1: 62.60 },
+  );
+});
+
 test("the Actions data no longer publishes Claude Opus 4.8", () => {
   const actions = parseGestureResultsFile(rawGestureResults).benchmark.results;
 
