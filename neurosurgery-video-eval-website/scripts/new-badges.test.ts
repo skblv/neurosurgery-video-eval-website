@@ -81,8 +81,89 @@ test("the Actions data publishes MViT as the specialist reference result", () =>
   assert.equal(mvit.provider, "internal");
   assert.deepEqual(
     Object.fromEntries(Object.entries(mvit.metrics).map(([metric, result]) => [metric, result.value])),
-    { exactAccuracy: 79.00, macroF1: 73.00, weightedF1: 77.50 },
+    { exactAccuracy: 85.50, macroF1: 82.10, weightedF1: 83.50 },
   );
+});
+
+test("the Actions data publishes Gemini 3.8 Flash", () => {
+  const gemini = parseGestureResultsFile(rawGestureResults).benchmark.results.find(
+    ({ id }) => id === "gemini-3_8-flash",
+  );
+
+  assert(gemini);
+  assert.equal(gemini.model, "Gemini 3.8 Flash");
+  assert.equal(gemini.provider, "gemini");
+  assert.deepEqual(
+    Object.fromEntries(Object.entries(gemini.metrics).map(([metric, result]) => [metric, result.value])),
+    { exactAccuracy: 66.40, macroF1: 44.60, weightedF1: 62.80 },
+  );
+});
+
+test("the Actions data publishes Gemini 4 Argon", () => {
+  const argon = parseGestureResultsFile(rawGestureResults).benchmark.results.find(
+    ({ id }) => id === "gemini-4-argon",
+  );
+
+  assert(argon);
+  assert.equal(argon.model, "Gemini 4 Argon");
+  assert.equal(argon.provider, "gemini");
+  assert.deepEqual(
+    Object.fromEntries(Object.entries(argon.metrics).map(([metric, result]) => [metric, result.value])),
+    { exactAccuracy: 63.90, macroF1: 47.80, weightedF1: 62.60 },
+  );
+});
+
+test("the Actions data publishes the additional models from the latest results", () => {
+  const actions = parseGestureResultsFile(rawGestureResults).benchmark.results;
+  const expected = {
+    "gpt-5_6-terra": [64.90, 47.40, 63.20],
+    "gpt-5_4": [59.90, 44.90, 59.80],
+    "claude-opus-4_6": [51.30, 40.40, 54.30],
+  } as const;
+
+  for (const [id, values] of Object.entries(expected)) {
+    const result = actions.find((row) => row.id === id);
+    assert(result, id);
+    assert.deepEqual(
+      Object.values(result.metrics).map((metric) => metric.value),
+      values,
+      id,
+    );
+  }
+});
+
+test("the Actions data publishes Gemini 3.1 Pro Preview and Claude Sonnet 5", () => {
+  const actions = parseGestureResultsFile(rawGestureResults).benchmark.results;
+  const expected = {
+    "gemini-3_1-pro": [58.50, 41.80, 58.80],
+    "claude-sonnet-5": [50.40, 35.10, 53.10],
+  } as const;
+
+  for (const [id, values] of Object.entries(expected)) {
+    const result = actions.find((row) => row.id === id);
+    assert(result, id);
+    assert.deepEqual(Object.values(result.metrics).map((metric) => metric.value), values, id);
+  }
+});
+
+test("the Actions data publishes Claude Sonnet 4.6", () => {
+  const result = parseGestureResultsFile(rawGestureResults).benchmark.results.find(
+    ({ id }) => id === "claude-sonnet-4_6",
+  );
+
+  assert(result);
+  assert.equal(result.model, "Claude Sonnet 4.6");
+  assert.deepEqual(Object.values(result.metrics).map((metric) => metric.value), [47.00, 34.30, 51.10]);
+});
+
+test("the Actions data publishes Claude Fable 5", () => {
+  const result = parseGestureResultsFile(rawGestureResults).benchmark.results.find(
+    ({ id }) => id === "claude-fable-5",
+  );
+
+  assert(result);
+  assert.equal(result.model, "Claude Fable 5");
+  assert.deepEqual(Object.values(result.metrics).map((metric) => metric.value), [61.70, 43.60, 61.20]);
 });
 
 test("the Actions data no longer publishes Claude Opus 4.8", () => {
