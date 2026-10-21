@@ -113,6 +113,25 @@ test("the Actions data publishes Gemini 4 Argon", () => {
   );
 });
 
+test("the Actions data publishes the additional models from the latest results", () => {
+  const actions = parseGestureResultsFile(rawGestureResults).benchmark.results;
+  const expected = {
+    "gpt-5_6-terra": [64.90, 47.40, 63.20],
+    "gpt-5_4": [59.90, 44.90, 59.80],
+    "claude-opus-4_6": [51.30, 40.40, 54.30],
+  } as const;
+
+  for (const [id, values] of Object.entries(expected)) {
+    const result = actions.find((row) => row.id === id);
+    assert(result, id);
+    assert.deepEqual(
+      Object.values(result.metrics).map((metric) => metric.value),
+      values,
+      id,
+    );
+  }
+});
+
 test("the Actions data no longer publishes Claude Opus 4.8", () => {
   const actions = parseGestureResultsFile(rawGestureResults).benchmark.results;
 

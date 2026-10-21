@@ -58,6 +58,39 @@
         }
       },
       {
+        "id": "gpt-5_6-terra",
+        "model": "GPT-5.6 Terra",
+        "provider": "openai",
+        "sourceRunId": "gpt_5_6_terra_action",
+        "metrics": {
+          "exactAccuracy": { "value": 64.90, "ciLow": null, "ciHigh": null },
+          "macroF1": { "value": 47.40, "ciLow": null, "ciHigh": null },
+          "weightedF1": { "value": 63.20, "ciLow": null, "ciHigh": null }
+        }
+      },
+      {
+        "id": "gpt-5_4",
+        "model": "GPT-5.4",
+        "provider": "openai",
+        "sourceRunId": "gpt_5_4_action",
+        "metrics": {
+          "exactAccuracy": { "value": 59.90, "ciLow": null, "ciHigh": null },
+          "macroF1": { "value": 44.90, "ciLow": null, "ciHigh": null },
+          "weightedF1": { "value": 59.80, "ciLow": null, "ciHigh": null }
+        }
+      },
+      {
+        "id": "claude-opus-4_6",
+        "model": "Claude Opus 4.6",
+        "provider": "anthropic",
+        "sourceRunId": "claude_opus_4_6_action",
+        "metrics": {
+          "exactAccuracy": { "value": 51.30, "ciLow": null, "ciHigh": null },
+          "macroF1": { "value": 40.40, "ciLow": null, "ciHigh": null },
+          "weightedF1": { "value": 54.30, "ciLow": null, "ciHigh": null }
+        }
+      },
+      {
         "id": "surgmotion",
         "model": "SurgMotion",
         "provider": "surgmotion",
