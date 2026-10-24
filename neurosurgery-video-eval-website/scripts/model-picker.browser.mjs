@@ -61,9 +61,9 @@ try {
   check("!!document.querySelector('[role=combobox]') && document.querySelectorAll('[role=option]').length === 0 && document.querySelectorAll('.summary-picker-trigger').length === 4", "Empty results are safe for arrow and Enter keys");
   run("press", "Escape");
   check("!document.querySelector('[role=combobox]') && document.activeElement?.getAttribute('aria-label') === 'Add model to plot'", "Escape closes and restores focus");
-  button("Change GPT-6 Astra-low");
+  button("Change GPT-6 Astra [low]");
   run("press", "Tab");
-  check("!document.querySelector('[role=combobox]') && document.activeElement?.getAttribute('aria-label') === 'Remove GPT-6 Astra-low'", "Tab exits without trapping focus");
+  check("!document.querySelector('[role=combobox]') && document.activeElement?.getAttribute('aria-label') === 'Remove GPT-6 Astra [low]'", "Tab exits without trapping focus");
   button("Add model to plot");
   run("click", "#summary-plot-heading");
   check("!document.querySelector('[role=combobox]')", "Outside click closes menu");

@@ -59,7 +59,7 @@
       },
       {
         "id": "gpt-6-astra",
-        "model": "GPT-6 Astra-low",
+        "model": "GPT-6 Astra [low]",
         "provider": "openai",
         "sourceRunId": "98f692ab-b778-4f5e-8dc0-91ed82dddc39_astra6_evaluation",
         "metrics": {

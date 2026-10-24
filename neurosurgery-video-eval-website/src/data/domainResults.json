@@ -280,7 +280,7 @@
         },
         {
           "id": "gpt-6-astra",
-          "model": "GPT-6 Astra-low",
+          "model": "GPT-6 Astra [low]",
           "provider": "openai",
           "sourceRunId": null,
           "metrics": {
@@ -460,7 +460,7 @@
         },
         {
           "id": "gpt-6-astra-max",
-          "model": "GPT-6 Astra-max",
+          "model": "GPT-6 Astra [max]",
           "provider": "openai",
           "sourceRunId": "evaluation/eval-mviu3nta-b76a1f4b-37f9-4b82-822f-af7e189d1a30/dsad",
           "metrics": {
@@ -648,7 +648,7 @@
         },
         {
           "id": "gpt-6-astra",
-          "model": "GPT-6 Astra-low",
+          "model": "GPT-6 Astra [low]",
           "provider": "openai",
           "sourceRunId": null,
           "metrics": {
@@ -936,7 +936,7 @@
         },
         {
           "id": "gpt-6-astra-max",
-          "model": "GPT-6 Astra-max",
+          "model": "GPT-6 Astra [max]",
           "provider": "openai",
           "sourceRunId": "evaluation/eval-mviu3nta-b76a1f4b-37f9-4b82-822f-af7e189d1a30/cadis",
           "metrics": {
@@ -1124,7 +1124,7 @@
         },
         {
           "id": "gpt-6-astra",
-          "model": "GPT-6 Astra-low",
+          "model": "GPT-6 Astra [low]",
           "provider": "openai",
           "sourceRunId": null,
           "metrics": {
@@ -1412,7 +1412,7 @@
         },
         {
           "id": "gpt-6-astra-max",
-          "model": "GPT-6 Astra-max",
+          "model": "GPT-6 Astra [max]",
           "provider": "openai",
           "sourceRunId": "evaluation/eval-mviu3nta-b76a1f4b-37f9-4b82-822f-af7e189d1a30/endoscapes",
           "metrics": {
@@ -1708,7 +1708,7 @@
         },
         {
           "id": "gpt-6-astra",
-          "model": "GPT-6 Astra-low",
+          "model": "GPT-6 Astra [low]",
           "provider": "openai",
           "sourceRunId": null,
           "metrics": {
@@ -1888,7 +1888,7 @@
         },
         {
           "id": "gpt-6-astra-max",
-          "model": "GPT-6 Astra-max",
+          "model": "GPT-6 Astra [max]",
           "provider": "openai",
           "sourceRunId": "evaluation/eval-mviu3nta-b76a1f4b-37f9-4b82-822f-af7e189d1a30/pitvqa",
           "metrics": {
@@ -2202,7 +2202,7 @@
         },
         {
           "id": "gpt-6-astra",
-          "model": "GPT-6 Astra-low",
+          "model": "GPT-6 Astra [low]",
           "provider": "openai",
           "sourceRunId": null,
           "metrics": {
@@ -2382,7 +2382,7 @@
         },
         {
           "id": "gpt-6-astra-max",
-          "model": "GPT-6 Astra-max",
+          "model": "GPT-6 Astra [max]",
           "provider": "openai",
           "sourceRunId": "evaluation/eval-mviu3nta-b76a1f4b-37f9-4b82-822f-af7e189d1a30/cholect50verbs",
           "metrics": {
@@ -2570,7 +2570,7 @@
         },
         {
           "id": "gpt-6-astra",
-          "model": "GPT-6 Astra-low",
+          "model": "GPT-6 Astra [low]",
           "provider": "openai",
           "sourceRunId": null,
           "metrics": {
@@ -2858,7 +2858,7 @@
         },
         {
           "id": "gpt-6-astra-max",
-          "model": "GPT-6 Astra-max",
+          "model": "GPT-6 Astra [max]",
           "provider": "openai",
           "sourceRunId": "evaluation/eval-mviu3nta-b76a1f4b-37f9-4b82-822f-af7e189d1a30/pitvissteps",
           "metrics": {
@@ -3154,7 +3154,7 @@
         },
         {
           "id": "gpt-6-astra",
-          "model": "GPT-6 Astra-low",
+          "model": "GPT-6 Astra [low]",
           "provider": "openai",
           "sourceRunId": null,
           "metrics": {
@@ -3334,7 +3334,7 @@
         },
         {
           "id": "gpt-6-astra-max",
-          "model": "GPT-6 Astra-max",
+          "model": "GPT-6 Astra [max]",
           "provider": "openai",
           "sourceRunId": "evaluation/eval-mviu3nta-b76a1f4b-37f9-4b82-822f-af7e189d1a30/sarrarp50",
           "metrics": {
