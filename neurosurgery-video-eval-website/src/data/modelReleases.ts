@@ -107,6 +107,11 @@ export const MODEL_RELEASES: Readonly<Record<string, ModelRelease>> = {
     source: "https://openai.com/index/safety-overview-gpt-6-astra/",
     additionalSource: "https://openai.com/index/gpt-6-astra/",
   },
+  "gpt-6-astra-max": {
+    date: "2026-09-03",
+    source: "https://openai.com/index/safety-overview-gpt-6-astra/",
+    additionalSource: "https://openai.com/index/gpt-6-astra/",
+  },
   "gemini-4-argon": {
     date: "2026-09-30",
     source: "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon/",

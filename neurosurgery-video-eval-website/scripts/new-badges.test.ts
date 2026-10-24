@@ -30,7 +30,7 @@ test("release-based badges last exactly fourteen days from release, measured in 
 test("Qwen Max 0902 is new, while older Qwen and unknown or composite releases are not", () => {
   const now = new Date("2026-09-09T03:00:00Z");
   assert.deepEqual(Object.keys(MODEL_RELEASES).filter((id) => isNewModel(id, now)), [
-    "claude-fable-5_1", "gemini-3_8-flash", "qwen3-8-max-0902", "gpt-6-astra", "gemini-4-argon",
+    "claude-fable-5_1", "gemini-3_8-flash", "qwen3-8-max-0902", "gpt-6-astra", "gpt-6-astra-max", "gemini-4-argon",
   ]);
   for (const id of ["qwen3-8-27b", "qwen3-8-max", "sdsc-uchicago-reference", "lemonfm-linear-probe", "unknown"]) {
     assert.equal(isNewModel(id, now), false, id);
@@ -100,7 +100,7 @@ test("prerendered tables never bake in New badges that could outlive their relea
 
 test("summary model titles reserve an inline badge slot without creating a separate badge line", () => {
   const html = readFileSync("dist/index.html", "utf8");
-  assert.equal([...html.matchAll(/class="summary-model-title"><span>/g)].length, 24);
+  assert.equal([...html.matchAll(/class="summary-model-title"><span>/g)].length, 25);
   const css = readFileSync("src/index.css", "utf8");
   assert.match(css, /\.summary-model-title\s*\{[^}]*display: inline-flex;[^}]*flex-wrap: nowrap;[^}]*white-space: nowrap;/);
   assert.match(css, /\.summary-model-title > \.badge-new\s*\{[^}]*flex: none;[^}]*margin-left: 0;/);

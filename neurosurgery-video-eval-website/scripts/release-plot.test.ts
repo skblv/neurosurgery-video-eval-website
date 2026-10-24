@@ -5,7 +5,7 @@ import { releasePoints, releaseTimestamp, releasePlotLayout, releaseFamilies } f
 
 test("release dates are strict UTC dates backed by original developer sources", () => {
   const hosts = new Set(["developers.googleblog.com", "blog.google", "www.anthropic.com", "platform.claude.com", "openai.com", "www.kimi.com", "docs.x.ai", "github.com", "z.ai", "www.alibabacloud.com"]);
-  assert.equal(Object.keys(MODEL_RELEASES).length, 22);
+  assert.equal(Object.keys(MODEL_RELEASES).length, 23);
   for (const [id, release] of Object.entries(MODEL_RELEASES)) {
     assert.notEqual(releaseTimestamp(release.date), null, id);
     const url = new URL(release.source);
