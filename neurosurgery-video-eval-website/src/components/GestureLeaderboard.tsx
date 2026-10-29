@@ -95,6 +95,10 @@ export function GestureLeaderboard() {
             Kimi K3 uses the documented normalization that maps its clip label to the benchmark's
             cut label. No confidence intervals are reported for this single-case comparison.
           </p>
+          <p>
+            The SDSC MViT Multi-Task row is the SDSC/UChicago specialist reference; the other rows
+            are high-thinking-effort model evaluations.
+          </p>
         </div>
       </section>
     </>

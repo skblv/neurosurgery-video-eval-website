@@ -68,7 +68,7 @@ export const GESTURE_BENCHMARK: LeaderboardBenchmark<GestureMetricId> &
 export const GESTURE_LEADERBOARD: LeaderboardBenchmark<GestureMetricId> &
   Omit<typeof parsed.benchmark, "results"> = {
   ...GESTURE_BENCHMARK,
-  results: GESTURE_BENCHMARK.results.filter(({ id }) => HIGH_THINKING_ACTION_IDS.has(id)),
+  results: GESTURE_BENCHMARK.results.filter(({ id }) => HIGH_THINKING_ACTION_IDS.has(id) || id === "mvit-multi-task"),
 };
 
 export const GESTURE_RESULTS_GENERATED_AT = parsed.generatedAt;

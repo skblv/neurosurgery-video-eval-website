@@ -192,6 +192,12 @@ test("the high-thinking Actions leaderboard publishes the screenshot's 14 models
   }
 });
 
+test("the Actions leaderboard keeps the SDSC MViT specialist reference visible", () => {
+  const html = readFileSync("dist/gestures/index.html", "utf8");
+  assert.match(html, /SDSC MViT Multi-Task/);
+  assert.match(html, /SDSC MViT Multi-Task row is the SDSC\/UChicago specialist reference/);
+});
+
 test("the Actions data no longer publishes Claude Opus 4.8", () => {
   const actions = parseGestureResultsFile(rawGestureResults).benchmark.results;
 
