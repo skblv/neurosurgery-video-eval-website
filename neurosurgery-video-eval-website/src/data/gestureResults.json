@@ -39,88 +39,88 @@
         "id": "gemini-3_8-flash",
         "model": "Gemini 3.8 Flash",
         "provider": "gemini",
-        "sourceRunId": "gemini_3_8_flash_action",
+        "sourceRunId": "gemini_3_8_flash_high_thinking_action",
         "metrics": {
-          "exactAccuracy": { "value": 66.40, "ciLow": null, "ciHigh": null },
-          "macroF1": { "value": 44.60, "ciLow": null, "ciHigh": null },
-          "weightedF1": { "value": 62.80, "ciLow": null, "ciHigh": null }
+          "exactAccuracy": { "value": 61.25, "ciLow": null, "ciHigh": null },
+          "macroF1": { "value": 43.70, "ciLow": null, "ciHigh": null },
+          "weightedF1": { "value": 57.75, "ciLow": null, "ciHigh": null }
         }
       },
       {
         "id": "gemini-4-argon",
         "model": "Gemini 4 Argon",
         "provider": "gemini",
-        "sourceRunId": "gemini_4_argon_action",
+        "sourceRunId": "gemini_4_argon_high_thinking_action",
         "metrics": {
-          "exactAccuracy": { "value": 63.90, "ciLow": null, "ciHigh": null },
-          "macroF1": { "value": 47.80, "ciLow": null, "ciHigh": null },
-          "weightedF1": { "value": 62.60, "ciLow": null, "ciHigh": null }
+          "exactAccuracy": { "value": 66.52, "ciLow": null, "ciHigh": null },
+          "macroF1": { "value": 54.59, "ciLow": null, "ciHigh": null },
+          "weightedF1": { "value": 65.06, "ciLow": null, "ciHigh": null }
         }
       },
       {
         "id": "gpt-5_6-terra",
         "model": "GPT-5.6 Terra",
         "provider": "openai",
-        "sourceRunId": "gpt_5_6_terra_action",
+        "sourceRunId": "gpt_5_6_terra_high_thinking_action",
         "metrics": {
-          "exactAccuracy": { "value": 64.90, "ciLow": null, "ciHigh": null },
-          "macroF1": { "value": 47.40, "ciLow": null, "ciHigh": null },
-          "weightedF1": { "value": 63.20, "ciLow": null, "ciHigh": null }
+          "exactAccuracy": { "value": 66.89, "ciLow": null, "ciHigh": null },
+          "macroF1": { "value": 47.89, "ciLow": null, "ciHigh": null },
+          "weightedF1": { "value": 64.28, "ciLow": null, "ciHigh": null }
         }
       },
       {
         "id": "gpt-5_4",
         "model": "GPT-5.4",
         "provider": "openai",
-        "sourceRunId": "gpt_5_4_action",
+        "sourceRunId": "gpt_5_4_high_thinking_action",
         "metrics": {
-          "exactAccuracy": { "value": 59.90, "ciLow": null, "ciHigh": null },
-          "macroF1": { "value": 44.90, "ciLow": null, "ciHigh": null },
-          "weightedF1": { "value": 59.80, "ciLow": null, "ciHigh": null }
+          "exactAccuracy": { "value": 56.97, "ciLow": null, "ciHigh": null },
+          "macroF1": { "value": 44.97, "ciLow": null, "ciHigh": null },
+          "weightedF1": { "value": 58.58, "ciLow": null, "ciHigh": null }
         }
       },
       {
         "id": "claude-opus-4_6",
         "model": "Claude Opus 4.6",
         "provider": "anthropic",
-        "sourceRunId": "claude_opus_4_6_action",
+        "sourceRunId": "claude_opus_4_6_high_thinking_action",
         "metrics": {
-          "exactAccuracy": { "value": 51.30, "ciLow": null, "ciHigh": null },
-          "macroF1": { "value": 40.40, "ciLow": null, "ciHigh": null },
-          "weightedF1": { "value": 54.30, "ciLow": null, "ciHigh": null }
+          "exactAccuracy": { "value": 48.80, "ciLow": null, "ciHigh": null },
+          "macroF1": { "value": 36.29, "ciLow": null, "ciHigh": null },
+          "weightedF1": { "value": 51.85, "ciLow": null, "ciHigh": null }
         }
       },
       {
         "id": "gemini-3_1-pro",
         "model": "Gemini 3.1 Pro Preview",
         "provider": "gemini",
-        "sourceRunId": "gemini_3_1_pro_preview_action",
+        "sourceRunId": "gemini_3_1_pro_preview_high_thinking_action",
         "metrics": {
-          "exactAccuracy": { "value": 58.50, "ciLow": null, "ciHigh": null },
-          "macroF1": { "value": 41.80, "ciLow": null, "ciHigh": null },
-          "weightedF1": { "value": 58.80, "ciLow": null, "ciHigh": null }
+          "exactAccuracy": { "value": 58.88, "ciLow": null, "ciHigh": null },
+          "macroF1": { "value": 40.25, "ciLow": null, "ciHigh": null },
+          "weightedF1": { "value": 58.82, "ciLow": null, "ciHigh": null }
         }
       },
       {
         "id": "claude-sonnet-5",
         "model": "Claude Sonnet 5",
         "provider": "anthropic",
-        "sourceRunId": "claude_sonnet_5_action",
+        "sourceRunId": "claude_sonnet_5_high_thinking_action",
         "metrics": {
-          "exactAccuracy": { "value": 50.40, "ciLow": null, "ciHigh": null },
-          "macroF1": { "value": 35.10, "ciLow": null, "ciHigh": null },
-          "weightedF1": { "value": 53.10, "ciLow": null, "ciHigh": null }
+          "exactAccuracy": { "value": 53.84, "ciLow": null, "ciHigh": null },
+          "macroF1": { "value": 37.26, "ciLow": null, "ciHigh": null },
+          "weightedF1": { "value": 54.79, "ciLow": null, "ciHigh": null }
         }
       },
       {
         "id": "claude-sonnet-4_6",
         "model": "Claude Sonnet 4.6",
         "provider": "anthropic",
-        "sourceRunId": "claude_sonnet_4_6_action",
+        "sourceRunId": "claude_sonnet_4_6_high_thinking_action",
         "metrics": {
-          "exactAccuracy": { "value": 47.00, "ciLow": null, "ciHigh": null },
-          "macroF1": { "value": 34.30, "ciLow": null, "ciHigh": null },
-          "weightedF1": { "value": 51.10, "ciLow": null, "ciHigh": null }
+          "exactAccuracy": { "value": 43.27, "ciLow": null, "ciHigh": null },
+          "macroF1": { "value": 34.47, "ciLow": null, "ciHigh": null },
+          "weightedF1": { "value": 45.11, "ciLow": null, "ciHigh": null }
         }
       },
       {
@@ -160,11 +160,11 @@
         "id": "claude-fable-5_1",
         "model": "Claude Fable 5.1",
         "provider": "anthropic",
-        "sourceRunId": "98f692ab-b778-4f5e-8dc0-91ed82dddc39_fable5_evaluation",
+        "sourceRunId": "claude_fable_5_1_high_thinking_action",
         "metrics": {
-          "exactAccuracy": { "value": 64.77, "ciLow": null, "ciHigh": null },
-          "macroF1": { "value": 48.11, "ciLow": null, "ciHigh": null },
-          "weightedF1": { "value": 63.67, "ciLow": null, "ciHigh": null }
+          "exactAccuracy": { "value": 67.39, "ciLow": null, "ciHigh": null },
+          "macroF1": { "value": 48.26, "ciLow": null, "ciHigh": null },
+          "weightedF1": { "value": 64.88, "ciLow": null, "ciHigh": null }
         }
       },
       {
@@ -173,20 +173,42 @@
         "provider": "anthropic",
         "sourceRunId": "claude_fable_5_action",
         "metrics": {
-          "exactAccuracy": { "value": 61.70, "ciLow": null, "ciHigh": null },
-          "macroF1": { "value": 43.60, "ciLow": null, "ciHigh": null },
-          "weightedF1": { "value": 61.20, "ciLow": null, "ciHigh": null }
+          "exactAccuracy": { "value": 61.60, "ciLow": null, "ciHigh": null },
+          "macroF1": { "value": 43.65, "ciLow": null, "ciHigh": null },
+          "weightedF1": { "value": 60.47, "ciLow": null, "ciHigh": null }
         }
       },
       {
         "id": "gpt-5-6-sol",
         "model": "GPT-5.6 Sol",
         "provider": "openai",
-        "sourceRunId": "98f692ab-b778-4f5e-8dc0-91ed82dddc39_sol_3s_evaluation",
+        "sourceRunId": "gpt_5_6_sol_high_thinking_action",
         "metrics": {
-          "exactAccuracy": { "value": 57.99, "ciLow": null, "ciHigh": null },
-          "macroF1": { "value": 46.36, "ciLow": null, "ciHigh": null },
-          "weightedF1": { "value": 58.65, "ciLow": null, "ciHigh": null }
+          "exactAccuracy": { "value": 60.91, "ciLow": null, "ciHigh": null },
+          "macroF1": { "value": 46.70, "ciLow": null, "ciHigh": null },
+          "weightedF1": { "value": 60.14, "ciLow": null, "ciHigh": null }
+        }
+      },
+      {
+        "id": "gemini-3_7-flash",
+        "model": "Gemini 3.7 Flash",
+        "provider": "gemini",
+        "sourceRunId": "gemini_3_7_flash_high_thinking_action",
+        "metrics": {
+          "exactAccuracy": { "value": 64.39, "ciLow": null, "ciHigh": null },
+          "macroF1": { "value": 47.46, "ciLow": null, "ciHigh": null },
+          "weightedF1": { "value": 61.78, "ciLow": null, "ciHigh": null }
+        }
+      },
+      {
+        "id": "gemini-3-flash-preview",
+        "model": "Gemini 3 Flash Preview",
+        "provider": "gemini",
+        "sourceRunId": "gemini_3_flash_preview_high_thinking_action",
+        "metrics": {
+          "exactAccuracy": { "value": 59.92, "ciLow": null, "ciHigh": null },
+          "macroF1": { "value": 44.84, "ciLow": null, "ciHigh": null },
+          "weightedF1": { "value": 60.22, "ciLow": null, "ciHigh": null }
         }
       },
       {
@@ -204,11 +226,11 @@
         "id": "claude-opus-5",
         "model": "Claude Opus 5",
         "provider": "anthropic",
-        "sourceRunId": "98f692ab-b778-4f5e-8dc0-91ed82dddc39_opus5_matched_v2_evaluation",
+        "sourceRunId": "claude_opus_5_high_thinking_action",
         "metrics": {
-          "exactAccuracy": { "value": 61.64, "ciLow": null, "ciHigh": null },
-          "macroF1": { "value": 46.08, "ciLow": null, "ciHigh": null },
-          "weightedF1": { "value": 60.60, "ciLow": null, "ciHigh": null }
+          "exactAccuracy": { "value": 62.16, "ciLow": null, "ciHigh": null },
+          "macroF1": { "value": 48.92, "ciLow": null, "ciHigh": null },
+          "weightedF1": { "value": 61.32, "ciLow": null, "ciHigh": null }
         }
       }
     ]

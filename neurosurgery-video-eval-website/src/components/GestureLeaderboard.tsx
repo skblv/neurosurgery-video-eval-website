@@ -4,6 +4,7 @@ import { GESTURE_EXAMPLE } from "../data/benchExample";
 import { gestureModelFootnote } from "../data/benchmark";
 import {
   GESTURE_BENCHMARK,
+  GESTURE_LEADERBOARD,
   GESTURE_METRICS,
   GESTURE_METRIC_ORDER,
   type GestureMetricId,
@@ -50,7 +51,7 @@ export function GestureLeaderboard() {
         <div className="figure-row">
           <ResultsChart
             key={metricId}
-            dataset={GESTURE_BENCHMARK}
+            dataset={GESTURE_LEADERBOARD}
             metricId={metricId}
             metric={metric}
             footnoteFor={gestureModelFootnote}
@@ -73,9 +74,10 @@ export function GestureLeaderboard() {
         </div>
 
         <ResultsTable
-          dataset={GESTURE_BENCHMARK}
+          dataset={GESTURE_LEADERBOARD}
           metricId={metricId}
           metricLabel={metric.label}
+          modelLabel="Model — high thinking"
           footnoteFor={gestureModelFootnote}
           showConfidenceInterval={false}
         />

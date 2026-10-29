@@ -67,7 +67,7 @@ test("the Actions data uses the matched Opus 5 primary-gesture evaluation", () =
   assert(opus);
   assert.deepEqual(
     Object.fromEntries(Object.entries(opus.metrics).map(([metric, result]) => [metric, result.value])),
-    { exactAccuracy: 61.64, macroF1: 46.08, weightedF1: 60.60 },
+    { exactAccuracy: 62.16, macroF1: 48.92, weightedF1: 61.32 },
   );
 });
 
@@ -95,7 +95,7 @@ test("the Actions data publishes Gemini 3.8 Flash", () => {
   assert.equal(gemini.provider, "gemini");
   assert.deepEqual(
     Object.fromEntries(Object.entries(gemini.metrics).map(([metric, result]) => [metric, result.value])),
-    { exactAccuracy: 66.40, macroF1: 44.60, weightedF1: 62.80 },
+    { exactAccuracy: 61.25, macroF1: 43.70, weightedF1: 57.75 },
   );
 });
 
@@ -109,16 +109,16 @@ test("the Actions data publishes Gemini 4 Argon", () => {
   assert.equal(argon.provider, "gemini");
   assert.deepEqual(
     Object.fromEntries(Object.entries(argon.metrics).map(([metric, result]) => [metric, result.value])),
-    { exactAccuracy: 63.90, macroF1: 47.80, weightedF1: 62.60 },
+    { exactAccuracy: 66.52, macroF1: 54.59, weightedF1: 65.06 },
   );
 });
 
 test("the Actions data publishes the additional models from the latest results", () => {
   const actions = parseGestureResultsFile(rawGestureResults).benchmark.results;
   const expected = {
-    "gpt-5_6-terra": [64.90, 47.40, 63.20],
-    "gpt-5_4": [59.90, 44.90, 59.80],
-    "claude-opus-4_6": [51.30, 40.40, 54.30],
+    "gpt-5_6-terra": [66.89, 47.89, 64.28],
+    "gpt-5_4": [56.97, 44.97, 58.58],
+    "claude-opus-4_6": [48.80, 36.29, 51.85],
   } as const;
 
   for (const [id, values] of Object.entries(expected)) {
@@ -135,8 +135,8 @@ test("the Actions data publishes the additional models from the latest results",
 test("the Actions data publishes Gemini 3.1 Pro Preview and Claude Sonnet 5", () => {
   const actions = parseGestureResultsFile(rawGestureResults).benchmark.results;
   const expected = {
-    "gemini-3_1-pro": [58.50, 41.80, 58.80],
-    "claude-sonnet-5": [50.40, 35.10, 53.10],
+    "gemini-3_1-pro": [58.88, 40.25, 58.82],
+    "claude-sonnet-5": [53.84, 37.26, 54.79],
   } as const;
 
   for (const [id, values] of Object.entries(expected)) {
@@ -153,7 +153,7 @@ test("the Actions data publishes Claude Sonnet 4.6", () => {
 
   assert(result);
   assert.equal(result.model, "Claude Sonnet 4.6");
-  assert.deepEqual(Object.values(result.metrics).map((metric) => metric.value), [47.00, 34.30, 51.10]);
+  assert.deepEqual(Object.values(result.metrics).map((metric) => metric.value), [43.27, 34.47, 45.11]);
 });
 
 test("the Actions data publishes Claude Fable 5", () => {
@@ -163,7 +163,33 @@ test("the Actions data publishes Claude Fable 5", () => {
 
   assert(result);
   assert.equal(result.model, "Claude Fable 5");
-  assert.deepEqual(Object.values(result.metrics).map((metric) => metric.value), [61.70, 43.60, 61.20]);
+  assert.deepEqual(Object.values(result.metrics).map((metric) => metric.value), [61.60, 43.65, 60.47]);
+});
+
+test("the high-thinking Actions leaderboard publishes the screenshot's 14 models", () => {
+  const actions = parseGestureResultsFile(rawGestureResults).benchmark.results;
+  const expected = {
+    "claude-fable-5_1": [67.39, 48.26, 64.88],
+    "gpt-5_6-terra": [66.89, 47.89, 64.28],
+    "gemini-4-argon": [66.52, 54.59, 65.06],
+    "gemini-3_7-flash": [64.39, 47.46, 61.78],
+    "claude-opus-5": [62.16, 48.92, 61.32],
+    "claude-fable-5": [61.60, 43.65, 60.47],
+    "gemini-3_8-flash": [61.25, 43.70, 57.75],
+    "gpt-5-6-sol": [60.91, 46.70, 60.14],
+    "gemini-3-flash-preview": [59.92, 44.84, 60.22],
+    "gemini-3_1-pro": [58.88, 40.25, 58.82],
+    "gpt-5_4": [56.97, 44.97, 58.58],
+    "claude-sonnet-5": [53.84, 37.26, 54.79],
+    "claude-opus-4_6": [48.80, 36.29, 51.85],
+    "claude-sonnet-4_6": [43.27, 34.47, 45.11],
+  } as const;
+
+  for (const [id, values] of Object.entries(expected)) {
+    const result = actions.find((row) => row.id === id);
+    assert(result, id);
+    assert.deepEqual(Object.values(result.metrics).map((metric) => metric.value), values, id);
+  }
 });
 
 test("the Actions data no longer publishes Claude Opus 4.8", () => {
@@ -181,7 +207,7 @@ test("prerendered tables never bake in New badges that could outlive their relea
 
 test("summary model titles reserve an inline badge slot without creating a separate badge line", () => {
   const html = readFileSync("dist/index.html", "utf8");
-  assert.equal([...html.matchAll(/class="summary-model-title"><span>/g)].length, 24);
+  assert.equal([...html.matchAll(/class="summary-model-title"><span>/g)].length, 25);
   const css = readFileSync("src/index.css", "utf8");
   assert.match(css, /\.summary-model-title\s*\{[^}]*display: inline-flex;[^}]*flex-wrap: nowrap;[^}]*white-space: nowrap;/);
   assert.match(css, /\.summary-model-title > \.badge-new\s*\{[^}]*flex: none;[^}]*margin-left: 0;/);
