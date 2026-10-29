@@ -96,8 +96,8 @@ export function GestureLeaderboard() {
             cut label. No confidence intervals are reported for this single-case comparison.
           </p>
           <p>
-            The SDSC MViT Multi-Task row is the SDSC/UChicago specialist reference; the other rows
-            are high-thinking-effort model evaluations.
+            SDSC MViT Multi-Task, SurgMotion, and LemonFM (linear probe) are surgical foundation-model
+            reference rows; the other rows are high-thinking-effort model evaluations.
           </p>
         </div>
       </section>

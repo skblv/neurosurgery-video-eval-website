@@ -195,7 +195,9 @@ test("the high-thinking Actions leaderboard publishes the screenshot's 14 models
 test("the Actions leaderboard keeps the SDSC MViT specialist reference visible", () => {
   const html = readFileSync("dist/gestures/index.html", "utf8");
   assert.match(html, /SDSC MViT Multi-Task/);
-  assert.match(html, /SDSC MViT Multi-Task row is the SDSC\/UChicago specialist reference/);
+  assert.match(html, /SurgMotion/);
+  assert.match(html, /LemonFM \(linear probe\)/);
+  assert.match(html, /SDSC MViT Multi-Task, SurgMotion, and LemonFM \(linear probe\) are surgical foundation-model reference rows/);
 });
 
 test("the Actions data no longer publishes Claude Opus 4.8", () => {
