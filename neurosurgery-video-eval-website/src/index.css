@@ -70,6 +70,15 @@
   .plot-footer { padding: 0 1rem 1rem; }
 }
 .index-explorer { display: grid; gap: 2rem; margin-top: 1.75rem; }
+.pareto-tick, .pareto-axis-label, .pareto-legend, .pareto-model-label { fill: #000; font-size: 14px; }
+.pareto-tick { font-variant-numeric: tabular-nums; }
+.pareto-frontier { stroke-width: 2.5; stroke-linejoin: round; }
+.pareto-legend, .pareto-model-label { pointer-events: none; }
+.pareto-model-label { font-size: 13px; }
+.pareto-tooltip { font-variant-numeric: tabular-nums; }
+.pareto-plot .release-plot-compact .pareto-tick, .pareto-plot .release-plot-compact .pareto-axis-label { font-size: 12px; }
+.pareto-plot .release-plot-compact .pareto-legend, .pareto-plot .release-plot-compact .pareto-model-label { font-size: 12px; }
+.pareto-plot .release-plot-compact .pareto-tooltip, .pareto-plot .release-plot-compact .release-tooltip-name { font-size: 12px; }
 .section.summary-results { padding-bottom: 0; }
 .summary-muted { color: var(--annotation); font-size: 0.82rem; line-height: 1.6; }
 .summary-selectors { display: grid; grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); grid-auto-rows: 1fr; gap: 0.65rem; margin: 0 1.65rem 0.75rem; }

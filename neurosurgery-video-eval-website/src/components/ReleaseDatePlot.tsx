@@ -1,12 +1,10 @@
-import { evaluationLogoExtension } from "../data/evaluationLogos";
 import { useRef, useState, type MouseEvent } from "react";
-import qwenLogo from "../assets/logos/qwen.svg?no-inline";
 import { SUMMARY_MODALITIES, SUMMARY_ROWS, SUMMARY_TABLE_ROWS } from "../data/summary";
 import { releasePoints, releasePlotLayout, releaseFamilies } from "../data/releasePlot";
-import { PROVIDER_ICONS } from "../data/providerIcons";
 import { plotMethodology } from "../data/plotMethodology";
 import { PlotCopyButton } from "./PlotCopyButton";
 import { PlotFooter } from "./PlotFooter";
+import { PlotModelLogo } from "./PlotModelLogo";
 
 const POINTS = releasePoints(SUMMARY_ROWS);
 const REFERENCE = SUMMARY_TABLE_ROWS.find((row) => row.kind === "specialist-reference");
@@ -23,18 +21,6 @@ const LAYOUTS = [
 const dateFormat = new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" });
 const tickFormat = new Intl.DateTimeFormat("en-US", { month: "short", year: "numeric", timeZone: "UTC" });
 const monthFormat = new Intl.DateTimeFormat("en-US", { month: "short", timeZone: "UTC" });
-
-function ReleaseModelLogo({ provider, x, y }: { provider: string; x: number; y: number }) {
-  const icon = (Object.hasOwn(PROVIDER_ICONS, provider) ? PROVIDER_ICONS[provider] : undefined);
-  const size = 18;
-  const [minX, minY, width, height] = icon?.viewBox.split(" ").map(Number) ?? [0, 0, size, size];
-  const scale = size / Math.max(width, height);
-  return <g className="release-model-logo" data-provider={provider} aria-hidden="true">
-    {icon ? <path d={icon.path} fill={icon.hex}
-      transform={`translate(${x - (minX + width / 2) * scale} ${y - (minY + height / 2) * scale}) scale(${scale})`} />
-      : <image href={provider === "qwen" ? qwenLogo : `${import.meta.env.BASE_URL}provider-logos/${provider}.${evaluationLogoExtension(provider)}`} x={x - size / 2} y={y - size / 2} width={size} height={size} />}
-  </g>;
-}
 
 export function ReleaseDatePlot() {
   const [activeId, setActiveId] = useState<string | null>(null);
@@ -87,7 +73,7 @@ export function ReleaseDatePlot() {
         <g className="release-family-legend" role="group" aria-label="Model families" transform={`translate(${layout.bounds.left + 12} ${layout.bounds.top + 12})`}>
           <rect className="release-family-legend-box" width={Math.ceil(FAMILIES.length / 4) * legendColumnWidth + 20} height={Math.min(FAMILIES.length, 4) * 25 + 18 + (REFERENCE?.total != null ? 42 : 0)} />
           {FAMILIES.map((family, index) => <g key={family.provider} data-family={family.provider} transform={`translate(${Math.floor(index / 4) * legendColumnWidth} ${22 + index % 4 * 25})`}>
-            <ReleaseModelLogo provider={family.provider} x={22} y={0} />
+            <PlotModelLogo provider={family.provider} x={22} y={0} />
             <text x="37" y="0" dy="0.35em">{family.label}</text>
           </g>)}
           {REFERENCE?.total != null ? <g className="release-reference-key" role="img" aria-label="SDSC/UChicago specialist model">
@@ -106,7 +92,7 @@ export function ReleaseDatePlot() {
           }}>
           <title>{`${point.model}\n${dateFormat.format(point.releasedAt)}\nIndex: ${point.total.toFixed(3)}`}</title>
           <circle cx={point.x} cy={point.y} r="13" fill="transparent" />
-          <ReleaseModelLogo provider={point.provider} x={point.x} y={point.y} />
+          <PlotModelLogo provider={point.provider} x={point.x} y={point.y} />
           <circle className="release-focus-ring" cx={point.x} cy={point.y} r="14" />
         </g>)}
         {active ? <g className="release-tooltip" transform={`translate(${tooltipX} ${tooltipY})`} aria-hidden="true">
