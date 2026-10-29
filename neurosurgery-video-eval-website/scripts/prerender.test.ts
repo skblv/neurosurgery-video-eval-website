@@ -153,7 +153,7 @@ test("the cost frontier follows Historical performance and plots every current s
   const figure = html.match(/<figure class="release-plot pareto-plot"[^>]*>([\s\S]*?)<\/figure>/)![1];
   assert(html.indexOf('id="release-plot-heading"') < html.indexOf(figure));
   assert(html.indexOf(figure) < html.indexOf('id="summary-plot-heading"'));
-  assert.match(figure, /<h3 id="pareto-plot-heading">Pareto Frontier: What are the best models for a given cost level\?<\/h3>/);
+  assert.match(figure, /<h3 id="pareto-plot-heading">Surgical Intelligence Pareto Frontier: What are the best models for a given cost level\?<\/h3>/);
   assert(!figure.includes("release-subtitle") && !figure.includes("Single models"));
   assert(!figure.includes("GPU-run LLMs use estimated token usage at OpenRouter prices."));
   assert(!figure.includes("rotate(") && !figure.includes("Aggregate benchmark score"), "No y-axis label");

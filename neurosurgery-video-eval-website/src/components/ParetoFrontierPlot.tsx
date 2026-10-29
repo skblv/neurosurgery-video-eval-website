@@ -6,7 +6,7 @@ import { PlotCopyButton } from "./PlotCopyButton";
 import { PlotFooter } from "./PlotFooter";
 import { PlotModelLogo } from "./PlotModelLogo";
 
-const TITLE = "Pareto Frontier: What are the best models for a given cost level?";
+const TITLE = "Surgical Intelligence Pareto Frontier: What are the best models for a given cost level?";
 const METHODOLOGY = "Surgical Intelligence Index plotted against model cost. Cost is total inference spending divided by submitted frames, scaled to one million frames; training costs are excluded. Each frontier shows the best individual model available within a given budget.";
 const GROUPS = [
   { id: "llm", label: "LLMs", color: "var(--accent)" },
