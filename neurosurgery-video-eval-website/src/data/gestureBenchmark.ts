@@ -46,7 +46,7 @@ const HIGH_THINKING_ACTION_IDS = new Set([
   "claude-fable-5",
   "gemini-3_8-flash",
   "gpt-5-6-sol",
-  "gemini-3-flash-preview",
+  "gemini-3-flash",
   "gemini-3_1-pro",
   "gpt-5_4",
   "claude-sonnet-5",

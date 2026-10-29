@@ -177,7 +177,7 @@ test("the high-thinking Actions leaderboard publishes the screenshot's 14 models
     "claude-fable-5": [61.60, 43.65, 60.47],
     "gemini-3_8-flash": [61.25, 43.70, 57.75],
     "gpt-5-6-sol": [60.91, 46.70, 60.14],
-    "gemini-3-flash-preview": [59.92, 44.84, 60.22],
+    "gemini-3-flash": [59.92, 44.84, 60.22],
     "gemini-3_1-pro": [58.88, 40.25, 58.82],
     "gpt-5_4": [56.97, 44.97, 58.58],
     "claude-sonnet-5": [53.84, 37.26, 54.79],
@@ -215,7 +215,7 @@ test("prerendered tables never bake in New badges that could outlive their relea
 
 test("summary model titles reserve an inline badge slot without creating a separate badge line", () => {
   const html = readFileSync("dist/index.html", "utf8");
-  assert.equal([...html.matchAll(/class="summary-model-title"><span>/g)].length, 25);
+  assert.equal([...html.matchAll(/class="summary-model-title"><span>/g)].length, 24);
   const css = readFileSync("src/index.css", "utf8");
   assert.match(css, /\.summary-model-title\s*\{[^}]*display: inline-flex;[^}]*flex-wrap: nowrap;[^}]*white-space: nowrap;/);
   assert.match(css, /\.summary-model-title > \.badge-new\s*\{[^}]*flex: none;[^}]*margin-left: 0;/);

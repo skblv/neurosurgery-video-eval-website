@@ -43,8 +43,8 @@ test("summary shows only the requested extra rows, using measured LemonFM scores
   const html = readFileSync("dist/index.html", "utf8");
   const table = html.match(/<table class="summary-table">([\s\S]*?)<\/table>/)![1];
   const rows = [...table.matchAll(/<tr data-model-id="([^"]+)" data-model-kind="([^"]+)">([\s\S]*?)<\/tr>/g)];
-  assert.equal(rows.length, 25);
-  assert.equal(rows.filter((row) => row[2] === "zero-shot").length, 23);
+  assert.equal(rows.length, 24);
+  assert.equal(rows.filter((row) => row[2] === "zero-shot").length, 22);
   assert.deepEqual(rows.filter((row) => row[2] !== "zero-shot").map((row) => row[1]), [SPECIALIST_REFERENCE_ID, "lemonfm-linear-probe"]);
   const reference = rows.find((row) => row[1] === SPECIALIST_REFERENCE_ID)![3];
   const cells = (row: string) => [...row.matchAll(/<td[^>]*>([^<]*)<\/td>/g)].map((match) => match[1]);

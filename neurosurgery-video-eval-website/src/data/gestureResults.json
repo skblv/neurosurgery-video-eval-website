@@ -201,7 +201,7 @@
         }
       },
       {
-        "id": "gemini-3-flash-preview",
+        "id": "gemini-3-flash",
         "model": "Gemini 3 Flash Preview",
         "provider": "gemini",
         "sourceRunId": "gemini_3_flash_preview_high_thinking_action",
