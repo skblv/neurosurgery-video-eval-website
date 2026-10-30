@@ -77,7 +77,7 @@ export function GestureLeaderboard() {
           dataset={GESTURE_LEADERBOARD}
           metricId={metricId}
           metricLabel={metric.label}
-          modelLabel="Model — high thinking"
+          modelLabel="Model — evaluation setting"
           footnoteFor={gestureModelFootnote}
           showConfidenceInterval={false}
         />

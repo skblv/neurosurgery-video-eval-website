@@ -200,6 +200,26 @@ test("the Actions leaderboard keeps the SDSC MViT specialist reference visible",
   assert.match(html, /SDSC MViT Multi-Task, SurgMotion, and LemonFM \(linear probe\) are surgical foundation-model reference rows/);
 });
 
+test("the Actions data publishes the additional Action metrics", () => {
+  const actions = parseGestureResultsFile(rawGestureResults).benchmark.results;
+  const expected = {
+    "qwen3-8-max-0902": [60.70, 43.00, 60.20],
+    "qwen3-8-27b": [58.30, 45.20, 60.60],
+    "glm-5_3-flash": [56.80, 43.40, 57.90],
+    "gemma3-27b-it": [19.20, 19.00, 19.70],
+    "omnir-1b-attentive": [74.40, 57.10, 71.90],
+    "omnir-2b-attentive": [74.40, 57.10, 71.90],
+    "omnir-1b-linear": [74.20, 63.00, 72.90],
+    "omnir-2b-linear": [74.20, 63.00, 72.90],
+  } as const;
+
+  for (const [id, values] of Object.entries(expected)) {
+    const result = actions.find((row) => row.id === id);
+    assert(result, id);
+    assert.deepEqual(Object.values(result.metrics).map((metric) => metric.value), values, id);
+  }
+});
+
 test("the Actions data no longer publishes Claude Opus 4.8", () => {
   const actions = parseGestureResultsFile(rawGestureResults).benchmark.results;
 
@@ -215,7 +235,7 @@ test("prerendered tables never bake in New badges that could outlive their relea
 
 test("summary model titles reserve an inline badge slot without creating a separate badge line", () => {
   const html = readFileSync("dist/index.html", "utf8");
-  assert.equal([...html.matchAll(/class="summary-model-title"><span>/g)].length, 24);
+  assert.equal([...html.matchAll(/class="summary-model-title"><span>/g)].length, 28);
   const css = readFileSync("src/index.css", "utf8");
   assert.match(css, /\.summary-model-title\s*\{[^}]*display: inline-flex;[^}]*flex-wrap: nowrap;[^}]*white-space: nowrap;/);
   assert.match(css, /\.summary-model-title > \.badge-new\s*\{[^}]*flex: none;[^}]*margin-left: 0;/);

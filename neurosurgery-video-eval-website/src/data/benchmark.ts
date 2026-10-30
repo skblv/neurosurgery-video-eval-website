@@ -25,6 +25,7 @@ const KNOWN_PROVIDER_LABELS: Record<string, string> = {
   surgmotion: "SurgMotion",
   qwen: "Qwen",
   zai: "Z.ai",
+  omnir: "OmniRAS",
   xai: "xAI",
 };
 

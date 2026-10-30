@@ -32,7 +32,13 @@ export function calculateSummary(modalities: SummaryModality[]) {
   const models = new Map<string, string>();
   for (const modality of modalities) {
     for (const dataset of modality.datasets) {
-      for (const result of dataset.results) models.set(canonicalModelId(result.id), result.model);
+      for (const result of dataset.results) {
+        const id = canonicalModelId(result.id);
+        // Keep the first canonical display name encountered across modalities.
+        // Action rows may include an evaluation-setting suffix (for example,
+        // “high” or “standard”) that should not rename the Summary model.
+        if (!models.has(id)) models.set(id, result.model);
+      }
     }
   }
   return [...models].map(([id, model]) => {
