@@ -4,6 +4,7 @@ import { GESTURE_EXAMPLE } from "../data/benchExample";
 import { gestureModelFootnote } from "../data/benchmark";
 import {
   GESTURE_BENCHMARK,
+  GESTURE_LEADERBOARD,
   GESTURE_METRICS,
   GESTURE_METRIC_ORDER,
   type GestureMetricId,
@@ -50,7 +51,7 @@ export function GestureLeaderboard() {
         <div className="figure-row">
           <ResultsChart
             key={metricId}
-            dataset={GESTURE_BENCHMARK}
+            dataset={GESTURE_LEADERBOARD}
             metricId={metricId}
             metric={metric}
             footnoteFor={gestureModelFootnote}
@@ -73,9 +74,10 @@ export function GestureLeaderboard() {
         </div>
 
         <ResultsTable
-          dataset={GESTURE_BENCHMARK}
+          dataset={GESTURE_LEADERBOARD}
           metricId={metricId}
           metricLabel={metric.label}
+          modelLabel="Model — evaluation setting"
           footnoteFor={gestureModelFootnote}
           showConfidenceInterval={false}
         />
@@ -92,6 +94,10 @@ export function GestureLeaderboard() {
           <p>
             Kimi K3 uses the documented normalization that maps its clip label to the benchmark's
             cut label. No confidence intervals are reported for this single-case comparison.
+          </p>
+          <p>
+            SDSC MViT Multi-Task, SurgMotion, and LemonFM (linear probe) are surgical foundation-model
+            reference rows; the other rows are high-thinking-effort model evaluations.
           </p>
         </div>
       </section>

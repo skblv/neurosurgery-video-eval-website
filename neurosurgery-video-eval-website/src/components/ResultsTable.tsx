@@ -55,6 +55,7 @@ export function ResultsTable<MetricId extends string>({
   metricLabel,
   footnoteFor,
   weightsFor,
+  modelLabel = "Model",
   showConfidenceInterval = true,
 }: {
   dataset: LeaderboardBenchmark<MetricId>;
@@ -63,6 +64,7 @@ export function ResultsTable<MetricId extends string>({
   footnoteFor: FootnoteLookup;
   /** Optional lookup for a model's released-weights URL (e.g. Hugging Face). */
   weightsFor?: (modelId: string) => string | null;
+  modelLabel?: string;
   showConfidenceInterval?: boolean;
 }) {
   const rows = buildRows(dataset, metricId);
@@ -72,7 +74,7 @@ export function ResultsTable<MetricId extends string>({
     <table className="table">
       <thead>
         <tr>
-          <th scope="col">Model</th>
+          <th scope="col">{modelLabel}</th>
           <th scope="col" className="table__num table__col--metric">
             {metricLabel}
           </th>

@@ -27,7 +27,7 @@ test("every public route ships readable HTML, scores, metadata, real links, and 
     assert(!html.includes('href="#/'));
     assert(!html.includes('<!--seo-head-->'));
     const showsGrok = route !== "gestures";
-    const showsQwen0902 = route !== "gestures";
+    const showsQwen0902 = true;
     assert.equal(html.includes("Grok 4.6"), showsGrok, `${route}: completed Grok follows dataset coverage`);
     assert.equal(html.includes("Qwen3.8 Max 0902"), showsQwen0902, `${route}: completed Qwen 0902 follows dataset coverage`);
     assert(!/Qwen3\.8 Max(?! 0902)/.test(html), `${route}: older unavailable Max remains hidden`);

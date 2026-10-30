@@ -40,13 +40,22 @@ test("Qwen Max 0902 is new, while older Qwen and unknown or composite releases a
   assert.equal(isNewModel("qwen3-8-max-0902", new Date(NaN)), false);
 });
 
-test("Gemini 4 Argon is the only model pinned as New", () => {
-  assert.deepEqual([...MANUALLY_BADGED_MODEL_IDS], ["gemini-4-argon"]);
+test("Gemini 4 Argon and OmniRAS are pinned as New", () => {
+  assert.deepEqual([...MANUALLY_BADGED_MODEL_IDS], [
+    "gemini-4-argon",
+    "omnir-1b-attentive",
+    "omnir-2b-attentive",
+    "omnir-1b-linear",
+    "omnir-2b-linear",
+  ]);
   assert.equal(MODEL_PUBLISHED_ON["gemini-4-argon"], "2026-09-30");
   const afterReleaseWindows = new Date("2026-12-31T12:00:00Z");
   assert.deepEqual(Object.keys(MODEL_RELEASES).filter((id) => isNewModel(id, afterReleaseWindows)), ["gemini-4-argon"]);
   assert.equal(isNewModel("claude-fable-5_1", afterReleaseWindows), false);
   assert.equal(isNewModel("claude-opus-5", afterReleaseWindows), false);
+  for (const id of ["omnir-1b-attentive", "omnir-2b-attentive", "omnir-1b-linear", "omnir-2b-linear"]) {
+    assert.equal(isNewModel(id, afterReleaseWindows), true, id);
+  }
 });
 
 test("the two new Actions results use release-aware badge ids", () => {
@@ -67,7 +76,7 @@ test("the Actions data uses the matched Opus 5 primary-gesture evaluation", () =
   assert(opus);
   assert.deepEqual(
     Object.fromEntries(Object.entries(opus.metrics).map(([metric, result]) => [metric, result.value])),
-    { exactAccuracy: 61.64, macroF1: 46.08, weightedF1: 60.60 },
+    { exactAccuracy: 62.16, macroF1: 48.92, weightedF1: 61.32 },
   );
 });
 
@@ -95,7 +104,7 @@ test("the Actions data publishes Gemini 3.8 Flash", () => {
   assert.equal(gemini.provider, "gemini");
   assert.deepEqual(
     Object.fromEntries(Object.entries(gemini.metrics).map(([metric, result]) => [metric, result.value])),
-    { exactAccuracy: 66.40, macroF1: 44.60, weightedF1: 62.80 },
+    { exactAccuracy: 61.25, macroF1: 43.70, weightedF1: 57.75 },
   );
 });
 
@@ -109,16 +118,16 @@ test("the Actions data publishes Gemini 4 Argon", () => {
   assert.equal(argon.provider, "gemini");
   assert.deepEqual(
     Object.fromEntries(Object.entries(argon.metrics).map(([metric, result]) => [metric, result.value])),
-    { exactAccuracy: 63.90, macroF1: 47.80, weightedF1: 62.60 },
+    { exactAccuracy: 66.52, macroF1: 54.59, weightedF1: 65.06 },
   );
 });
 
 test("the Actions data publishes the additional models from the latest results", () => {
   const actions = parseGestureResultsFile(rawGestureResults).benchmark.results;
   const expected = {
-    "gpt-5_6-terra": [64.90, 47.40, 63.20],
-    "gpt-5_4": [59.90, 44.90, 59.80],
-    "claude-opus-4_6": [51.30, 40.40, 54.30],
+    "gpt-5_6-terra": [66.89, 47.89, 64.28],
+    "gpt-5_4": [56.97, 44.97, 58.58],
+    "claude-opus-4_6": [48.80, 36.29, 51.85],
   } as const;
 
   for (const [id, values] of Object.entries(expected)) {
@@ -135,8 +144,8 @@ test("the Actions data publishes the additional models from the latest results",
 test("the Actions data publishes Gemini 3.1 Pro Preview and Claude Sonnet 5", () => {
   const actions = parseGestureResultsFile(rawGestureResults).benchmark.results;
   const expected = {
-    "gemini-3_1-pro": [58.50, 41.80, 58.80],
-    "claude-sonnet-5": [50.40, 35.10, 53.10],
+    "gemini-3_1-pro": [58.88, 40.25, 58.82],
+    "claude-sonnet-5": [53.84, 37.26, 54.79],
   } as const;
 
   for (const [id, values] of Object.entries(expected)) {
@@ -153,7 +162,7 @@ test("the Actions data publishes Claude Sonnet 4.6", () => {
 
   assert(result);
   assert.equal(result.model, "Claude Sonnet 4.6");
-  assert.deepEqual(Object.values(result.metrics).map((metric) => metric.value), [47.00, 34.30, 51.10]);
+  assert.deepEqual(Object.values(result.metrics).map((metric) => metric.value), [43.27, 34.47, 45.11]);
 });
 
 test("the Actions data publishes Claude Fable 5", () => {
@@ -163,7 +172,67 @@ test("the Actions data publishes Claude Fable 5", () => {
 
   assert(result);
   assert.equal(result.model, "Claude Fable 5");
-  assert.deepEqual(Object.values(result.metrics).map((metric) => metric.value), [61.70, 43.60, 61.20]);
+  assert.deepEqual(Object.values(result.metrics).map((metric) => metric.value), [61.60, 43.65, 60.47]);
+});
+
+test("the high-thinking Actions leaderboard publishes the screenshot's 14 models", () => {
+  const actions = parseGestureResultsFile(rawGestureResults).benchmark.results;
+  const expected = {
+    "claude-fable-5_1": [67.39, 48.26, 64.88],
+    "gpt-5_6-terra": [66.89, 47.89, 64.28],
+    "gemini-4-argon": [66.52, 54.59, 65.06],
+    "gemini-3_7-flash": [64.39, 47.46, 61.78],
+    "claude-opus-5": [62.16, 48.92, 61.32],
+    "claude-fable-5": [61.60, 43.65, 60.47],
+    "gemini-3_8-flash": [61.25, 43.70, 57.75],
+    "gpt-5-6-sol": [60.91, 46.70, 60.14],
+    "gemini-3-flash": [59.92, 44.84, 60.22],
+    "gemini-3_1-pro": [58.88, 40.25, 58.82],
+    "gpt-5_4": [56.97, 44.97, 58.58],
+    "claude-sonnet-5": [53.84, 37.26, 54.79],
+    "claude-opus-4_6": [48.80, 36.29, 51.85],
+    "claude-sonnet-4_6": [43.27, 34.47, 45.11],
+  } as const;
+
+  for (const [id, values] of Object.entries(expected)) {
+    const result = actions.find((row) => row.id === id);
+    assert(result, id);
+    assert.deepEqual(Object.values(result.metrics).map((metric) => metric.value), values, id);
+  }
+});
+
+test("the Actions leaderboard keeps the SDSC MViT specialist reference visible", () => {
+  const html = readFileSync("dist/gestures/index.html", "utf8");
+  assert.match(html, /SDSC MViT Multi-Task/);
+  assert.match(html, /SurgMotion/);
+  assert.match(html, /LemonFM \(linear probe\)/);
+  assert.match(html, /SDSC MViT Multi-Task, SurgMotion, and LemonFM \(linear probe\) are surgical foundation-model reference rows/);
+});
+
+test("the Actions data publishes the additional Action metrics", () => {
+  const actions = parseGestureResultsFile(rawGestureResults).benchmark.results;
+  const expected = {
+    "qwen3-8-max-0902": [60.70, 43.00, 60.20],
+    "qwen3-8-27b": [58.30, 45.20, 60.60],
+    "glm-5_3-flash": [56.80, 43.40, 57.90],
+    "gemma3-27b-it": [19.20, 19.00, 19.70],
+    "omnir-1b-attentive": [74.37, 57.06, 71.94],
+    "omnir-2b-attentive": [72.56, 55.56, 71.34],
+    "omnir-1b-linear": [74.19, 63.02, 72.91],
+    "omnir-2b-linear": [74.49, 62.75, 74.09],
+  } as const;
+
+  for (const [id, values] of Object.entries(expected)) {
+    const result = actions.find((row) => row.id === id);
+    assert(result, id);
+    assert.deepEqual(Object.values(result.metrics).map((metric) => metric.value), values, id);
+  }
+});
+
+test("OmniRAS Action rows share the OmniRAS paper citation", () => {
+  const html = readFileSync("dist/gestures/index.html", "utf8");
+  assert.match(html, /OmniRAS: Standardizing Foundation Model Training and Evaluation in Robot-Assisted Surgery/);
+  assert.match(html, /https:\/\/arxiv\.org\/abs\/2608\.31048/);
 });
 
 test("the Actions data no longer publishes Claude Opus 4.8", () => {
