@@ -40,13 +40,22 @@ test("Qwen Max 0902 is new, while older Qwen and unknown or composite releases a
   assert.equal(isNewModel("qwen3-8-max-0902", new Date(NaN)), false);
 });
 
-test("Gemini 4 Argon is the only model pinned as New", () => {
-  assert.deepEqual([...MANUALLY_BADGED_MODEL_IDS], ["gemini-4-argon"]);
+test("Gemini 4 Argon and OmniRAS are pinned as New", () => {
+  assert.deepEqual([...MANUALLY_BADGED_MODEL_IDS], [
+    "gemini-4-argon",
+    "omnir-1b-attentive",
+    "omnir-2b-attentive",
+    "omnir-1b-linear",
+    "omnir-2b-linear",
+  ]);
   assert.equal(MODEL_PUBLISHED_ON["gemini-4-argon"], "2026-09-30");
   const afterReleaseWindows = new Date("2026-12-31T12:00:00Z");
   assert.deepEqual(Object.keys(MODEL_RELEASES).filter((id) => isNewModel(id, afterReleaseWindows)), ["gemini-4-argon"]);
   assert.equal(isNewModel("claude-fable-5_1", afterReleaseWindows), false);
   assert.equal(isNewModel("claude-opus-5", afterReleaseWindows), false);
+  for (const id of ["omnir-1b-attentive", "omnir-2b-attentive", "omnir-1b-linear", "omnir-2b-linear"]) {
+    assert.equal(isNewModel(id, afterReleaseWindows), true, id);
+  }
 });
 
 test("the two new Actions results use release-aware badge ids", () => {

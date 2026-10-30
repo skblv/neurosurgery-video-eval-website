@@ -39,7 +39,13 @@ export type FootnoteLookup = (modelId: string) => number | null;
 export const NEW_BADGE_DAYS = 14;
 
 /** Models explicitly highlighted as new by the current benchmark release. */
-export const MANUALLY_BADGED_MODEL_IDS = new Set(["gemini-4-argon"]);
+export const MANUALLY_BADGED_MODEL_IDS = new Set([
+  "gemini-4-argon",
+  "omnir-1b-attentive",
+  "omnir-2b-attentive",
+  "omnir-1b-linear",
+  "omnir-2b-linear",
+]);
 
 /**
  * Release dates shared with the historical plot, as `YYYY-MM-DD`.
