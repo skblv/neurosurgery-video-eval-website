@@ -207,10 +207,10 @@ test("the Actions data publishes the additional Action metrics", () => {
     "qwen3-8-27b": [58.30, 45.20, 60.60],
     "glm-5_3-flash": [56.80, 43.40, 57.90],
     "gemma3-27b-it": [19.20, 19.00, 19.70],
-    "omnir-1b-attentive": [74.40, 57.10, 71.90],
-    "omnir-2b-attentive": [74.40, 57.10, 71.90],
-    "omnir-1b-linear": [74.20, 63.00, 72.90],
-    "omnir-2b-linear": [74.20, 63.00, 72.90],
+    "omnir-1b-attentive": [74.37, 57.06, 71.94],
+    "omnir-2b-attentive": [72.56, 55.56, 71.34],
+    "omnir-1b-linear": [74.19, 63.02, 72.91],
+    "omnir-2b-linear": [74.49, 62.75, 74.09],
   } as const;
 
   for (const [id, values] of Object.entries(expected)) {

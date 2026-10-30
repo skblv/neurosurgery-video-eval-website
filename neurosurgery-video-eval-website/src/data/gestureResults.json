@@ -257,46 +257,46 @@
       },
       {
         "id": "omnir-1b-attentive",
-        "model": "OmniRAS-1B attentive",
+        "model": "OmniRAS-1B attentive probe",
         "provider": "omnir",
         "sourceRunId": "omniras_1b_attentive_action",
         "metrics": {
-          "exactAccuracy": { "value": 74.40, "ciLow": null, "ciHigh": null },
-          "macroF1": { "value": 57.10, "ciLow": null, "ciHigh": null },
-          "weightedF1": { "value": 71.90, "ciLow": null, "ciHigh": null }
+          "exactAccuracy": { "value": 74.37, "ciLow": null, "ciHigh": null },
+          "macroF1": { "value": 57.06, "ciLow": null, "ciHigh": null },
+          "weightedF1": { "value": 71.94, "ciLow": null, "ciHigh": null }
         }
       },
       {
         "id": "omnir-2b-attentive",
-        "model": "OmniRAS-2B attentive",
+        "model": "OmniRAS-2B attentive probe",
         "provider": "omnir",
         "sourceRunId": "omniras_2b_attentive_action",
         "metrics": {
-          "exactAccuracy": { "value": 74.40, "ciLow": null, "ciHigh": null },
-          "macroF1": { "value": 57.10, "ciLow": null, "ciHigh": null },
-          "weightedF1": { "value": 71.90, "ciLow": null, "ciHigh": null }
+          "exactAccuracy": { "value": 72.56, "ciLow": null, "ciHigh": null },
+          "macroF1": { "value": 55.56, "ciLow": null, "ciHigh": null },
+          "weightedF1": { "value": 71.34, "ciLow": null, "ciHigh": null }
         }
       },
       {
         "id": "omnir-1b-linear",
-        "model": "OmniRAS-1B linear",
+        "model": "OmniRAS-1B linear probe",
         "provider": "omnir",
         "sourceRunId": "omniras_1b_linear_action",
         "metrics": {
-          "exactAccuracy": { "value": 74.20, "ciLow": null, "ciHigh": null },
-          "macroF1": { "value": 63.00, "ciLow": null, "ciHigh": null },
-          "weightedF1": { "value": 72.90, "ciLow": null, "ciHigh": null }
+          "exactAccuracy": { "value": 74.19, "ciLow": null, "ciHigh": null },
+          "macroF1": { "value": 63.02, "ciLow": null, "ciHigh": null },
+          "weightedF1": { "value": 72.91, "ciLow": null, "ciHigh": null }
         }
       },
       {
         "id": "omnir-2b-linear",
-        "model": "OmniRAS-2B linear",
+        "model": "OmniRAS-2B linear probe",
         "provider": "omnir",
         "sourceRunId": "omniras_2b_linear_action",
         "metrics": {
-          "exactAccuracy": { "value": 74.20, "ciLow": null, "ciHigh": null },
-          "macroF1": { "value": 63.00, "ciLow": null, "ciHigh": null },
-          "weightedF1": { "value": 72.90, "ciLow": null, "ciHigh": null }
+          "exactAccuracy": { "value": 74.49, "ciLow": null, "ciHigh": null },
+          "macroF1": { "value": 62.75, "ciLow": null, "ciHigh": null },
+          "weightedF1": { "value": 74.09, "ciLow": null, "ciHigh": null }
         }
       },
       {
