@@ -220,6 +220,12 @@ test("the Actions data publishes the additional Action metrics", () => {
   }
 });
 
+test("OmniRAS Action rows share the OmniRAS paper citation", () => {
+  const html = readFileSync("dist/gestures/index.html", "utf8");
+  assert.match(html, /OmniRAS: Standardizing Foundation Model Training and Evaluation in Robot-Assisted Surgery/);
+  assert.match(html, /https:\/\/arxiv\.org\/abs\/2608\.31048/);
+});
+
 test("the Actions data no longer publishes Claude Opus 4.8", () => {
   const actions = parseGestureResultsFile(rawGestureResults).benchmark.results;
 
