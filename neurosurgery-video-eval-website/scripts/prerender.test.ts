@@ -63,11 +63,11 @@ test("sitemap lists only canonical pages, robots allow crawling, and unknown pag
   assert(readFileSync("dist/summary/index.html", "utf8").includes('http-equiv="refresh"'));
 });
 
-test("summary hides only the Action column and prerenders every model on the branded release plot", () => {
+test("summary includes Action and prerenders every model on the branded release plot", () => {
   const html = readFileSync("dist/index.html", "utf8");
   const table = html.match(/<table class="summary-table">([\s\S]*?)<\/table>/)![1];
   const columns = Array.from(table.match(/<thead>([\s\S]*?)<\/thead>/)![1].matchAll(/<th[^>]*>([\s\S]*?)<\/th>/g), (match) => match[1].replace(/<[^>]+>/g, ""));
-  assert.deepEqual(columns, ["Model", "Total", "Instrument", "Anatomy", "Skill assessment", "Context / VQA", "Recommendations"]);
+  assert.deepEqual(columns, ["Model", "Total", "Instrument", "Action", "Anatomy", "Skill assessment", "Context / VQA", "Recommendations"]);
   const zeroShotRows = [...table.matchAll(/<tr[^>]*data-model-kind="zero-shot"[^>]*>([\s\S]*?)<\/tr>/g)].map((match) => match[1]).join("");
   const totals = Array.from(zeroShotRows.matchAll(/<td class="summary-total">(-?[\d.]+)<\/td>/g), (match) => match[1]).sort();
   const datedZeroShotIds = Array.from(table.matchAll(/<tr[^>]*data-model-id="([^"]+)"[^>]*data-model-kind="zero-shot"/g), (match) => match[1]).filter((id) => Object.hasOwn(MODEL_RELEASES, id)).sort();

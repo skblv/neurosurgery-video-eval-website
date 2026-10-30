@@ -35,8 +35,8 @@ export function GestureLeaderboard() {
       <header className="domain-hero">
         <h2>Can a model understand surgical video?</h2>{" "}
         <p>
-          Instruments are the nouns of surgical video; gestures are the verbs. We benchmark models
-          on whether they can recognise the actions a surgeon performs.
+          We benchmark models on whether they can recognize the actions a surgeon performs
+          throughout a 21-minute laparoscopic surgery.
         </p>
       </header>
 

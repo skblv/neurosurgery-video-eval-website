@@ -127,7 +127,7 @@ export function AboutUs() {
           <li key={person.id} className="maintainer">
             <span className="maintainer__photo-frame">
               <img
-                className={`maintainer__photo${person.id === "sandeep-angara" ? " maintainer__photo--sandeep" : ""}`}
+                className="maintainer__photo"
                 src={person.photo}
                 alt=""
                 width={64}
