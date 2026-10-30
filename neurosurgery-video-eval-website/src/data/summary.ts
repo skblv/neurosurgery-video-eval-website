@@ -30,6 +30,7 @@ export const SUMMARY_MODALITIES: (SummaryModality & { id: DomainRoute })[] = DOM
 const EXCLUDED_SUMMARY_IDS = new Set([
   "yolov12m", "resnet50", "surgmotion", "lemon", "lemonfm-linear-probe",
   "gemma3-27b-lora-json", "gemma3-27b-lora", "mvit-multi-task",
+  "omnir-1b-attentive", "omnir-2b-attentive", "omnir-1b-linear", "omnir-2b-linear",
 ]);
 const providers = new Map(
   [...DATASETS, GESTURE_BENCHMARK, ...Object.values(DOMAIN_DATASETS)]
