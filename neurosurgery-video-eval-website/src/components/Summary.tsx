@@ -3,6 +3,7 @@ import { SUMMARY_MODALITIES, SUMMARY_TABLE_ROWS } from "../data/summary";
 import { SummaryModelPicker } from "./SummaryModelPicker";
 import { ModelIcon } from "./ModelIcon";
 import { ReleaseDatePlot } from "./ReleaseDatePlot";
+import { ParetoFrontierPlot } from "./ParetoFrontierPlot";
 import { radarColor, radarProfiles, radarScale } from "../data/radarScale";
 import { plotMethodology } from "../data/plotMethodology";
 import { PlotCopyButton } from "./PlotCopyButton";
@@ -136,6 +137,7 @@ export function Summary() {
 
     <section className="index-explorer" aria-label="Explore the Surgical Intelligence Index">
       <ReleaseDatePlot />
+          <ParetoFrontierPlot />
       <ModalityPlot />
     </section>
   </>;

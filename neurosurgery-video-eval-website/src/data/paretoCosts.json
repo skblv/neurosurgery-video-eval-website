@@ -1,0 +1,233 @@
+{
+  "schemaVersion": 1,
+  "asOf": "2026-10-29",
+  "costUnit": "USD per 1 million submitted frames",
+  "costMethod": "Total inference cost or token-priced inference estimate divided by the submitted frame count, multiplied by one million. Training costs excluded.",
+  "models": [
+    {
+      "id": "claude-fable-5",
+      "group": "llm",
+      "costPerMillionFrames": 19090.10762537211,
+      "totalInferenceCostUsd": 166.733,
+      "totalFramesSubmitted": 8734,
+      "datasetCount": 10,
+      "costBasis": "complete_frame_dataset_cost_coverage"
+    },
+    {
+      "id": "claude-fable-5_1",
+      "group": "llm",
+      "costPerMillionFrames": 15042.735978112176,
+      "totalInferenceCostUsd": 98.96616,
+      "totalFramesSubmitted": 6579,
+      "datasetCount": 8,
+      "costBasis": "partial_dataset_cost_estimate"
+    },
+    {
+      "id": "claude-opus-4_6",
+      "group": "llm",
+      "costPerMillionFrames": 6943.599848359028,
+      "totalInferenceCostUsd": 384.63376999999997,
+      "totalFramesSubmitted": 55394,
+      "datasetCount": 9,
+      "costBasis": "partial_dataset_cost_estimate"
+    },
+    {
+      "id": "claude-opus-5",
+      "group": "llm",
+      "costPerMillionFrames": 8475.282308657464,
+      "totalInferenceCostUsd": 47.2836,
+      "totalFramesSubmitted": 5579,
+      "datasetCount": 7,
+      "costBasis": "partial_dataset_cost_estimate"
+    },
+    {
+      "id": "claude-sonnet-4_6",
+      "group": "llm",
+      "costPerMillionFrames": 4156.201158970286,
+      "totalInferenceCostUsd": 230.228607,
+      "totalFramesSubmitted": 55394,
+      "datasetCount": 9,
+      "costBasis": "partial_dataset_cost_estimate"
+    },
+    {
+      "id": "claude-sonnet-5",
+      "group": "llm",
+      "costPerMillionFrames": 3053.2353468363503,
+      "totalInferenceCostUsd": 17.034,
+      "totalFramesSubmitted": 5579,
+      "datasetCount": 7,
+      "costBasis": "partial_dataset_cost_estimate"
+    },
+    {
+      "id": "gemini-3-flash",
+      "group": "llm",
+      "costPerMillionFrames": 681.255280355273,
+      "totalInferenceCostUsd": 37.737455,
+      "totalFramesSubmitted": 55394,
+      "datasetCount": 9,
+      "costBasis": "partial_dataset_cost_estimate"
+    },
+    {
+      "id": "gemini-3_1-pro",
+      "group": "llm",
+      "costPerMillionFrames": 8521.204931942088,
+      "totalInferenceCostUsd": 472.023626,
+      "totalFramesSubmitted": 55394,
+      "datasetCount": 9,
+      "costBasis": "partial_dataset_cost_estimate"
+    },
+    {
+      "id": "gemini-3_7-flash",
+      "group": "llm",
+      "costPerMillionFrames": 1814.3036386449185,
+      "totalInferenceCostUsd": 10.122,
+      "totalFramesSubmitted": 5579,
+      "datasetCount": 7,
+      "costBasis": "partial_dataset_cost_estimate"
+    },
+    {
+      "id": "gemini-3_8-flash",
+      "group": "llm",
+      "costPerMillionFrames": 4177.49096631309,
+      "totalInferenceCostUsd": 35.838695,
+      "totalFramesSubmitted": 8579,
+      "datasetCount": 10,
+      "costBasis": "complete_frame_dataset_cost_coverage"
+    },
+    {
+      "id": "gemini-4-argon",
+      "group": "llm",
+      "costPerMillionFrames": 16640.418929945215,
+      "totalInferenceCostUsd": 142.758154,
+      "totalFramesSubmitted": 8579,
+      "datasetCount": 10,
+      "costBasis": "completed_run_known_spend"
+    },
+    {
+      "id": "gemma3-27b-it",
+      "group": "llm",
+      "costPerMillionFrames": 41.00407100267288,
+      "totalInferenceCostUsd": 5.982904,
+      "totalFramesSubmitted": 145910,
+      "datasetCount": 10,
+      "costBasis": "estimated_tokens_at_current_openrouter_prices"
+    },
+    {
+      "id": "glm-5_3-flash",
+      "group": "llm",
+      "costPerMillionFrames": 236.0117964771077,
+      "totalInferenceCostUsd": 1.7887334054999993,
+      "totalFramesSubmitted": 7579,
+      "datasetCount": 9,
+      "costBasis": "partial_dataset_cost_estimate"
+    },
+    {
+      "id": "gpt-5_4",
+      "group": "llm",
+      "costPerMillionFrames": 3296.8347654980685,
+      "totalInferenceCostUsd": 182.624865,
+      "totalFramesSubmitted": 55394,
+      "datasetCount": 9,
+      "costBasis": "partial_dataset_cost_estimate"
+    },
+    {
+      "id": "gpt-5_6-luna",
+      "group": "llm",
+      "costPerMillionFrames": 434.0921312063094,
+      "totalInferenceCostUsd": 2.4218,
+      "totalFramesSubmitted": 5579,
+      "datasetCount": 7,
+      "costBasis": "partial_dataset_cost_estimate"
+    },
+    {
+      "id": "gpt-5_6-sol",
+      "group": "llm",
+      "costPerMillionFrames": 9593.157885534443,
+      "totalInferenceCostUsd": 82.2997015,
+      "totalFramesSubmitted": 8579,
+      "datasetCount": 10,
+      "costBasis": "complete_frame_dataset_cost_coverage"
+    },
+    {
+      "id": "gpt-5_6-terra",
+      "group": "llm",
+      "costPerMillionFrames": 3747.947660871124,
+      "totalInferenceCostUsd": 20.9098,
+      "totalFramesSubmitted": 5579,
+      "datasetCount": 7,
+      "costBasis": "partial_dataset_cost_estimate"
+    },
+    {
+      "id": "gpt-6-astra",
+      "group": "llm",
+      "costPerMillionFrames": 15082.177409954538,
+      "totalInferenceCostUsd": 129.39,
+      "totalFramesSubmitted": 8579,
+      "datasetCount": 10,
+      "costBasis": "original_reported_spend"
+    },
+    {
+      "id": "gpt-6-astra-max",
+      "group": "llm",
+      "costPerMillionFrames": 111281.45011073552,
+      "totalInferenceCostUsd": 954.6835605,
+      "totalFramesSubmitted": 8579,
+      "datasetCount": 10,
+      "costBasis": "recorded_known_spend_excluding_uncertain_billing"
+    },
+    {
+      "id": "grok-4_6",
+      "group": "llm",
+      "costPerMillionFrames": 15914.060146870259,
+      "totalInferenceCostUsd": 136.52672199999995,
+      "totalFramesSubmitted": 8579,
+      "datasetCount": 10,
+      "costBasis": "complete_frame_dataset_cost_coverage"
+    },
+    {
+      "id": "kimi-k3",
+      "group": "llm",
+      "costPerMillionFrames": 18602.217083576175,
+      "totalInferenceCostUsd": 159.58842036000001,
+      "totalFramesSubmitted": 8579,
+      "datasetCount": 10,
+      "costBasis": "complete_frame_dataset_cost_coverage"
+    },
+    {
+      "id": "lemonfm-linear-probe",
+      "group": "specialised",
+      "costPerMillionFrames": 1.3412890748075053,
+      "totalInferenceCostUsd": 0.040749703381726815,
+      "totalFramesSubmitted": 30381,
+      "datasetCount": 6,
+      "costBasis": "partial_observed_inference_phase_estimate"
+    },
+    {
+      "id": "qwen3-8-27b",
+      "group": "llm",
+      "costPerMillionFrames": 203.7351791416157,
+      "totalInferenceCostUsd": 16.130121603,
+      "totalFramesSubmitted": 79172,
+      "datasetCount": 10,
+      "costBasis": "estimated_tokens_at_current_openrouter_prices"
+    },
+    {
+      "id": "qwen3-8-max-0902",
+      "group": "llm",
+      "costPerMillionFrames": 28479.146634026925,
+      "totalInferenceCostUsd": 232.67462799999998,
+      "totalFramesSubmitted": 8170,
+      "datasetCount": 9,
+      "costBasis": "partial_dataset_cost_estimate"
+    },
+    {
+      "id": "sdsc-uchicago-reference",
+      "group": "specialised",
+      "costPerMillionFrames": 29.788024810371194,
+      "totalInferenceCostUsd": 2.795635916478147,
+      "totalFramesSubmitted": 93851,
+      "datasetCount": 5,
+      "costBasis": "partial_observed_inference_phase_estimate"
+    }
+  ]
+}

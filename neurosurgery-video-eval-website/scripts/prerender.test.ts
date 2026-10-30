@@ -7,6 +7,7 @@ import { SITE_BASE, SITE_URL } from "../site.config.ts";
 import { ROUTES } from "../src/data/domains.ts";
 import { PAGE_SEO, routePath } from "../src/data/routes.ts";
 import { MODEL_RELEASES } from "../src/data/modelReleases.ts";
+import { singleModelFrontier } from "../src/data/paretoFrontier.ts";
 
 test("every public route ships readable HTML, scores, metadata, real links, and existing assets", () => {
   const titles = new Set();
@@ -122,7 +123,7 @@ test("summary includes Action and prerenders every model on the branded release 
   assert.match(html, /<h3 id="summary-plot-heading">Surgical Intelligence Index: How well do LLMs perform against specialized models across surgical tasks\?<\/h3>/, "Spider plot uses the same index title");
 });
 
-test("both plots have icon-only copy controls, black axes, and the requested grey methodology footer", () => {
+test("the existing index plots preserve their copy controls, black axes, and methodology footers", () => {
   const html = readFileSync("dist/index.html", "utf8");
   const figures = Array.from(html.matchAll(/<figure class="(?:release-plot|summary-web)"[^>]*>([\s\S]*?)<\/figure>/g), (match) => match[1]);
   assert.equal(figures.length, 2);
@@ -145,6 +146,60 @@ test("both plots have icon-only copy controls, black axes, and the requested gre
   assert.match(css, /\.plot-methodology\s*\{[^}]*color:\s*var\(--annotation\);[^}]*font-size:\s*0\.75rem/);
   assert.match(css, /\.plot-address\s*\{[^}]*background:\s*linear-gradient\(90deg, var\(--sdsc-green\), var\(--uchicago-maroon\)\);[^}]*background-clip:\s*text;[^}]*font-size:\s*1\.375rem;[^}]*font-weight:\s*700;[^}]*text-decoration:\s*none/);
   assert.match(css, /\.release-family-legend-box\s*\{[^}]*stroke:\s*#000;[^}]*stroke-width:\s*1;/);
+});
+
+test("the cost frontier follows Historical performance and plots every current summary model at its current score", () => {
+  const html = readFileSync("dist/index.html", "utf8");
+  const figure = html.match(/<figure class="release-plot pareto-plot"[^>]*>([\s\S]*?)<\/figure>/)![1];
+  assert(html.indexOf('id="release-plot-heading"') < html.indexOf(figure));
+  assert(html.indexOf(figure) < html.indexOf('id="summary-plot-heading"'));
+  assert.match(figure, /<h3 id="pareto-plot-heading">Surgical Intelligence Pareto Frontier: What are the best models for a given cost level\?<\/h3>/);
+  assert(!figure.includes("release-subtitle") && !figure.includes("Single models"));
+  assert(!figure.includes("GPU-run LLMs use estimated token usage at OpenRouter prices."));
+  assert(!figure.includes("rotate(") && !figure.includes("Aggregate benchmark score"), "No y-axis label");
+  assert.match(figure, /<button class="plot-copy"[^>]*aria-label="Copy plot as PNG"/);
+  assert.match(figure, /stroke="var\(--accent\)"[^>]*data-frontier-group="llm"/, "LLMs use the website teal");
+  assert.match(figure, /stroke="var\(--uchicago-maroon\)"[^>]*data-frontier-group="specialised"/, "Specialists use the website maroon");
+  const table = html.match(/<table class="summary-table">([\s\S]*?)<\/table>/)![1];
+  const models = new Map(Array.from(table.matchAll(/<tr[^>]*data-model-id="([^"]+)"[^>]*data-model-kind="([^"]+)"[^>]*>([\s\S]*?)<\/tr>/g), (match) => [match[1], {
+    group: match[2] === "zero-shot" ? "llm" : "specialised",
+    score: match[3].match(/<td class="summary-total">([^<]+)<\/td>/)![1],
+  }]));
+  const costData = JSON.parse(readFileSync("src/data/paretoCosts.json", "utf8"));
+  assert.deepEqual(costData.models.map((row: { id: string }) => row.id).sort(), [...models.keys()].sort(), "Cost data covers all current models without extras");
+  for (const cost of costData.models) {
+    assert(Number.isFinite(cost.costPerMillionFrames) && cost.costPerMillionFrames > 0);
+    assert(Math.abs(cost.costPerMillionFrames - cost.totalInferenceCostUsd / cost.totalFramesSubmitted * 1e6) < 1e-8, `${cost.id}: cost per million submitted frames`);
+  }
+  const layouts = Array.from(figure.matchAll(/<svg class="release-plot-(?:wide|medium|compact)"[^>]*data-cost-scale="log"[^>]*data-frontier-mode="single-model"[^>]*>([\s\S]*?)<\/svg>/g), (match) => match[1]);
+  assert.equal(layouts.length, 3);
+  for (const svg of layouts) {
+    const points = Array.from(svg.matchAll(/data-model="([^"]+)" data-total="([^"]+)" data-cost="([^"]+)" data-model-group="([^"]+)"/g), (match) => ({ id: match[1], total: Number(match[2]), costPerMillionFrames: Number(match[3]), group: match[4] }));
+    assert.deepEqual(points.map((point) => point.id).sort(), [...models.keys()].sort());
+    for (const point of points) {
+      assert.equal(point.total.toFixed(3), models.get(point.id)!.score, `${point.id}: same performance as the summary table`);
+      assert.equal(point.group, models.get(point.id)!.group);
+    }
+    assert.equal(points.filter((point) => point.group === "specialised").length, 2);
+    const logos = Array.from(svg.matchAll(/<g class="release-model-logo" data-provider="([^"]+)"[^>]*>([\s\S]*?)<\/g>/g));
+    assert.equal(logos.length, models.size, "Every model has its website logo marker");
+    assert(logos.some((logo) => logo[1] === "visurg" && logo[2].includes("provider-logos/visurg.png")), "LemonFM uses its own logo");
+    const jointMark = logos.find((logo) => logo[1] === "internal")!;
+    assert.equal(Array.from(jointMark[2].matchAll(/<image /g)).length, 2, "SDSC/UChicago uses both institution logos");
+    for (const logo of logos) assert(logo[2].includes("<path") || logo[2].includes("<image"));
+    for (const image of svg.matchAll(/<image href="([^"]+)"/g)) {
+      assert(image[1].startsWith(SITE_BASE));
+      assert(existsSync(resolve("dist", image[1].slice(SITE_BASE.length))), `Cost chart logo asset exists: ${image[1]}`);
+    }
+    for (const group of ["llm", "specialised"]) {
+      const frontier = svg.match(new RegExp(`data-frontier-group="${group}" data-frontier-models="([^"]+)" d="([^"]+)"`))!;
+      assert.equal(frontier[1], singleModelFrontier(points.filter((point) => point.group === group)).map((point) => point.id).join(","));
+      assert.match(frontier[2], /^M [\d.]+ [\d.]+(?: H [\d.]+ V [\d.]+)*$/, "Frontier changes score only when the next individual model becomes affordable");
+    }
+    const legend = svg.match(/<g class="pareto-legend"[\s\S]*?(?=<g class="release-point)/)![0];
+    assert.deepEqual(Array.from(legend.matchAll(/<text[^>]*>([^<]+)<\/text>/g), (match) => match[1]), ["LLMs", "Specialised models", "LLMs Pareto frontier", "Specialised models Pareto frontier"]);
+    assert(svg.includes("Inference cost (USD per 1 million frames,"));
+  }
 });
 
 test("spider legend matches the plotted models and colors and its scale tops out at one", () => {
