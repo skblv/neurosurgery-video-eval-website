@@ -7,7 +7,7 @@ import { PlotFooter } from "./PlotFooter";
 import { PlotModelLogo } from "./PlotModelLogo";
 
 const TITLE = "Surgical Intelligence Pareto Frontier: What are the best models for a given cost level?";
-const METHODOLOGY = "Surgical Intelligence Index plotted against model cost. Cost is total inference spending divided by submitted frames, scaled to one million frames; training costs are excluded. Each frontier shows the best individual model available within a given budget.";
+const METHODOLOGY = "Surgical Intelligence Index plotted against model cost.";
 const GROUPS = [
   { id: "llm", label: "LLMs", color: "var(--accent)" },
   { id: "specialised", label: "Specialised models", color: "var(--uchicago-maroon)" },
@@ -70,7 +70,7 @@ export function ParetoFrontierPlot() {
 
       return <svg key={width} ref={width === 920 ? plotRef : undefined} className={className}
         viewBox={`0 0 ${width} ${height}`} role="group" aria-label="Inference cost and Surgical Intelligence Index for all benchmark models"
-        data-cost-unit="USD per 1 million submitted frames" data-cost-scale="log" data-frontier-mode="single-model"
+        data-cost-unit="USD per 1 million evaluation frames" data-cost-scale="log" data-frontier-mode="single-model"
         onMouseMove={selectNearest} onClick={(event) => { if (event.detail > 0) selectNearest(event); }}>
         {Y_TICKS.map((tick) => <g key={tick}>
           <line x1={bounds.left} x2={bounds.right} y1={y(tick)} y2={y(tick)} className="release-grid" />
@@ -85,7 +85,7 @@ export function ParetoFrontierPlot() {
         </text>
         {FRONTIERS.map((group) => <path key={group.id} className="pareto-frontier" fill="none" stroke={group.color}
           data-frontier-group={group.id} data-frontier-models={group.points.map((point) => point.id).join(",")}
-          d={staircasePath(group.points.map((point) => ({ x: x(point.costPerMillionFrames), y: y(point.total) })))} />)}
+          d={staircasePath(group.points.map((point) => ({ x: x(point.costPerMillionFrames), y: y(point.total) })), bounds.right)} />)}
         <g className="pareto-legend" role="group" aria-label="Legend" transform={`translate(${compact ? bounds.left : bounds.left + 14} ${compact ? 518 : 157})`}>
           {GROUPS.map((group, index) => <g key={group.id} transform={`translate(0 ${index * 24})`}>
             <circle cx="10" cy="0" r="4.5" fill={group.color} />

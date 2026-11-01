@@ -155,7 +155,6 @@ test("the cost frontier follows Historical performance and plots every current s
   assert(html.indexOf(figure) < html.indexOf('id="summary-plot-heading"'));
   assert.match(figure, /<h3 id="pareto-plot-heading">Surgical Intelligence Pareto Frontier: What are the best models for a given cost level\?<\/h3>/);
   assert(!figure.includes("release-subtitle") && !figure.includes("Single models"));
-  assert(!figure.includes("GPU-run LLMs use estimated token usage at OpenRouter prices."));
   assert(!figure.includes("rotate(") && !figure.includes("Aggregate benchmark score"), "No y-axis label");
   assert.match(figure, /<button class="plot-copy"[^>]*aria-label="Copy plot as PNG"/);
   assert.match(figure, /stroke="var\(--accent\)"[^>]*data-frontier-group="llm"/, "LLMs use the website teal");
@@ -168,8 +167,8 @@ test("the cost frontier follows Historical performance and plots every current s
   const costData = JSON.parse(readFileSync("src/data/paretoCosts.json", "utf8"));
   assert.deepEqual(costData.models.map((row: { id: string }) => row.id).sort(), [...models.keys()].sort(), "Cost data covers all current models without extras");
   for (const cost of costData.models) {
+    assert.deepEqual(Object.keys(cost).sort(), ["costPerMillionFrames", "id"]);
     assert(Number.isFinite(cost.costPerMillionFrames) && cost.costPerMillionFrames > 0);
-    assert(Math.abs(cost.costPerMillionFrames - cost.totalInferenceCostUsd / cost.totalFramesSubmitted * 1e6) < 1e-8, `${cost.id}: cost per million submitted frames`);
   }
   const layouts = Array.from(figure.matchAll(/<svg class="release-plot-(?:wide|medium|compact)"[^>]*data-cost-scale="log"[^>]*data-frontier-mode="single-model"[^>]*>([\s\S]*?)<\/svg>/g), (match) => match[1]);
   assert.equal(layouts.length, 3);
@@ -194,7 +193,7 @@ test("the cost frontier follows Historical performance and plots every current s
     for (const group of ["llm", "specialised"]) {
       const frontier = svg.match(new RegExp(`data-frontier-group="${group}" data-frontier-models="([^"]+)" d="([^"]+)"`))!;
       assert.equal(frontier[1], singleModelFrontier(points.filter((point) => point.group === group)).map((point) => point.id).join(","));
-      assert.match(frontier[2], /^M [\d.]+ [\d.]+(?: H [\d.]+ V [\d.]+)*$/, "Frontier changes score only when the next individual model becomes affordable");
+      assert.match(frontier[2], /^M [\d.]+ [\d.]+(?: H [\d.]+ V [\d.]+)*(?: H [\d.]+)?$/, "Frontier changes score only when the next individual model becomes affordable");
     }
     const legend = svg.match(/<g class="pareto-legend"[\s\S]*?(?=<g class="release-point)/)![0];
     assert.deepEqual(Array.from(legend.matchAll(/<text[^>]*>([^<]+)<\/text>/g), (match) => match[1]), ["LLMs", "Specialised models", "LLMs Pareto frontier", "Specialised models Pareto frontier"]);
