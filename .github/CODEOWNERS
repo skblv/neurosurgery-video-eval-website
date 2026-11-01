@@ -1,4 +1,3 @@
-# PRs to main require an approving review from a code owner (branch
-# protection has "require code owner review" enabled). Add or remove
-# reviewers here to control whose approval counts.
+# Code owners for this repository. The main-only workflow is documented
+# in AGENTS.md; this file does not configure branch protection.
 * @dytopia @swiftcoder @neerajmainkar-ship-it @Surgical-Data-Science-Collective/ml-team

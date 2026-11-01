@@ -159,7 +159,7 @@ provenance, and visibility in prerendered pages.
    optionally a display name in `KNOWN_PROVIDER_LABELS` in
    `src/data/benchmark.ts` (otherwise the slug is title-cased).
 
-3. Open a pull request, or push to `main` directly if you have write access.
+3. Commit and push directly to `main` when authorized. Use only `main`; do not create a branch or pull request. See the repository's [main-only rule](../AGENTS.md).
    The Action builds (catching any schema errors) and deploys.
 
 ## Adding a benchmark (dataset)
