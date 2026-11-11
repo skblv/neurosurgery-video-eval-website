@@ -25,6 +25,7 @@ const KNOWN_PROVIDER_LABELS: Record<string, string> = {
   surgmotion: "SurgMotion",
   qwen: "Qwen",
   zai: "Z.ai",
+  omnir: "OmniRAS",
   xai: "xAI",
 };
 
@@ -233,6 +234,16 @@ export const GESTURE_MODEL_CITATIONS: ModelCitation[] = [
     year: 2026,
   },
   {
+    modelId: "omnir",
+    authorsShort: "Borgioli, L., Getty, N., Xiu, W., et al.",
+    title:
+      "OmniRAS: Standardizing Foundation Model Training and Evaluation in Robot-Assisted Surgery",
+    venue: "arXiv preprint",
+    linkLabel: "arXiv:2608.31048",
+    url: "https://arxiv.org/abs/2608.31048",
+    year: 2026,
+  },
+  {
     modelId: "gpt-5-6-sol",
     authorsShort: "OpenAI.",
     title: "Previewing GPT-5.6 Sol",
@@ -261,6 +272,13 @@ export const GESTURE_MODEL_CITATIONS: ModelCitation[] = [
   },
 ];
 
+const GESTURE_MODEL_CITATION_ALIASES: Record<string, string> = {
+  "omnir-1b-attentive": "omnir",
+  "omnir-2b-attentive": "omnir",
+  "omnir-1b-linear": "omnir",
+  "omnir-2b-linear": "omnir",
+};
+
 /**
  * Footnote number for an instrument-page model result, or null when the model
  * has no citation.
@@ -276,7 +294,8 @@ export function modelFootnote(modelId: string): number | null {
 
 /** Footnote number for an Action-page model result. */
 export function gestureModelFootnote(modelId: string): number | null {
-  const index = GESTURE_MODEL_CITATIONS.findIndex((ref) => ref.modelId === modelId);
+  const citationId = GESTURE_MODEL_CITATION_ALIASES[modelId] ?? modelId;
+  const index = GESTURE_MODEL_CITATIONS.findIndex((ref) => ref.modelId === citationId);
   if (index === -1) return null;
   return index + 2 + DATASET_CITATIONS.length + MODEL_CITATIONS.length;
 }

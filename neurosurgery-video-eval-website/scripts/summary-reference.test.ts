@@ -43,12 +43,13 @@ test("summary shows only the requested extra rows, using measured LemonFM scores
   const html = readFileSync("dist/index.html", "utf8");
   const table = html.match(/<table class="summary-table">([\s\S]*?)<\/table>/)![1];
   const rows = [...table.matchAll(/<tr data-model-id="([^"]+)" data-model-kind="([^"]+)">([\s\S]*?)<\/tr>/g)];
-  assert.equal(rows.length, 25);
-  assert.equal(rows.filter((row) => row[2] === "zero-shot").length, 23);
+  assert.equal(rows.length, 24);
+  assert(!rows.some((row) => row[1].startsWith("omnir-")));
+  assert.equal(rows.filter((row) => row[2] === "zero-shot").length, 22);
   assert.deepEqual(rows.filter((row) => row[2] !== "zero-shot").map((row) => row[1]), [SPECIALIST_REFERENCE_ID, "lemonfm-linear-probe"]);
   const reference = rows.find((row) => row[1] === SPECIALIST_REFERENCE_ID)![3];
   const cells = (row: string) => [...row.matchAll(/<td[^>]*>([^<]*)<\/td>/g)].map((match) => match[1]);
-  assert.deepEqual(cells(reference), Array(6).fill("1.000"));
+  assert.deepEqual(cells(reference), Array(7).fill("1.000"));
   assert(reference.includes("<small>SDSC/UChicago specialist model</small>") && reference.includes('class="joint-mark"'));
 
   type Results = { datasets: Record<string, { results: { id: string; metrics: Record<string, { value: number | null }> }[] }> };
@@ -70,7 +71,7 @@ test("summary shows only the requested extra rows, using measured LemonFM scores
   // Action uses the provisional 10% uniform-class baseline from summary.ts; it counts toward Total but has no table column.
   const action = (accuracy("lemonfm-linear-probe") - 10) / (accuracy("mvit-multi-task") - 10);
   const lemon = rows.find((row) => row[1] === "lemonfm-linear-probe")![3];
-  assert.deepEqual(cells(lemon), [mean([scores[0], action, ...scores.slice(1)]), ...scores].map((value) => value.toFixed(3)));
+  assert.deepEqual(cells(lemon), [mean([scores[0], action, ...scores.slice(1)]), scores[0], action, ...scores.slice(1)].map((value) => value.toFixed(3)));
   assert(lemon.includes("LemonFM (linear probe)") && lemon.includes("provider-logos/visurg.png"));
   assert(html.includes("LemonFM uses task-trained linear probes.") && html.includes("it is not one model."));
   assert(!html.includes(`data-model="${SPECIALIST_REFERENCE_ID}"`) && !html.includes('data-model="lemonfm-linear-probe"'), "No invented release dates or changes to the zero-shot historical plot");
@@ -117,8 +118,8 @@ test("spider options and profiles share the table's specialist and LemonFM rows"
   const selection = ["gpt-6-astra", SPECIALIST_REFERENCE_ID, "lemonfm-linear-probe"];
   const profiles = radarProfiles(selection, rows);
   assert.deepEqual(profiles.map((row) => row.id), selection);
-  assert.deepEqual(profiles[1].scores, [1, null, 1, 1, 1, 1]);
-  assert.deepEqual(profiles[2].scores, [0.813, null, 0.752, 0.691, 0.980, 1.079]);
+  assert.deepEqual(profiles[1].scores, [1, null, 1, 1, 1, 1, 1]);
+  assert.deepEqual(profiles[2].scores, [0.813, null, 0.784, 0.752, 0.691, 0.980, 1.079]);
   assert.equal(radarScale(profiles.flatMap((row) => row.scores)).ceiling, 1);
   assert.equal(radarProfiles(selection.slice(1), rows).length, 2);
 });

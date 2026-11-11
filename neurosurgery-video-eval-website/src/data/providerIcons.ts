@@ -8,6 +8,12 @@ export interface ProviderIcon {
 export const PROVIDER_ICONS: Record<string, ProviderIcon> = {
   // Lobe Icons, MIT: https://github.com/lobehub/lobe-icons
   // License retained in public/provider-logos/LOBE-ICONS-LICENSE.txt.
+  omnir: {
+    title: "OmniRAS",
+    viewBox: "0 0 24 24",
+    hex: "#111111",
+    path: "M12 1.5a10.5 10.5 0 1 0 0 21a10.5 10.5 0 0 0 0-21Zm0 3.2a7.3 7.3 0 1 1 0 14.6a7.3 7.3 0 0 1 0-14.6Zm0 3.1a4.2 4.2 0 1 0 0 8.4a4.2 4.2 0 0 0 0-8.4Z",
+  },
   zai: {
     title: "Z.ai", viewBox: "0 0 24 24", hex: "#111111",
     path: "M12.105 2L9.927 4.953H.653L2.83 2h9.276zM23.254 19.048L21.078 22h-9.242l2.174-2.952h9.244zM24 2L9.264 22H0L14.736 2H24z",
