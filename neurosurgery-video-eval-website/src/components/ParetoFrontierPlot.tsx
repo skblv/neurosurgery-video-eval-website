@@ -7,7 +7,14 @@ import { PlotFooter } from "./PlotFooter";
 import { PlotModelLogo } from "./PlotModelLogo";
 
 const TITLE = "Surgical Intelligence Pareto Frontier: What are the best models for a given cost level?";
-const METHODOLOGY = "For closed-weight LLMs, we use recorded API spend where available. "
+const METHODOLOGY = "The plot shows the Surgical Intelligence Index against inference cost. "
+  + "A score of 1 matches the specialised reference and 0 matches chance. "
+  + "Each frontier shows the highest score within a given budget for LLMs or specialised models. "
+  + "The cost data covers a common mix of 8,579 frames from CholecT50, PitVis-2023, SurgVU, DSAD, CaDIS, Endoscapes, "
+  + "SAR-RARP50, PitVQA, CholecT50 verbs, and PitVis-2023 steps. "
+  + "For every model, we weight each dataset’s cost per frame by its share of that mix and scale to USD per million frames. "
+  + "Costs exclude Action, which contributes to the index where scores are available. "
+  + "For closed-weight LLMs, we use recorded API spend where available. "
   + "For open-weight LLMs run on our own hardware, we estimate costs using API token prices. "
   + "For specialised models, we estimate costs from GPU runtime and hourly rental rates.";
 const GROUPS = [
