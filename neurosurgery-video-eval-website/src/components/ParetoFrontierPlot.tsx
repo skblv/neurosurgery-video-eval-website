@@ -7,7 +7,9 @@ import { PlotFooter } from "./PlotFooter";
 import { PlotModelLogo } from "./PlotModelLogo";
 
 const TITLE = "Surgical Intelligence Pareto Frontier: What are the best models for a given cost level?";
-const METHODOLOGY = "Surgical Intelligence Index plotted against model cost.";
+const METHODOLOGY = "For closed-weight LLMs, we use recorded API spend where available. "
+  + "For open-weight LLMs run on our own hardware, we estimate costs using API token prices. "
+  + "For specialised models, we estimate costs from GPU runtime and hourly rental rates.";
 const GROUPS = [
   { id: "llm", label: "LLMs", color: "var(--accent)" },
   { id: "specialised", label: "Specialised models", color: "var(--uchicago-maroon)" },
